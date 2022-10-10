@@ -2,15 +2,15 @@
 
 [Nicolas van Kempen](https://nvankempen.com/), [Emery D. Berger](https://emeryberger.com/)
 
-In this work, we revisit the _Reconsidering Custom Memory Allocation_ paper[^1]. That widely-cited paper (selected as a Most Influential Paper[^2]) conducted a study that
-demonstrated that in many cases, custom memory allocators do not provide significant performance benefits over a good general-purpose memory allocator.
+In this work, we revisit the _Reconsidering Custom Memory Allocation_ paper[^1]. That widely-cited paper (selected as a Most Influential Paper[^2]) conducted a study that demonstrated that in many cases, custom memory allocators often do not provide significant performance benefits over a good general-purpose memory allocator.
+
+That paper compared the original programs (with custom allocators) with versions that used general-purpose allocators (either directly or via a "shim" that redirected individual object allocations to `malloc`/`free`). However, their approach started with a clean-slate heap (no prior allocations); this does not account for the case of long-running applications, where heap fragmentation is inevitable. We show that, for fragmented heaps, custom memory allocators can significantly outperform modern general-purpose allocators.
 
 ## Littering
 
-To combat this effect, we developed _littering_, an approach to measure the benefits of custom allocators without unfairly favoring the shimmed
-version of the program. Littering works by first running a short pre-conditioning step before starting the program, allocating and
-freeing objects to  fragment the heap. Unlike starting from a clean heap, littering simulates the conditions of a long-running program,
-where fragmentation is inevitable.
+To simulate the effect of long-running execution on the heap, we developed a novel methodology we call _littering_. Littering allows us to measure the benefits of custom allocators without unfairly favoring `malloc`/`free`. Unlike starting from a clean-slate heap, littering simulates the conditions of a long-running program,
+where fragmentation is inevitable. Littering works by first running a short pre-conditioning step before starting the program, allocating and
+freeing objects.
 
 More precisely, littering works in two phases:
  1. **Detection** We run the program as usual, but with a _Detector_ library (`LD_PRELOAD=libdetector.so <program>`) that keeps track of every allocated object's size, binning sizes to obtain a
@@ -38,7 +38,7 @@ Data was obtained on a Thinkpad P15s Gen 2 with an Intel i7-1165G7 processor.
 
 Results below were obtained with `LITTER_MULTIPLIER = 1`, varying the occupancy number.
 
-## Graphs
+## Results
 
 First, some `197.parser` specific graphs, using the Linux default allocator, jemalloc, and mimalloc.
 The elapsed time graph is normalized by the elapsed time of the program running with the custom allocator, no littering.

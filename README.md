@@ -1,21 +1,25 @@
-# On Littering
+# Reconsidering "Reconsidering Custom Memory Allocation"
+
+[Nicolas van Kempen](https://nvankempen.com/), [Emery D. Berger](https://emeryberger.com/)
+
+In this work, we revisit the _Reconsidering Custom Memory Allocation_ paper [^1]. That widely-cited paper (selected as a Most Influential Paper) conducted a study that
+demonstrated that in many cases, custom memory allocators do not provide significant performance benefits over a good general-purpose memory allocator.
 
 ## Littering
 
-Littering is a method developped to measure the benefits of custom allocators without unfairly favoritizing the shimmed
-version of the program. It works by running a short pre-conditioning step before starting the program, allocating and
-freeing objects successively to artifically fragment the heap. This simulates real conditions of long-running programs,
+To combat this effect, we developed _littering_, an approach to measure the benefits of custom allocators without unfairly favoring the shimmed
+version of the program. Littering works by first running a short pre-conditioning step before starting the program, allocating and
+freeing objects to  fragment the heap. Unlike starting from a clean heap, littering simulates the conditions of a long-running program,
 where fragmentation is inevitable.
 
-More precisely, our version of littering works in two steps.
- 1. `LD_PRELOAD=libdetector.so <program>`. This keeps track of every allocated object's size, binning sizes to obtain a
-    rough size distribution of the objects used by the program. It also keeps track of a few statistics we can calculate
-    online, such as mean, min/max, and most importantly `MaxLiveAllocations`.
- 2. `LD_PRELOAD=liblitterer.so <program>`. This is when we actually run the litterering step, along with the program
-    when done. This works by allocating `LITTER_MULTIPLIER * MaxLiveAllocations` objects following the recorded size
+More precisely, littering works in two phases:
+ 1. **Detection** We run the program as usual, but with a _Detector_ library (`LD_PRELOAD=libdetector.so <program>`) that keeps track of every allocated object's size, binning sizes to obtain a
+    rough size distribution of the objects used by the program, which it produces as output to be consumed in the littering phase. Detector also keeps track of several allocation statistics,
+    including mean, min/max, and most importantly, `MaxLiveAllocations`.
+ 2. **Littering** With the statistics and histogram in hand, we next run littering (`LD_PRELOAD=liblitterer.so <program>`). Littering allocaties `LITTER_MULTIPLIER * MaxLiveAllocations` objects following the recorded size
     distribution, (optionally) shuffling the addresses, and freeing a fraction of `1 - LITTER_OCCUPANCY` of them. We
-    use the same `malloc` as the program will, hence the program will start with existing "litter" on the heap. There
-    are a few tunable parameters.
+    use the same `malloc` as the program, so the program starts with the heap in a littered state. There
+    are a few tunable parameters, which can be provided as environment variables:
      -  `LITTER_SEED`: Seed to be used for the random number generator. Random by default.
      -  `LITTER_OCCUPANCY`: Fraction of objects to _keep_ on the heap. Value must be between 0 and 1.
      -  `LITTER_NO_SHUFFLE`: Set to 1 to disable shuffling, and free from the last allocated objects.
@@ -53,4 +57,4 @@ sample comes from.
 
 ## References
 
-[1] Emery D. Berger, Benjamin G. Zorn, and Kathryn S. McKinley. 2002. Reconsidering custom memory allocation. In Proceedings of the 17th ACM SIGPLAN conference on Object-oriented programming, systems, languages, and applications (OOPSLA '02). Association for Computing Machinery, New York, NY, USA, 1–12. https://doi.org/10.1145/582419.582421
+[^1] Emery D. Berger, Benjamin G. Zorn, and Kathryn S. McKinley. 2002. Reconsidering custom memory allocation. In Proceedings of the 17th ACM SIGPLAN conference on Object-oriented programming, systems, languages, and applications (OOPSLA '02). Association for Computing Machinery, New York, NY, USA, 1–12. https://doi.org/10.1145/582419.582421

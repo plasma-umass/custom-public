@@ -1,0 +1,320 @@
+Time elapsed: 36.779962
+
+ Performance counter stats for './parser 2.1.dict -batch':
+
+         36,776.75 msec task-clock                #    1.000 CPUs utilized          
+               547      context-switches          #   14.874 /sec                   
+                 5      cpu-migrations            #    0.136 /sec                   
+            10,198      page-faults               #  277.295 /sec                   
+   171,556,198,838      cycles                    #    4.665 GHz                      (38.44%)
+   274,686,735,748      instructions              #    1.60  insn per cycle           (46.14%)
+    57,750,119,584      branches                  #    1.570 G/sec                    (53.84%)
+     1,498,053,409      branch-misses             #    2.59% of all branches          (61.54%)
+   857,719,182,492      slots                     #   23.322 G/sec                    (69.24%)
+    72,088,642,912      topdown-retiring          #      7.7% retiring                (69.24%)
+   739,993,020,188      topdown-bad-spec          #     79.3% bad speculation         (69.24%)
+    36,737,384,137      topdown-fe-bound          #      3.9% frontend bound          (69.24%)
+    84,421,883,024      topdown-be-bound          #      9.0% backend bound           (69.24%)
+    86,520,828,730      L1-dcache-loads           #    2.353 G/sec                    (69.24%)
+     5,266,232,525      L1-dcache-load-misses     #    6.09% of all L1-dcache accesses  (69.24%)
+       221,801,578      LLC-loads                 #    6.031 M/sec                    (69.24%)
+        14,502,228      LLC-load-misses           #    6.54% of all LL-cache accesses  (69.25%)
+        22,893,367      L1-icache-load-misses                                         (30.76%)
+    86,902,056,106      dTLB-loads                #    2.363 G/sec                    (30.76%)
+        18,753,288      dTLB-load-misses          #    0.02% of all dTLB cache accesses  (30.76%)
+         4,509,753      iTLB-load-misses                                              (30.75%)
+
+      36.782813739 seconds time elapsed
+
+      36.765269000 seconds user
+       0.011999000 seconds sys
+
+
+Time elapsed: 36.598997
+
+ Performance counter stats for './parser 2.1.dict -batch':
+
+         36,595.30 msec task-clock                #    1.000 CPUs utilized          
+               160      context-switches          #    4.372 /sec                   
+                 0      cpu-migrations            #    0.000 /sec                   
+            10,196      page-faults               #  278.615 /sec                   
+   168,417,697,931      cycles                    #    4.602 GHz                      (38.45%)
+   275,624,946,698      instructions              #    1.64  insn per cycle           (46.14%)
+    57,905,490,282      branches                  #    1.582 G/sec                    (53.83%)
+     1,435,756,301      branch-misses             #    2.48% of all branches          (61.53%)
+   841,944,858,141      slots                     #   23.007 G/sec                    (69.22%)
+    88,411,469,107      topdown-retiring          #      9.8% retiring                (69.22%)
+   680,159,375,596      topdown-bad-spec          #     75.5% bad speculation         (69.22%)
+    41,587,286,356      topdown-fe-bound          #      4.6% frontend bound          (69.22%)
+    90,441,054,861      topdown-be-bound          #     10.0% backend bound           (69.22%)
+    86,418,706,893      L1-dcache-loads           #    2.361 G/sec                    (69.22%)
+     5,281,556,229      L1-dcache-load-misses     #    6.11% of all L1-dcache accesses  (69.22%)
+       224,805,327      LLC-loads                 #    6.143 M/sec                    (69.23%)
+        14,153,303      LLC-load-misses           #    6.30% of all LL-cache accesses  (69.24%)
+        22,199,028      L1-icache-load-misses                                         (30.78%)
+    87,091,614,738      dTLB-loads                #    2.380 G/sec                    (30.78%)
+        17,738,113      dTLB-load-misses          #    0.02% of all dTLB cache accesses  (30.77%)
+         4,459,729      iTLB-load-misses                                              (30.76%)
+
+      36.601033272 seconds time elapsed
+
+      36.591461000 seconds user
+       0.003999000 seconds sys
+
+
+Time elapsed: 37.726447
+
+ Performance counter stats for './parser 2.1.dict -batch':
+
+         37,724.09 msec task-clock                #    1.000 CPUs utilized          
+               200      context-switches          #    5.302 /sec                   
+                 5      cpu-migrations            #    0.133 /sec                   
+            10,194      page-faults               #  270.225 /sec                   
+   171,960,007,962      cycles                    #    4.558 GHz                      (38.44%)
+   274,262,693,893      instructions              #    1.59  insn per cycle           (46.13%)
+    57,656,252,627      branches                  #    1.528 G/sec                    (53.83%)
+     1,510,446,284      branch-misses             #    2.62% of all branches          (61.53%)
+   859,695,902,359      slots                     #   22.789 G/sec                    (69.22%)
+    82,771,003,295      topdown-retiring          #      8.9% retiring                (69.22%)
+   721,470,286,685      topdown-bad-spec          #     77.6% bad speculation         (69.22%)
+    41,064,262,227      topdown-fe-bound          #      4.4% frontend bound          (69.22%)
+    84,760,842,092      topdown-be-bound          #      9.1% backend bound           (69.22%)
+    86,467,763,339      L1-dcache-loads           #    2.292 G/sec                    (69.23%)
+     5,234,332,634      L1-dcache-load-misses     #    6.05% of all L1-dcache accesses  (69.25%)
+       215,503,377      LLC-loads                 #    5.713 M/sec                    (69.25%)
+        12,833,459      LLC-load-misses           #    5.96% of all LL-cache accesses  (69.26%)
+        22,559,136      L1-icache-load-misses                                         (30.77%)
+    86,650,860,223      dTLB-loads                #    2.297 G/sec                    (30.75%)
+        18,955,294      dTLB-load-misses          #    0.02% of all dTLB cache accesses  (30.75%)
+         4,514,418      iTLB-load-misses                                              (30.74%)
+
+      37.728689978 seconds time elapsed
+
+      37.712059000 seconds user
+       0.011998000 seconds sys
+
+
+Time elapsed: 37.365355
+
+ Performance counter stats for './parser 2.1.dict -batch':
+
+         37,362.93 msec task-clock                #    1.000 CPUs utilized          
+               144      context-switches          #    3.854 /sec                   
+                 3      cpu-migrations            #    0.080 /sec                   
+            10,196      page-faults               #  272.891 /sec                   
+   171,384,291,781      cycles                    #    4.587 GHz                      (38.44%)
+   275,493,079,695      instructions              #    1.61  insn per cycle           (46.13%)
+    57,975,078,266      branches                  #    1.552 G/sec                    (53.83%)
+     1,483,977,038      branch-misses             #    2.56% of all branches          (61.52%)
+   856,845,665,861      slots                     #   22.933 G/sec                    (69.22%)
+    82,653,361,363      topdown-retiring          #      8.9% retiring                (69.22%)
+   719,078,323,506      topdown-bad-spec          #     77.1% bad speculation         (69.22%)
+    44,142,855,215      topdown-fe-bound          #      4.7% frontend bound          (69.22%)
+    86,267,225,438      topdown-be-bound          #      9.3% backend bound           (69.22%)
+    86,686,567,355      L1-dcache-loads           #    2.320 G/sec                    (69.23%)
+     5,257,299,008      L1-dcache-load-misses     #    6.06% of all L1-dcache accesses  (69.24%)
+       218,931,493      LLC-loads                 #    5.860 M/sec                    (69.25%)
+        13,410,439      LLC-load-misses           #    6.13% of all LL-cache accesses  (69.26%)
+        21,779,568      L1-icache-load-misses                                         (30.77%)
+    86,183,064,273      dTLB-loads                #    2.307 G/sec                    (30.76%)
+        19,095,112      dTLB-load-misses          #    0.02% of all dTLB cache accesses  (30.75%)
+         4,683,115      iTLB-load-misses                                              (30.74%)
+
+      37.367346742 seconds time elapsed
+
+      37.354955000 seconds user
+       0.007998000 seconds sys
+
+
+Time elapsed: 37.406408
+
+ Performance counter stats for './parser 2.1.dict -batch':
+
+         37,405.47 msec task-clock                #    1.000 CPUs utilized          
+               147      context-switches          #    3.930 /sec                   
+                 3      cpu-migrations            #    0.080 /sec                   
+            10,196      page-faults               #  272.580 /sec                   
+   171,384,311,949      cycles                    #    4.582 GHz                      (38.44%)
+   275,235,470,706      instructions              #    1.61  insn per cycle           (46.14%)
+    57,795,043,727      branches                  #    1.545 G/sec                    (53.84%)
+     1,514,519,023      branch-misses             #    2.62% of all branches          (61.54%)
+   856,964,458,255      slots                     #   22.910 G/sec                    (69.23%)
+    81,927,630,254      topdown-retiring          #      8.8% retiring                (69.23%)
+   725,899,305,816      topdown-bad-spec          #     78.1% bad speculation         (69.23%)
+    45,204,252,427      topdown-fe-bound          #      4.9% frontend bound          (69.23%)
+    76,896,164,216      topdown-be-bound          #      8.3% backend bound           (69.23%)
+    86,468,630,665      L1-dcache-loads           #    2.312 G/sec                    (69.24%)
+     5,248,109,333      L1-dcache-load-misses     #    6.07% of all L1-dcache accesses  (69.24%)
+       220,100,539      LLC-loads                 #    5.884 M/sec                    (69.25%)
+        13,054,219      LLC-load-misses           #    5.93% of all LL-cache accesses  (69.25%)
+        22,824,834      L1-icache-load-misses                                         (30.76%)
+    86,759,622,401      dTLB-loads                #    2.319 G/sec                    (30.76%)
+        19,264,721      dTLB-load-misses          #    0.02% of all dTLB cache accesses  (30.75%)
+         4,445,726      iTLB-load-misses                                              (30.75%)
+
+      37.408354109 seconds time elapsed
+
+      37.365596000 seconds user
+       0.039993000 seconds sys
+
+
+Time elapsed: 38.157227
+
+ Performance counter stats for './parser 2.1.dict -batch':
+
+         38,156.44 msec task-clock                #    1.000 CPUs utilized          
+               155      context-switches          #    4.062 /sec                   
+                 0      cpu-migrations            #    0.000 /sec                   
+            10,197      page-faults               #  267.242 /sec                   
+   174,593,966,456      cycles                    #    4.576 GHz                      (38.44%)
+   274,317,700,616      instructions              #    1.57  insn per cycle           (46.14%)
+    57,599,561,305      branches                  #    1.510 G/sec                    (53.83%)
+     1,575,016,199      branch-misses             #    2.73% of all branches          (61.52%)
+   872,666,949,733      slots                     #   22.871 G/sec                    (69.22%)
+    80,852,289,279      topdown-retiring          #      8.5% retiring                (69.22%)
+   749,466,909,770      topdown-bad-spec          #     79.1% bad speculation         (69.22%)
+    39,115,441,291      topdown-fe-bound          #      4.1% frontend bound          (69.22%)
+    78,645,531,265      topdown-be-bound          #      8.3% backend bound           (69.22%)
+    86,479,937,822      L1-dcache-loads           #    2.266 G/sec                    (69.22%)
+     5,251,274,334      L1-dcache-load-misses     #    6.07% of all L1-dcache accesses  (69.22%)
+       220,027,528      LLC-loads                 #    5.766 M/sec                    (69.23%)
+        13,328,592      LLC-load-misses           #    6.06% of all LL-cache accesses  (69.24%)
+        22,431,529      L1-icache-load-misses                                         (30.78%)
+    86,466,407,701      dTLB-loads                #    2.266 G/sec                    (30.78%)
+        19,790,505      dTLB-load-misses          #    0.02% of all dTLB cache accesses  (30.77%)
+         4,675,160      iTLB-load-misses                                              (30.76%)
+
+      38.159292532 seconds time elapsed
+
+      38.144491000 seconds user
+       0.011998000 seconds sys
+
+
+Time elapsed: 37.540983
+
+ Performance counter stats for './parser 2.1.dict -batch':
+
+         37,538.29 msec task-clock                #    1.000 CPUs utilized          
+               204      context-switches          #    5.434 /sec                   
+                 8      cpu-migrations            #    0.213 /sec                   
+            10,196      page-faults               #  271.616 /sec                   
+   169,506,999,153      cycles                    #    4.516 GHz                      (38.46%)
+   274,091,302,417      instructions              #    1.62  insn per cycle           (46.15%)
+    57,702,499,801      branches                  #    1.537 G/sec                    (53.84%)
+     1,463,923,581      branch-misses             #    2.54% of all branches          (61.53%)
+   847,328,930,809      slots                     #   22.572 G/sec                    (69.22%)
+    85,741,714,982      topdown-retiring          #      9.4% retiring                (69.22%)
+   701,123,154,511      topdown-bad-spec          #     77.2% bad speculation         (69.22%)
+    35,344,712,951      topdown-fe-bound          #      3.9% frontend bound          (69.22%)
+    85,834,229,638      topdown-be-bound          #      9.5% backend bound           (69.22%)
+    86,638,651,892      L1-dcache-loads           #    2.308 G/sec                    (69.22%)
+     5,231,136,960      L1-dcache-load-misses     #    6.04% of all L1-dcache accesses  (69.22%)
+       214,614,076      LLC-loads                 #    5.717 M/sec                    (69.23%)
+        13,316,518      LLC-load-misses           #    6.20% of all LL-cache accesses  (69.23%)
+        23,052,480      L1-icache-load-misses                                         (30.78%)
+    86,228,953,574      dTLB-loads                #    2.297 G/sec                    (30.78%)
+        18,764,517      dTLB-load-misses          #    0.02% of all dTLB cache accesses  (30.77%)
+         4,584,626      iTLB-load-misses                                              (30.77%)
+
+      37.543025190 seconds time elapsed
+
+      37.526328000 seconds user
+       0.011998000 seconds sys
+
+
+Time elapsed: 37.700740
+
+ Performance counter stats for './parser 2.1.dict -batch':
+
+         37,697.43 msec task-clock                #    1.000 CPUs utilized          
+               258      context-switches          #    6.844 /sec                   
+                 3      cpu-migrations            #    0.080 /sec                   
+            10,196      page-faults               #  270.469 /sec                   
+   170,200,178,541      cycles                    #    4.515 GHz                      (38.46%)
+   274,625,282,904      instructions              #    1.61  insn per cycle           (46.15%)
+    57,725,264,209      branches                  #    1.531 G/sec                    (53.84%)
+     1,473,954,958      branch-misses             #    2.55% of all branches          (61.53%)
+   850,887,206,440      slots                     #   22.571 G/sec                    (69.23%)
+    83,603,895,970      topdown-retiring          #      9.2% retiring                (69.23%)
+   710,741,078,319      topdown-bad-spec          #     77.8% bad speculation         (69.23%)
+    34,613,185,274      topdown-fe-bound          #      3.8% frontend bound          (69.23%)
+    84,474,289,757      topdown-be-bound          #      9.2% backend bound           (69.23%)
+    86,454,578,569      L1-dcache-loads           #    2.293 G/sec                    (69.22%)
+     5,251,318,523      L1-dcache-load-misses     #    6.07% of all L1-dcache accesses  (69.23%)
+       217,975,595      LLC-loads                 #    5.782 M/sec                    (69.23%)
+        13,155,259      LLC-load-misses           #    6.04% of all LL-cache accesses  (69.24%)
+        22,248,143      L1-icache-load-misses                                         (30.78%)
+    86,555,257,602      dTLB-loads                #    2.296 G/sec                    (30.77%)
+        19,159,624      dTLB-load-misses          #    0.02% of all dTLB cache accesses  (30.77%)
+         4,459,462      iTLB-load-misses                                              (30.76%)
+
+      37.703005458 seconds time elapsed
+
+      37.689343000 seconds user
+       0.007998000 seconds sys
+
+
+Time elapsed: 37.955369
+
+ Performance counter stats for './parser 2.1.dict -batch':
+
+         37,954.62 msec task-clock                #    1.000 CPUs utilized          
+               160      context-switches          #    4.216 /sec                   
+                 0      cpu-migrations            #    0.000 /sec                   
+            10,196      page-faults               #  268.637 /sec                   
+   173,045,450,266      cycles                    #    4.559 GHz                      (38.45%)
+   274,861,097,349      instructions              #    1.59  insn per cycle           (46.15%)
+    57,733,069,577      branches                  #    1.521 G/sec                    (53.84%)
+     1,541,354,732      branch-misses             #    2.67% of all branches          (61.53%)
+   865,244,290,818      slots                     #   22.797 G/sec                    (69.22%)
+    78,352,740,479      topdown-retiring          #      8.4% retiring                (69.22%)
+   729,519,696,179      topdown-bad-spec          #     78.0% bad speculation         (69.22%)
+    48,179,649,496      topdown-fe-bound          #      5.2% frontend bound          (69.22%)
+    78,972,600,627      topdown-be-bound          #      8.4% backend bound           (69.22%)
+    86,468,088,983      L1-dcache-loads           #    2.278 G/sec                    (69.22%)
+     5,253,904,141      L1-dcache-load-misses     #    6.08% of all L1-dcache accesses  (69.22%)
+       221,107,314      LLC-loads                 #    5.826 M/sec                    (69.23%)
+        13,202,993      LLC-load-misses           #    5.97% of all LL-cache accesses  (69.23%)
+        22,423,118      L1-icache-load-misses                                         (30.78%)
+    86,660,500,758      dTLB-loads                #    2.283 G/sec                    (30.78%)
+        19,474,228      dTLB-load-misses          #    0.02% of all dTLB cache accesses  (30.77%)
+         4,659,758      iTLB-load-misses                                              (30.77%)
+
+      37.957489470 seconds time elapsed
+
+      37.938658000 seconds user
+       0.015999000 seconds sys
+
+
+Time elapsed: 37.868882
+
+ Performance counter stats for './parser 2.1.dict -batch':
+
+         37,867.96 msec task-clock                #    1.000 CPUs utilized          
+               170      context-switches          #    4.489 /sec                   
+                 0      cpu-migrations            #    0.000 /sec                   
+            10,196      page-faults               #  269.251 /sec                   
+   172,616,090,800      cycles                    #    4.558 GHz                      (38.45%)
+   275,585,218,653      instructions              #    1.60  insn per cycle           (46.14%)
+    57,904,124,953      branches                  #    1.529 G/sec                    (53.84%)
+     1,522,859,240      branch-misses             #    2.63% of all branches          (61.54%)
+   862,958,055,341      slots                     #   22.789 G/sec                    (69.24%)
+    83,106,049,354      topdown-retiring          #      8.8% retiring                (69.24%)
+   727,592,085,875      topdown-bad-spec          #     77.4% bad speculation         (69.24%)
+    39,311,191,168      topdown-fe-bound          #      4.2% frontend bound          (69.24%)
+    89,728,885,778      topdown-be-bound          #      9.5% backend bound           (69.24%)
+    86,492,712,288      L1-dcache-loads           #    2.284 G/sec                    (69.23%)
+     5,255,830,889      L1-dcache-load-misses     #    6.08% of all L1-dcache accesses  (69.24%)
+       218,307,460      LLC-loads                 #    5.765 M/sec                    (69.24%)
+        13,481,392      LLC-load-misses           #    6.18% of all LL-cache accesses  (69.24%)
+        21,919,207      L1-icache-load-misses                                         (30.77%)
+    86,907,941,179      dTLB-loads                #    2.295 G/sec                    (30.76%)
+        19,109,913      dTLB-load-misses          #    0.02% of all dTLB cache accesses  (30.76%)
+         5,315,726      iTLB-load-misses                                              (30.76%)
+
+      37.870945394 seconds time elapsed
+
+      37.848076000 seconds user
+       0.019997000 seconds sys
+
+

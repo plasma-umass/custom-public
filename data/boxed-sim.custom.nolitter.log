@@ -1,0 +1,320 @@
+Time elapsed: 15.330182
+
+ Performance counter stats for './boxed -n 31 -s 311371':
+
+         15,329.61 msec task-clock                #    1.000 CPUs utilized          
+               160      context-switches          #   10.437 /sec                   
+                 6      cpu-migrations            #    0.391 /sec                   
+               232      page-faults               #   15.134 /sec                   
+    71,741,282,344      cycles                    #    4.680 GHz                      (38.42%)
+   148,177,737,194      instructions              #    2.07  insn per cycle           (46.12%)
+    13,052,045,367      branches                  #  851.427 M/sec                    (53.82%)
+       371,638,864      branch-misses             #    2.85% of all branches          (61.51%)
+   358,323,509,906      slots                     #   23.375 G/sec                    (69.21%)
+   123,087,909,669      topdown-retiring          #     32.6% retiring                (69.21%)
+   119,441,169,968      topdown-bad-spec          #     31.7% bad speculation         (69.21%)
+    88,102,351,314      topdown-fe-bound          #     23.4% frontend bound          (69.21%)
+    46,584,934,828      topdown-be-bound          #     12.3% backend bound           (69.21%)
+    37,913,659,112      L1-dcache-loads           #    2.473 G/sec                    (69.21%)
+     1,882,665,834      L1-dcache-load-misses     #    4.97% of all L1-dcache accesses  (69.21%)
+            88,727      LLC-loads                 #    5.788 K/sec                    (69.23%)
+             6,115      LLC-load-misses           #    6.89% of all LL-cache accesses  (69.25%)
+       772,282,801      L1-icache-load-misses                                         (30.79%)
+    37,907,112,960      dTLB-loads                #    2.473 G/sec                    (30.79%)
+           417,217      dTLB-load-misses          #    0.00% of all dTLB cache accesses  (30.77%)
+           251,786      iTLB-load-misses                                              (30.75%)
+
+      15.331599756 seconds time elapsed
+
+      15.330456000 seconds user
+       0.000000000 seconds sys
+
+
+Time elapsed: 15.373916
+
+ Performance counter stats for './boxed -n 31 -s 311371':
+
+         15,372.93 msec task-clock                #    1.000 CPUs utilized          
+                66      context-switches          #    4.293 /sec                   
+                 3      cpu-migrations            #    0.195 /sec                   
+               232      page-faults               #   15.091 /sec                   
+    71,674,048,443      cycles                    #    4.662 GHz                      (38.39%)
+   147,949,690,267      instructions              #    2.06  insn per cycle           (46.09%)
+    13,042,614,614      branches                  #  848.415 M/sec                    (53.79%)
+       372,030,308      branch-misses             #    2.85% of all branches          (61.49%)
+   358,269,491,631      slots                     #   23.305 G/sec                    (69.19%)
+   133,995,478,211      topdown-retiring          #     37.1% retiring                (69.19%)
+    92,728,574,303      topdown-bad-spec          #     25.7% bad speculation         (69.19%)
+    88,769,050,473      topdown-fe-bound          #     24.6% frontend bound          (69.19%)
+    45,312,897,213      topdown-be-bound          #     12.6% backend bound           (69.19%)
+    37,898,827,236      L1-dcache-loads           #    2.465 G/sec                    (69.22%)
+     1,887,268,544      L1-dcache-load-misses     #    4.98% of all L1-dcache accesses  (69.24%)
+           175,654      LLC-loads                 #   11.426 K/sec                    (69.27%)
+             5,041      LLC-load-misses           #    2.87% of all LL-cache accesses  (69.30%)
+       766,447,769      L1-icache-load-misses                                         (30.78%)
+    37,913,318,231      dTLB-loads                #    2.466 G/sec                    (30.76%)
+           402,755      dTLB-load-misses          #    0.00% of all dTLB cache accesses  (30.73%)
+           165,368      iTLB-load-misses                                              (30.70%)
+
+      15.374533758 seconds time elapsed
+
+      15.369279000 seconds user
+       0.003999000 seconds sys
+
+
+Time elapsed: 15.370134
+
+ Performance counter stats for './boxed -n 31 -s 311371':
+
+         15,368.49 msec task-clock                #    1.000 CPUs utilized          
+               293      context-switches          #   19.065 /sec                   
+                 0      cpu-migrations            #    0.000 /sec                   
+               232      page-faults               #   15.096 /sec                   
+    71,904,150,701      cycles                    #    4.679 GHz                      (38.38%)
+   147,855,517,896      instructions              #    2.06  insn per cycle           (46.09%)
+    13,041,843,562      branches                  #  848.609 M/sec                    (53.79%)
+       372,969,794      branch-misses             #    2.86% of all branches          (61.49%)
+   359,479,725,129      slots                     #   23.391 G/sec                    (69.19%)
+   107,140,610,355      topdown-retiring          #     27.6% retiring                (69.19%)
+   146,611,338,874      topdown-bad-spec          #     37.8% bad speculation         (69.19%)
+    86,340,591,192      topdown-fe-bound          #     22.2% frontend bound          (69.19%)
+    48,278,050,782      topdown-be-bound          #     12.4% backend bound           (69.19%)
+    37,888,279,416      L1-dcache-loads           #    2.465 G/sec                    (69.22%)
+     1,891,730,175      L1-dcache-load-misses     #    4.99% of all L1-dcache accesses  (69.25%)
+            52,217      LLC-loads                 #    3.398 K/sec                    (69.28%)
+             3,470      LLC-load-misses           #    6.65% of all LL-cache accesses  (69.29%)
+       767,848,308      L1-icache-load-misses                                         (30.78%)
+    37,921,361,293      dTLB-loads                #    2.467 G/sec                    (30.75%)
+           411,684      dTLB-load-misses          #    0.00% of all dTLB cache accesses  (30.72%)
+           217,030      iTLB-load-misses                                              (30.71%)
+
+      15.370698382 seconds time elapsed
+
+      15.364997000 seconds user
+       0.003999000 seconds sys
+
+
+Time elapsed: 15.324295
+
+ Performance counter stats for './boxed -n 31 -s 311371':
+
+         15,323.82 msec task-clock                #    1.000 CPUs utilized          
+                76      context-switches          #    4.960 /sec                   
+                 0      cpu-migrations            #    0.000 /sec                   
+               231      page-faults               #   15.075 /sec                   
+    71,666,450,143      cycles                    #    4.677 GHz                      (38.40%)
+   148,042,707,413      instructions              #    2.07  insn per cycle           (46.10%)
+    13,043,848,601      branches                  #  851.214 M/sec                    (53.80%)
+       371,223,301      branch-misses             #    2.85% of all branches          (61.50%)
+   358,277,182,014      slots                     #   23.380 G/sec                    (69.19%)
+   134,874,586,014      topdown-retiring          #     37.0% retiring                (69.19%)
+    94,135,573,312      topdown-bad-spec          #     25.8% bad speculation         (69.19%)
+    87,331,904,325      topdown-fe-bound          #     23.9% frontend bound          (69.19%)
+    48,356,453,097      topdown-be-bound          #     13.3% backend bound           (69.19%)
+    37,891,304,112      L1-dcache-loads           #    2.473 G/sec                    (69.21%)
+     1,887,957,131      L1-dcache-load-misses     #    4.98% of all L1-dcache accesses  (69.23%)
+            48,808      LLC-loads                 #    3.185 K/sec                    (69.26%)
+             3,785      LLC-load-misses           #    7.75% of all LL-cache accesses  (69.29%)
+       755,635,271      L1-icache-load-misses                                         (30.79%)
+    37,953,616,314      dTLB-loads                #    2.477 G/sec                    (30.77%)
+           424,277      dTLB-load-misses          #    0.00% of all dTLB cache accesses  (30.74%)
+           117,586      iTLB-load-misses                                              (30.71%)
+
+      15.324931223 seconds time elapsed
+
+      15.324215000 seconds user
+       0.000000000 seconds sys
+
+
+Time elapsed: 15.724559
+
+ Performance counter stats for './boxed -n 31 -s 311371':
+
+         15,723.82 msec task-clock                #    1.000 CPUs utilized          
+                61      context-switches          #    3.879 /sec                   
+                 6      cpu-migrations            #    0.382 /sec                   
+               233      page-faults               #   14.818 /sec                   
+    71,939,108,598      cycles                    #    4.575 GHz                      (38.43%)
+   148,038,364,609      instructions              #    2.06  insn per cycle           (46.13%)
+    13,048,078,769      branches                  #  829.829 M/sec                    (53.84%)
+       372,426,958      branch-misses             #    2.85% of all branches          (61.55%)
+   359,640,587,236      slots                     #   22.872 G/sec                    (69.25%)
+   134,994,019,068      topdown-retiring          #     37.3% retiring                (69.25%)
+    88,852,380,375      topdown-bad-spec          #     24.5% bad speculation         (69.25%)
+    88,489,264,284      topdown-fe-bound          #     24.4% frontend bound          (69.25%)
+    50,048,026,907      topdown-be-bound          #     13.8% backend bound           (69.25%)
+    37,906,201,655      L1-dcache-loads           #    2.411 G/sec                    (69.26%)
+     1,883,443,246      L1-dcache-load-misses     #    4.97% of all L1-dcache accesses  (69.27%)
+            46,506      LLC-loads                 #    2.958 K/sec                    (69.27%)
+             3,699      LLC-load-misses           #    7.95% of all LL-cache accesses  (69.27%)
+       765,497,508      L1-icache-load-misses                                         (30.74%)
+    37,896,562,421      dTLB-loads                #    2.410 G/sec                    (30.73%)
+           443,625      dTLB-load-misses          #    0.00% of all dTLB cache accesses  (30.73%)
+           106,869      iTLB-load-misses                                              (30.73%)
+
+      15.725064377 seconds time elapsed
+
+      15.724189000 seconds user
+       0.000000000 seconds sys
+
+
+Time elapsed: 15.563657
+
+ Performance counter stats for './boxed -n 31 -s 311371':
+
+         15,563.44 msec task-clock                #    1.000 CPUs utilized          
+                41      context-switches          #    2.634 /sec                   
+                 2      cpu-migrations            #    0.129 /sec                   
+               232      page-faults               #   14.907 /sec                   
+    72,295,206,167      cycles                    #    4.645 GHz                      (38.43%)
+   147,989,954,408      instructions              #    2.05  insn per cycle           (46.14%)
+    13,043,337,786      branches                  #  838.076 M/sec                    (53.85%)
+       373,059,231      branch-misses             #    2.86% of all branches          (61.56%)
+   361,358,716,893      slots                     #   23.218 G/sec                    (69.26%)
+   135,825,783,318      topdown-retiring          #     37.4% retiring                (69.26%)
+    87,859,766,460      topdown-bad-spec          #     24.2% bad speculation         (69.26%)
+    86,706,626,762      topdown-fe-bound          #     23.9% frontend bound          (69.26%)
+    52,440,618,280      topdown-be-bound          #     14.5% backend bound           (69.26%)
+    37,891,531,017      L1-dcache-loads           #    2.435 G/sec                    (69.26%)
+     1,887,552,860      L1-dcache-load-misses     #    4.98% of all L1-dcache accesses  (69.26%)
+            98,527      LLC-loads                 #    6.331 K/sec                    (69.26%)
+             3,183      LLC-load-misses           #    3.23% of all LL-cache accesses  (69.26%)
+       774,945,101      L1-icache-load-misses                                         (30.74%)
+    37,923,939,165      dTLB-loads                #    2.437 G/sec                    (30.74%)
+           418,023      dTLB-load-misses          #    0.00% of all dTLB cache accesses  (30.74%)
+           198,054      iTLB-load-misses                                              (30.74%)
+
+      15.564280802 seconds time elapsed
+
+      15.555838000 seconds user
+       0.007997000 seconds sys
+
+
+Time elapsed: 15.437942
+
+ Performance counter stats for './boxed -n 31 -s 311371':
+
+         15,437.62 msec task-clock                #    1.000 CPUs utilized          
+                72      context-switches          #    4.664 /sec                   
+                 0      cpu-migrations            #    0.000 /sec                   
+               232      page-faults               #   15.028 /sec                   
+    71,617,651,695      cycles                    #    4.639 GHz                      (38.44%)
+   147,988,896,434      instructions              #    2.07  insn per cycle           (46.13%)
+    13,045,021,877      branches                  #  845.015 M/sec                    (53.83%)
+       372,035,650      branch-misses             #    2.85% of all branches          (61.52%)
+   358,051,523,421      slots                     #   23.193 G/sec                    (69.21%)
+   132,912,605,907      topdown-retiring          #     36.6% retiring                (69.21%)
+    95,480,406,244      topdown-bad-spec          #     26.3% bad speculation         (69.21%)
+    87,329,339,196      topdown-fe-bound          #     24.0% frontend bound          (69.21%)
+    47,772,920,995      topdown-be-bound          #     13.1% backend bound           (69.21%)
+    37,884,977,383      L1-dcache-loads           #    2.454 G/sec                    (69.21%)
+     1,887,333,502      L1-dcache-load-misses     #    4.98% of all L1-dcache accesses  (69.21%)
+            48,138      LLC-loads                 #    3.118 K/sec                    (69.22%)
+             2,304      LLC-load-misses           #    4.79% of all LL-cache accesses  (69.25%)
+       769,262,424      L1-icache-load-misses                                         (30.79%)
+    37,924,046,190      dTLB-loads                #    2.457 G/sec                    (30.79%)
+           423,570      dTLB-load-misses          #    0.00% of all dTLB cache accesses  (30.78%)
+           106,069      iTLB-load-misses                                              (30.75%)
+
+      15.438709221 seconds time elapsed
+
+      15.438081000 seconds user
+       0.000000000 seconds sys
+
+
+Time elapsed: 15.501376
+
+ Performance counter stats for './boxed -n 31 -s 311371':
+
+         15,500.93 msec task-clock                #    1.000 CPUs utilized          
+                68      context-switches          #    4.387 /sec                   
+                 1      cpu-migrations            #    0.065 /sec                   
+               232      page-faults               #   14.967 /sec                   
+    71,730,205,465      cycles                    #    4.627 GHz                      (38.45%)
+   148,010,714,838      instructions              #    2.06  insn per cycle           (46.17%)
+    13,048,612,649      branches                  #  841.795 M/sec                    (53.86%)
+       372,196,102      branch-misses             #    2.85% of all branches          (61.55%)
+   358,682,173,433      slots                     #   23.139 G/sec                    (69.24%)
+   134,420,537,418      topdown-retiring          #     36.8% retiring                (69.24%)
+    94,241,982,822      topdown-bad-spec          #     25.8% bad speculation         (69.24%)
+    89,115,619,194      topdown-fe-bound          #     24.4% frontend bound          (69.24%)
+    47,491,748,200      topdown-be-bound          #     13.0% backend bound           (69.24%)
+    37,899,512,884      L1-dcache-loads           #    2.445 G/sec                    (69.23%)
+     1,887,280,417      L1-dcache-load-misses     #    4.98% of all L1-dcache accesses  (69.24%)
+            95,568      LLC-loads                 #    6.165 K/sec                    (69.24%)
+             4,801      LLC-load-misses           #    5.02% of all LL-cache accesses  (69.24%)
+       760,808,331      L1-icache-load-misses                                         (30.77%)
+    37,914,997,506      dTLB-loads                #    2.446 G/sec                    (30.76%)
+           430,961      dTLB-load-misses          #    0.00% of all dTLB cache accesses  (30.76%)
+           152,056      iTLB-load-misses                                              (30.76%)
+
+      15.501965269 seconds time elapsed
+
+      15.501263000 seconds user
+       0.000000000 seconds sys
+
+
+Time elapsed: 15.738396
+
+ Performance counter stats for './boxed -n 31 -s 311371':
+
+         15,736.87 msec task-clock                #    1.000 CPUs utilized          
+                83      context-switches          #    5.274 /sec                   
+                 1      cpu-migrations            #    0.064 /sec                   
+               232      page-faults               #   14.742 /sec                   
+    71,667,238,888      cycles                    #    4.554 GHz                      (38.40%)
+   148,017,070,550      instructions              #    2.07  insn per cycle           (46.10%)
+    13,051,506,568      branches                  #  829.358 M/sec                    (53.80%)
+       371,905,104      branch-misses             #    2.85% of all branches          (61.50%)
+   358,277,112,617      slots                     #   22.767 G/sec                    (69.20%)
+   133,406,693,303      topdown-retiring          #     36.8% retiring                (69.20%)
+    94,135,555,079      topdown-bad-spec          #     26.0% bad speculation         (69.20%)
+    89,327,118,894      topdown-fe-bound          #     24.7% frontend bound          (69.20%)
+    45,331,312,014      topdown-be-bound          #     12.5% backend bound           (69.20%)
+    37,907,909,748      L1-dcache-loads           #    2.409 G/sec                    (69.22%)
+     1,886,354,762      L1-dcache-load-misses     #    4.98% of all L1-dcache accesses  (69.25%)
+            42,764      LLC-loads                 #    2.717 K/sec                    (69.28%)
+             3,780      LLC-load-misses           #    8.84% of all LL-cache accesses  (69.30%)
+       767,548,147      L1-icache-load-misses                                         (30.78%)
+    37,884,962,025      dTLB-loads                #    2.407 G/sec                    (30.75%)
+           259,148      dTLB-load-misses          #    0.00% of all dTLB cache accesses  (30.72%)
+            95,623      iTLB-load-misses                                              (30.70%)
+
+      15.738961000 seconds time elapsed
+
+      15.737288000 seconds user
+       0.000000000 seconds sys
+
+
+Time elapsed: 15.573282
+
+ Performance counter stats for './boxed -n 31 -s 311371':
+
+         15,572.97 msec task-clock                #    1.000 CPUs utilized          
+                53      context-switches          #    3.403 /sec                   
+                 0      cpu-migrations            #    0.000 /sec                   
+               231      page-faults               #   14.833 /sec                   
+    71,726,393,689      cycles                    #    4.606 GHz                      (38.41%)
+   148,032,985,092      instructions              #    2.06  insn per cycle           (46.11%)
+    13,038,950,931      branches                  #  837.281 M/sec                    (53.82%)
+       371,970,599      branch-misses             #    2.85% of all branches          (61.52%)
+   358,513,811,772      slots                     #   23.022 G/sec                    (69.23%)
+   132,655,644,562      topdown-retiring          #     36.8% retiring                (69.23%)
+    91,385,873,588      topdown-bad-spec          #     25.3% bad speculation         (69.23%)
+    88,780,266,360      topdown-fe-bound          #     24.6% frontend bound          (69.23%)
+    47,811,303,879      topdown-be-bound          #     13.3% backend bound           (69.23%)
+    37,895,779,991      L1-dcache-loads           #    2.433 G/sec                    (69.25%)
+     1,893,555,286      L1-dcache-load-misses     #    5.00% of all L1-dcache accesses  (69.28%)
+            44,111      LLC-loads                 #    2.833 K/sec                    (69.28%)
+             2,947      LLC-load-misses           #    6.68% of all LL-cache accesses  (69.28%)
+       762,937,831      L1-icache-load-misses                                         (30.75%)
+    37,933,299,955      dTLB-loads                #    2.436 G/sec                    (30.72%)
+           426,775      dTLB-load-misses          #    0.00% of all dTLB cache accesses  (30.72%)
+           217,923      iTLB-load-misses                                              (30.72%)
+
+      15.573787854 seconds time elapsed
+
+      15.573346000 seconds user
+       0.000000000 seconds sys
+
+

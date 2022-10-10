@@ -36,6 +36,21 @@ More precisely, littering works in two phases:
      -  `LITTER_SLEEP`: Sleep _x_ seconds after littering, but before starting the program. Default is disabled.
      -  `LITTER_MULTIPLIER`: Multiplier of number of objects to allocate. Default is 20.
 
+## Benchmarks
+
+We evaluate littering on the four benchmarks from the original paper we were able to obtain and run.
+
+| Benchmark  | Custom allocation method | Description                                     | Input           |
+|------------|--------------------------|-------------------------------------------------|-----------------|
+| 197.parser | region                   | English sentence parser from SPEC2000           | ref.in          |
+| boxed-sim  | freelist                 | Polyhedral approximated balls bouncing in a box | -n 31 -s 311317 |
+| mudlle     | region                   | MUD interpreter                                 | time.mud        |
+| 175.vpr    | region                   | FPGA placement & routing                        | train placement |
+
+Notice that as we run on modern hardware, we increased the input size when possible so benchmarks run longer and provide
+more accurate measurements. We were not able to increase mudlle's input, with the benchmark taking typically less than a
+second.
+
 ## Experimental Platform
 
 Data was obtained on a Thinkpad P15s Gen 2 with an Intel i7-1165G7 processor.

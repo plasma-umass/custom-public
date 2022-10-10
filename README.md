@@ -2,7 +2,7 @@
 
 [Nicolas van Kempen](https://nvankempen.com/), [Emery D. Berger](https://emeryberger.com/)
 
-In this work, we revisit the _Reconsidering Custom Memory Allocation_ paper [^1]. That widely-cited paper (selected as a Most Influential Paper) conducted a study that
+In this work, we revisit the _Reconsidering Custom Memory Allocation_ paper[^1]. That widely-cited paper (selected as a Most Influential Paper[^2]) conducted a study that
 demonstrated that in many cases, custom memory allocators do not provide significant performance benefits over a good general-purpose memory allocator.
 
 ## Littering
@@ -57,4 +57,5 @@ sample comes from.
 
 ## References
 
-[^1] Emery D. Berger, Benjamin G. Zorn, and Kathryn S. McKinley. 2002. Reconsidering custom memory allocation. In Proceedings of the 17th ACM SIGPLAN conference on Object-oriented programming, systems, languages, and applications (OOPSLA '02). Association for Computing Machinery, New York, NY, USA, 1–12. https://doi.org/10.1145/582419.582421
+[^1]: Emery D. Berger, Benjamin G. Zorn, and Kathryn S. McKinley. 2002. Reconsidering custom memory allocation. In Proceedings of the 17th ACM SIGPLAN conference on Object-oriented programming, systems, languages, and applications (OOPSLA '02). Association for Computing Machinery, New York, NY, USA, 1–12. https://doi.org/10.1145/582419.582421
+[^2]: Most Influential OOPSLA Paper Award. https://www.sigplan.org/Awards/OOPSLA

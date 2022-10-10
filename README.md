@@ -36,6 +36,10 @@ More precisely, littering works in two phases:
      -  `LITTER_SLEEP`: Sleep _x_ seconds after littering, but before starting the program. Default is disabled.
      -  `LITTER_MULTIPLIER`: Multiplier of number of objects to allocate. Default is 20.
 
+As an example, here is the size class distribution recorded by the detector for `boxed-sim`.
+
+![AllocationDistribution.boxed-sim.png](https://github.com/plasma-umass/custom-public/raw/master/graphs/AllocationDistribution.boxed-sim.png)
+
 ## Benchmarks
 
 We evaluate littering on the four benchmarks from the original paper we were able to obtain and run.

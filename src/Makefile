@@ -32,4 +32,4 @@ vendor/libpfm4:
 
 .PHONY: format
 format:
-	clang-format -i constants.hpp detector.cpp DoNotOptimize.hpp litterer.cpp PFMWrapper.hpp
+	clang-format -i constants.hpp detector.cpp litterer.cpp PFMWrapper.hpp

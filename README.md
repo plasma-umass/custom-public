@@ -1,5 +1,15 @@
 # On Littering
 
+## Experimental Platform
+
+Data was obtained on a Thinkpad P15s Gen 2 with an Intel i7-1165G7 processor.
+
+|          | Version |
+|----------|---------|
+| glibc    | 2.31    |
+| jemalloc | 5.3.0   |
+| mimalloc | 2.0.6   |
+
 ## Graphs
 
 First, some `197.parser` specific graphs, using the Linux default allocator, jemalloc, and mimalloc.

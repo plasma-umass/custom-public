@@ -7,7 +7,7 @@ version of the program. It works by running a short pre-conditioning step before
 freeing objects successively to artifically fragment the heap. This simulates real conditions of long-running programs,
 where fragmentation is inevitable.
 
-More precisely, our version littering works in two steps.
+More precisely, our version of littering works in two steps.
  1. `LD_PRELOAD=libdetector.so <program>`. This keeps track of every allocated object's size, binning sizes to obtain a
     rough size distribution of the objects used by the program. It also keeps track of a few statistics we can calculate
     online, such as mean, min/max, and most importantly `MaxLiveAllocations`.

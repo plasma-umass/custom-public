@@ -31,8 +31,8 @@ As an example, here is the size class distribution recorded by the detector for 
 ![AllocationDistribution.boxed-sim.png](https://github.com/plasma-umass/custom-public/raw/master/graphs/AllocationDistribution.boxed-sim.png)
 
 2. **Littering** With the statistics and histogram in hand, we next run littering
-    (`LD_PRELOAD=liblitterer.so <program>`). Littering allocaties `LITTER_MULTIPLIER * MaxLiveAllocations` objects
-    following the recorded size distribution, (optionally) shuffling the addresses, and freeing a fraction of
+    (`LD_PRELOAD=liblitterer.so <program>`). Littering allocates `LITTER_MULTIPLIER * MaxLiveAllocations` objects
+    following the recorded size distribution, (optionally) shuffling the addresses of allocated objects, and frees a fraction of
     `1 - LITTER_OCCUPANCY` of them. We use the same `malloc` as the program, so the program starts with the heap in a
     littered state. There are a few tunable parameters, which can be provided as environment variables:
      -  `LITTER_SEED`: Seed to be used for the random number generator. Random by default.

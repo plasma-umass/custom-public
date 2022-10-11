@@ -83,6 +83,14 @@ sample comes from.
 ![SeparatedLLCMissesByOccupancy.197.parser](https://github.com/plasma-umass/custom-public/raw/master/graphs/SeparatedLLCMissesByOccupancy.197.parser.png)
 ![SeparatedInstructionsByOccupancy.197.parser](https://github.com/plasma-umass/custom-public/raw/master/graphs/SeparatedInstructionsByOccupancy.197.parser.png)
 
+### `boxed-sim`
+
+![TimeByOccupancy.boxed-sim](https://github.com/plasma-umass/custom-public/raw/master/graphs/TimeByOccupancy.boxed-sim.png)
+![LLCMissRateByOccupancy.boxed-sim](https://github.com/plasma-umass/custom-public/raw/master/graphs/LLCMissRateByOccupancy.boxed-sim.png)
+![InstructionsByOccupancy.boxed-sim](https://github.com/plasma-umass/custom-public/raw/master/graphs/InstructionsByOccupancy.boxed-sim.png)
+![SeparatedCyclesByOccupancy.boxed-sim](https://github.com/plasma-umass/custom-public/raw/master/graphs/SeparatedCyclesByOccupancy.boxed-sim.png)
+![SeparatedLLCMissesByOccupancy.boxed-sim](https://github.com/plasma-umass/custom-public/raw/master/graphs/SeparatedLLCMissesByOccupancy.boxed-sim.png)
+![SeparatedInstructionsByOccupancy.boxed-sim](https://github.com/plasma-umass/custom-public/raw/master/graphs/SeparatedInstructionsByOccupancy.boxed-sim.png)
 
 
 [^1]: Emery D. Berger, Benjamin G. Zorn, and Kathryn S. McKinley. 2002. Reconsidering custom memory allocation. In Proceedings of the 17th ACM SIGPLAN conference on Object-oriented programming, systems, languages, and applications (OOPSLA '02). Association for Computing Machinery, New York, NY, USA, 1–12. https://doi.org/10.1145/582419.582421

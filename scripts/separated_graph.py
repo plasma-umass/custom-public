@@ -71,11 +71,16 @@ def parse_runs(filename):
     return sorted(runs, key = lambda x: x["occupancy"])
 
 
-malloc_object = "/home/nvankempen/Programming/nicovank/allocators/jemalloc/lib/libjemalloc.so.2"
-filename = "197.parser.jemalloc.shim.litter.record.log"
+malloc_object = "/usr/lib/x86_64-linux-gnu/libc.so.6"
+filename = "197.parser.shim.litter.record.log"
+
+# malloc_object = "/home/nvankempen/Programming/nicovank/allocators/jemalloc/lib/libjemalloc.so.2"
+# filename = "197.parser.jemalloc.shim.litter.record.log"
+
 event = "instructions"
 aggregate = statistics.median
-TITLE = "Cycles counter by occupancy\n197.parser, jemalloc"
+TITLE = "Instructions counter by occupancy\n197.parser"
+Y_LABEL = "Number of instructions"
 
 
 runs = parse_runs(filename)
@@ -107,19 +112,19 @@ for occupancy in grouped_by_occupancy.keys():
     in_malloc[occupancy] = aggregate(in_malloc[occupancy])
     total[occupancy] = aggregate(total[occupancy])
 
-x = np.array(list(map(float, total.keys())))
+x = 100 * np.array(list(map(float, total.keys())))
 ax.plot(x, list(total.values()), label="total")
 ax.plot(x, list(in_malloc.values()), label="malloc/free")
 
-# TODO: y-ticks are not bold.
-ticks = ax.get_xticklabels()
+ticks = ax.get_xticklabels() + ax.get_yticklabels()
 for tick in ticks:
     tick.set_fontweight("bold")
     tick.set_fontsize(10)
-    tick.set_horizontalalignment("center")
-plt.setp(ticks, ha='right', rotation=90)
+plt.ylim(bottom=0)
 
 ax.set_title(TITLE, pad=20, fontweight='bold', font=default_font, fontsize=18)
+ax.set_xlabel("Litter occupancy (%)")
+ax.set_ylabel(Y_LABEL)
 ax.legend()
 fig.tight_layout()
 plt.savefig("graph.png")

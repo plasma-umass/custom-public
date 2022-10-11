@@ -28,7 +28,7 @@ More precisely, littering works in two phases:
 
 As an example, here is the size class distribution recorded by the detector for `boxed-sim`.
 
-![AllocationDistribution.boxed-sim.png](https://github.com/plasma-umass/custom-public/raw/master/graphs/AllocationDistribution.boxed-sim.png)
+![AllocationDistribution.boxed-sim.png](graphs/AllocationDistribution.boxed-sim.png)
 
 2. **Littering:** With the statistics and histogram in hand, we next run littering
     (`LD_PRELOAD=liblitterer.so <program>`). Littering allocates `LITTER_MULTIPLIER * MaxLiveAllocations` objects
@@ -75,27 +75,27 @@ sample comes from (e.g., `libjemalloc.so`).
 
 ### `197.parser`
 
-![TimeByOccupancy.197.parser](https://github.com/plasma-umass/custom-public/raw/master/graphs/TimeByOccupancy.197.parser.png)
-![LLCMissRateByOccupancy.197.parser](https://github.com/plasma-umass/custom-public/raw/master/graphs/LLCMissRateByOccupancy.197.parser.png)
-![InstructionsByOccupancy.197.parser](https://github.com/plasma-umass/custom-public/raw/master/graphs/InstructionsByOccupancy.197.parser.png)
-![SeparatedCyclesByOccupancy.197.parser](https://github.com/plasma-umass/custom-public/raw/master/graphs/SeparatedCyclesByOccupancy.197.parser.png)
-![SeparatedLLCMissesByOccupancy.197.parser](https://github.com/plasma-umass/custom-public/raw/master/graphs/SeparatedLLCMissesByOccupancy.197.parser.png)
-![SeparatedInstructionsByOccupancy.197.parser](https://github.com/plasma-umass/custom-public/raw/master/graphs/SeparatedInstructionsByOccupancy.197.parser.png)
+![TimeByOccupancy.197.parser](graphs/TimeByOccupancy.197.parser.png)
+![LLCMissRateByOccupancy.197.parser](graphs/LLCMissRateByOccupancy.197.parser.png)
+![InstructionsByOccupancy.197.parser](graphs/InstructionsByOccupancy.197.parser.png)
+![SeparatedCyclesByOccupancy.197.parser](graphs/SeparatedCyclesByOccupancy.197.parser.png)
+![SeparatedLLCMissesByOccupancy.197.parser](graphs/SeparatedLLCMissesByOccupancy.197.parser.png)
+![SeparatedInstructionsByOccupancy.197.parser](graphs/SeparatedInstructionsByOccupancy.197.parser.png)
 
 ### `boxed-sim`
 
-![SeparatedCyclesByOccupancy.boxed-sim](https://github.com/plasma-umass/custom-public/raw/master/graphs/SeparatedCyclesByOccupancy.boxed-sim.png)
-![SeparatedLLCMissesByOccupancy.boxed-sim](https://github.com/plasma-umass/custom-public/raw/master/graphs/SeparatedLLCMissesByOccupancy.boxed-sim.png)
-![SeparatedInstructionsByOccupancy.boxed-sim](https://github.com/plasma-umass/custom-public/raw/master/graphs/SeparatedInstructionsByOccupancy.boxed-sim.png)
+![SeparatedCyclesByOccupancy.boxed-sim](graphs/SeparatedCyclesByOccupancy.boxed-sim.png)
+![SeparatedLLCMissesByOccupancy.boxed-sim](graphs/SeparatedLLCMissesByOccupancy.boxed-sim.png)
+![SeparatedInstructionsByOccupancy.boxed-sim](graphs/SeparatedInstructionsByOccupancy.boxed-sim.png)
 
 ### `mudlle`
 
-![TimeByOccupancy.mudlle](https://github.com/plasma-umass/custom-public/raw/master/graphs/TimeByOccupancy.mudlle.png)
-![LLCMissRateByOccupancy.mudlle](https://github.com/plasma-umass/custom-public/raw/master/graphs/LLCMissRateByOccupancy.mudlle.png)
-![InstructionsByOccupancy.mudlle](https://github.com/plasma-umass/custom-public/raw/master/graphs/InstructionsByOccupancy.mudlle.png)
-![SeparatedCyclesByOccupancy.mudlle](https://github.com/plasma-umass/custom-public/raw/master/graphs/SeparatedCyclesByOccupancy.mudlle.png)
-![SeparatedLLCMissesByOccupancy.mudlle](https://github.com/plasma-umass/custom-public/raw/master/graphs/SeparatedLLCMissesByOccupancy.mudlle.png)
-![SeparatedInstructionsByOccupancy.mudlle](https://github.com/plasma-umass/custom-public/raw/master/graphs/SeparatedInstructionsByOccupancy.mudlle.png)
+![TimeByOccupancy.mudlle](graphs/TimeByOccupancy.mudlle.png)
+![LLCMissRateByOccupancy.mudlle](graphs/LLCMissRateByOccupancy.mudlle.png)
+![InstructionsByOccupancy.mudlle](graphs/InstructionsByOccupancy.mudlle.png)
+![SeparatedCyclesByOccupancy.mudlle](graphs/SeparatedCyclesByOccupancy.mudlle.png)
+![SeparatedLLCMissesByOccupancy.mudlle](graphs/SeparatedLLCMissesByOccupancy.mudlle.png)
+![SeparatedInstructionsByOccupancy.mudlle](graphs/SeparatedInstructionsByOccupancy.mudlle.png)
 
 
 [^1]: Emery D. Berger, Benjamin G. Zorn, and Kathryn S. McKinley. 2002. Reconsidering custom memory allocation. In Proceedings of the 17th ACM SIGPLAN conference on Object-oriented programming, systems, languages, and applications (OOPSLA '02). Association for Computing Machinery, New York, NY, USA, 1–12. https://doi.org/10.1145/582419.582421

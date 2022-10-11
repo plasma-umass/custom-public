@@ -2,7 +2,7 @@
 
 [Nicolas van Kempen](https://nvankempen.com/), [Emery D. Berger](https://emeryberger.com/)
 
-In this work, we revisit the _Reconsidering Custom Memory Allocation_ paper[^1]. That widely-cited paper (selected as a
+In this work, we revisit the [_Reconsidering Custom Memory Allocation_ paper](https://github.com/plasma-umass/custom-public/blob/master/docs/berger-oopsla2002.pdf)[^1]. That widely-cited paper (selected as a
 Most Influential Paper[^2]) conducted a study that demonstrated that in many cases, custom memory allocators often do
 not provide significant performance benefits over a good general-purpose memory allocator.
 

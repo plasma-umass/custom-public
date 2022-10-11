@@ -89,9 +89,13 @@ TITLES = [
     "Instructions Executed by Occupancy\n(1x multiplier)"
 ]
 
+Y_LABELS = [
+    "Time / (Time with custom allocator and no littering)"
+]
+
 
 # SET GRAPH TYPE HERE
-GRAPH_TYPE = INSTRUCTIONS_BY_OCCUPANCY
+GRAPH_TYPE = ELAPSED_TIME_BY_OCCUPANCY
 aggregate = statistics.median
 
 
@@ -144,7 +148,7 @@ for benchmark in benchmarks:
         else:
             grouped_by_occupancy[run["occupancy"]].append(run)
 
-    x = np.array(list(map(float, grouped_by_occupancy.keys())))
+    x = 100 * np.array(list(map(float, grouped_by_occupancy.keys())))
 
     if GRAPH_TYPE == ELAPSED_TIME_BY_OCCUPANCY:
         y = np.array(list(map(lambda x: aggregate(list(map(lambda y: float(y["elapsed"]), x))), grouped_by_occupancy.values())))
@@ -159,13 +163,11 @@ for benchmark in benchmarks:
     
     ax.plot(x, y, label=benchmark)
 
-    # TODO: y-ticks are not bold.
-    ticks = ax.get_xticklabels()
+    ticks = ax.get_xticklabels() + ax.get_yticklabels()
     for tick in ticks:
         tick.set_fontweight("bold")
         tick.set_fontsize(10)
-        tick.set_horizontalalignment("center")
-    plt.setp(ticks, ha='right', rotation=90)
+    # plt.setp(ticks, ha='right', rotation=90)
     
 
 # if GRAPH_TYPE == ELAPSED_TIME_BY_OCCUPANCY:
@@ -173,6 +175,8 @@ for benchmark in benchmarks:
 plt.ylim(bottom=0)
 
 ax.set_title(f"{TITLES[GRAPH_TYPE]}", pad=20, fontweight='bold', font=default_font, fontsize=18)
+ax.set_xlabel("Litter occupancy (%)")
+ax.set_ylabel(Y_LABELS[GRAPH_TYPE])
 ax.legend()
 fig.tight_layout()
 plt.savefig("graph.png")

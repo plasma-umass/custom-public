@@ -85,12 +85,18 @@ sample comes from.
 
 ### `boxed-sim`
 
-![TimeByOccupancy.boxed-sim](https://github.com/plasma-umass/custom-public/raw/master/graphs/TimeByOccupancy.boxed-sim.png)
-![LLCMissRateByOccupancy.boxed-sim](https://github.com/plasma-umass/custom-public/raw/master/graphs/LLCMissRateByOccupancy.boxed-sim.png)
-![InstructionsByOccupancy.boxed-sim](https://github.com/plasma-umass/custom-public/raw/master/graphs/InstructionsByOccupancy.boxed-sim.png)
 ![SeparatedCyclesByOccupancy.boxed-sim](https://github.com/plasma-umass/custom-public/raw/master/graphs/SeparatedCyclesByOccupancy.boxed-sim.png)
 ![SeparatedLLCMissesByOccupancy.boxed-sim](https://github.com/plasma-umass/custom-public/raw/master/graphs/SeparatedLLCMissesByOccupancy.boxed-sim.png)
 ![SeparatedInstructionsByOccupancy.boxed-sim](https://github.com/plasma-umass/custom-public/raw/master/graphs/SeparatedInstructionsByOccupancy.boxed-sim.png)
+
+### `mudlle`
+
+![TimeByOccupancy.mudlle](https://github.com/plasma-umass/custom-public/raw/master/graphs/TimeByOccupancy.mudlle.png)
+![LLCMissRateByOccupancy.mudlle](https://github.com/plasma-umass/custom-public/raw/master/graphs/LLCMissRateByOccupancy.mudlle.png)
+![InstructionsByOccupancy.mudlle](https://github.com/plasma-umass/custom-public/raw/master/graphs/InstructionsByOccupancy.mudlle.png)
+![SeparatedCyclesByOccupancy.mudlle](https://github.com/plasma-umass/custom-public/raw/master/graphs/SeparatedCyclesByOccupancy.mudlle.png)
+![SeparatedLLCMissesByOccupancy.mudlle](https://github.com/plasma-umass/custom-public/raw/master/graphs/SeparatedLLCMissesByOccupancy.mudlle.png)
+![SeparatedInstructionsByOccupancy.mudlle](https://github.com/plasma-umass/custom-public/raw/master/graphs/SeparatedInstructionsByOccupancy.mudlle.png)
 
 
 [^1]: Emery D. Berger, Benjamin G. Zorn, and Kathryn S. McKinley. 2002. Reconsidering custom memory allocation. In Proceedings of the 17th ACM SIGPLAN conference on Object-oriented programming, systems, languages, and applications (OOPSLA '02). Association for Computing Machinery, New York, NY, USA, 1–12. https://doi.org/10.1145/582419.582421

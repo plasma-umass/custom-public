@@ -1,0 +1,36 @@
+Time elapsed: 0.124839
+
+ Performance counter stats for './mudlle':
+
+            125.21 msec task-clock                #    0.998 CPUs utilized          
+                 2      context-switches          #   15.973 /sec                   
+                 0      cpu-migrations            #    0.000 /sec                   
+               562      page-faults               #    4.489 K/sec                  
+       563,410,061      cycles                    #    4.500 GHz                      (32.61%)
+     1,234,223,877      instructions              #    2.19  insn per cycle           (42.17%)
+       221,527,301      branches                  #    1.769 G/sec                    (51.76%)
+         4,880,018      branch-misses             #    2.20% of all branches          (61.34%)
+     2,679,164,275      slots                     #   21.398 G/sec                    (70.92%)
+     1,061,159,183      topdown-retiring          #     39.6% retiring                (70.92%)
+       756,469,912      topdown-bad-spec          #     28.2% bad speculation         (70.92%)
+       441,274,115      topdown-fe-bound          #     16.5% frontend bound          (70.92%)
+       420,261,061      topdown-be-bound          #     15.7% backend bound           (70.92%)
+       339,570,443      L1-dcache-loads           #    2.712 G/sec                    (74.11%)
+         8,330,321      L1-dcache-load-misses     #    2.45% of all L1-dcache accesses  (74.44%)
+            64,456      LLC-loads                 #  514.794 K/sec                    (74.44%)
+            10,033      LLC-load-misses           #   15.57% of all LL-cache accesses  (74.44%)
+   <not supported>      L1-icache-loads                                             
+           566,763      L1-icache-load-misses                                         (25.89%)
+       361,009,099      dTLB-loads                #    2.883 G/sec                    (25.56%)
+             8,106      dTLB-load-misses          #    0.00% of all dTLB cache accesses  (25.56%)
+   <not supported>      iTLB-loads                                                  
+            23,767      iTLB-load-misses                                              (25.56%)
+   <not supported>      L1-dcache-prefetches                                        
+   <not supported>      L1-dcache-prefetch-misses                                   
+
+       0.125516082 seconds time elapsed
+
+       0.117445000 seconds user
+       0.008099000 seconds sys
+
+

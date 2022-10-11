@@ -50,16 +50,6 @@ NORMALIZE_TIME = {
     "boxed-sim": 15.469659,
 }
 
-NORMALIZE_INSTRUCTIONS = {
-    # "197.parser": 274773916548.5,
-    # "boxed-sim": 148013892694.0,
-    
-    "197.parser": 460358284343.5,
-    "197.parser.jemalloc": 460358284343.5,
-    "197.parser.mimalloc": 460358284343.5,
-    "boxed-sim": 151901586379.5,
-}
-
 # Copied from stat.py
 EVENTS = [
     "context-switches",
@@ -90,12 +80,14 @@ TITLES = [
 ]
 
 Y_LABELS = [
-    "Time / (Time with custom allocator and no littering)"
+    "Time / (Time with custom allocator and no littering)",
+    "LLC miss rate (%)",
+    "Number of instructions executed"
 ]
 
 
 # SET GRAPH TYPE HERE
-GRAPH_TYPE = ELAPSED_TIME_BY_OCCUPANCY
+GRAPH_TYPE = INSTRUCTIONS_BY_OCCUPANCY
 aggregate = statistics.median
 
 
@@ -157,7 +149,6 @@ for benchmark in benchmarks:
         y = np.array(list(map(lambda x: aggregate(list(map(lambda y: 100.0 * int(y["LLC-load-misses"]) / int(y["LLC-loads"]), x))), grouped_by_occupancy.values())))
     elif GRAPH_TYPE == INSTRUCTIONS_BY_OCCUPANCY:
         y = np.array(list(map(lambda x: aggregate(list(map(lambda y: int(y["instructions:u"]) + int(y["instructions:k"]), x))), grouped_by_occupancy.values())))
-        y /= NORMALIZE_INSTRUCTIONS[benchmark]
     else:
         raise "Unknown graph type"
     

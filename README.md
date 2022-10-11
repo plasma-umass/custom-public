@@ -21,7 +21,7 @@ inevitable. Littering works by first running a short pre-conditioning step befor
 freeing objects.
 
 More precisely, littering works in two phases:
- 1. **Detection** We run the program as usual, but with a _detector_ library (`LD_PRELOAD=libdetector.so <program>`)
+ 1. **Detection:** We run the program as usual, but with a _detector_ library (`LD_PRELOAD=libdetector.so <program>`)
     that keeps track of every allocated object's size, binning sizes to obtain a rough size distribution of the objects
     used by the program, which it produces as output to be consumed in the littering phase. Detector also keeps track of
     several allocation statistics, including mean, min/max, and most importantly, `MaxLiveAllocations`.
@@ -30,7 +30,7 @@ As an example, here is the size class distribution recorded by the detector for 
 
 ![AllocationDistribution.boxed-sim.png](https://github.com/plasma-umass/custom-public/raw/master/graphs/AllocationDistribution.boxed-sim.png)
 
-2. **Littering** With the statistics and histogram in hand, we next run littering
+2. **Littering:** With the statistics and histogram in hand, we next run littering
     (`LD_PRELOAD=liblitterer.so <program>`). Littering allocates `LITTER_MULTIPLIER * MaxLiveAllocations` objects
     following the recorded size distribution, (optionally) shuffling the addresses of allocated objects, and frees a fraction of
     `1 - LITTER_OCCUPANCY` of them. We use the same `malloc` as the program, so the program starts with the heap in a
@@ -41,23 +41,27 @@ As an example, here is the size class distribution recorded by the detector for 
      -  `LITTER_SLEEP`: Sleep _x_ seconds after littering, but before starting the program. Default is disabled.
      -  `LITTER_MULTIPLIER`: Multiplier of number of objects to allocate. Default is 20.
 
+## Experimental Platform
+
+All data was obtained on a Thinkpad P15s Gen 2 with an Intel i7-1165G7 processor. All results below were obtained with `LITTER_MULTIPLIER = 1`, varying the occupancy number.
+
 ## Benchmarks
 
 We evaluate littering on the four benchmarks from the original paper we were able to obtain and run.
 
 | Benchmark  | Custom allocation method | Description                                     | Input           |
 |------------|--------------------------|-------------------------------------------------|-----------------|
-| 197.parser | region                   | English sentence parser from SPEC2000           | ref.in          |
-| boxed-sim  | freelist                 | Polyhedral approximated balls bouncing in a box | -n 31 -s 311317 |
-| mudlle     | region                   | MUD interpreter                                 | time.mud        |
-| 175.vpr    | region                   | FPGA placement & routing                        | train placement |
+| `197.parser` | region                   | English sentence parser from SPEC2000           | `ref.in`          |
+| `boxed-sim`  | freelist                 | Polyhedral approximated balls bouncing in a box | `-n 31 -s 311317` |
+| `mudlle`     | region                   | MUD interpreter                                 | `time.mud`        |
+| `175.vpr`    | region                   | FPGA placement & routing                        | train placement |
 
 Notice that as we run on modern hardware, a number of these benchmarks run very quickly. When possible, we increase the input size so benchmarks run longer, allowing us to provide more accurate measurements. We were not able to increase mudlle's input, with the benchmark taking typically less than a
 second.
 
-## Experimental Platform
+## Results
 
-All data was obtained on a Thinkpad P15s Gen 2 with an Intel i7-1165G7 processor.
+We present a series of graphs for each benchmark, using the following versions of glibc (the Linux default allocator), jemalloc, and mimalloc.
 
 |          | Version |
 |----------|---------|
@@ -65,14 +69,9 @@ All data was obtained on a Thinkpad P15s Gen 2 with an Intel i7-1165G7 processor
 | jemalloc | 5.3.0   |
 | mimalloc | 2.0.6   |
 
-Results below were obtained with `LITTER_MULTIPLIER = 1`, varying the occupancy number.
-
-## Results
-
-We present a series of graphs for each benchmark evaluated in the original paper, using the Linux default allocator, jemalloc, and mimalloc.
-The elapsed time graph is normalized to the elapsed time of the original program (running with its custom allocator), without littering.
-We also generate graphs separating events counted with `perf`. We assign events in/out malloc based on which shared object (library) the
-sample comes from.
+For each benchmark, the elapsed time graph is normalized to the elapsed time of the original program (running with its custom allocator), without littering.
+We also generate graphs separating events counted with `perf`. We assign events inside or outside of `malloc`/`free` based on which shared object (library) the
+sample comes from (e.g., `libjemalloc.so`).
 
 ### `197.parser`
 

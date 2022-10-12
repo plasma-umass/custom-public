@@ -34,20 +34,18 @@ sns.set(font=default_font,
         'ytick.left': False,
         'ytick.right': False})
 
-benchmarks = [
-    "197.parser",
-    "197.parser.jemalloc",
-    "197.parser.mimalloc",
-    # "boxed-sim",
-    # "mudlle"
-]
-
 NORMALIZE_TIME = {
     "197.parser": 37.620861500000004,
     "197.parser.jemalloc": 37.620861500000004,
     "197.parser.mimalloc": 37.620861500000004,
 
     "boxed-sim": 15.469659,
+    "boxed-sim.jemalloc": 15.469659,
+    "boxed-sim.mimalloc": 15.469659,
+
+    "mudlle": 0.088743,
+    "mudlle.jemalloc": 0.088743,
+    "mudlle.mimalloc": 0.088743,
 }
 
 # Copied from stat.py
@@ -87,8 +85,22 @@ Y_LABELS = [
 
 
 # SET GRAPH TYPE HERE
-GRAPH_TYPE = INSTRUCTIONS_BY_OCCUPANCY
+GRAPH_TYPE = ELAPSED_TIME_BY_OCCUPANCY
 aggregate = statistics.median
+
+benchmarks = [
+    "197.parser",
+    "197.parser.jemalloc",
+    "197.parser.mimalloc",
+
+    # "boxed-sim",
+    # "boxed-sim.jemalloc",
+    # "boxed-sim.mimalloc",
+
+    # "mudlle",
+    # "mudlle.jemalloc",
+    # "mudlle.mimalloc",
+]
 
 
 def parse_perf_counter(name, line):

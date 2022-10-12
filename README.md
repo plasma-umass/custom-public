@@ -97,6 +97,9 @@ inside or outside of `malloc`/`free` based on which shared object (library) the 
 
 ### `boxed-sim`
 
+![TimeByOccupancy.boxed-sim](graphs/TimeByOccupancy.boxed-sim.png)
+![LLCMissRateByOccupancy.boxed-sim](graphs/LLCMissRateByOccupancy.boxed-sim.png)
+![InstructionsByOccupancy.boxed-sim](graphs/InstructionsByOccupancy.boxed-sim.png)
 ![SeparatedCyclesByOccupancy.boxed-sim](graphs/SeparatedCyclesByOccupancy.boxed-sim.png)
 ![SeparatedLLCMissesByOccupancy.boxed-sim](graphs/SeparatedLLCMissesByOccupancy.boxed-sim.png)
 ![SeparatedInstructionsByOccupancy.boxed-sim](graphs/SeparatedInstructionsByOccupancy.boxed-sim.png)

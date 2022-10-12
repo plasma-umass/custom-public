@@ -27,12 +27,9 @@ EVENTS = [
 ]
 
 filenames = [
-    # f"197.parser.shim.nolitter.log",
     f"197.parser.custom.nolitter.log",
     f"boxed-sim.custom.nolitter.log",
-    f"197.parser.shim.nolitter.log",
-    f"boxed-sim.shim.nolitter.log",
-    # f"197.parser.shim.nolitter.jemalloc.log",
+    f"mudlle.custom.nolitter.log",
 ]
 
 aggregate = statistics.median

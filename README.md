@@ -43,9 +43,9 @@ As an example, here is the size class distribution recorded by the detector for 
      -  `LITTER_MULTIPLIER`: Multiplier of number of objects to allocate. Default is 20.
 
 The diagram below shows in a simple way the effect of littering on the heap. With a blank, fresh heap, the allocator is
-usually able to pack allocations in contiguous memory, yield much better locality and cache performance throughout the
-program. Fragmentation however, either natural or artificial with littering, forces then allocator to return
-non-contiguous address to successive allocations. This tends to degrade performance.
+usually able to pack allocations in contiguous memory, yielding much better locality and cache performance throughout
+the program. Fragmentation however, either natural or artificial with littering, forces the allocator to return
+non-contiguous addresses to successive allocations. This tends to degrade performance.
 
 ![FragmentationDiagram](diagrams/FragmentationDiagram.svg)
 

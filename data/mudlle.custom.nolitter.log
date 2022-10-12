@@ -1,32 +1,360 @@
-Time elapsed: 0.088743
+Time elapsed: 0.090962
 
  Performance counter stats for './mudlle-original':
 
-             89.06 msec task-clock                #    0.996 CPUs utilized          
-                 3      context-switches          #   33.687 /sec                   
+             91.50 msec task-clock                #    0.989 CPUs utilized          
+                 2      context-switches          #   21.857 /sec                   
                  0      cpu-migrations            #    0.000 /sec                   
-               767      page-faults               #    8.613 K/sec                  
-       398,000,881      cycles                    #    4.469 GHz                      (28.18%)
-       895,757,410      instructions              #    2.25  insn per cycle           (37.13%)
-       148,142,729      branches                  #    1.663 G/sec                    (46.11%)
-         3,831,747      branch-misses             #    2.59% of all branches          (55.08%)
-     1,987,126,904      slots                     #   22.313 G/sec                    (64.07%)
-       833,814,033      topdown-retiring          #     42.0% retiring                (64.07%)
-       498,729,888      topdown-bad-spec          #     25.1% bad speculation         (64.07%)
-       374,047,417      topdown-fe-bound          #     18.8% frontend bound          (64.07%)
-       280,535,562      topdown-be-bound          #     14.1% backend bound           (64.07%)
-       263,853,041      L1-dcache-loads           #    2.963 G/sec                    (65.38%)
-         2,160,334      L1-dcache-load-misses     #    0.82% of all L1-dcache accesses  (69.88%)
-            21,867      LLC-loads                 #  245.545 K/sec                    (74.37%)
-             7,745      LLC-load-misses           #   35.42% of all LL-cache accesses  (78.86%)
-           660,976      L1-icache-load-misses                                         (34.62%)
-       266,304,435      dTLB-loads                #    2.990 G/sec                    (30.12%)
-             4,568      dTLB-load-misses          #    0.00% of all dTLB cache accesses  (25.63%)
-            24,072      iTLB-load-misses                                              (21.14%)
+               769      page-faults               #    8.404 K/sec                  
+       408,097,903      cycles                    #    4.460 GHz                      (30.08%)
+       868,727,785      instructions              #    2.13  insn per cycle           (38.82%)
+       143,687,767      branches                  #    1.570 G/sec                    (47.55%)
+         3,798,464      branch-misses             #    2.64% of all branches          (56.29%)
+     1,935,790,457      slots                     #   21.155 G/sec                    (65.03%)
+       827,455,528      topdown-retiring          #     42.7% retiring                (65.03%)
+       485,845,448      topdown-bad-spec          #     25.1% bad speculation         (65.03%)
+       356,792,750      topdown-fe-bound          #     18.4% frontend bound          (65.03%)
+       265,696,728      topdown-be-bound          #     13.7% backend bound           (65.03%)
+       257,742,500      L1-dcache-loads           #    2.817 G/sec                    (65.03%)
+         2,123,086      L1-dcache-load-misses     #    0.82% of all L1-dcache accesses  (66.28%)
+            16,809      LLC-loads                 #  183.696 K/sec                    (70.66%)
+             6,965      LLC-load-misses           #   41.44% of all LL-cache accesses  (75.03%)
+   <not supported>      L1-icache-loads                                             
+           649,225      L1-icache-load-misses                                         (34.97%)
+       271,555,508      dTLB-loads                #    2.968 G/sec                    (33.72%)
+             3,217      dTLB-load-misses          #    0.00% of all dTLB cache accesses  (29.34%)
+   <not supported>      iTLB-loads                                                  
+            21,755      iTLB-load-misses                                              (24.97%)
+   <not supported>      L1-dcache-prefetches                                        
+   <not supported>      L1-dcache-prefetch-misses                                   
 
-       0.089408827 seconds time elapsed
+       0.092494504 seconds time elapsed
 
-       0.085523000 seconds user
-       0.003887000 seconds sys
+       0.092158000 seconds user
+       0.000000000 seconds sys
+
+
+Time elapsed: 0.090974
+
+ Performance counter stats for './mudlle-original':
+
+             91.24 msec task-clock                #    0.996 CPUs utilized          
+                 3      context-switches          #   32.882 /sec                   
+                 0      cpu-migrations            #    0.000 /sec                   
+               767      page-faults               #    8.407 K/sec                  
+       410,729,383      cycles                    #    4.502 GHz                      (29.90%)
+       924,860,016      instructions              #    2.25  insn per cycle           (38.67%)
+       147,696,917      branches                  #    1.619 G/sec                    (47.43%)
+         3,798,206      branch-misses             #    2.57% of all branches          (56.16%)
+     1,932,707,182      slots                     #   21.183 G/sec                    (64.93%)
+       810,979,091      topdown-retiring          #     42.0% retiring                (64.93%)
+       485,071,606      topdown-bad-spec          #     25.1% bad speculation         (64.93%)
+       363,803,704      topdown-fe-bound          #     18.8% frontend bound          (64.93%)
+       272,852,778      topdown-be-bound          #     14.1% backend bound           (64.93%)
+       256,703,640      L1-dcache-loads           #    2.814 G/sec                    (64.93%)
+         2,098,726      L1-dcache-load-misses     #    0.82% of all L1-dcache accesses  (68.10%)
+            15,814      LLC-loads                 #  173.330 K/sec                    (72.48%)
+             6,625      LLC-load-misses           #   41.89% of all LL-cache accesses  (76.87%)
+   <not supported>      L1-icache-loads                                             
+           634,256      L1-icache-load-misses                                         (35.07%)
+       273,971,377      dTLB-loads                #    3.003 G/sec                    (31.90%)
+             4,081      dTLB-load-misses          #    0.00% of all dTLB cache accesses  (27.52%)
+   <not supported>      iTLB-loads                                                  
+            29,532      iTLB-load-misses                                              (23.13%)
+   <not supported>      L1-dcache-prefetches                                        
+   <not supported>      L1-dcache-prefetch-misses                                   
+
+       0.091565514 seconds time elapsed
+
+       0.091604000 seconds user
+       0.000000000 seconds sys
+
+
+Time elapsed: 0.087712
+
+ Performance counter stats for './mudlle-original':
+
+             88.01 msec task-clock                #    0.997 CPUs utilized          
+                 0      context-switches          #    0.000 /sec                   
+                 0      cpu-migrations            #    0.000 /sec                   
+               768      page-faults               #    8.726 K/sec                  
+       395,488,763      cycles                    #    4.494 GHz                      (27.29%)
+       904,053,675      instructions              #    2.29  insn per cycle           (36.38%)
+       150,358,612      branches                  #    1.708 G/sec                    (45.46%)
+         3,884,854      branch-misses             #    2.58% of all branches          (54.55%)
+     1,988,648,909      slots                     #   22.595 G/sec                    (63.64%)
+       837,492,978      topdown-retiring          #     42.0% retiring                (63.64%)
+       506,910,505      topdown-bad-spec          #     25.5% bad speculation         (63.64%)
+       374,333,911      topdown-fe-bound          #     18.8% frontend bound          (63.64%)
+       272,951,809      topdown-be-bound          #     13.7% backend bound           (63.64%)
+       264,432,875      L1-dcache-loads           #    3.005 G/sec                    (67.81%)
+         2,112,347      L1-dcache-load-misses     #    0.80% of all L1-dcache accesses  (72.36%)
+            16,707      LLC-loads                 #  189.827 K/sec                    (76.91%)
+             6,317      LLC-load-misses           #   37.81% of all LL-cache accesses  (81.45%)
+   <not supported>      L1-icache-loads                                             
+           562,646      L1-icache-load-misses                                         (32.19%)
+       262,741,106      dTLB-loads                #    2.985 G/sec                    (27.64%)
+             3,295      dTLB-load-misses          #    0.00% of all dTLB cache accesses  (23.09%)
+   <not supported>      iTLB-loads                                                  
+            22,145      iTLB-load-misses                                              (18.55%)
+   <not supported>      L1-dcache-prefetches                                        
+   <not supported>      L1-dcache-prefetch-misses                                   
+
+       0.088287583 seconds time elapsed
+
+       0.088320000 seconds user
+       0.000000000 seconds sys
+
+
+Time elapsed: 0.091413
+
+ Performance counter stats for './mudlle-original':
+
+             91.65 msec task-clock                #    0.997 CPUs utilized          
+                 3      context-switches          #   32.733 /sec                   
+                 0      cpu-migrations            #    0.000 /sec                   
+               767      page-faults               #    8.369 K/sec                  
+       416,748,457      cycles                    #    4.547 GHz                      (30.23%)
+       940,959,655      instructions              #    2.26  insn per cycle           (38.95%)
+       150,923,684      branches                  #    1.647 G/sec                    (47.65%)
+         3,849,899      branch-misses             #    2.55% of all branches          (56.36%)
+     1,935,567,410      slots                     #   21.119 G/sec                    (65.09%)
+       812,179,265      topdown-retiring          #     42.0% retiring                (65.09%)
+       493,379,926      topdown-bad-spec          #     25.5% bad speculation         (65.09%)
+       364,342,099      topdown-fe-bound          #     18.8% frontend bound          (65.09%)
+       265,666,115      topdown-be-bound          #     13.7% backend bound           (65.09%)
+       255,488,206      L1-dcache-loads           #    2.788 G/sec                    (65.09%)
+         2,086,226      L1-dcache-load-misses     #    0.82% of all L1-dcache accesses  (65.81%)
+            17,206      LLC-loads                 #  187.734 K/sec                    (70.18%)
+             6,376      LLC-load-misses           #   37.06% of all LL-cache accesses  (74.53%)
+   <not supported>      L1-icache-loads                                             
+           671,696      L1-icache-load-misses                                         (34.91%)
+       276,091,580      dTLB-loads                #    3.012 G/sec                    (34.19%)
+             3,430      dTLB-load-misses          #    0.00% of all dTLB cache accesses  (29.82%)
+   <not supported>      iTLB-loads                                                  
+            23,828      iTLB-load-misses                                              (25.47%)
+   <not supported>      L1-dcache-prefetches                                        
+   <not supported>      L1-dcache-prefetch-misses                                   
+
+       0.091965697 seconds time elapsed
+
+       0.091959000 seconds user
+       0.000000000 seconds sys
+
+
+Time elapsed: 0.090457
+
+ Performance counter stats for './mudlle-original':
+
+             90.73 msec task-clock                #    0.997 CPUs utilized          
+                 1      context-switches          #   11.022 /sec                   
+                 0      cpu-migrations            #    0.000 /sec                   
+               768      page-faults               #    8.465 K/sec                  
+       417,977,724      cycles                    #    4.607 GHz                      (29.47%)
+       937,081,123      instructions              #    2.24  insn per cycle           (38.28%)
+       150,439,344      branches                  #    1.658 G/sec                    (47.10%)
+         3,820,060      branch-misses             #    2.54% of all branches          (55.91%)
+     1,936,506,499      slots                     #   21.344 G/sec                    (64.73%)
+       812,573,314      topdown-retiring          #     42.0% retiring                (64.73%)
+       493,619,302      topdown-bad-spec          #     25.5% bad speculation         (64.73%)
+       364,518,869      topdown-fe-bound          #     18.8% frontend bound          (64.73%)
+       265,795,009      topdown-be-bound          #     13.7% backend bound           (64.73%)
+       255,751,302      L1-dcache-loads           #    2.819 G/sec                    (64.72%)
+         2,099,138      L1-dcache-load-misses     #    0.82% of all L1-dcache accesses  (67.63%)
+            17,948      LLC-loads                 #  197.819 K/sec                    (72.05%)
+             6,614      LLC-load-misses           #   36.85% of all LL-cache accesses  (76.46%)
+   <not supported>      L1-icache-loads                                             
+           679,904      L1-icache-load-misses                                         (35.28%)
+       275,711,005      dTLB-loads                #    3.039 G/sec                    (32.37%)
+             3,623      dTLB-load-misses          #    0.00% of all dTLB cache accesses  (27.95%)
+   <not supported>      iTLB-loads                                                  
+            27,310      iTLB-load-misses                                              (23.54%)
+   <not supported>      L1-dcache-prefetches                                        
+   <not supported>      L1-dcache-prefetch-misses                                   
+
+       0.091015928 seconds time elapsed
+
+       0.090985000 seconds user
+       0.000000000 seconds sys
+
+
+Time elapsed: 0.090009
+
+ Performance counter stats for './mudlle-original':
+
+             90.36 msec task-clock                #    0.997 CPUs utilized          
+                 0      context-switches          #    0.000 /sec                   
+                 0      cpu-migrations            #    0.000 /sec                   
+               767      page-faults               #    8.489 K/sec                  
+       401,605,166      cycles                    #    4.445 GHz                      (29.17%)
+       904,832,712      instructions              #    2.25  insn per cycle           (38.02%)
+       148,877,017      branches                  #    1.648 G/sec                    (46.87%)
+         3,888,526      branch-misses             #    2.61% of all branches          (55.73%)
+     1,995,614,304      slots                     #   22.086 G/sec                    (64.58%)
+       837,375,412      topdown-retiring          #     42.0% retiring                (64.58%)
+       500,860,059      topdown-bad-spec          #     25.1% bad speculation         (64.58%)
+       375,645,045      topdown-fe-bound          #     18.8% frontend bound          (64.58%)
+       281,733,783      topdown-be-bound          #     14.1% backend bound           (64.58%)
+       263,152,367      L1-dcache-loads           #    2.912 G/sec                    (64.58%)
+         2,145,177      L1-dcache-load-misses     #    0.82% of all L1-dcache accesses  (66.41%)
+            17,281      LLC-loads                 #  191.253 K/sec                    (70.84%)
+             6,425      LLC-load-misses           #   37.18% of all LL-cache accesses  (75.27%)
+   <not supported>      L1-icache-loads                                             
+           589,691      L1-icache-load-misses                                         (35.42%)
+       262,131,321      dTLB-loads                #    2.901 G/sec                    (33.59%)
+             3,796      dTLB-load-misses          #    0.00% of all dTLB cache accesses  (29.16%)
+   <not supported>      iTLB-loads                                                  
+            23,609      iTLB-load-misses                                              (24.73%)
+   <not supported>      L1-dcache-prefetches                                        
+   <not supported>      L1-dcache-prefetch-misses                                   
+
+       0.090629523 seconds time elapsed
+
+       0.090644000 seconds user
+       0.000000000 seconds sys
+
+
+Time elapsed: 0.089015
+
+ Performance counter stats for './mudlle-original':
+
+             89.27 msec task-clock                #    0.996 CPUs utilized          
+                 3      context-switches          #   33.604 /sec                   
+                 0      cpu-migrations            #    0.000 /sec                   
+               766      page-faults               #    8.580 K/sec                  
+       405,862,249      cycles                    #    4.546 GHz                      (28.37%)
+       925,433,116      instructions              #    2.28  insn per cycle           (37.32%)
+       148,939,055      branches                  #    1.668 G/sec                    (46.28%)
+         3,792,098      branch-misses             #    2.55% of all branches          (55.21%)
+     1,940,262,925      slots                     #   21.734 G/sec                    (64.17%)
+       821,758,415      topdown-retiring          #     42.4% retiring                (64.17%)
+       494,576,823      topdown-bad-spec          #     25.5% bad speculation         (64.17%)
+       357,617,086      topdown-fe-bound          #     18.4% frontend bound          (64.17%)
+       266,310,596      topdown-be-bound          #     13.7% backend bound           (64.17%)
+       259,261,558      L1-dcache-loads           #    2.904 G/sec                    (65.67%)
+         2,086,246      L1-dcache-load-misses     #    0.80% of all L1-dcache accesses  (70.15%)
+            17,516      LLC-loads                 #  196.204 K/sec                    (74.63%)
+             6,437      LLC-load-misses           #   36.75% of all LL-cache accesses  (79.11%)
+   <not supported>      L1-icache-loads                                             
+           644,950      L1-icache-load-misses                                         (34.33%)
+       271,741,433      dTLB-loads                #    3.044 G/sec                    (29.85%)
+             3,448      dTLB-load-misses          #    0.00% of all dTLB cache accesses  (25.37%)
+   <not supported>      iTLB-loads                                                  
+            31,070      iTLB-load-misses                                              (20.89%)
+   <not supported>      L1-dcache-prefetches                                        
+   <not supported>      L1-dcache-prefetch-misses                                   
+
+       0.089621547 seconds time elapsed
+
+       0.089606000 seconds user
+       0.000000000 seconds sys
+
+
+Time elapsed: 0.089229
+
+ Performance counter stats for './mudlle-original':
+
+             89.52 msec task-clock                #    0.997 CPUs utilized          
+                 2      context-switches          #   22.342 /sec                   
+                 0      cpu-migrations            #    0.000 /sec                   
+               765      page-faults               #    8.546 K/sec                  
+       400,313,454      cycles                    #    4.472 GHz                      (28.53%)
+       896,773,006      instructions              #    2.24  insn per cycle           (37.46%)
+       147,121,475      branches                  #    1.643 G/sec                    (46.39%)
+         3,912,541      branch-misses             #    2.66% of all branches          (55.33%)
+     2,006,068,964      slots                     #   22.409 G/sec                    (64.26%)
+       826,028,397      topdown-retiring          #     41.2% retiring                (64.26%)
+       511,350,911      topdown-bad-spec          #     25.5% bad speculation         (64.26%)
+       369,746,043      topdown-fe-bound          #     18.4% frontend bound          (64.26%)
+       298,943,609      topdown-be-bound          #     14.9% backend bound           (64.26%)
+       262,589,846      L1-dcache-loads           #    2.933 G/sec                    (65.41%)
+         2,129,534      L1-dcache-load-misses     #    0.81% of all L1-dcache accesses  (69.88%)
+            16,721      LLC-loads                 #  186.787 K/sec                    (74.35%)
+             6,116      LLC-load-misses           #   36.58% of all LL-cache accesses  (78.82%)
+   <not supported>      L1-icache-loads                                             
+           615,054      L1-icache-load-misses                                         (34.59%)
+       265,905,615      dTLB-loads                #    2.970 G/sec                    (30.12%)
+             4,155      dTLB-load-misses          #    0.00% of all dTLB cache accesses  (25.65%)
+   <not supported>      iTLB-loads                                                  
+            22,806      iTLB-load-misses                                              (21.18%)
+   <not supported>      L1-dcache-prefetches                                        
+   <not supported>      L1-dcache-prefetch-misses                                   
+
+       0.089833530 seconds time elapsed
+
+       0.085941000 seconds user
+       0.003906000 seconds sys
+
+
+Time elapsed: 0.087636
+
+ Performance counter stats for './mudlle-original':
+
+             88.00 msec task-clock                #    0.996 CPUs utilized          
+                 1      context-switches          #   11.364 /sec                   
+                 0      cpu-migrations            #    0.000 /sec                   
+               768      page-faults               #    8.727 K/sec                  
+       392,978,725      cycles                    #    4.466 GHz                      (27.29%)
+       899,805,307      instructions              #    2.29  insn per cycle           (36.38%)
+       149,229,404      branches                  #    1.696 G/sec                    (45.47%)
+         3,840,905      branch-misses             #    2.57% of all branches          (54.55%)
+     1,976,136,144      slots                     #   22.456 G/sec                    (63.64%)
+       829,202,224      topdown-retiring          #     42.0% retiring                (63.64%)
+       503,720,977      topdown-bad-spec          #     25.5% bad speculation         (63.64%)
+       371,978,567      topdown-fe-bound          #     18.8% frontend bound          (63.64%)
+       271,234,372      topdown-be-bound          #     13.7% backend bound           (63.64%)
+       263,292,288      L1-dcache-loads           #    2.992 G/sec                    (66.38%)
+         2,126,715      L1-dcache-load-misses     #    0.81% of all L1-dcache accesses  (70.93%)
+            17,353      LLC-loads                 #  197.191 K/sec                    (75.48%)
+             6,600      LLC-load-misses           #   38.03% of all LL-cache accesses  (80.03%)
+   <not supported>      L1-icache-loads                                             
+           624,263      L1-icache-load-misses                                         (33.62%)
+       264,463,330      dTLB-loads                #    3.005 G/sec                    (29.07%)
+             3,527      dTLB-load-misses          #    0.00% of all dTLB cache accesses  (24.52%)
+   <not supported>      iTLB-loads                                                  
+            22,214      iTLB-load-misses                                              (19.97%)
+   <not supported>      L1-dcache-prefetches                                        
+   <not supported>      L1-dcache-prefetch-misses                                   
+
+       0.088322891 seconds time elapsed
+
+       0.088342000 seconds user
+       0.000000000 seconds sys
+
+
+Time elapsed: 0.086355
+
+ Performance counter stats for './mudlle-original':
+
+             86.57 msec task-clock                #    0.995 CPUs utilized          
+                 4      context-switches          #   46.207 /sec                   
+                 0      cpu-migrations            #    0.000 /sec                   
+               767      page-faults               #    8.860 K/sec                  
+       397,480,648      cycles                    #    4.592 GHz                      (26.98%)
+       900,376,191      instructions              #    2.27  insn per cycle           (36.13%)
+       150,006,814      branches                  #    1.733 G/sec                    (45.36%)
+         3,874,094      branch-misses             #    2.58% of all branches          (54.60%)
+     1,992,368,190      slots                     #   23.015 G/sec                    (63.84%)
+       830,427,756      topdown-retiring          #     41.6% retiring                (63.84%)
+       523,484,974      topdown-bad-spec          #     26.2% bad speculation         (63.84%)
+       367,220,803      topdown-fe-bound          #     18.4% frontend bound          (63.84%)
+       273,462,300      topdown-be-bound          #     13.7% backend bound           (63.84%)
+       263,743,359      L1-dcache-loads           #    3.047 G/sec                    (68.45%)
+         2,123,157      L1-dcache-load-misses     #    0.81% of all L1-dcache accesses  (73.08%)
+            19,319      LLC-loads                 #  223.167 K/sec                    (77.70%)
+             7,152      LLC-load-misses           #   37.02% of all LL-cache accesses  (81.52%)
+   <not supported>      L1-icache-loads                                             
+           563,697      L1-icache-load-misses                                         (31.55%)
+       264,220,436      dTLB-loads                #    3.052 G/sec                    (26.92%)
+             2,946      dTLB-load-misses          #    0.00% of all dTLB cache accesses  (22.30%)
+   <not supported>      iTLB-loads                                                  
+            20,438      iTLB-load-misses                                              (18.48%)
+   <not supported>      L1-dcache-prefetches                                        
+   <not supported>      L1-dcache-prefetch-misses                                   
+
+       0.086962006 seconds time elapsed
+
+       0.086920000 seconds user
+       0.000000000 seconds sys
 
 

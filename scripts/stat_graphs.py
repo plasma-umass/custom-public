@@ -39,9 +39,9 @@ NORMALIZE_TIME = {
     "197.parser.jemalloc": 37.620861500000004,
     "197.parser.mimalloc": 37.620861500000004,
 
-    "boxed-sim": 15.469659,
-    "boxed-sim.jemalloc": 15.469659,
-    "boxed-sim.mimalloc": 15.469659,
+    "boxed-sim": 17.139288999999998,
+    "boxed-sim.jemalloc": 17.139288999999998,
+    "boxed-sim.mimalloc": 17.139288999999998,
 
     "mudlle": 0.089619,
     "mudlle.jemalloc": 0.089619,

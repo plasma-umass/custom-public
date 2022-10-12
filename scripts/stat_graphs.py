@@ -43,9 +43,13 @@ NORMALIZE_TIME = {
     "boxed-sim.jemalloc": 15.469659,
     "boxed-sim.mimalloc": 15.469659,
 
-    "mudlle": 0.088743,
-    "mudlle.jemalloc": 0.088743,
-    "mudlle.mimalloc": 0.088743,
+    "mudlle": 0.089619,
+    "mudlle.jemalloc": 0.089619,
+    "mudlle.mimalloc": 0.089619,
+
+    "175.vpr": 33.3006945,
+    "175.vpr.jemalloc": 33.3006945,
+    "175.vpr.mimalloc": 33.3006945,
 }
 
 # Copied from stat.py

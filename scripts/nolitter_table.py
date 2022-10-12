@@ -30,6 +30,7 @@ filenames = [
     f"197.parser.custom.nolitter.log",
     f"boxed-sim.custom.nolitter.log",
     f"mudlle.custom.nolitter.log",
+    f"175.vpr.custom.nolitter.log",
 ]
 
 aggregate = statistics.median

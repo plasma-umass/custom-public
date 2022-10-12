@@ -1,0 +1,360 @@
+Time elapsed: 32.385101
+
+ Performance counter stats for './vpr data/train/input/net.in data/train/input/arch.in data/train/input/place.in data/train/output/route.out':
+
+         32,381.38 msec task-clock                #    1.000 CPUs utilized          
+               308      context-switches          #    9.512 /sec                   
+                25      cpu-migrations            #    0.772 /sec                   
+             3,405      page-faults               #  105.153 /sec                   
+   146,516,842,884      cycles                    #    4.525 GHz                      (38.44%)
+   179,483,047,242      instructions              #    1.22  insn per cycle           (46.13%)
+    27,548,817,440      branches                  #  850.761 M/sec                    (53.83%)
+     2,492,277,176      branch-misses             #    9.05% of all branches          (61.52%)
+   732,217,482,348      slots                     #   22.612 G/sec                    (69.22%)
+   150,506,856,394      topdown-retiring          #     19.3% retiring                (69.22%)
+   531,216,604,839      topdown-bad-spec          #     68.0% bad speculation         (69.22%)
+    49,747,333,024      topdown-fe-bound          #      6.4% frontend bound          (69.22%)
+    49,921,800,934      topdown-be-bound          #      6.4% backend bound           (69.22%)
+    54,259,280,559      L1-dcache-loads           #    1.676 G/sec                    (69.22%)
+     5,450,374,641      L1-dcache-load-misses     #   10.05% of all L1-dcache accesses  (69.22%)
+       190,323,624      LLC-loads                 #    5.878 M/sec                    (69.23%)
+           552,508      LLC-load-misses           #    0.29% of all LL-cache accesses  (69.24%)
+   <not supported>      L1-icache-loads                                             
+         4,044,658      L1-icache-load-misses                                         (30.78%)
+    54,286,697,244      dTLB-loads                #    1.676 G/sec                    (30.78%)
+           497,791      dTLB-load-misses          #    0.00% of all dTLB cache accesses  (30.77%)
+   <not supported>      iTLB-loads                                                  
+            75,875      iTLB-load-misses                                              (30.76%)
+   <not supported>      L1-dcache-prefetches                                        
+   <not supported>      L1-dcache-prefetch-misses                                   
+
+      32.386946111 seconds time elapsed
+
+      32.378298000 seconds user
+       0.003999000 seconds sys
+
+
+Time elapsed: 33.662552
+
+ Performance counter stats for './vpr data/train/input/net.in data/train/input/arch.in data/train/input/place.in data/train/output/route.out':
+
+         33,645.59 msec task-clock                #    0.999 CPUs utilized          
+               210      context-switches          #    6.242 /sec                   
+                17      cpu-migrations            #    0.505 /sec                   
+             3,405      page-faults               #  101.202 /sec                   
+   146,822,666,370      cycles                    #    4.364 GHz                      (38.46%)
+   179,433,751,210      instructions              #    1.22  insn per cycle           (46.16%)
+    27,542,751,674      branches                  #  818.614 M/sec                    (53.85%)
+     2,491,357,003      branch-misses             #    9.05% of all branches          (61.54%)
+   733,277,529,788      slots                     #   21.794 G/sec                    (69.23%)
+   159,158,611,519      topdown-retiring          #     20.4% retiring                (69.23%)
+   503,229,677,305      topdown-bad-spec          #     64.6% bad speculation         (69.23%)
+    50,963,230,368      topdown-fe-bound          #      6.5% frontend bound          (69.23%)
+    65,305,925,957      topdown-be-bound          #      8.4% backend bound           (69.23%)
+    54,310,770,259      L1-dcache-loads           #    1.614 G/sec                    (69.23%)
+     5,452,573,187      L1-dcache-load-misses     #   10.04% of all L1-dcache accesses  (69.23%)
+       190,791,571      LLC-loads                 #    5.671 M/sec                    (69.23%)
+           350,118      LLC-load-misses           #    0.18% of all LL-cache accesses  (69.24%)
+   <not supported>      L1-icache-loads                                             
+         3,461,346      L1-icache-load-misses                                         (30.77%)
+    54,257,300,219      dTLB-loads                #    1.613 G/sec                    (30.77%)
+           476,967      dTLB-load-misses          #    0.00% of all dTLB cache accesses  (30.77%)
+   <not supported>      iTLB-loads                                                  
+            37,572      iTLB-load-misses                                              (30.76%)
+   <not supported>      L1-dcache-prefetches                                        
+   <not supported>      L1-dcache-prefetch-misses                                   
+
+      33.663716515 seconds time elapsed
+
+      33.642174000 seconds user
+       0.003999000 seconds sys
+
+
+Time elapsed: 32.839188
+
+ Performance counter stats for './vpr data/train/input/net.in data/train/input/arch.in data/train/input/place.in data/train/output/route.out':
+
+         32,828.19 msec task-clock                #    1.000 CPUs utilized          
+               226      context-switches          #    6.884 /sec                   
+                18      cpu-migrations            #    0.548 /sec                   
+             3,405      page-faults               #  103.722 /sec                   
+   146,653,103,033      cycles                    #    4.467 GHz                      (38.43%)
+   179,276,132,986      instructions              #    1.22  insn per cycle           (46.13%)
+    27,520,398,247      branches                  #  838.316 M/sec                    (53.83%)
+     2,491,065,784      branch-misses             #    9.05% of all branches          (61.53%)
+   732,973,293,845      slots                     #   22.328 G/sec                    (69.23%)
+   159,329,829,748      topdown-retiring          #     20.5% retiring                (69.23%)
+   503,020,887,931      topdown-bad-spec          #     64.7% bad speculation         (69.23%)
+    51,968,842,372      topdown-fe-bound          #      6.7% frontend bound          (69.23%)
+    63,263,825,556      topdown-be-bound          #      8.1% backend bound           (69.23%)
+    54,259,145,401      L1-dcache-loads           #    1.653 G/sec                    (69.24%)
+     5,446,501,231      L1-dcache-load-misses     #   10.04% of all L1-dcache accesses  (69.24%)
+       191,821,943      LLC-loads                 #    5.843 M/sec                    (69.25%)
+           357,053      LLC-load-misses           #    0.19% of all LL-cache accesses  (69.25%)
+   <not supported>      L1-icache-loads                                             
+         3,458,046      L1-icache-load-misses                                         (30.76%)
+    54,353,302,696      dTLB-loads                #    1.656 G/sec                    (30.76%)
+           465,636      dTLB-load-misses          #    0.00% of all dTLB cache accesses  (30.75%)
+   <not supported>      iTLB-loads                                                  
+            12,848      iTLB-load-misses                                              (30.75%)
+   <not supported>      L1-dcache-prefetches                                        
+   <not supported>      L1-dcache-prefetch-misses                                   
+
+      32.840209481 seconds time elapsed
+
+      32.824756000 seconds user
+       0.003999000 seconds sys
+
+
+Time elapsed: 33.017912
+
+ Performance counter stats for './vpr data/train/input/net.in data/train/input/arch.in data/train/input/place.in data/train/output/route.out':
+
+         33,015.53 msec task-clock                #    1.000 CPUs utilized          
+               263      context-switches          #    7.966 /sec                   
+                17      cpu-migrations            #    0.515 /sec                   
+             3,403      page-faults               #  103.073 /sec                   
+   146,754,353,013      cycles                    #    4.445 GHz                      (38.46%)
+   179,431,009,762      instructions              #    1.22  insn per cycle           (46.15%)
+    27,552,498,569      branches                  #  834.532 M/sec                    (53.84%)
+     2,491,356,140      branch-misses             #    9.04% of all branches          (61.53%)
+   733,381,816,330      slots                     #   22.213 G/sec                    (69.22%)
+   158,827,997,998      topdown-retiring          #     20.4% retiring                (69.22%)
+   503,301,246,500      topdown-bad-spec          #     64.5% bad speculation         (69.22%)
+    51,761,741,249      topdown-fe-bound          #      6.6% frontend bound          (69.22%)
+    66,277,040,882      topdown-be-bound          #      8.5% backend bound           (69.22%)
+    54,319,141,759      L1-dcache-loads           #    1.645 G/sec                    (69.22%)
+     5,450,658,394      L1-dcache-load-misses     #   10.03% of all L1-dcache accesses  (69.23%)
+       190,489,473      LLC-loads                 #    5.770 M/sec                    (69.23%)
+           356,406      LLC-load-misses           #    0.19% of all LL-cache accesses  (69.23%)
+   <not supported>      L1-icache-loads                                             
+         3,275,056      L1-icache-load-misses                                         (30.78%)
+    54,302,817,988      dTLB-loads                #    1.645 G/sec                    (30.77%)
+           575,383      dTLB-load-misses          #    0.00% of all dTLB cache accesses  (30.77%)
+   <not supported>      iTLB-loads                                                  
+            47,966      iTLB-load-misses                                              (30.77%)
+   <not supported>      L1-dcache-prefetches                                        
+   <not supported>      L1-dcache-prefetch-misses                                   
+
+      33.018903305 seconds time elapsed
+
+      33.016043000 seconds user
+       0.000000000 seconds sys
+
+
+Time elapsed: 33.189566
+
+ Performance counter stats for './vpr data/train/input/net.in data/train/input/arch.in data/train/input/place.in data/train/output/route.out':
+
+         33,187.38 msec task-clock                #    1.000 CPUs utilized          
+               228      context-switches          #    6.870 /sec                   
+                33      cpu-migrations            #    0.994 /sec                   
+             3,405      page-faults               #  102.599 /sec                   
+   147,154,331,352      cycles                    #    4.434 GHz                      (38.45%)
+   179,760,531,969      instructions              #    1.22  insn per cycle           (46.15%)
+    27,577,752,155      branches                  #  830.971 M/sec                    (53.85%)
+     2,490,803,829      branch-misses             #    9.03% of all branches          (61.55%)
+   735,147,812,585      slots                     #   22.151 G/sec                    (69.24%)
+   159,758,996,054      topdown-retiring          #     20.6% retiring                (69.24%)
+   501,630,272,116      topdown-bad-spec          #     64.7% bad speculation         (69.24%)
+    50,491,364,548      topdown-fe-bound          #      6.5% frontend bound          (69.24%)
+    63,810,050,477      topdown-be-bound          #      8.2% backend bound           (69.24%)
+    54,363,539,578      L1-dcache-loads           #    1.638 G/sec                    (69.24%)
+     5,458,218,454      L1-dcache-load-misses     #   10.04% of all L1-dcache accesses  (69.24%)
+       192,986,418      LLC-loads                 #    5.815 M/sec                    (69.24%)
+           405,349      LLC-load-misses           #    0.21% of all LL-cache accesses  (69.25%)
+   <not supported>      L1-icache-loads                                             
+         3,194,528      L1-icache-load-misses                                         (30.76%)
+    54,216,310,649      dTLB-loads                #    1.634 G/sec                    (30.76%)
+           527,369      dTLB-load-misses          #    0.00% of all dTLB cache accesses  (30.76%)
+   <not supported>      iTLB-loads                                                  
+            42,559      iTLB-load-misses                                              (30.75%)
+   <not supported>      L1-dcache-prefetches                                        
+   <not supported>      L1-dcache-prefetch-misses                                   
+
+      33.190517336 seconds time elapsed
+
+      33.183970000 seconds user
+       0.003999000 seconds sys
+
+
+Time elapsed: 34.195827
+
+ Performance counter stats for './vpr data/train/input/net.in data/train/input/arch.in data/train/input/place.in data/train/output/route.out':
+
+         34,193.66 msec task-clock                #    1.000 CPUs utilized          
+               221      context-switches          #    6.463 /sec                   
+                28      cpu-migrations            #    0.819 /sec                   
+             3,404      page-faults               #   99.551 /sec                   
+   146,857,839,248      cycles                    #    4.295 GHz                      (38.43%)
+   179,017,463,292      instructions              #    1.22  insn per cycle           (46.13%)
+    27,468,337,298      branches                  #  803.317 M/sec                    (53.82%)
+     2,495,630,758      branch-misses             #    9.09% of all branches          (61.52%)
+   733,452,083,628      slots                     #   21.450 G/sec                    (69.22%)
+   159,639,738,126      topdown-retiring          #     20.6% retiring                (69.22%)
+   500,473,186,474      topdown-bad-spec          #     64.4% bad speculation         (69.22%)
+    53,325,801,656      topdown-fe-bound          #      6.9% frontend bound          (69.22%)
+    63,177,481,477      topdown-be-bound          #      8.1% backend bound           (69.22%)
+    54,267,412,283      L1-dcache-loads           #    1.587 G/sec                    (69.23%)
+     5,457,171,153      L1-dcache-load-misses     #   10.06% of all L1-dcache accesses  (69.24%)
+       191,750,983      LLC-loads                 #    5.608 M/sec                    (69.25%)
+           351,804      LLC-load-misses           #    0.18% of all LL-cache accesses  (69.26%)
+   <not supported>      L1-icache-loads                                             
+         5,222,699      L1-icache-load-misses                                         (30.77%)
+    54,312,404,764      dTLB-loads                #    1.588 G/sec                    (30.76%)
+           580,780      dTLB-load-misses          #    0.00% of all dTLB cache accesses  (30.75%)
+   <not supported>      iTLB-loads                                                  
+            22,508      iTLB-load-misses                                              (30.74%)
+   <not supported>      L1-dcache-prefetches                                        
+   <not supported>      L1-dcache-prefetch-misses                                   
+
+      34.196958981 seconds time elapsed
+
+      34.190319000 seconds user
+       0.003999000 seconds sys
+
+
+Time elapsed: 33.361003
+
+ Performance counter stats for './vpr data/train/input/net.in data/train/input/arch.in data/train/input/place.in data/train/output/route.out':
+
+         33,324.85 msec task-clock                #    0.999 CPUs utilized          
+               230      context-switches          #    6.902 /sec                   
+                35      cpu-migrations            #    1.050 /sec                   
+             3,403      page-faults               #  102.116 /sec                   
+   146,960,264,651      cycles                    #    4.410 GHz                      (38.45%)
+   179,645,587,260      instructions              #    1.22  insn per cycle           (46.14%)
+    27,548,998,117      branches                  #  826.680 M/sec                    (53.83%)
+     2,492,626,849      branch-misses             #    9.05% of all branches          (61.52%)
+   734,162,338,526      slots                     #   22.030 G/sec                    (69.22%)
+   159,061,011,449      topdown-retiring          #     20.5% retiring                (69.22%)
+   500,957,830,993      topdown-bad-spec          #     64.5% bad speculation         (69.22%)
+    51,060,027,937      topdown-fe-bound          #      6.6% frontend bound          (69.22%)
+    65,374,296,285      topdown-be-bound          #      8.4% backend bound           (69.22%)
+    54,330,271,477      L1-dcache-loads           #    1.630 G/sec                    (69.22%)
+     5,449,635,388      L1-dcache-load-misses     #   10.03% of all L1-dcache accesses  (69.22%)
+       191,778,708      LLC-loads                 #    5.755 M/sec                    (69.23%)
+           348,115      LLC-load-misses           #    0.18% of all LL-cache accesses  (69.24%)
+   <not supported>      L1-icache-loads                                             
+         3,473,050      L1-icache-load-misses                                         (30.78%)
+    54,217,268,102      dTLB-loads                #    1.627 G/sec                    (30.78%)
+           568,950      dTLB-load-misses          #    0.00% of all dTLB cache accesses  (30.77%)
+   <not supported>      iTLB-loads                                                  
+            61,580      iTLB-load-misses                                              (30.76%)
+   <not supported>      L1-dcache-prefetches                                        
+   <not supported>      L1-dcache-prefetch-misses                                   
+
+      33.362101284 seconds time elapsed
+
+      33.325757000 seconds user
+       0.000000000 seconds sys
+
+
+Time elapsed: 33.243859
+
+ Performance counter stats for './vpr data/train/input/net.in data/train/input/arch.in data/train/input/place.in data/train/output/route.out':
+
+         33,242.53 msec task-clock                #    1.000 CPUs utilized          
+               237      context-switches          #    7.129 /sec                   
+                23      cpu-migrations            #    0.692 /sec                   
+             3,403      page-faults               #  102.369 /sec                   
+   146,794,368,355      cycles                    #    4.416 GHz                      (38.44%)
+   179,810,294,339      instructions              #    1.22  insn per cycle           (46.14%)
+    27,576,316,661      branches                  #  829.549 M/sec                    (53.84%)
+     2,489,147,510      branch-misses             #    9.03% of all branches          (61.54%)
+   733,289,490,419      slots                     #   22.059 G/sec                    (69.24%)
+   157,011,194,136      topdown-retiring          #     20.0% retiring                (69.24%)
+   508,989,175,702      topdown-bad-spec          #     65.0% bad speculation         (69.24%)
+    52,080,193,086      topdown-fe-bound          #      6.6% frontend bound          (69.24%)
+    65,296,279,833      topdown-be-bound          #      8.3% backend bound           (69.24%)
+    54,318,065,878      L1-dcache-loads           #    1.634 G/sec                    (69.24%)
+     5,445,351,826      L1-dcache-load-misses     #   10.02% of all L1-dcache accesses  (69.24%)
+       191,398,603      LLC-loads                 #    5.758 M/sec                    (69.24%)
+           443,611      LLC-load-misses           #    0.23% of all LL-cache accesses  (69.25%)
+   <not supported>      L1-icache-loads                                             
+         3,913,834      L1-icache-load-misses                                         (30.76%)
+    54,330,461,604      dTLB-loads                #    1.634 G/sec                    (30.76%)
+           476,708      dTLB-load-misses          #    0.00% of all dTLB cache accesses  (30.76%)
+   <not supported>      iTLB-loads                                                  
+            17,520      iTLB-load-misses                                              (30.75%)
+   <not supported>      L1-dcache-prefetches                                        
+   <not supported>      L1-dcache-prefetch-misses                                   
+
+      33.245001061 seconds time elapsed
+
+      33.239232000 seconds user
+       0.003999000 seconds sys
+
+
+Time elapsed: 33.357530
+
+ Performance counter stats for './vpr data/train/input/net.in data/train/input/arch.in data/train/input/place.in data/train/output/route.out':
+
+         33,356.13 msec task-clock                #    1.000 CPUs utilized          
+               234      context-switches          #    7.015 /sec                   
+                29      cpu-migrations            #    0.869 /sec                   
+             3,405      page-faults               #  102.080 /sec                   
+   146,928,906,599      cycles                    #    4.405 GHz                      (38.43%)
+   179,500,004,462      instructions              #    1.22  insn per cycle           (46.13%)
+    27,554,825,315      branches                  #  826.080 M/sec                    (53.82%)
+     2,495,606,349      branch-misses             #    9.06% of all branches          (61.52%)
+   733,886,219,586      slots                     #   22.002 G/sec                    (69.22%)
+   161,089,933,125      topdown-retiring          #     20.8% retiring                (69.22%)
+   495,013,450,074      topdown-bad-spec          #     63.9% bad speculation         (69.22%)
+    51,911,721,953      topdown-fe-bound          #      6.7% frontend bound          (69.22%)
+    66,701,544,094      topdown-be-bound          #      8.6% backend bound           (69.22%)
+    54,356,695,710      L1-dcache-loads           #    1.630 G/sec                    (69.23%)
+     5,456,287,496      L1-dcache-load-misses     #   10.04% of all L1-dcache accesses  (69.24%)
+       190,211,504      LLC-loads                 #    5.702 M/sec                    (69.25%)
+           367,791      LLC-load-misses           #    0.19% of all LL-cache accesses  (69.26%)
+   <not supported>      L1-icache-loads                                             
+         4,274,876      L1-icache-load-misses                                         (30.77%)
+    54,157,646,278      dTLB-loads                #    1.624 G/sec                    (30.76%)
+           508,760      dTLB-load-misses          #    0.00% of all dTLB cache accesses  (30.75%)
+   <not supported>      iTLB-loads                                                  
+            28,949      iTLB-load-misses                                              (30.74%)
+   <not supported>      L1-dcache-prefetches                                        
+   <not supported>      L1-dcache-prefetch-misses                                   
+
+      33.358746308 seconds time elapsed
+
+      33.336708000 seconds user
+       0.019998000 seconds sys
+
+
+Time elapsed: 33.385160
+
+ Performance counter stats for './vpr data/train/input/net.in data/train/input/arch.in data/train/input/place.in data/train/output/route.out':
+
+         33,374.70 msec task-clock                #    1.000 CPUs utilized          
+               250      context-switches          #    7.491 /sec                   
+                36      cpu-migrations            #    1.079 /sec                   
+             3,404      page-faults               #  101.993 /sec                   
+   146,985,240,190      cycles                    #    4.404 GHz                      (38.44%)
+   179,656,326,895      instructions              #    1.22  insn per cycle           (46.13%)
+    27,583,834,566      branches                  #  826.489 M/sec                    (53.82%)
+     2,492,603,508      branch-misses             #    9.04% of all branches          (61.52%)
+   734,305,970,291      slots                     #   22.002 G/sec                    (69.21%)
+   157,637,310,273      topdown-retiring          #     20.1% retiring                (69.21%)
+   512,574,363,575      topdown-bad-spec          #     65.3% bad speculation         (69.21%)
+    50,429,235,577      topdown-fe-bound          #      6.4% frontend bound          (69.21%)
+    64,577,774,790      topdown-be-bound          #      8.2% backend bound           (69.21%)
+    54,335,569,388      L1-dcache-loads           #    1.628 G/sec                    (69.21%)
+     5,455,636,611      L1-dcache-load-misses     #   10.04% of all L1-dcache accesses  (69.22%)
+       192,209,978      LLC-loads                 #    5.759 M/sec                    (69.23%)
+           269,993      LLC-load-misses           #    0.14% of all LL-cache accesses  (69.25%)
+   <not supported>      L1-icache-loads                                             
+         3,998,917      L1-icache-load-misses                                         (30.79%)
+    54,224,034,278      dTLB-loads                #    1.625 G/sec                    (30.78%)
+           543,545      dTLB-load-misses          #    0.00% of all dTLB cache accesses  (30.77%)
+   <not supported>      iTLB-loads                                                  
+            50,815      iTLB-load-misses                                              (30.75%)
+   <not supported>      L1-dcache-prefetches                                        
+   <not supported>      L1-dcache-prefetch-misses                                   
+
+      33.386276973 seconds time elapsed
+
+      33.371452000 seconds user
+       0.003999000 seconds sys
+
+

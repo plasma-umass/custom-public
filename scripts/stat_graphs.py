@@ -180,10 +180,9 @@ for benchmark in benchmarks:
         tick.set_fontsize(10)
     # plt.setp(ticks, ha='right', rotation=90)
     
-
-# if GRAPH_TYPE == ELAPSED_TIME_BY_OCCUPANCY:
-#     plt.ylim(bottom=0)
 plt.ylim(bottom=0)
+# xmin, xmax, ymin, ymax = plt.axis()
+# plt.ylim(top=ymax*1.3)
 
 ax.set_title(f"{TITLES[GRAPH_TYPE]}", pad=20, fontweight='bold', font=default_font, fontsize=18)
 ax.set_xlabel("Litter occupancy (%)")

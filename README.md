@@ -113,15 +113,6 @@ inside or outside of `malloc`/`free` based on which shared object (library) the 
 ![SeparatedLLCMissesByOccupancy.mudlle](graphs/SeparatedLLCMissesByOccupancy.mudlle.png)
 ![SeparatedInstructionsByOccupancy.mudlle](graphs/SeparatedInstructionsByOccupancy.mudlle.png)
 
-### `mudlle`
-
-![TimeByOccupancy.mudlle](graphs/TimeByOccupancy.mudlle.png)
-![LLCMissRateByOccupancy.mudlle](graphs/LLCMissRateByOccupancy.mudlle.png)
-![InstructionsByOccupancy.mudlle](graphs/InstructionsByOccupancy.mudlle.png)
-![SeparatedCyclesByOccupancy.mudlle](graphs/SeparatedCyclesByOccupancy.mudlle.png)
-![SeparatedLLCMissesByOccupancy.mudlle](graphs/SeparatedLLCMissesByOccupancy.mudlle.png)
-![SeparatedInstructionsByOccupancy.mudlle](graphs/SeparatedInstructionsByOccupancy.mudlle.png)
-
 ### `175.vpr`
 
 ![TimeByOccupancy.175.vpr](graphs/TimeByOccupancy.175.vpr.png)

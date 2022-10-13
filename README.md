@@ -113,6 +113,24 @@ inside or outside of `malloc`/`free` based on which shared object (library) the 
 ![SeparatedLLCMissesByOccupancy.mudlle](graphs/SeparatedLLCMissesByOccupancy.mudlle.png)
 ![SeparatedInstructionsByOccupancy.mudlle](graphs/SeparatedInstructionsByOccupancy.mudlle.png)
 
+### `mudlle`
+
+![TimeByOccupancy.mudlle](graphs/TimeByOccupancy.mudlle.png)
+![LLCMissRateByOccupancy.mudlle](graphs/LLCMissRateByOccupancy.mudlle.png)
+![InstructionsByOccupancy.mudlle](graphs/InstructionsByOccupancy.mudlle.png)
+![SeparatedCyclesByOccupancy.mudlle](graphs/SeparatedCyclesByOccupancy.mudlle.png)
+![SeparatedLLCMissesByOccupancy.mudlle](graphs/SeparatedLLCMissesByOccupancy.mudlle.png)
+![SeparatedInstructionsByOccupancy.mudlle](graphs/SeparatedInstructionsByOccupancy.mudlle.png)
+
+### `175.vpr`
+
+![TimeByOccupancy.175.vpr](graphs/TimeByOccupancy.175.vpr.png)
+![LLCMissRateByOccupancy.175.vpr](graphs/LLCMissRateByOccupancy.175.vpr.png)
+![InstructionsByOccupancy.175.vpr](graphs/InstructionsByOccupancy.175.vpr.png)
+![SeparatedCyclesByOccupancy.175.vpr](graphs/SeparatedCyclesByOccupancy.175.vpr.png)
+![SeparatedLLCMissesByOccupancy.175.vpr](graphs/SeparatedLLCMissesByOccupancy.175.vpr.png)
+![SeparatedInstructionsByOccupancy.175.vpr](graphs/SeparatedInstructionsByOccupancy.175.vpr.png)
+
 
 [^1]: Emery D. Berger, Benjamin G. Zorn, and Kathryn S. McKinley. 2002. Reconsidering custom memory allocation. In Proceedings of the 17th ACM SIGPLAN conference on Object-oriented programming, systems, languages, and applications (OOPSLA '02). Association for Computing Machinery, New York, NY, USA, 1–12. https://doi.org/10.1145/582419.582421
 [^2]: Most Influential OOPSLA Paper Award. https://www.sigplan.org/Awards/OOPSLA

@@ -104,6 +104,10 @@ benchmarks = [
     # "mudlle",
     # "mudlle.jemalloc",
     # "mudlle.mimalloc",
+
+    # "175.vpr",
+    # "175.vpr.jemalloc",
+    # "175.vpr.mimalloc",
 ]
 
 

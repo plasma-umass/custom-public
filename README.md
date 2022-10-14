@@ -86,6 +86,17 @@ custom allocator), without littering. We also generate graphs separating events 
 inside or outside of `malloc`/`free` based on which shared object (library) the sample comes from (e.g.,
 `libjemalloc.so`).
 
+## Without Littering
+
+As a sanmity check, we run each benchmark without littering, with both the custom allocation enabled and the shim.
+
+| Benchmark    | Time elapsed (custom, seconds) | Time elapsed (shim, seconds) | Ratio |
+|--------------|--------------------------------|------------------------------|-------|
+| `197.parser` | 37.620861500000004             | 49.965297500000005           | 0.75x |
+| `boxed-sim`  | 17.139288999999998             | 17.784485500000002           | 0.96x |
+| `mudlle`     | 0.089987                       | 0.12264900000000001          | 0.73x |
+| `175.vpr`    | 33.3006945                     | 33.858302                    | 0.98x |
+
 ### `197.parser`
 
 ![TimeByOccupancy.197.parser](graphs/TimeByOccupancy.197.parser.png)

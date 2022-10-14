@@ -86,7 +86,7 @@ custom allocator), without littering. We also generate graphs separating events 
 inside or outside of `malloc`/`free` based on which shared object (library) the sample comes from (e.g.,
 `libjemalloc.so`).
 
-## Without Littering
+### Without Littering
 
 As a sanmity check, we run each benchmark without littering, with both the custom allocation enabled and the shim.
 

@@ -19,14 +19,10 @@ Time elapsed: 48.310749
      6,126,031,260      L1-dcache-load-misses     #    4.62% of all L1-dcache accesses  (69.23%)
        306,053,109      LLC-loads                 #    6.335 M/sec                    (69.23%)
          6,500,785      LLC-load-misses           #    2.12% of all LL-cache accesses  (69.23%)
-   <not supported>      L1-icache-loads                                             
         33,299,284      L1-icache-load-misses                                         (30.77%)
    132,797,717,679      dTLB-loads                #    2.749 G/sec                    (30.77%)
         24,458,516      dTLB-load-misses          #    0.02% of all dTLB cache accesses  (30.77%)
-   <not supported>      iTLB-loads                                                  
          5,568,485      iTLB-load-misses                                              (30.77%)
-   <not supported>      L1-dcache-prefetches                                        
-   <not supported>      L1-dcache-prefetch-misses                                   
 
       48.312887974 seconds time elapsed
 
@@ -55,14 +51,10 @@ Time elapsed: 139.060076
      6,121,823,042      L1-dcache-load-misses     #    4.61% of all L1-dcache accesses  (69.21%)
        311,472,365      LLC-loads                 #    2.240 M/sec                    (69.22%)
          6,023,944      LLC-load-misses           #    1.93% of all LL-cache accesses  (69.24%)
-   <not supported>      L1-icache-loads                                             
         45,745,568      L1-icache-load-misses                                         (30.80%)
    132,961,275,230      dTLB-loads                #  956.258 M/sec                    (30.79%)
         24,067,380      dTLB-load-misses          #    0.02% of all dTLB cache accesses  (30.78%)
-   <not supported>      iTLB-loads                                                  
          5,368,825      iTLB-load-misses                                              (30.76%)
-   <not supported>      L1-dcache-prefetches                                        
-   <not supported>      L1-dcache-prefetch-misses                                   
 
      139.062948245 seconds time elapsed
 
@@ -91,14 +83,10 @@ Time elapsed: 145.356698
      6,158,701,706      L1-dcache-load-misses     #    4.63% of all L1-dcache accesses  (69.22%)
        315,755,526      LLC-loads                 #    2.173 M/sec                    (69.23%)
          6,376,351      LLC-load-misses           #    2.02% of all LL-cache accesses  (69.24%)
-   <not supported>      L1-icache-loads                                             
         46,976,051      L1-icache-load-misses                                         (30.79%)
    132,966,032,525      dTLB-loads                #  914.888 M/sec                    (30.78%)
         23,605,310      dTLB-load-misses          #    0.02% of all dTLB cache accesses  (30.77%)
-   <not supported>      iTLB-loads                                                  
          6,533,436      iTLB-load-misses                                              (30.76%)
-   <not supported>      L1-dcache-prefetches                                        
-   <not supported>      L1-dcache-prefetch-misses                                   
 
      145.358778033 seconds time elapsed
 
@@ -127,14 +115,10 @@ Time elapsed: 48.593925
      6,085,239,574      L1-dcache-load-misses     #    4.57% of all L1-dcache accesses  (69.24%)
        295,271,552      LLC-loads                 #    6.077 M/sec                    (69.25%)
          5,517,952      LLC-load-misses           #    1.87% of all LL-cache accesses  (69.25%)
-   <not supported>      L1-icache-loads                                             
         32,832,566      L1-icache-load-misses                                         (30.77%)
    132,355,268,766      dTLB-loads                #    2.724 G/sec                    (30.76%)
         26,105,559      dTLB-load-misses          #    0.02% of all dTLB cache accesses  (30.75%)
-   <not supported>      iTLB-loads                                                  
          5,977,674      iTLB-load-misses                                              (30.75%)
-   <not supported>      L1-dcache-prefetches                                        
-   <not supported>      L1-dcache-prefetch-misses                                   
 
       48.595373119 seconds time elapsed
 
@@ -163,14 +147,10 @@ Time elapsed: 49.189372
      6,133,206,039      L1-dcache-load-misses     #    4.61% of all L1-dcache accesses  (69.22%)
        307,137,825      LLC-loads                 #    6.244 M/sec                    (69.23%)
          5,122,009      LLC-load-misses           #    1.67% of all LL-cache accesses  (69.23%)
-   <not supported>      L1-icache-loads                                             
         33,328,214      L1-icache-load-misses                                         (30.78%)
    132,883,522,745      dTLB-loads                #    2.702 G/sec                    (30.78%)
         24,341,039      dTLB-load-misses          #    0.02% of all dTLB cache accesses  (30.77%)
-   <not supported>      iTLB-loads                                                  
          6,029,901      iTLB-load-misses                                              (30.77%)
-   <not supported>      L1-dcache-prefetches                                        
-   <not supported>      L1-dcache-prefetch-misses                                   
 
       49.190872749 seconds time elapsed
 
@@ -199,14 +179,10 @@ Time elapsed: 50.374687
      6,120,699,267      L1-dcache-load-misses     #    4.60% of all L1-dcache accesses  (69.22%)
        300,733,355      LLC-loads                 #    5.971 M/sec                    (69.24%)
          5,349,286      LLC-load-misses           #    1.78% of all LL-cache accesses  (69.25%)
-   <not supported>      L1-icache-loads                                             
         34,524,321      L1-icache-load-misses                                         (30.78%)
    132,567,047,401      dTLB-loads                #    2.632 G/sec                    (30.78%)
         24,558,639      dTLB-load-misses          #    0.02% of all dTLB cache accesses  (30.76%)
-   <not supported>      iTLB-loads                                                  
          5,683,962      iTLB-load-misses                                              (30.75%)
-   <not supported>      L1-dcache-prefetches                                        
-   <not supported>      L1-dcache-prefetch-misses                                   
 
       50.376215230 seconds time elapsed
 
@@ -235,14 +211,10 @@ Time elapsed: 49.337713
      6,103,243,879      L1-dcache-load-misses     #    4.59% of all L1-dcache accesses  (69.22%)
        298,695,310      LLC-loads                 #    6.054 M/sec                    (69.23%)
          5,003,962      LLC-load-misses           #    1.68% of all LL-cache accesses  (69.24%)
-   <not supported>      L1-icache-loads                                             
         33,102,731      L1-icache-load-misses                                         (30.78%)
    132,814,173,828      dTLB-loads                #    2.692 G/sec                    (30.78%)
         25,455,607      dTLB-load-misses          #    0.02% of all dTLB cache accesses  (30.77%)
-   <not supported>      iTLB-loads                                                  
          6,188,987      iTLB-load-misses                                              (30.76%)
-   <not supported>      L1-dcache-prefetches                                        
-   <not supported>      L1-dcache-prefetch-misses                                   
 
       49.339263960 seconds time elapsed
 
@@ -271,14 +243,10 @@ Time elapsed: 50.995151
      6,107,425,430      L1-dcache-load-misses     #    4.60% of all L1-dcache accesses  (69.24%)
        300,422,423      LLC-loads                 #    5.967 M/sec                    (69.24%)
          5,670,695      LLC-load-misses           #    1.89% of all LL-cache accesses  (69.24%)
-   <not supported>      L1-icache-loads                                             
         33,671,301      L1-icache-load-misses                                         (30.77%)
    132,922,713,252      dTLB-loads                #    2.640 G/sec                    (30.76%)
         22,191,800      dTLB-load-misses          #    0.02% of all dTLB cache accesses  (30.76%)
-   <not supported>      iTLB-loads                                                  
          5,468,971      iTLB-load-misses                                              (30.76%)
-   <not supported>      L1-dcache-prefetches                                        
-   <not supported>      L1-dcache-prefetch-misses                                   
 
       50.352194302 seconds time elapsed
 
@@ -307,14 +275,10 @@ Time elapsed: 49.555908
      6,098,522,085      L1-dcache-load-misses     #    4.59% of all L1-dcache accesses  (69.23%)
        302,448,989      LLC-loads                 #    6.104 M/sec                    (69.23%)
          5,212,707      LLC-load-misses           #    1.72% of all LL-cache accesses  (69.23%)
-   <not supported>      L1-icache-loads                                             
         31,896,828      L1-icache-load-misses                                         (30.78%)
    133,126,245,029      dTLB-loads                #    2.687 G/sec                    (30.77%)
         25,921,241      dTLB-load-misses          #    0.02% of all dTLB cache accesses  (30.77%)
-   <not supported>      iTLB-loads                                                  
          5,611,777      iTLB-load-misses                                              (30.77%)
-   <not supported>      L1-dcache-prefetches                                        
-   <not supported>      L1-dcache-prefetch-misses                                   
 
       49.557621931 seconds time elapsed
 
@@ -343,14 +307,10 @@ Time elapsed: 50.604964
      6,121,728,573      L1-dcache-load-misses     #    4.61% of all L1-dcache accesses  (69.23%)
        307,232,118      LLC-loads                 #    6.072 M/sec                    (69.23%)
          5,470,798      LLC-load-misses           #    1.78% of all LL-cache accesses  (69.24%)
-   <not supported>      L1-icache-loads                                             
         34,564,324      L1-icache-load-misses                                         (30.77%)
    133,548,269,737      dTLB-loads                #    2.639 G/sec                    (30.77%)
         23,225,596      dTLB-load-misses          #    0.02% of all dTLB cache accesses  (30.77%)
-   <not supported>      iTLB-loads                                                  
          6,054,424      iTLB-load-misses                                              (30.76%)
-   <not supported>      L1-dcache-prefetches                                        
-   <not supported>      L1-dcache-prefetch-misses                                   
 
       50.606556512 seconds time elapsed
 

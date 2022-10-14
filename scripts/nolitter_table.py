@@ -31,6 +31,10 @@ filenames = [
     f"boxed-sim.custom.nolitter.log",
     f"mudlle.custom.nolitter.log",
     f"175.vpr.custom.nolitter.log",
+    f"197.parser.shim.nolitter.log",
+    f"boxed-sim.shim.nolitter.log",
+    f"mudlle.shim.nolitter.log",
+    f"175.vpr.shim.nolitter.log",
 ]
 
 aggregate = statistics.median
@@ -65,6 +69,7 @@ def parse_runs(filename):
     return runs
 
 for filename in filenames:
+    print(filename)
     runs = parse_runs(filename)
     total = defaultdict(lambda: [])
     for run in runs:
@@ -75,7 +80,6 @@ for filename in filenames:
     for key in total.keys():
         data[key] = aggregate(total[key])
     
-    print(filename)
     maxlen = max([len(s) for s in EVENTS])
     for key, value in data.items():
         print(f"{key:{maxlen}}: {value}")

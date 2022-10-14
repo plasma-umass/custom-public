@@ -22,7 +22,7 @@ inevitable. Littering works by first running a short pre-conditioning step befor
 freeing objects.
 
 More precisely, littering works in two phases:
- 1. **Detection:** We run the program as usual, but with a _detector_ library (`LD_PRELOAD=libdetector.so <program>`)
+ 1. **Detection**: We run the program as usual, but with a _detector_ library (`LD_PRELOAD=libdetector.so <program>`)
     that keeps track of every allocated object's size, binning sizes to obtain a rough size distribution of the objects
     used by the program, which it produces as output to be consumed in the littering phase. Detector also keeps track of
     several allocation statistics, including mean, min/max, and most importantly, `MaxLiveAllocations`.
@@ -31,7 +31,7 @@ As an example, here is the size class distribution recorded by the detector for 
 
 ![AllocationDistribution.boxed-sim.png](graphs/AllocationDistribution.boxed-sim.png)
 
-2. **Littering:** With the statistics and histogram in hand, we next run littering
+2. **Littering**: With the statistics and histogram in hand, we next run littering
     (`LD_PRELOAD=liblitterer.so <program>`). Littering allocates `LITTER_MULTIPLIER * MaxLiveAllocations` objects
     following the recorded size distribution, (optionally) shuffling the addresses of allocated objects, and frees a
     fraction of `1 - LITTER_OCCUPANCY` of them. We use the same `malloc` as the program, so the program starts with the
@@ -88,7 +88,7 @@ inside or outside of `malloc`/`free` based on which shared object (library) the 
 
 ### Without Littering
 
-As a sanmity check, we run each benchmark without littering, with both the custom allocation enabled and the shim.
+We run each benchmark without littering, with both the custom allocation enabled and the shim.
 
 | Benchmark    | Time elapsed (custom, seconds) | Time elapsed (shim, seconds) | Ratio |
 |--------------|--------------------------------|------------------------------|-------|

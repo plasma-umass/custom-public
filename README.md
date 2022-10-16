@@ -61,14 +61,22 @@ We evaluate littering on the four benchmarks from the original paper we were abl
 
 | Benchmark    | Custom allocation method | Description                                     | Input             |
 |--------------|--------------------------|-------------------------------------------------|-------------------|
-| `197.parser` | region                   | English sentence parser from SPEC2000           | `ref.in`          |
+| `197.parser` | custom                   | English sentence parser from SPEC2000           | `ref.in`          |
 | `boxed-sim`  | freelist                 | Polyhedral approximated balls bouncing in a box | `-n 31 -s 311317` |
 | `mudlle`     | region                   | MUD interpreter                                 | `time.mud`        |
-| `175.vpr`    | region                   | FPGA placement & routing                        | train placement   |
+| `175.vpr`    | region                   | FPGA placement & routing from SPEC2000          | train placement   |
 
 Notice that as we run on modern hardware, a number of these benchmarks run very quickly. When possible, we increase the
 input size so benchmarks run longer, allowing us to provide more accurate measurements. We were not able to increase
 mudlle's input, with the benchmark taking typically less than a second.
+
+### Details on custom allocation methods
+
+ -  **`197.parser`**: This benchmark uses a custom stack-like pattern: it initially allocates a large chunk of memory,
+    and then uses a bump pointer for each malloc call. If an object is freed, it is marked, and the pointer is sent back
+    to the end of the last unmarked object. In the shim, we replace `xalloc` with the usual `malloc`.
+ -  **`boxed-sim`**: This benchmark uses a free list for each type of object. In the shim, we simply disable the
+    freelists and replace the times when the program looked if an object was reusable with a standard `malloc`.
 
 ## Results
 
@@ -90,12 +98,12 @@ inside or outside of `malloc`/`free` based on which shared object (library) the 
 
 We run each benchmark without littering, with both the custom allocation enabled and the shim.
 
-| Benchmark    | Time elapsed (custom, seconds) | Time elapsed (shim, seconds) | Ratio |
-|--------------|--------------------------------|------------------------------|-------|
-| `197.parser` | 37.620861500000004             | 49.965297500000005           | 0.75x |
-| `boxed-sim`  | 17.139288999999998             | 17.784485500000002           | 0.96x |
-| `mudlle`     | 0.089987                       | 0.12264900000000001          | 0.73x |
-| `175.vpr`    | 33.3006945                     | 33.858302                    | 0.98x |
+| Benchmark    | custom  | glibc malloc    | jemalloc        |
+|--------------|---------|-----------------|-----------------|
+| `197.parser` | 37.62s  | 49.97s  (1.33x) | 43.94s  (1.17x) |
+| `boxed-sim`  | 17.14s  | 17.78s  (1.04x) | 17.19s  (1.00x) |
+| `mudlle`     | 0.0900s | 0.1226s (1.36x) | 0.1022s (1.14x) |
+| `175.vpr`    | 33.30s  | 33.86s  (1.02x) | 33.27s  (1.00x) |
 
 ### `197.parser`
 

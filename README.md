@@ -98,12 +98,12 @@ inside or outside of `malloc`/`free` based on which shared object (library) the 
 
 We run each benchmark without littering, with both the custom allocation enabled and the shim.
 
-| Benchmark    | custom  | glibc malloc    | jemalloc        |
-|--------------|---------|-----------------|-----------------|
-| `197.parser` | 37.62s  | 49.97s  (1.33x) | 43.94s  (1.17x) |
-| `boxed-sim`  | 17.14s  | 17.78s  (1.04x) | 17.19s  (1.00x) |
-| `mudlle`     | 0.0900s | 0.1226s (1.36x) | 0.1022s (1.14x) |
-| `175.vpr`    | 33.30s  | 33.86s  (1.02x) | 33.27s  (1.00x) |
+| Benchmark    | custom  | glibc malloc    | jemalloc        | mimalloc       |
+|--------------|---------|-----------------|-----------------|----------------|
+| `197.parser` | 37.62s  | 49.97s  (1.33x) | 43.94s  (1.17x) | 40.41s (1.07x) |
+| `boxed-sim`  | 17.14s  | 17.78s  (1.04x) | 17.19s  (1.00x) | 17.95s (1.05x) |
+| `mudlle`     | 0.0900s | 0.1226s (1.36x) | 0.1022s (1.14x) | 0.0960 (1.07x) |
+| `175.vpr`    | 33.30s  | 33.86s  (1.02x) | 33.27s  (1.00x) | 35.23s (1.06x) |
 
 ### `197.parser`
 

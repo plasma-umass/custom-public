@@ -75,8 +75,20 @@ mudlle's input, with the benchmark taking typically less than a second.
  -  **`197.parser`**: This benchmark uses a custom stack-like pattern: it initially allocates a large chunk of memory,
     and then uses a bump pointer for each malloc call. If an object is freed, it is marked, and the pointer is sent back
     to the end of the last unmarked object. In the shim, we replace `xalloc` with the usual `malloc`.
+    
  -  **`boxed-sim`**: This benchmark uses a free list for each type of object. In the shim, we simply disable the
     freelists and replace the times when the program looked if an object was reusable with a standard `malloc`.
+
+ -  **`mudlle`**: A typical arena-allocator. Citing `calloc-heap.c`.
+     >  Based on the concept of blocks: you allocate memory from a block, and can free the whole block at one go.
+     >  Individual deallocations are not possible.
+
+    We shim this system by simply keeping allocated objects on a linked list, and calling `free` recursively when a
+    block is freed.
+
+ -  **`175.vpr`**: Mix between a standard arena-allocator and a "stack-like" allocator similar to the one used in
+    `197.parser`. "Chunks" are allocated, with allocations going in the current chunk (or a new one is created). Objects
+    can be freed all at once by saving and passing the chunk pointer before starting bulk allocations.
 
 ## Results
 

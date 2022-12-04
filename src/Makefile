@@ -1,5 +1,5 @@
 CXX := clang++
-CXXFLAGS := --std=c++17 -fPIC -O3 -DNDEBUG -fvisibility=hidden -Wall -Wextra -Werror
+CXXFLAGS := --std=c++17 -fPIC -O3 -fvisibility=hidden -Wall -Wextra -Werror
 LDFLAGS := -fPIC -shared
 
 BUILD_DIRECTORY := build

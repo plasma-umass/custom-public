@@ -22,6 +22,9 @@ using json = nlohmann::json;
 
 #include "constants.hpp"
 
+using Clock = std::chrono::steady_clock;
+Clock::time_point Start;
+
 class Initialization {
   public:
     Initialization() {
@@ -159,15 +162,21 @@ class Initialization {
 #ifdef OUTPUT_PERF_DATA
         PFMWrapper::start();
 #endif
+
+        Start = Clock::now();
     }
 
-#ifdef OUTPUT_PERF_DATA
     ~Initialization() {
+        auto End = Clock::now();
+        std::cerr << "Time elapsed: " << std::chrono::duration_cast<std::chrono::milliseconds>(End - Start).count() / 1000.0 << std::endl;
+        std::cerr << "==================================================================================" << std::endl;
+        
+#ifdef OUTPUT_PERF_DATA
         PFMWrapper::stop();
         PFMWrapper::print();
         PFMWrapper::cleanup();
-    }
 #endif
+    }
 };
 
 static Initialization _;

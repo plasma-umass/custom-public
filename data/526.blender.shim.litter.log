@@ -1,0 +1,2090 @@
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 1670351467
+occupancy  : 0
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 128037)...
+Successfully attached to process 128037.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 324.205
+==================================================================================
+Performance counter stats for process id '128037':
+
+               698      context-switches                                            
+                12      cpu-migrations                                              
+             53629      page-faults                                                 
+      963781881913      cycles:u                                                      (25.00%)
+        6402106220      cycles:k                                                      (16.67%)
+      671453433627      instructions:u            #    0.70  insn per cycle           (25.01%)
+         698078038      instructions:k            #    0.11  insn per cycle           (33.34%)
+      119433866810      branches                                                      (33.34%)
+        8816859362      branch-misses             #    7.38% of all branches          (33.34%)
+      400245884049      L1-dcache-loads                                               (33.34%)
+        9913213849      L1-dcache-load-misses     #    2.48% of all L1-dcache hits    (33.34%)
+       10401089197      LLC-loads                                                     (33.33%)
+         141068061      LLC-load-misses           #    1.36% of all LL-cache hits     (33.33%)
+      400423308946      dTLB-loads                                                    (33.33%)
+         112518186      dTLB-load-misses          #    0.03% of all dTLB cache hits   (25.00%)
+
+     329.181647542 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 71457554
+occupancy  : 0.1
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 128128)...
+Successfully attached to process 128128.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 334.143
+==================================================================================
+Performance counter stats for process id '128128':
+
+               875      context-switches                                            
+                 2      cpu-migrations                                              
+             79535      page-faults                                                 
+      993202639593      cycles:u                                                      (25.00%)
+        6949351120      cycles:k                                                      (16.67%)
+      671169647024      instructions:u            #    0.68  insn per cycle           (25.00%)
+         779006261      instructions:k            #    0.11  insn per cycle           (33.34%)
+      119418898212      branches                                                      (33.33%)
+        8815031143      branch-misses             #    7.38% of all branches          (33.34%)
+      401637975903      L1-dcache-loads                                               (33.33%)
+        9764946529      L1-dcache-load-misses     #    2.43% of all L1-dcache hits    (33.34%)
+       13572607156      LLC-loads                                                     (33.33%)
+         160392669      LLC-load-misses           #    1.18% of all LL-cache hits     (33.33%)
+      401701488844      dTLB-loads                                                    (33.33%)
+         242459571      dTLB-load-misses          #    0.06% of all dTLB cache hits   (25.00%)
+
+     339.126405674 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 339675885
+occupancy  : 0.2
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 128208)...
+Successfully attached to process 128208.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 335.427
+==================================================================================
+Performance counter stats for process id '128208':
+
+               990      context-switches                                            
+                 6      cpu-migrations                                              
+             88307      page-faults                                                 
+      996835277887      cycles:u                                                      (25.00%)
+        7070198270      cycles:k                                                      (16.67%)
+      671104577627      instructions:u            #    0.67  insn per cycle           (25.00%)
+         873204962      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119448769223      branches                                                      (33.34%)
+        8822281220      branch-misses             #    7.39% of all branches          (33.34%)
+      402507153259      L1-dcache-loads                                               (33.33%)
+        9450293307      L1-dcache-load-misses     #    2.35% of all L1-dcache hits    (33.33%)
+        9981791045      LLC-loads                                                     (33.33%)
+         172805684      LLC-load-misses           #    1.73% of all LL-cache hits     (33.33%)
+      402623007768      dTLB-loads                                                    (33.33%)
+         327369645      dTLB-load-misses          #    0.08% of all dTLB cache hits   (25.00%)
+
+     340.415191292 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 1943208010
+occupancy  : 0.3
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 128280)...
+Successfully attached to process 128280.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 338.471
+==================================================================================
+Performance counter stats for process id '128280':
+
+              1034      context-switches                                            
+                 2      cpu-migrations                                              
+             92379      page-faults                                                 
+     1005651413164      cycles:u                                                      (25.00%)
+        6887746345      cycles:k                                                      (16.67%)
+      671146851835      instructions:u            #    0.67  insn per cycle           (25.01%)
+         794895089      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119393127696      branches                                                      (33.33%)
+        8843354890      branch-misses             #    7.41% of all branches          (33.33%)
+      403290900236      L1-dcache-loads                                               (33.33%)
+        9256155969      L1-dcache-load-misses     #    2.30% of all L1-dcache hits    (33.33%)
+        9770628229      LLC-loads                                                     (33.33%)
+         178599528      LLC-load-misses           #    1.83% of all LL-cache hits     (33.33%)
+      403507444311      dTLB-loads                                                    (33.33%)
+         369214705      dTLB-load-misses          #    0.09% of all dTLB cache hits   (25.00%)
+
+     343.459340540 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 1568532187
+occupancy  : 0.4
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 128419)...
+Successfully attached to process 128419.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 340.362
+==================================================================================
+Performance counter stats for process id '128419':
+
+              1022      context-switches                                            
+                 2      cpu-migrations                                              
+             95565      page-faults                                                 
+     1011291508940      cycles:u                                                      (25.00%)
+        7172762419      cycles:k                                                      (16.67%)
+      671404459657      instructions:u            #    0.66  insn per cycle           (25.00%)
+         892240155      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119474722909      branches                                                      (33.33%)
+        8831159046      branch-misses             #    7.39% of all branches          (33.33%)
+      404364010733      L1-dcache-loads                                               (33.33%)
+        8844859922      L1-dcache-load-misses     #    2.19% of all L1-dcache hits    (33.33%)
+        9331216514      LLC-loads                                                     (33.33%)
+         182886904      LLC-load-misses           #    1.96% of all LL-cache hits     (33.33%)
+      404518056728      dTLB-loads                                                    (33.33%)
+         418742662      dTLB-load-misses          #    0.10% of all dTLB cache hits   (25.00%)
+
+     345.327128491 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 17930105
+occupancy  : 0.5
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 128491)...
+Successfully attached to process 128491.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 343.002
+==================================================================================
+Performance counter stats for process id '128491':
+
+               915      context-switches                                            
+                 4      cpu-migrations                                              
+             95884      page-faults                                                 
+     1019014344964      cycles:u                                                      (25.00%)
+        7353237504      cycles:k                                                      (16.67%)
+      671065890197      instructions:u            #    0.66  insn per cycle           (25.00%)
+         926813815      instructions:k            #    0.13  insn per cycle           (33.34%)
+      119411762160      branches                                                      (33.33%)
+        8827483363      branch-misses             #    7.39% of all branches          (33.33%)
+      404164965822      L1-dcache-loads                                               (33.33%)
+        9209899085      L1-dcache-load-misses     #    2.28% of all L1-dcache hits    (33.33%)
+        9700813810      LLC-loads                                                     (33.33%)
+         182824362      LLC-load-misses           #    1.88% of all LL-cache hits     (33.33%)
+      404388094132      dTLB-loads                                                    (33.33%)
+         431446898      dTLB-load-misses          #    0.11% of all dTLB cache hits   (25.00%)
+
+     347.984010179 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 2087980897
+occupancy  : 0.6
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 128566)...
+Successfully attached to process 128566.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 340.754
+==================================================================================
+Performance counter stats for process id '128566':
+
+              1027      context-switches                                            
+                 3      cpu-migrations                                              
+             63135      page-faults                                                 
+     1012505929528      cycles:u                                                      (25.00%)
+        7115744905      cycles:k                                                      (16.67%)
+      670919105758      instructions:u            #    0.66  insn per cycle           (25.00%)
+         838998157      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119403195132      branches                                                      (33.34%)
+        8812569674      branch-misses             #    7.38% of all branches          (33.34%)
+      403560985973      L1-dcache-loads                                               (33.33%)
+        9238703757      L1-dcache-load-misses     #    2.29% of all L1-dcache hits    (33.33%)
+        9758244227      LLC-loads                                                     (33.33%)
+         174434622      LLC-load-misses           #    1.79% of all LL-cache hits     (33.33%)
+      403743818010      dTLB-loads                                                    (33.33%)
+         374249790      dTLB-load-misses          #    0.09% of all dTLB cache hits   (25.00%)
+
+     345.739286789 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 4268023806
+occupancy  : 0.7
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 128631)...
+Successfully attached to process 128631.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 338.4
+==================================================================================
+Performance counter stats for process id '128631':
+
+               941      context-switches                                            
+                 6      cpu-migrations                                              
+             64275      page-faults                                                 
+     1005599035219      cycles:u                                                      (25.00%)
+        7021699592      cycles:k                                                      (16.67%)
+      671039482024      instructions:u            #    0.67  insn per cycle           (25.00%)
+         864216672      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119436966381      branches                                                      (33.34%)
+        8821207075      branch-misses             #    7.39% of all branches          (33.34%)
+      403124804691      L1-dcache-loads                                               (33.33%)
+        9791025521      L1-dcache-load-misses     #    2.43% of all L1-dcache hits    (33.33%)
+       10299412153      LLC-loads                                                     (33.33%)
+         163440934      LLC-load-misses           #    1.59% of all LL-cache hits     (33.33%)
+      403286624527      dTLB-loads                                                    (33.33%)
+         300610677      dTLB-load-misses          #    0.07% of all dTLB cache hits   (25.00%)
+
+     343.379114963 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 4180234435
+occupancy  : 0.8
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 128714)...
+Successfully attached to process 128714.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 332.953
+==================================================================================
+Performance counter stats for process id '128714':
+
+               824      context-switches                                            
+                 4      cpu-migrations                                              
+             66584      page-faults                                                 
+      989705913698      cycles:u                                                      (25.00%)
+        6449197044      cycles:k                                                      (16.67%)
+      671133591687      instructions:u            #    0.68  insn per cycle           (25.00%)
+         706090759      instructions:k            #    0.11  insn per cycle           (33.33%)
+      119444279121      branches                                                      (33.33%)
+        8819620442      branch-misses             #    7.38% of all branches          (33.33%)
+      401806994056      L1-dcache-loads                                               (33.33%)
+       10002151037      L1-dcache-load-misses     #    2.49% of all L1-dcache hits    (33.33%)
+       10498032295      LLC-loads                                                     (33.33%)
+         151526839      LLC-load-misses           #    1.44% of all LL-cache hits     (33.33%)
+      401926458807      dTLB-loads                                                    (33.33%)
+         214166306      dTLB-load-misses          #    0.05% of all dTLB cache hits   (25.00%)
+
+     337.924578267 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 4108134875
+occupancy  : 0.9
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 128839)...
+Successfully attached to process 128839.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 326.26
+==================================================================================
+Performance counter stats for process id '128839':
+
+               777      context-switches                                            
+                 4      cpu-migrations                                              
+             69090      page-faults                                                 
+      969746327587      cycles:u                                                      (25.00%)
+        6570168964      cycles:k                                                      (16.67%)
+      671023621804      instructions:u            #    0.69  insn per cycle           (25.01%)
+         830434788      instructions:k            #    0.13  insn per cycle           (33.34%)
+      119360630081      branches                                                      (33.34%)
+        8827429206      branch-misses             #    7.40% of all branches          (33.34%)
+      399563610719      L1-dcache-loads                                               (33.34%)
+        9915297509      L1-dcache-load-misses     #    2.48% of all L1-dcache hits    (33.33%)
+       13728152981      LLC-loads                                                     (33.33%)
+         138914215      LLC-load-misses           #    1.01% of all LL-cache hits     (33.33%)
+      399817382951      dTLB-loads                                                    (33.33%)
+         107375157      dTLB-load-misses          #    0.03% of all dTLB cache hits   (25.00%)
+
+     331.230868359 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 3298718384
+occupancy  : 1
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 128936)...
+Successfully attached to process 128936.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 324.288
+==================================================================================
+Performance counter stats for process id '128936':
+
+               848      context-switches                                            
+                 1      cpu-migrations                                              
+             58190      page-faults                                                 
+      963736246977      cycles:u                                                      (25.00%)
+        6726433086      cycles:k                                                      (16.67%)
+      671303373625      instructions:u            #    0.70  insn per cycle           (25.01%)
+         909884612      instructions:k            #    0.14  insn per cycle           (33.34%)
+      119407526538      branches                                                      (33.34%)
+        8819276932      branch-misses             #    7.39% of all branches          (33.34%)
+      400170494412      L1-dcache-loads                                               (33.33%)
+        9812911286      L1-dcache-load-misses     #    2.45% of all L1-dcache hits    (33.33%)
+       10313468183      LLC-loads                                                     (33.33%)
+         137413261      LLC-load-misses           #    1.33% of all LL-cache hits     (33.33%)
+      400286402760      dTLB-loads                                                    (33.33%)
+         104798087      dTLB-load-misses          #    0.03% of all dTLB cache hits   (25.00%)
+
+     329.261491840 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 1826756392
+occupancy  : 0
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 129021)...
+Successfully attached to process 129021.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 325.203
+==================================================================================
+Performance counter stats for process id '129021':
+
+               905      context-switches                                            
+                 4      cpu-migrations                                              
+             52348      page-faults                                                 
+      966686324611      cycles:u                                                      (25.00%)
+        6721589449      cycles:k                                                      (16.67%)
+      670919914786      instructions:u            #    0.69  insn per cycle           (25.00%)
+         764587029      instructions:k            #    0.11  insn per cycle           (33.34%)
+      119387695865      branches                                                      (33.34%)
+        8834592447      branch-misses             #    7.40% of all branches          (33.34%)
+      399810381738      L1-dcache-loads                                               (33.33%)
+       10216651715      L1-dcache-load-misses     #    2.56% of all L1-dcache hits    (33.33%)
+       10732872921      LLC-loads                                                     (33.33%)
+         143544588      LLC-load-misses           #    1.34% of all LL-cache hits     (33.33%)
+      399968761505      dTLB-loads                                                    (33.33%)
+         111134596      dTLB-load-misses          #    0.03% of all dTLB cache hits   (25.00%)
+
+     330.169985594 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 3817162626
+occupancy  : 0.1
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 129099)...
+Successfully attached to process 129099.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 332.115
+==================================================================================
+Performance counter stats for process id '129099':
+
+               986      context-switches                                            
+                 5      cpu-migrations                                              
+             79082      page-faults                                                 
+      986994274321      cycles:u                                                      (25.00%)
+        6879370394      cycles:k                                                      (16.67%)
+      671122334999      instructions:u            #    0.68  insn per cycle           (25.01%)
+         841528605      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119416766083      branches                                                      (33.34%)
+        8806427921      branch-misses             #    7.37% of all branches          (33.34%)
+      401242863029      L1-dcache-loads                                               (33.33%)
+       10080324194      L1-dcache-load-misses     #    2.51% of all L1-dcache hits    (33.33%)
+       10626917043      LLC-loads                                                     (33.33%)
+         158343814      LLC-load-misses           #    1.49% of all LL-cache hits     (33.33%)
+      401451862693      dTLB-loads                                                    (33.33%)
+         239623965      dTLB-load-misses          #    0.06% of all dTLB cache hits   (25.00%)
+
+     337.090050768 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 2657275343
+occupancy  : 0.2
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 129179)...
+Successfully attached to process 129179.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 336.816
+==================================================================================
+Performance counter stats for process id '129179':
+
+              1206      context-switches                                            
+                 3      cpu-migrations                                              
+             88017      page-faults                                                 
+     1000753780211      cycles:u                                                      (25.00%)
+        7076730806      cycles:k                                                      (16.67%)
+      671467083668      instructions:u            #    0.67  insn per cycle           (25.01%)
+         909907759      instructions:k            #    0.13  insn per cycle           (33.34%)
+      119440062286      branches                                                      (33.34%)
+        8837674543      branch-misses             #    7.40% of all branches          (33.33%)
+      402307776894      L1-dcache-loads                                               (33.33%)
+        9516129879      L1-dcache-load-misses     #    2.37% of all L1-dcache hits    (33.33%)
+       10046956259      LLC-loads                                                     (33.33%)
+         175049035      LLC-load-misses           #    1.74% of all LL-cache hits     (33.33%)
+      402609904174      dTLB-loads                                                    (33.33%)
+         321631247      dTLB-load-misses          #    0.08% of all dTLB cache hits   (25.00%)
+
+     341.794909158 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 2864973587
+occupancy  : 0.3
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 129333)...
+Successfully attached to process 129333.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 336.845
+==================================================================================
+Performance counter stats for process id '129333':
+
+              1097      context-switches                                            
+                 6      cpu-migrations                                              
+             92474      page-faults                                                 
+     1000596148405      cycles:u                                                      (25.00%)
+        7123504886      cycles:k                                                      (16.67%)
+      671418321216      instructions:u            #    0.67  insn per cycle           (25.00%)
+         794819348      instructions:k            #    0.11  insn per cycle           (33.34%)
+      119437318706      branches                                                      (33.33%)
+        8819949546      branch-misses             #    7.38% of all branches          (33.33%)
+      402611889170      L1-dcache-loads                                               (33.33%)
+        9253026840      L1-dcache-load-misses     #    2.30% of all L1-dcache hits    (33.33%)
+        9782954811      LLC-loads                                                     (33.33%)
+         179585299      LLC-load-misses           #    1.84% of all LL-cache hits     (33.33%)
+      402845733045      dTLB-loads                                                    (33.33%)
+         363207228      dTLB-load-misses          #    0.09% of all dTLB cache hits   (25.00%)
+
+     341.821667645 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 2911891587
+occupancy  : 0.4
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 129458)...
+Successfully attached to process 129458.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 341.683
+==================================================================================
+Performance counter stats for process id '129458':
+
+              1134      context-switches                                            
+                 2      cpu-migrations                                              
+             95301      page-faults                                                 
+     1015321733608      cycles:u                                                      (25.00%)
+        7201902048      cycles:k                                                      (16.67%)
+      670986656892      instructions:u            #    0.66  insn per cycle           (25.00%)
+         873055423      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119457283636      branches                                                      (33.33%)
+        8804728203      branch-misses             #    7.37% of all branches          (33.33%)
+      403638924916      L1-dcache-loads                                               (33.33%)
+        9132355374      L1-dcache-load-misses     #    2.26% of all L1-dcache hits    (33.33%)
+        9652446450      LLC-loads                                                     (33.33%)
+         182040258      LLC-load-misses           #    1.89% of all LL-cache hits     (33.33%)
+      403897369236      dTLB-loads                                                    (33.33%)
+         421854599      dTLB-load-misses          #    0.10% of all dTLB cache hits   (25.00%)
+
+     346.665038641 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 1760607500
+occupancy  : 0.5
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 129635)...
+Successfully attached to process 129635.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 343.517
+==================================================================================
+Performance counter stats for process id '129635':
+
+              1162      context-switches                                            
+                 1      cpu-migrations                                              
+             96216      page-faults                                                 
+     1020527771733      cycles:u                                                      (25.00%)
+        7084397093      cycles:k                                                      (16.67%)
+      671086490376      instructions:u            #    0.66  insn per cycle           (25.01%)
+         815700724      instructions:k            #    0.12  insn per cycle           (33.33%)
+      119434105939      branches                                                      (33.33%)
+        8831666911      branch-misses             #    7.39% of all branches          (33.33%)
+      404482048522      L1-dcache-loads                                               (33.33%)
+        8950547071      L1-dcache-load-misses     #    2.21% of all L1-dcache hits    (33.33%)
+        9473172665      LLC-loads                                                     (33.33%)
+         185383929      LLC-load-misses           #    1.96% of all LL-cache hits     (33.33%)
+      404691523978      dTLB-loads                                                    (33.33%)
+         432291899      dTLB-load-misses          #    0.11% of all dTLB cache hits   (25.00%)
+
+     348.491163575 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 1935231178
+occupancy  : 0.6
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 129738)...
+Successfully attached to process 129738.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 340.659
+==================================================================================
+Performance counter stats for process id '129738':
+
+              1171      context-switches                                            
+                 1      cpu-migrations                                              
+             63293      page-faults                                                 
+     1012441926233      cycles:u                                                      (25.00%)
+        6841539849      cycles:k                                                      (16.67%)
+      671110612717      instructions:u            #    0.66  insn per cycle           (25.00%)
+         808339507      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119407932272      branches                                                      (33.34%)
+        8824861000      branch-misses             #    7.39% of all branches          (33.34%)
+      403769591778      L1-dcache-loads                                               (33.33%)
+        8923692328      L1-dcache-load-misses     #    2.21% of all L1-dcache hits    (33.33%)
+        9416496890      LLC-loads                                                     (33.33%)
+         172641170      LLC-load-misses           #    1.83% of all LL-cache hits     (33.33%)
+      404099267456      dTLB-loads                                                    (33.33%)
+         379686316      dTLB-load-misses          #    0.09% of all dTLB cache hits   (25.00%)
+
+     345.647867855 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 3716370636
+occupancy  : 0.7
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 129817)...
+Successfully attached to process 129817.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 344.353
+==================================================================================
+Performance counter stats for process id '129817':
+
+              1077      context-switches                                            
+                 1      cpu-migrations                                              
+             63880      page-faults                                                 
+     1023201039933      cycles:u                                                      (25.00%)
+        7216023887      cycles:k                                                      (16.67%)
+      671148416412      instructions:u            #    0.66  insn per cycle           (25.00%)
+         877039630      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119403915834      branches                                                      (33.34%)
+        8823515595      branch-misses             #    7.39% of all branches          (33.34%)
+      403135615071      L1-dcache-loads                                               (33.33%)
+       10383933366      L1-dcache-load-misses     #    2.58% of all L1-dcache hits    (33.33%)
+       14187698772      LLC-loads                                                     (33.33%)
+         165654148      LLC-load-misses           #    1.17% of all LL-cache hits     (33.33%)
+      403340560423      dTLB-loads                                                    (33.33%)
+         305489371      dTLB-load-misses          #    0.08% of all dTLB cache hits   (25.00%)
+
+     349.325175432 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 547736800
+occupancy  : 0.8
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 129964)...
+Successfully attached to process 129964.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 333.89
+==================================================================================
+Performance counter stats for process id '129964':
+
+              1014      context-switches                                            
+                 1      cpu-migrations                                              
+             66653      page-faults                                                 
+      992289435019      cycles:u                                                      (25.00%)
+        6766144889      cycles:k                                                      (16.67%)
+      671405657983      instructions:u            #    0.68  insn per cycle           (25.01%)
+         831783039      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119496611799      branches                                                      (33.34%)
+        8826919188      branch-misses             #    7.39% of all branches          (33.34%)
+      401964181518      L1-dcache-loads                                               (33.33%)
+        9448138946      L1-dcache-load-misses     #    2.35% of all L1-dcache hits    (33.33%)
+       13244578223      LLC-loads                                                     (33.33%)
+         152762232      LLC-load-misses           #    1.15% of all LL-cache hits     (33.33%)
+      402049270747      dTLB-loads                                                    (33.33%)
+         213351237      dTLB-load-misses          #    0.05% of all dTLB cache hits   (25.00%)
+
+     338.877932093 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 2190890557
+occupancy  : 0.9
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 130050)...
+Successfully attached to process 130050.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 327.311
+==================================================================================
+Performance counter stats for process id '130050':
+
+               879      context-switches                                            
+                 3      cpu-migrations                                              
+             69136      page-faults                                                 
+      971342825187      cycles:u                                                      (25.00%)
+        6763159109      cycles:k                                                      (16.67%)
+      671203283557      instructions:u            #    0.69  insn per cycle           (25.01%)
+         923071687      instructions:k            #    0.14  insn per cycle           (33.34%)
+      119431785233      branches                                                      (33.34%)
+        8830715486      branch-misses             #    7.39% of all branches          (33.34%)
+      400081174139      L1-dcache-loads                                               (33.33%)
+        9896155977      L1-dcache-load-misses     #    2.47% of all L1-dcache hits    (33.33%)
+       13694331578      LLC-loads                                                     (33.33%)
+         138671486      LLC-load-misses           #    1.01% of all LL-cache hits     (33.33%)
+      400255006630      dTLB-loads                                                    (33.33%)
+         107703751      dTLB-load-misses          #    0.03% of all dTLB cache hits   (25.00%)
+
+     332.302223295 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 3587521962
+occupancy  : 1
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 130144)...
+Successfully attached to process 130144.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 324.713
+==================================================================================
+Performance counter stats for process id '130144':
+
+               843      context-switches                                            
+                 1      cpu-migrations                                              
+             58181      page-faults                                                 
+      964887707871      cycles:u                                                      (25.00%)
+        6736118190      cycles:k                                                      (16.67%)
+      670955797028      instructions:u            #    0.70  insn per cycle           (25.00%)
+         883281193      instructions:k            #    0.13  insn per cycle           (33.34%)
+      119344203569      branches                                                      (33.34%)
+        8839934311      branch-misses             #    7.41% of all branches          (33.33%)
+      400136119785      L1-dcache-loads                                               (33.33%)
+       10301797017      L1-dcache-load-misses     #    2.57% of all L1-dcache hits    (33.33%)
+       10801925167      LLC-loads                                                     (33.33%)
+         137619271      LLC-load-misses           #    1.27% of all LL-cache hits     (33.33%)
+      400242056741      dTLB-loads                                                    (33.33%)
+         102655047      dTLB-load-misses          #    0.03% of all dTLB cache hits   (25.00%)
+
+     329.696262609 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 731125013
+occupancy  : 0
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 130205)...
+Successfully attached to process 130205.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 324.914
+==================================================================================
+Performance counter stats for process id '130205':
+
+               778      context-switches                                            
+                 4      cpu-migrations                                              
+             43540      page-faults                                                 
+      964227627301      cycles:u                                                      (25.00%)
+        7036554528      cycles:k                                                      (16.67%)
+      670849060423      instructions:u            #    0.70  insn per cycle           (25.00%)
+         877402974      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119454453953      branches                                                      (33.34%)
+        8832904654      branch-misses             #    7.39% of all branches          (33.34%)
+      399955961620      L1-dcache-loads                                               (33.33%)
+        9983301899      L1-dcache-load-misses     #    2.50% of all L1-dcache hits    (33.33%)
+       10492035160      LLC-loads                                                     (33.33%)
+         142715776      LLC-load-misses           #    1.36% of all LL-cache hits     (33.33%)
+      399975739050      dTLB-loads                                                    (33.33%)
+         111952446      dTLB-load-misses          #    0.03% of all dTLB cache hits   (25.00%)
+
+     329.891834868 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 3392040600
+occupancy  : 0.1
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 130260)...
+Successfully attached to process 130260.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 333.394
+==================================================================================
+Performance counter stats for process id '130260':
+
+               941      context-switches                                            
+                 1      cpu-migrations                                              
+             79111      page-faults                                                 
+      990829425759      cycles:u                                                      (25.00%)
+        6907262182      cycles:k                                                      (16.67%)
+      671435622022      instructions:u            #    0.68  insn per cycle           (25.01%)
+         807416684      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119466349953      branches                                                      (33.33%)
+        8826507301      branch-misses             #    7.39% of all branches          (33.33%)
+      402260342848      L1-dcache-loads                                               (33.33%)
+        9877289869      L1-dcache-load-misses     #    2.46% of all L1-dcache hits    (33.33%)
+       10376577288      LLC-loads                                                     (33.33%)
+         159805030      LLC-load-misses           #    1.54% of all LL-cache hits     (33.33%)
+      402384759673      dTLB-loads                                                    (33.33%)
+         241694468      dTLB-load-misses          #    0.06% of all dTLB cache hits   (25.00%)
+
+     338.364220658 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 3887439429
+occupancy  : 0.2
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 130332)...
+Successfully attached to process 130332.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 335.572
+==================================================================================
+Performance counter stats for process id '130332':
+
+               953      context-switches                                            
+                 1      cpu-migrations                                              
+             88658      page-faults                                                 
+      997242886772      cycles:u                                                      (25.00%)
+        6922070981      cycles:k                                                      (16.67%)
+      671075140941      instructions:u            #    0.67  insn per cycle           (25.00%)
+         821271020      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119423819020      branches                                                      (33.34%)
+        8826425121      branch-misses             #    7.39% of all branches          (33.34%)
+      402724044096      L1-dcache-loads                                               (33.33%)
+        9405903082      L1-dcache-load-misses     #    2.34% of all L1-dcache hits    (33.33%)
+        9904855057      LLC-loads                                                     (33.33%)
+         173725606      LLC-load-misses           #    1.75% of all LL-cache hits     (33.33%)
+      402972841948      dTLB-loads                                                    (33.33%)
+         324537302      dTLB-load-misses          #    0.08% of all dTLB cache hits   (25.00%)
+
+     340.551629269 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 2005844147
+occupancy  : 0.3
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 130554)...
+Successfully attached to process 130554.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 337.4
+==================================================================================
+Performance counter stats for process id '130554':
+
+               978      context-switches                                            
+                 1      cpu-migrations                                              
+             92670      page-faults                                                 
+     1002772015562      cycles:u                                                      (25.00%)
+        6932351584      cycles:k                                                      (16.67%)
+      671118086275      instructions:u            #    0.67  insn per cycle           (25.00%)
+         786235392      instructions:k            #    0.11  insn per cycle           (33.34%)
+      119415828821      branches                                                      (33.34%)
+        8808103559      branch-misses             #    7.38% of all branches          (33.34%)
+      402920057763      L1-dcache-loads                                               (33.34%)
+        9160009599      L1-dcache-load-misses     #    2.27% of all L1-dcache hits    (33.33%)
+        9664690568      LLC-loads                                                     (33.33%)
+         177904095      LLC-load-misses           #    1.84% of all LL-cache hits     (33.33%)
+      403234432639      dTLB-loads                                                    (33.33%)
+         366286529      dTLB-load-misses          #    0.09% of all dTLB cache hits   (25.00%)
+
+     342.383456807 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 3603248640
+occupancy  : 0.4
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 130622)...
+Successfully attached to process 130622.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 341.271
+==================================================================================
+Performance counter stats for process id '130622':
+
+              1005      context-switches                                            
+                 1      cpu-migrations                                              
+             95621      page-faults                                                 
+     1014157936562      cycles:u                                                      (25.00%)
+        7231585850      cycles:k                                                      (16.67%)
+      670982660363      instructions:u            #    0.66  insn per cycle           (25.00%)
+         930169222      instructions:k            #    0.13  insn per cycle           (33.34%)
+      119419956625      branches                                                      (33.34%)
+        8820443826      branch-misses             #    7.39% of all branches          (33.33%)
+      404204425740      L1-dcache-loads                                               (33.33%)
+        9217540490      L1-dcache-load-misses     #    2.28% of all L1-dcache hits    (33.33%)
+        9723685841      LLC-loads                                                     (33.33%)
+         180830409      LLC-load-misses           #    1.86% of all LL-cache hits     (33.33%)
+      404562360009      dTLB-loads                                                    (33.33%)
+         423135588      dTLB-load-misses          #    0.10% of all dTLB cache hits   (25.00%)
+
+     346.245935848 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 2235149696
+occupancy  : 0.5
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 130676)...
+Successfully attached to process 130676.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 342.899
+==================================================================================
+Performance counter stats for process id '130676':
+
+              1021      context-switches                                            
+                 1      cpu-migrations                                              
+             96415      page-faults                                                 
+     1018833017659      cycles:u                                                      (25.00%)
+        7111832465      cycles:k                                                      (16.67%)
+      671122515303      instructions:u            #    0.66  insn per cycle           (25.00%)
+         841442896      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119440531978      branches                                                      (33.33%)
+        8830013668      branch-misses             #    7.39% of all branches          (33.33%)
+      404178531554      L1-dcache-loads                                               (33.33%)
+        9227703955      L1-dcache-load-misses     #    2.28% of all L1-dcache hits    (33.33%)
+        9729594240      LLC-loads                                                     (33.33%)
+         183493000      LLC-load-misses           #    1.89% of all LL-cache hits     (33.33%)
+      404444359277      dTLB-loads                                                    (33.33%)
+         433540178      dTLB-load-misses          #    0.11% of all dTLB cache hits   (25.00%)
+
+     347.893138583 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 1850259880
+occupancy  : 0.6
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 130762)...
+Successfully attached to process 130762.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 341.065
+==================================================================================
+Performance counter stats for process id '130762':
+
+              1095      context-switches                                            
+                 1      cpu-migrations                                              
+             94393      page-faults                                                 
+     1013272527493      cycles:u                                                      (25.00%)
+        7075705354      cycles:k                                                      (16.67%)
+      671303295874      instructions:u            #    0.66  insn per cycle           (25.00%)
+         810634077      instructions:k            #    0.11  insn per cycle           (33.34%)
+      119421778674      branches                                                      (33.33%)
+        8827760176      branch-misses             #    7.39% of all branches          (33.33%)
+      403458077265      L1-dcache-loads                                               (33.33%)
+        9255870701      L1-dcache-load-misses     #    2.29% of all L1-dcache hits    (33.33%)
+        9752069275      LLC-loads                                                     (33.33%)
+         174430833      LLC-load-misses           #    1.79% of all LL-cache hits     (33.33%)
+      403677656070      dTLB-loads                                                    (33.33%)
+         379102801      dTLB-load-misses          #    0.09% of all dTLB cache hits   (25.00%)
+
+     346.047516272 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 460179863
+occupancy  : 0.7
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 130895)...
+Successfully attached to process 130895.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 340.297
+==================================================================================
+Performance counter stats for process id '130895':
+
+              1071      context-switches                                            
+                 1      cpu-migrations                                              
+             63870      page-faults                                                 
+     1011237850494      cycles:u                                                      (25.00%)
+        6753191600      cycles:k                                                      (16.67%)
+      671568312181      instructions:u            #    0.66  insn per cycle           (25.00%)
+         717488660      instructions:k            #    0.11  insn per cycle           (33.34%)
+      119474804124      branches                                                      (33.33%)
+        8795209111      branch-misses             #    7.36% of all branches          (33.33%)
+      402513509961      L1-dcache-loads                                               (33.33%)
+        9342868165      L1-dcache-load-misses     #    2.32% of all L1-dcache hits    (33.33%)
+       13150392944      LLC-loads                                                     (33.33%)
+         164308019      LLC-load-misses           #    1.25% of all LL-cache hits     (33.33%)
+      402613251489      dTLB-loads                                                    (33.33%)
+         301632757      dTLB-load-misses          #    0.07% of all dTLB cache hits   (25.00%)
+
+     345.284607472 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 4141800192
+occupancy  : 0.8
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 131028)...
+Successfully attached to process 131028.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 332.986
+==================================================================================
+Performance counter stats for process id '131028':
+
+              1162      context-switches                                            
+                 1      cpu-migrations                                              
+             66762      page-faults                                                 
+      989239765450      cycles:u                                                      (25.00%)
+        6854074308      cycles:k                                                      (16.67%)
+      671317086912      instructions:u            #    0.68  insn per cycle           (25.00%)
+         783791449      instructions:k            #    0.11  insn per cycle           (33.34%)
+      119447005228      branches                                                      (33.33%)
+        8819795637      branch-misses             #    7.38% of all branches          (33.34%)
+      401452398419      L1-dcache-loads                                               (33.33%)
+        9724420227      L1-dcache-load-misses     #    2.42% of all L1-dcache hits    (33.33%)
+       10272555960      LLC-loads                                                     (33.33%)
+         152476136      LLC-load-misses           #    1.48% of all LL-cache hits     (33.33%)
+      401445696890      dTLB-loads                                                    (33.33%)
+         213226052      dTLB-load-misses          #    0.05% of all dTLB cache hits   (25.00%)
+
+     337.961751485 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 3049065109
+occupancy  : 0.9
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 131146)...
+Successfully attached to process 131146.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 324.156
+==================================================================================
+Performance counter stats for process id '131146':
+
+               898      context-switches                                            
+                 1      cpu-migrations                                              
+             69148      page-faults                                                 
+      963432212278      cycles:u                                                      (25.00%)
+        6754920406      cycles:k                                                      (16.67%)
+      670761739249      instructions:u            #    0.70  insn per cycle           (25.00%)
+         785325011      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119373535536      branches                                                      (33.34%)
+        8817147761      branch-misses             #    7.39% of all branches          (33.34%)
+      399429065533      L1-dcache-loads                                               (33.34%)
+       10057986028      L1-dcache-load-misses     #    2.52% of all L1-dcache hits    (33.33%)
+       10578332300      LLC-loads                                                     (33.33%)
+         140803124      LLC-load-misses           #    1.33% of all LL-cache hits     (33.33%)
+      399679546614      dTLB-loads                                                    (33.33%)
+         108888159      dTLB-load-misses          #    0.03% of all dTLB cache hits   (25.00%)
+
+     329.118895206 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 491879422
+occupancy  : 1
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 131230)...
+Successfully attached to process 131230.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 324.006
+==================================================================================
+Performance counter stats for process id '131230':
+
+               725      context-switches                                            
+                 4      cpu-migrations                                              
+             58183      page-faults                                                 
+      963030704119      cycles:u                                                      (25.00%)
+        6555000245      cycles:k                                                      (16.67%)
+      670621401936      instructions:u            #    0.70  insn per cycle           (25.00%)
+         813161944      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119322828738      branches                                                      (33.34%)
+        8825724664      branch-misses             #    7.40% of all branches          (33.34%)
+      399710885855      L1-dcache-loads                                               (33.34%)
+        9735918578      L1-dcache-load-misses     #    2.44% of all L1-dcache hits    (33.33%)
+       10244644096      LLC-loads                                                     (33.33%)
+         136363202      LLC-load-misses           #    1.33% of all LL-cache hits     (33.33%)
+      399893490748      dTLB-loads                                                    (33.33%)
+         102111107      dTLB-load-misses          #    0.03% of all dTLB cache hits   (25.00%)
+
+     328.986296108 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 937067247
+occupancy  : 0
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 131302)...
+Successfully attached to process 131302.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 327.899
+==================================================================================
+Performance counter stats for process id '131302':
+
+              1021      context-switches                                            
+                 1      cpu-migrations                                              
+             51461      page-faults                                                 
+      974459102971      cycles:u                                                      (25.00%)
+        6593828670      cycles:k                                                      (16.67%)
+      670991881254      instructions:u            #    0.69  insn per cycle           (25.00%)
+         715367027      instructions:k            #    0.11  insn per cycle           (33.34%)
+      119384674070      branches                                                      (33.34%)
+        8826763256      branch-misses             #    7.39% of all branches          (33.34%)
+      399706344426      L1-dcache-loads                                               (33.34%)
+       10344941205      L1-dcache-load-misses     #    2.59% of all L1-dcache hits    (33.33%)
+       14116377438      LLC-loads                                                     (33.33%)
+         142402762      LLC-load-misses           #    1.01% of all LL-cache hits     (33.33%)
+      399802970617      dTLB-loads                                                    (33.33%)
+         109499954      dTLB-load-misses          #    0.03% of all dTLB cache hits   (25.00%)
+
+     332.883898405 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 3378623970
+occupancy  : 0.1
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 131371)...
+Successfully attached to process 131371.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 331.421
+==================================================================================
+Performance counter stats for process id '131371':
+
+              1043      context-switches                                            
+                 3      cpu-migrations                                              
+             78319      page-faults                                                 
+      984839016394      cycles:u                                                      (25.00%)
+        6822480238      cycles:k                                                      (16.67%)
+      671100682278      instructions:u            #    0.68  insn per cycle           (25.01%)
+         788719970      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119456646040      branches                                                      (33.33%)
+        8821610623      branch-misses             #    7.38% of all branches          (33.33%)
+      401624613675      L1-dcache-loads                                               (33.33%)
+        9804209301      L1-dcache-load-misses     #    2.44% of all L1-dcache hits    (33.33%)
+       10321544808      LLC-loads                                                     (33.33%)
+         161481243      LLC-load-misses           #    1.56% of all LL-cache hits     (33.33%)
+      401773831438      dTLB-loads                                                    (33.33%)
+         239021334      dTLB-load-misses          #    0.06% of all dTLB cache hits   (25.00%)
+
+     336.399696106 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 2518827501
+occupancy  : 0.2
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 131505)...
+Successfully attached to process 131505.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 335.696
+==================================================================================
+Performance counter stats for process id '131505':
+
+              1078      context-switches                                            
+                 1      cpu-migrations                                              
+             87476      page-faults                                                 
+      997399401481      cycles:u                                                      (25.01%)
+        7144379314      cycles:k                                                      (16.67%)
+      670692827189      instructions:u            #    0.67  insn per cycle           (25.00%)
+         847235268      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119420815285      branches                                                      (33.33%)
+        8821535901      branch-misses             #    7.39% of all branches          (33.33%)
+      402863656705      L1-dcache-loads                                               (33.33%)
+        9514097124      L1-dcache-load-misses     #    2.36% of all L1-dcache hits    (33.33%)
+       10033705478      LLC-loads                                                     (33.33%)
+         175005829      LLC-load-misses           #    1.74% of all LL-cache hits     (33.33%)
+      402918559337      dTLB-loads                                                    (33.33%)
+         323266151      dTLB-load-misses          #    0.08% of all dTLB cache hits   (25.00%)
+
+     340.676707462 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 2053169008
+occupancy  : 0.3
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 131605)...
+Successfully attached to process 131605.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 339.272
+==================================================================================
+Performance counter stats for process id '131605':
+
+               909      context-switches                                            
+                 2      cpu-migrations                                              
+             91370      page-faults                                                 
+     1007981087056      cycles:u                                                      (25.00%)
+        7160285572      cycles:k                                                      (16.67%)
+      671390581932      instructions:u            #    0.67  insn per cycle           (25.01%)
+         828653598      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119409736212      branches                                                      (33.34%)
+        8829196328      branch-misses             #    7.39% of all branches          (33.34%)
+      403156209215      L1-dcache-loads                                               (33.34%)
+        9524653404      L1-dcache-load-misses     #    2.36% of all L1-dcache hits    (33.33%)
+       10062896161      LLC-loads                                                     (33.33%)
+         180726869      LLC-load-misses           #    1.80% of all LL-cache hits     (33.33%)
+      403417578938      dTLB-loads                                                    (33.33%)
+         369209704      dTLB-load-misses          #    0.09% of all dTLB cache hits   (25.00%)
+
+     344.248101676 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 889996659
+occupancy  : 0.4
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 131669)...
+Successfully attached to process 131669.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 341.127
+==================================================================================
+Performance counter stats for process id '131669':
+
+              1075      context-switches                                            
+                 1      cpu-migrations                                              
+             94673      page-faults                                                 
+     1013531166532      cycles:u                                                      (25.00%)
+        7235181464      cycles:k                                                      (16.67%)
+      671380737604      instructions:u            #    0.66  insn per cycle           (25.00%)
+         890780547      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119469712991      branches                                                      (33.33%)
+        8811198922      branch-misses             #    7.38% of all branches          (33.33%)
+      403846009304      L1-dcache-loads                                               (33.33%)
+        9127070555      L1-dcache-load-misses     #    2.26% of all L1-dcache hits    (33.33%)
+        9652873841      LLC-loads                                                     (33.33%)
+         181975032      LLC-load-misses           #    1.89% of all LL-cache hits     (33.33%)
+      404117804248      dTLB-loads                                                    (33.33%)
+         421928007      dTLB-load-misses          #    0.10% of all dTLB cache hits   (25.00%)
+
+     346.108486825 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 3160267333
+occupancy  : 0.5
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 131743)...
+Successfully attached to process 131743.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 342.524
+==================================================================================
+Performance counter stats for process id '131743':
+
+              1067      context-switches                                            
+                 1      cpu-migrations                                              
+             64057      page-faults                                                 
+     1017834350416      cycles:u                                                      (25.00%)
+        7156169620      cycles:k                                                      (16.67%)
+      671078926771      instructions:u            #    0.66  insn per cycle           (25.00%)
+         853728132      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119432639667      branches                                                      (33.34%)
+        8793480124      branch-misses             #    7.36% of all branches          (33.33%)
+      403356605673      L1-dcache-loads                                               (33.33%)
+        9342468729      L1-dcache-load-misses     #    2.32% of all L1-dcache hits    (33.33%)
+        9916120422      LLC-loads                                                     (33.33%)
+         183010936      LLC-load-misses           #    1.85% of all LL-cache hits     (33.33%)
+      403536565758      dTLB-loads                                                    (33.33%)
+         437985417      dTLB-load-misses          #    0.11% of all dTLB cache hits   (25.00%)
+
+     347.494963258 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 1935778164
+occupancy  : 0.6
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 131816)...
+Successfully attached to process 131816.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 341.033
+==================================================================================
+Performance counter stats for process id '131816':
+
+              1062      context-switches                                            
+                 1      cpu-migrations                                              
+             94110      page-faults                                                 
+     1013160351474      cycles:u                                                      (25.00%)
+        7367872718      cycles:k                                                      (16.67%)
+      671134435274      instructions:u            #    0.66  insn per cycle           (25.00%)
+         906313710      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119449904631      branches                                                      (33.34%)
+        8815921158      branch-misses             #    7.38% of all branches          (33.33%)
+      403452179134      L1-dcache-loads                                               (33.33%)
+        9490932946      L1-dcache-load-misses     #    2.35% of all L1-dcache hits    (33.33%)
+       10016256645      LLC-loads                                                     (33.33%)
+         173002311      LLC-load-misses           #    1.73% of all LL-cache hits     (33.33%)
+      403675364537      dTLB-loads                                                    (33.33%)
+         375420809      dTLB-load-misses          #    0.09% of all dTLB cache hits   (25.00%)
+
+     346.010370697 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 898622600
+occupancy  : 0.7
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 131892)...
+Successfully attached to process 131892.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 339.685
+==================================================================================
+Performance counter stats for process id '131892':
+
+               988      context-switches                                            
+                 3      cpu-migrations                                              
+             64035      page-faults                                                 
+     1009260446181      cycles:u                                                      (25.00%)
+        7111695180      cycles:k                                                      (16.67%)
+      671301777400      instructions:u            #    0.67  insn per cycle           (25.00%)
+         848815575      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119429964677      branches                                                      (33.33%)
+        8825523117      branch-misses             #    7.39% of all branches          (33.33%)
+      403165026627      L1-dcache-loads                                               (33.33%)
+        9965068620      L1-dcache-load-misses     #    2.47% of all L1-dcache hits    (33.33%)
+       10489883924      LLC-loads                                                     (33.33%)
+         165578309      LLC-load-misses           #    1.58% of all LL-cache hits     (33.33%)
+      403224851218      dTLB-loads                                                    (33.33%)
+         299225559      dTLB-load-misses          #    0.07% of all dTLB cache hits   (25.00%)
+
+     344.655924796 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 3779092256
+occupancy  : 0.8
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 132030)...
+Successfully attached to process 132030.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 332.585
+==================================================================================
+Performance counter stats for process id '132030':
+
+               861      context-switches                                            
+                 3      cpu-migrations                                              
+             66651      page-faults                                                 
+      988551238322      cycles:u                                                      (25.00%)
+        6893023139      cycles:k                                                      (16.67%)
+      670923451023      instructions:u            #    0.68  insn per cycle           (25.00%)
+         853424320      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119459793956      branches                                                      (33.33%)
+        8825554727      branch-misses             #    7.39% of all branches          (33.33%)
+      401827212256      L1-dcache-loads                                               (33.33%)
+        9661636194      L1-dcache-load-misses     #    2.40% of all L1-dcache hits    (33.33%)
+       10194799328      LLC-loads                                                     (33.33%)
+         152333829      LLC-load-misses           #    1.49% of all LL-cache hits     (33.33%)
+      401850991555      dTLB-loads                                                    (33.33%)
+         213545411      dTLB-load-misses          #    0.05% of all dTLB cache hits   (25.00%)
+
+     337.561429352 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 2304957718
+occupancy  : 0.9
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 132118)...
+Successfully attached to process 132118.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 323.862
+==================================================================================
+Performance counter stats for process id '132118':
+
+               566      context-switches                                            
+                 2      cpu-migrations                                              
+             68474      page-faults                                                 
+      962687335871      cycles:u                                                      (25.00%)
+        6558315640      cycles:k                                                      (16.67%)
+      670925653955      instructions:u            #    0.70  insn per cycle           (25.01%)
+         798163955      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119337508876      branches                                                      (33.34%)
+        8811652755      branch-misses             #    7.38% of all branches          (33.34%)
+      399497077960      L1-dcache-loads                                               (33.34%)
+       10126049906      L1-dcache-load-misses     #    2.53% of all L1-dcache hits    (33.33%)
+       10643076984      LLC-loads                                                     (33.33%)
+         139319965      LLC-load-misses           #    1.31% of all LL-cache hits     (33.33%)
+      399785615212      dTLB-loads                                                    (33.33%)
+         107693597      dTLB-load-misses          #    0.03% of all dTLB cache hits   (25.00%)
+
+     328.831066572 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 3332371722
+occupancy  : 1
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 132179)...
+Successfully attached to process 132179.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 324.95
+==================================================================================
+Performance counter stats for process id '132179':
+
+               640      context-switches                                            
+                 2      cpu-migrations                                              
+             58188      page-faults                                                 
+      966126867862      cycles:u                                                      (25.00%)
+        6655101412      cycles:k                                                      (16.67%)
+      670658680141      instructions:u            #    0.69  insn per cycle           (25.00%)
+         931630472      instructions:k            #    0.14  insn per cycle           (33.34%)
+      119327824821      branches                                                      (33.34%)
+        8828722703      branch-misses             #    7.40% of all branches          (33.33%)
+      400234990150      L1-dcache-loads                                               (33.33%)
+       10214582972      L1-dcache-load-misses     #    2.55% of all L1-dcache hits    (33.33%)
+       10742710452      LLC-loads                                                     (33.33%)
+         137553426      LLC-load-misses           #    1.28% of all LL-cache hits     (33.33%)
+      400506733621      dTLB-loads                                                    (33.33%)
+         102167868      dTLB-load-misses          #    0.03% of all dTLB cache hits   (25.00%)
+
+     329.931616242 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 1309591011
+occupancy  : 0
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 132228)...
+Successfully attached to process 132228.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 322.837
+==================================================================================
+Performance counter stats for process id '132228':
+
+               804      context-switches                                            
+                 3      cpu-migrations                                              
+             52934      page-faults                                                 
+      959545070634      cycles:u                                                      (25.00%)
+        6523868088      cycles:k                                                      (16.67%)
+      671174701957      instructions:u            #    0.70  insn per cycle           (25.00%)
+         765975060      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119427219815      branches                                                      (33.33%)
+        8820543655      branch-misses             #    7.39% of all branches          (33.33%)
+      399424516107      L1-dcache-loads                                               (33.33%)
+        9998387205      L1-dcache-load-misses     #    2.50% of all L1-dcache hits    (33.33%)
+       10497365378      LLC-loads                                                     (33.33%)
+         142344296      LLC-load-misses           #    1.36% of all LL-cache hits     (33.33%)
+      399548525164      dTLB-loads                                                    (33.33%)
+         110205756      dTLB-load-misses          #    0.03% of all dTLB cache hits   (25.00%)
+
+     327.815695594 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 527150168
+occupancy  : 0.1
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 132296)...
+Successfully attached to process 132296.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 330.261
+==================================================================================
+Performance counter stats for process id '132296':
+
+               857      context-switches                                            
+                 4      cpu-migrations                                              
+             78221      page-faults                                                 
+      981609555136      cycles:u                                                      (25.00%)
+        6842088501      cycles:k                                                      (16.67%)
+      670913497544      instructions:u            #    0.68  insn per cycle           (25.00%)
+         777267208      instructions:k            #    0.11  insn per cycle           (33.34%)
+      119417444552      branches                                                      (33.33%)
+        8821064755      branch-misses             #    7.39% of all branches          (33.33%)
+      400888687545      L1-dcache-loads                                               (33.33%)
+        9367717819      L1-dcache-load-misses     #    2.34% of all L1-dcache hits    (33.33%)
+        9884775955      LLC-loads                                                     (33.33%)
+         162111658      LLC-load-misses           #    1.64% of all LL-cache hits     (33.33%)
+      400949658878      dTLB-loads                                                    (33.33%)
+         242197096      dTLB-load-misses          #    0.06% of all dTLB cache hits   (25.00%)
+
+     335.225913842 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 197938329
+occupancy  : 0.2
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 132409)...
+Successfully attached to process 132409.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 338.229
+==================================================================================
+Performance counter stats for process id '132409':
+
+              1081      context-switches                                            
+                 4      cpu-migrations                                              
+             87756      page-faults                                                 
+     1005080978157      cycles:u                                                      (25.00%)
+        7087126024      cycles:k                                                      (16.67%)
+      671212014919      instructions:u            #    0.67  insn per cycle           (25.01%)
+         794895866      instructions:k            #    0.11  insn per cycle           (33.34%)
+      119426247545      branches                                                      (33.33%)
+        8821363001      branch-misses             #    7.39% of all branches          (33.33%)
+      402209078581      L1-dcache-loads                                               (33.33%)
+        9596591908      L1-dcache-load-misses     #    2.39% of all L1-dcache hits    (33.33%)
+       13407950311      LLC-loads                                                     (33.33%)
+         174301455      LLC-load-misses           #    1.30% of all LL-cache hits     (33.33%)
+      402401063999      dTLB-loads                                                    (33.33%)
+         323068251      dTLB-load-misses          #    0.08% of all dTLB cache hits   (25.00%)
+
+     343.203185851 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 729693661
+occupancy  : 0.3
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 132501)...
+Successfully attached to process 132501.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 337.17
+==================================================================================
+Performance counter stats for process id '132501':
+
+               974      context-switches                                            
+                 2      cpu-migrations                                              
+             92035      page-faults                                                 
+     1002055489101      cycles:u                                                      (25.00%)
+        6840057645      cycles:k                                                      (16.67%)
+      671112442511      instructions:u            #    0.67  insn per cycle           (25.00%)
+         796563375      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119476725899      branches                                                      (33.33%)
+        8819563203      branch-misses             #    7.38% of all branches          (33.33%)
+      403354511517      L1-dcache-loads                                               (33.33%)
+        9259192699      L1-dcache-load-misses     #    2.30% of all L1-dcache hits    (33.33%)
+        9776618302      LLC-loads                                                     (33.33%)
+         178443211      LLC-load-misses           #    1.83% of all LL-cache hits     (33.33%)
+      403655342005      dTLB-loads                                                    (33.33%)
+         362813154      dTLB-load-misses          #    0.09% of all dTLB cache hits   (25.00%)
+
+     342.143884356 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 1868736528
+occupancy  : 0.4
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 132578)...
+Successfully attached to process 132578.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 341.833
+==================================================================================
+Performance counter stats for process id '132578':
+
+               967      context-switches                                            
+                 2      cpu-migrations                                              
+             95108      page-faults                                                 
+     1015730522194      cycles:u                                                      (25.00%)
+        7123762535      cycles:k                                                      (16.67%)
+      671167735936      instructions:u            #    0.66  insn per cycle           (25.00%)
+         838992239      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119460930582      branches                                                      (33.33%)
+        8818224757      branch-misses             #    7.38% of all branches          (33.33%)
+      404201352146      L1-dcache-loads                                               (33.33%)
+        9324485965      L1-dcache-load-misses     #    2.31% of all L1-dcache hits    (33.33%)
+        9831450202      LLC-loads                                                     (33.33%)
+         185118345      LLC-load-misses           #    1.88% of all LL-cache hits     (33.33%)
+      404533987759      dTLB-loads                                                    (33.33%)
+         422582229      dTLB-load-misses          #    0.10% of all dTLB cache hits   (25.00%)
+
+     346.806874436 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 1361054311
+occupancy  : 0.5
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 132655)...
+Successfully attached to process 132655.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 341.623
+==================================================================================
+Performance counter stats for process id '132655':
+
+              1045      context-switches                                            
+                 1      cpu-migrations                                              
+             95768      page-faults                                                 
+     1015103432729      cycles:u                                                      (25.00%)
+        7299963278      cycles:k                                                      (16.67%)
+      670725799629      instructions:u            #    0.66  insn per cycle           (25.00%)
+         885160362      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119418747811      branches                                                      (33.34%)
+        8822478860      branch-misses             #    7.39% of all branches          (33.34%)
+      404170289076      L1-dcache-loads                                               (33.33%)
+        8953402638      L1-dcache-load-misses     #    2.22% of all L1-dcache hits    (33.33%)
+        9473402046      LLC-loads                                                     (33.33%)
+         181517436      LLC-load-misses           #    1.92% of all LL-cache hits     (33.33%)
+      404378564453      dTLB-loads                                                    (33.33%)
+         436703453      dTLB-load-misses          #    0.11% of all dTLB cache hits   (25.00%)
+
+     346.604656921 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 2896108504
+occupancy  : 0.6
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 132732)...
+Successfully attached to process 132732.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 342.893
+==================================================================================
+Performance counter stats for process id '132732':
+
+              1002      context-switches                                            
+                 2      cpu-migrations                                              
+             63318      page-faults                                                 
+     1018565847511      cycles:u                                                      (25.00%)
+        6959684898      cycles:k                                                      (16.67%)
+      671243994997      instructions:u            #    0.66  insn per cycle           (25.00%)
+         755900367      instructions:k            #    0.11  insn per cycle           (33.34%)
+      119443162294      branches                                                      (33.33%)
+        8831954252      branch-misses             #    7.39% of all branches          (33.33%)
+      404462068083      L1-dcache-loads                                               (33.33%)
+        9528823462      L1-dcache-load-misses     #    2.36% of all L1-dcache hits    (33.33%)
+       10031307177      LLC-loads                                                     (33.33%)
+         175188386      LLC-load-misses           #    1.75% of all LL-cache hits     (33.33%)
+      404659982786      dTLB-loads                                                    (33.33%)
+         377756494      dTLB-load-misses          #    0.09% of all dTLB cache hits   (25.00%)
+
+     347.876396686 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 1623086153
+occupancy  : 0.7
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 132868)...
+Successfully attached to process 132868.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 338.728
+==================================================================================
+Performance counter stats for process id '132868':
+
+               980      context-switches                                            
+                 6      cpu-migrations                                              
+             95047      page-faults                                                 
+     1006438202787      cycles:u                                                      (25.00%)
+        7115003023      cycles:k                                                      (16.67%)
+      671065203141      instructions:u            #    0.67  insn per cycle           (25.00%)
+         881264347      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119475044043      branches                                                      (33.33%)
+        8824475917      branch-misses             #    7.39% of all branches          (33.33%)
+      403331237157      L1-dcache-loads                                               (33.33%)
+        9470187644      L1-dcache-load-misses     #    2.35% of all L1-dcache hits    (33.33%)
+        9986803923      LLC-loads                                                     (33.33%)
+         164619472      LLC-load-misses           #    1.65% of all LL-cache hits     (33.33%)
+      403437805173      dTLB-loads                                                    (33.33%)
+         304693076      dTLB-load-misses          #    0.08% of all dTLB cache hits   (25.00%)
+
+     343.716799929 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 4087647679
+occupancy  : 0.8
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 132955)...
+Successfully attached to process 132955.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 333.596
+==================================================================================
+Performance counter stats for process id '132955':
+
+               996      context-switches                                            
+                 1      cpu-migrations                                              
+             66621      page-faults                                                 
+      991295652014      cycles:u                                                      (25.00%)
+        6956236374      cycles:k                                                      (16.67%)
+      671534795451      instructions:u            #    0.68  insn per cycle           (25.01%)
+         900055475      instructions:k            #    0.13  insn per cycle           (33.34%)
+      119446011042      branches                                                      (33.34%)
+        8825054271      branch-misses             #    7.39% of all branches          (33.33%)
+      401939376616      L1-dcache-loads                                               (33.33%)
+       10166579060      L1-dcache-load-misses     #    2.53% of all L1-dcache hits    (33.33%)
+       10689732641      LLC-loads                                                     (33.33%)
+         150810380      LLC-load-misses           #    1.41% of all LL-cache hits     (33.33%)
+      401966207698      dTLB-loads                                                    (33.33%)
+         214611556      dTLB-load-misses          #    0.05% of all dTLB cache hits   (25.00%)
+
+     338.576646775 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 1962363070
+occupancy  : 0.9
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 133052)...
+Successfully attached to process 133052.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 324.398
+==================================================================================
+Performance counter stats for process id '133052':
+
+               843      context-switches                                            
+                 1      cpu-migrations                                              
+             69012      page-faults                                                 
+      964248490751      cycles:u                                                      (25.00%)
+        6698272048      cycles:k                                                      (16.67%)
+      670927541659      instructions:u            #    0.70  insn per cycle           (25.00%)
+         778104440      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119370627505      branches                                                      (33.33%)
+        8817259752      branch-misses             #    7.39% of all branches          (33.33%)
+      399436984540      L1-dcache-loads                                               (33.33%)
+       10414362769      L1-dcache-load-misses     #    2.61% of all L1-dcache hits    (33.33%)
+       10901268015      LLC-loads                                                     (33.33%)
+         138135007      LLC-load-misses           #    1.27% of all LL-cache hits     (33.33%)
+      399877737332      dTLB-loads                                                    (33.33%)
+         106464258      dTLB-load-misses          #    0.03% of all dTLB cache hits   (25.00%)
+
+     329.372341422 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /lib/x86_64-linux-gnu/libc.so.6
+seed       : 4058936256
+occupancy  : 1
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 133127)...
+Successfully attached to process 133127.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 324.386
+==================================================================================
+Performance counter stats for process id '133127':
+
+               926      context-switches                                            
+                 1      cpu-migrations                                              
+             58194      page-faults                                                 
+      964249557492      cycles:u                                                      (25.00%)
+        6496065101      cycles:k                                                      (16.67%)
+      670976985451      instructions:u            #    0.70  insn per cycle           (25.00%)
+         764332931      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119354875959      branches                                                      (33.34%)
+        8822482645      branch-misses             #    7.39% of all branches          (33.34%)
+      399854492804      L1-dcache-loads                                               (33.34%)
+        9943457956      L1-dcache-load-misses     #    2.49% of all L1-dcache hits    (33.33%)
+       10466282702      LLC-loads                                                     (33.33%)
+         137729621      LLC-load-misses           #    1.32% of all LL-cache hits     (33.33%)
+      399907762774      dTLB-loads                                                    (33.33%)
+         104304619      dTLB-load-misses          #    0.03% of all dTLB cache hits   (25.00%)
+
+     329.375169911 seconds time elapsed
+==================================================================================
+

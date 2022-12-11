@@ -1,0 +1,2090 @@
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 2178162362
+occupancy  : 0
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 151474)...
+Successfully attached to process 151474.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 317.375
+==================================================================================
+Performance counter stats for process id '151474':
+
+               733      context-switches                                            
+                 1      cpu-migrations                                              
+             44143      page-faults                                                 
+      943616599295      cycles:u                                                      (25.00%)
+        6307907445      cycles:k                                                      (16.67%)
+      670549838771      instructions:u            #    0.71  insn per cycle           (25.00%)
+         752282119      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119263543034      branches                                                      (33.34%)
+        8830598070      branch-misses             #    7.40% of all branches          (33.34%)
+      397756468152      L1-dcache-loads                                               (33.33%)
+        9486999215      L1-dcache-load-misses     #    2.39% of all L1-dcache hits    (33.33%)
+        9986538080      LLC-loads                                                     (33.33%)
+         117538939      LLC-load-misses           #    1.18% of all LL-cache hits     (33.33%)
+      397959064340      dTLB-loads                                                    (33.33%)
+          67751714      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     322.348452252 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 1774320553
+occupancy  : 0.1
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 151619)...
+Successfully attached to process 151619.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 320.14
+==================================================================================
+Performance counter stats for process id '151619':
+
+               770      context-switches                                            
+                 1      cpu-migrations                                              
+             59542      page-faults                                                 
+      951813601720      cycles:u                                                      (25.00%)
+        6682924009      cycles:k                                                      (16.67%)
+      670229821399      instructions:u            #    0.70  insn per cycle           (25.01%)
+         841557189      instructions:k            #    0.13  insn per cycle           (33.34%)
+      119241713423      branches                                                      (33.33%)
+        8855510294      branch-misses             #    7.43% of all branches          (33.33%)
+      399174541469      L1-dcache-loads                                               (33.33%)
+        9247787867      L1-dcache-load-misses     #    2.32% of all L1-dcache hits    (33.33%)
+        9684794315      LLC-loads                                                     (33.33%)
+         119193691      LLC-load-misses           #    1.23% of all LL-cache hits     (33.33%)
+      399328919149      dTLB-loads                                                    (33.33%)
+          79328354      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     325.125131391 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 1204422736
+occupancy  : 0.2
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 151666)...
+Successfully attached to process 151666.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 319.063
+==================================================================================
+Performance counter stats for process id '151666':
+
+               746      context-switches                                            
+                 1      cpu-migrations                                              
+             60548      page-faults                                                 
+      948658443918      cycles:u                                                      (25.00%)
+        6476811651      cycles:k                                                      (16.67%)
+      670215099340      instructions:u            #    0.71  insn per cycle           (25.00%)
+         789210455      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119272014861      branches                                                      (33.34%)
+        8824414462      branch-misses             #    7.40% of all branches          (33.34%)
+      398600400855      L1-dcache-loads                                               (33.34%)
+        8946959221      L1-dcache-load-misses     #    2.24% of all L1-dcache hits    (33.34%)
+        9411215209      LLC-loads                                                     (33.33%)
+         120623920      LLC-load-misses           #    1.28% of all LL-cache hits     (33.33%)
+      398678775026      dTLB-loads                                                    (33.33%)
+          80416038      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     324.050897114 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 1512975774
+occupancy  : 0.3
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 151711)...
+Successfully attached to process 151711.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 320.201
+==================================================================================
+Performance counter stats for process id '151711':
+
+               733      context-switches                                            
+                 1      cpu-migrations                                              
+             60257      page-faults                                                 
+      951948282291      cycles:u                                                      (25.00%)
+        6462762499      cycles:k                                                      (16.67%)
+      670796683822      instructions:u            #    0.70  insn per cycle           (25.00%)
+         832681292      instructions:k            #    0.13  insn per cycle           (33.34%)
+      119332708436      branches                                                      (33.34%)
+        8829082033      branch-misses             #    7.40% of all branches          (33.33%)
+      399009632315      L1-dcache-loads                                               (33.33%)
+        9386727133      L1-dcache-load-misses     #    2.35% of all L1-dcache hits    (33.33%)
+        9847536557      LLC-loads                                                     (33.33%)
+         121108795      LLC-load-misses           #    1.23% of all LL-cache hits     (33.33%)
+      399103171880      dTLB-loads                                                    (33.33%)
+          90036775      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     325.181063034 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 2552825894
+occupancy  : 0.4
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 151762)...
+Successfully attached to process 151762.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 320.308
+==================================================================================
+Performance counter stats for process id '151762':
+
+               774      context-switches                                            
+                 1      cpu-migrations                                              
+             61660      page-faults                                                 
+      952159478745      cycles:u                                                      (25.00%)
+        6820238937      cycles:k                                                      (16.67%)
+      670269658696      instructions:u            #    0.70  insn per cycle           (25.00%)
+         873521907      instructions:k            #    0.13  insn per cycle           (33.34%)
+      119290816350      branches                                                      (33.34%)
+        8834914455      branch-misses             #    7.41% of all branches          (33.34%)
+      399273450784      L1-dcache-loads                                               (33.34%)
+        9418127769      L1-dcache-load-misses     #    2.36% of all L1-dcache hits    (33.33%)
+        9890314362      LLC-loads                                                     (33.33%)
+         119060366      LLC-load-misses           #    1.20% of all LL-cache hits     (33.33%)
+      399458958364      dTLB-loads                                                    (33.33%)
+          87124943      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     325.278744213 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 2334879346
+occupancy  : 0.5
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 151820)...
+Successfully attached to process 151820.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 318.961
+==================================================================================
+Performance counter stats for process id '151820':
+
+               758      context-switches                                            
+                 1      cpu-migrations                                              
+             62113      page-faults                                                 
+      948113051412      cycles:u                                                      (25.00%)
+        6909098511      cycles:k                                                      (16.67%)
+      670281445353      instructions:u            #    0.71  insn per cycle           (25.00%)
+         893251060      instructions:k            #    0.13  insn per cycle           (33.34%)
+      119311110396      branches                                                      (33.34%)
+        8819603827      branch-misses             #    7.39% of all branches          (33.34%)
+      397912541903      L1-dcache-loads                                               (33.34%)
+        9390277805      L1-dcache-load-misses     #    2.36% of all L1-dcache hits    (33.33%)
+        9878369090      LLC-loads                                                     (33.33%)
+         119650098      LLC-load-misses           #    1.21% of all LL-cache hits     (33.33%)
+      398148145133      dTLB-loads                                                    (33.33%)
+          82458787      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     323.951254543 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 2878076411
+occupancy  : 0.6
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 151941)...
+Successfully attached to process 151941.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 320.589
+==================================================================================
+Performance counter stats for process id '151941':
+
+               808      context-switches                                            
+                 1      cpu-migrations                                              
+             62984      page-faults                                                 
+      953021093117      cycles:u                                                      (25.00%)
+        6435708522      cycles:k                                                      (16.67%)
+      670593835793      instructions:u            #    0.70  insn per cycle           (25.00%)
+         814021835      instructions:k            #    0.13  insn per cycle           (33.34%)
+      119323812868      branches                                                      (33.34%)
+        8817083475      branch-misses             #    7.39% of all branches          (33.34%)
+      398278981481      L1-dcache-loads                                               (33.33%)
+       10116876870      L1-dcache-load-misses     #    2.54% of all L1-dcache hits    (33.33%)
+       10600564094      LLC-loads                                                     (33.33%)
+         117182899      LLC-load-misses           #    1.11% of all LL-cache hits     (33.33%)
+      398472644001      dTLB-loads                                                    (33.33%)
+          84719490      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     325.565967660 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 303160477
+occupancy  : 0.7
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 152004)...
+Successfully attached to process 152004.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 318.065
+==================================================================================
+Performance counter stats for process id '152004':
+
+               757      context-switches                                            
+                 1      cpu-migrations                                              
+             63988      page-faults                                                 
+      945409099024      cycles:u                                                      (25.00%)
+        6511209225      cycles:k                                                      (16.67%)
+      670761560385      instructions:u            #    0.71  insn per cycle           (25.00%)
+         773052480      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119264418763      branches                                                      (33.33%)
+        8843692322      branch-misses             #    7.42% of all branches          (33.33%)
+      398483246810      L1-dcache-loads                                               (33.33%)
+        8980292149      L1-dcache-load-misses     #    2.25% of all L1-dcache hits    (33.33%)
+        9466795953      LLC-loads                                                     (33.33%)
+         118831749      LLC-load-misses           #    1.26% of all LL-cache hits     (33.33%)
+      398695390458      dTLB-loads                                                    (33.33%)
+          82546717      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     323.039670891 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 1365661017
+occupancy  : 0.8
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 152065)...
+Successfully attached to process 152065.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 319.841
+==================================================================================
+Performance counter stats for process id '152065':
+
+               767      context-switches                                            
+                 1      cpu-migrations                                              
+             65300      page-faults                                                 
+      950600431790      cycles:u                                                      (25.00%)
+        6581245791      cycles:k                                                      (16.67%)
+      670957349053      instructions:u            #    0.71  insn per cycle           (25.00%)
+         760002448      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119267645415      branches                                                      (33.33%)
+        8842800160      branch-misses             #    7.41% of all branches          (33.33%)
+      398212826119      L1-dcache-loads                                               (33.33%)
+        9368828190      L1-dcache-load-misses     #    2.35% of all L1-dcache hits    (33.33%)
+        9848514757      LLC-loads                                                     (33.33%)
+         118781569      LLC-load-misses           #    1.21% of all LL-cache hits     (33.33%)
+      398523386412      dTLB-loads                                                    (33.33%)
+          85011429      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     324.811818202 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 1787444108
+occupancy  : 0.9
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 152128)...
+Successfully attached to process 152128.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 316.027
+==================================================================================
+Performance counter stats for process id '152128':
+
+               745      context-switches                                            
+                 1      cpu-migrations                                              
+             65889      page-faults                                                 
+      939449622418      cycles:u                                                      (25.00%)
+        6475101252      cycles:k                                                      (16.67%)
+      670317738250      instructions:u            #    0.71  insn per cycle           (25.00%)
+         842235036      instructions:k            #    0.13  insn per cycle           (33.34%)
+      119174315569      branches                                                      (33.34%)
+        8844495796      branch-misses             #    7.42% of all branches          (33.34%)
+      397770274744      L1-dcache-loads                                               (33.33%)
+        9221469457      L1-dcache-load-misses     #    2.32% of all L1-dcache hits    (33.33%)
+        9731626263      LLC-loads                                                     (33.33%)
+         114361918      LLC-load-misses           #    1.18% of all LL-cache hits     (33.33%)
+      398281458915      dTLB-loads                                                    (33.33%)
+          73811507      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     321.011690551 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 3186090063
+occupancy  : 1
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 152185)...
+Successfully attached to process 152185.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 316.93
+==================================================================================
+Performance counter stats for process id '152185':
+
+               742      context-switches                                            
+                 1      cpu-migrations                                              
+             60094      page-faults                                                 
+      941955319864      cycles:u                                                      (25.00%)
+        6806407989      cycles:k                                                      (16.67%)
+      670110512027      instructions:u            #    0.71  insn per cycle           (25.00%)
+         840007841      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119247730823      branches                                                      (33.33%)
+        8838360361      branch-misses             #    7.41% of all branches          (33.33%)
+      398345736969      L1-dcache-loads                                               (33.33%)
+        9669569523      L1-dcache-load-misses     #    2.43% of all L1-dcache hits    (33.33%)
+       10146549834      LLC-loads                                                     (33.33%)
+         113968668      LLC-load-misses           #    1.12% of all LL-cache hits     (33.33%)
+      398577556499      dTLB-loads                                                    (33.33%)
+          74761396      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     321.918921068 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 3406069227
+occupancy  : 0
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 152234)...
+Successfully attached to process 152234.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 316.852
+==================================================================================
+Performance counter stats for process id '152234':
+
+               820      context-switches                                            
+                 1      cpu-migrations                                              
+             42269      page-faults                                                 
+      941920573961      cycles:u                                                      (25.00%)
+        6305369931      cycles:k                                                      (16.67%)
+      670651109444      instructions:u            #    0.71  insn per cycle           (25.01%)
+         721836829      instructions:k            #    0.11  insn per cycle           (33.34%)
+      119320071408      branches                                                      (33.34%)
+        8826773488      branch-misses             #    7.40% of all branches          (33.34%)
+      397947314638      L1-dcache-loads                                               (33.34%)
+        9363666693      L1-dcache-load-misses     #    2.35% of all L1-dcache hits    (33.33%)
+        9871251370      LLC-loads                                                     (33.33%)
+         115855207      LLC-load-misses           #    1.17% of all LL-cache hits     (33.33%)
+      398122602490      dTLB-loads                                                    (33.33%)
+          68622541      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     321.825314671 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 2585431176
+occupancy  : 0.1
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 152371)...
+Successfully attached to process 152371.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 319.529
+==================================================================================
+Performance counter stats for process id '152371':
+
+               944      context-switches                                            
+                 1      cpu-migrations                                              
+             58579      page-faults                                                 
+      949173450230      cycles:u                                                      (25.00%)
+        6502214518      cycles:k                                                      (16.67%)
+      670989255481      instructions:u            #    0.71  insn per cycle           (25.00%)
+         860837635      instructions:k            #    0.13  insn per cycle           (33.34%)
+      119287811766      branches                                                      (33.34%)
+        8845243495      branch-misses             #    7.42% of all branches          (33.33%)
+      398463993031      L1-dcache-loads                                               (33.33%)
+        9099845589      L1-dcache-load-misses     #    2.28% of all L1-dcache hits    (33.33%)
+        9535011347      LLC-loads                                                     (33.33%)
+         118112579      LLC-load-misses           #    1.24% of all LL-cache hits     (33.33%)
+      398652051425      dTLB-loads                                                    (33.33%)
+          77727829      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     324.519583665 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 2435184254
+occupancy  : 0.2
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 152597)...
+Successfully attached to process 152597.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 319.001
+==================================================================================
+Performance counter stats for process id '152597':
+
+               727      context-switches                                            
+                 1      cpu-migrations                                              
+             60315      page-faults                                                 
+      948332571804      cycles:u                                                      (25.00%)
+        6436109060      cycles:k                                                      (16.67%)
+      670892615620      instructions:u            #    0.71  insn per cycle           (25.01%)
+         896835492      instructions:k            #    0.14  insn per cycle           (33.34%)
+      119317968511      branches                                                      (33.34%)
+        8836336036      branch-misses             #    7.41% of all branches          (33.33%)
+      398681665910      L1-dcache-loads                                               (33.33%)
+        8892934568      L1-dcache-load-misses     #    2.23% of all L1-dcache hits    (33.33%)
+        9356244745      LLC-loads                                                     (33.33%)
+         120288401      LLC-load-misses           #    1.29% of all LL-cache hits     (33.33%)
+      398805933413      dTLB-loads                                                    (33.33%)
+          82602380      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     323.985521857 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 39132477
+occupancy  : 0.3
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 152640)...
+Successfully attached to process 152640.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 320.786
+==================================================================================
+Performance counter stats for process id '152640':
+
+               691      context-switches                                            
+                 1      cpu-migrations                                              
+             60295      page-faults                                                 
+      953725463119      cycles:u                                                      (25.00%)
+        6443213720      cycles:k                                                      (16.67%)
+      670972426499      instructions:u            #    0.70  insn per cycle           (25.01%)
+         771167977      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119308861587      branches                                                      (33.34%)
+        8829569704      branch-misses             #    7.40% of all branches          (33.34%)
+      399178993994      L1-dcache-loads                                               (33.34%)
+        9193078142      L1-dcache-load-misses     #    2.30% of all L1-dcache hits    (33.33%)
+        9675080450      LLC-loads                                                     (33.33%)
+         119966199      LLC-load-misses           #    1.24% of all LL-cache hits     (33.33%)
+      399310563495      dTLB-loads                                                    (33.33%)
+          86461833      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     325.760259557 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 254611669
+occupancy  : 0.4
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 152692)...
+Successfully attached to process 152692.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 318.27
+==================================================================================
+Performance counter stats for process id '152692':
+
+               714      context-switches                                            
+                 1      cpu-migrations                                              
+             61294      page-faults                                                 
+      946008222564      cycles:u                                                      (25.00%)
+        6751352452      cycles:k                                                      (16.67%)
+      670254176254      instructions:u            #    0.71  insn per cycle           (25.00%)
+         820050467      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119293035906      branches                                                      (33.33%)
+        8827878605      branch-misses             #    7.40% of all branches          (33.33%)
+      398296003726      L1-dcache-loads                                               (33.33%)
+        8814347726      L1-dcache-load-misses     #    2.21% of all L1-dcache hits    (33.33%)
+        9275232492      LLC-loads                                                     (33.33%)
+         122442193      LLC-load-misses           #    1.32% of all LL-cache hits     (33.33%)
+      398425113981      dTLB-loads                                                    (33.33%)
+          84143870      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     323.262885565 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 2999723206
+occupancy  : 0.5
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 152734)...
+Successfully attached to process 152734.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 319.84
+==================================================================================
+Performance counter stats for process id '152734':
+
+               738      context-switches                                            
+                 1      cpu-migrations                                              
+             62314      page-faults                                                 
+      950895944941      cycles:u                                                      (25.00%)
+        6483783009      cycles:k                                                      (16.67%)
+      670757677907      instructions:u            #    0.71  insn per cycle           (25.00%)
+         730609398      instructions:k            #    0.11  insn per cycle           (33.34%)
+      119274865364      branches                                                      (33.33%)
+        8836868232      branch-misses             #    7.41% of all branches          (33.33%)
+      398807615118      L1-dcache-loads                                               (33.33%)
+        9027644397      L1-dcache-load-misses     #    2.26% of all L1-dcache hits    (33.33%)
+        9500882493      LLC-loads                                                     (33.33%)
+         119226494      LLC-load-misses           #    1.25% of all LL-cache hits     (33.33%)
+      399127887921      dTLB-loads                                                    (33.33%)
+          88834992      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     324.823223118 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 920260471
+occupancy  : 0.6
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 152840)...
+Successfully attached to process 152840.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 318.922
+==================================================================================
+Performance counter stats for process id '152840':
+
+               746      context-switches                                            
+                 1      cpu-migrations                                              
+             63487      page-faults                                                 
+      948216599379      cycles:u                                                      (25.00%)
+        6527365050      cycles:k                                                      (16.67%)
+      670537003258      instructions:u            #    0.71  insn per cycle           (25.00%)
+         810158829      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119316057098      branches                                                      (33.33%)
+        8839374690      branch-misses             #    7.41% of all branches          (33.33%)
+      398615805929      L1-dcache-loads                                               (33.33%)
+        9327844748      L1-dcache-load-misses     #    2.34% of all L1-dcache hits    (33.33%)
+        9846779892      LLC-loads                                                     (33.33%)
+         118745445      LLC-load-misses           #    1.21% of all LL-cache hits     (33.33%)
+      398908021564      dTLB-loads                                                    (33.33%)
+          80941418      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     323.892991437 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 1788712233
+occupancy  : 0.7
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 152899)...
+Successfully attached to process 152899.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 319.448
+==================================================================================
+Performance counter stats for process id '152899':
+
+               730      context-switches                                            
+                 1      cpu-migrations                                              
+             64144      page-faults                                                 
+      949400005375      cycles:u                                                      (25.00%)
+        6669146678      cycles:k                                                      (16.67%)
+      670639977844      instructions:u            #    0.71  insn per cycle           (25.00%)
+         812335148      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119284688923      branches                                                      (33.33%)
+        8861094856      branch-misses             #    7.43% of all branches          (33.33%)
+      398779128397      L1-dcache-loads                                               (33.34%)
+        9398866880      L1-dcache-load-misses     #    2.36% of all L1-dcache hits    (33.34%)
+        9873210889      LLC-loads                                                     (33.33%)
+         116452075      LLC-load-misses           #    1.18% of all LL-cache hits     (33.33%)
+      399013582765      dTLB-loads                                                    (33.33%)
+          83613830      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     324.428462968 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 4023866350
+occupancy  : 0.8
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 152949)...
+Successfully attached to process 152949.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 319.106
+==================================================================================
+Performance counter stats for process id '152949':
+
+               722      context-switches                                            
+                 1      cpu-migrations                                              
+             65056      page-faults                                                 
+      948564009556      cycles:u                                                      (25.00%)
+        6781227163      cycles:k                                                      (16.67%)
+      670318364345      instructions:u            #    0.71  insn per cycle           (25.00%)
+         829810290      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119251755312      branches                                                      (33.34%)
+        8861585714      branch-misses             #    7.43% of all branches          (33.34%)
+      398690217274      L1-dcache-loads                                               (33.34%)
+        9082052625      L1-dcache-load-misses     #    2.28% of all L1-dcache hits    (33.33%)
+        9575286513      LLC-loads                                                     (33.33%)
+         118762475      LLC-load-misses           #    1.24% of all LL-cache hits     (33.33%)
+      399080265299      dTLB-loads                                                    (33.33%)
+          82889648      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     324.100287848 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 375522986
+occupancy  : 0.9
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 152998)...
+Successfully attached to process 152998.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 316.492
+==================================================================================
+Performance counter stats for process id '152998':
+
+               711      context-switches                                            
+                 1      cpu-migrations                                              
+             66073      page-faults                                                 
+      940836686003      cycles:u                                                      (25.00%)
+        6907019965      cycles:k                                                      (16.67%)
+      670469132786      instructions:u            #    0.71  insn per cycle           (25.00%)
+         898805047      instructions:k            #    0.13  insn per cycle           (33.34%)
+      119299369876      branches                                                      (33.33%)
+        8858250442      branch-misses             #    7.43% of all branches          (33.33%)
+      398611906466      L1-dcache-loads                                               (33.33%)
+        9187648774      L1-dcache-load-misses     #    2.30% of all L1-dcache hits    (33.33%)
+        9685245057      LLC-loads                                                     (33.33%)
+         115041222      LLC-load-misses           #    1.19% of all LL-cache hits     (33.33%)
+      398830772354      dTLB-loads                                                    (33.33%)
+          79535873      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     321.470878946 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 2311784320
+occupancy  : 1
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 153034)...
+Successfully attached to process 153034.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 316.409
+==================================================================================
+Performance counter stats for process id '153034':
+
+               678      context-switches                                            
+                 1      cpu-migrations                                              
+             60172      page-faults                                                 
+      940573987413      cycles:u                                                      (25.00%)
+        6680941436      cycles:k                                                      (16.67%)
+      670600964706      instructions:u            #    0.71  insn per cycle           (25.00%)
+         881496752      instructions:k            #    0.13  insn per cycle           (33.34%)
+      119283029458      branches                                                      (33.34%)
+        8849218965      branch-misses             #    7.42% of all branches          (33.34%)
+      398397417733      L1-dcache-loads                                               (33.33%)
+        9483184652      L1-dcache-load-misses     #    2.38% of all L1-dcache hits    (33.33%)
+        9975870233      LLC-loads                                                     (33.33%)
+         114516345      LLC-load-misses           #    1.15% of all LL-cache hits     (33.33%)
+      398455039495      dTLB-loads                                                    (33.33%)
+          69357763      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     321.403295497 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 3841716677
+occupancy  : 0
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 153075)...
+Successfully attached to process 153075.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 317.365
+==================================================================================
+Performance counter stats for process id '153075':
+
+               806      context-switches                                            
+                 1      cpu-migrations                                              
+             42411      page-faults                                                 
+      943269187831      cycles:u                                                      (25.00%)
+        6368623745      cycles:k                                                      (16.67%)
+      670386330136      instructions:u            #    0.71  insn per cycle           (25.00%)
+         734150412      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119317766438      branches                                                      (33.33%)
+        8831852370      branch-misses             #    7.40% of all branches          (33.33%)
+      397744225719      L1-dcache-loads                                               (33.33%)
+        9557686663      L1-dcache-load-misses     #    2.40% of all L1-dcache hits    (33.33%)
+       10080707920      LLC-loads                                                     (33.33%)
+         115474285      LLC-load-misses           #    1.15% of all LL-cache hits     (33.33%)
+      397916198945      dTLB-loads                                                    (33.33%)
+          70329115      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     322.351044286 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 626137143
+occupancy  : 0.1
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 153201)...
+Successfully attached to process 153201.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 318.892
+==================================================================================
+Performance counter stats for process id '153201':
+
+               831      context-switches                                            
+                 1      cpu-migrations                                              
+             56053      page-faults                                                 
+      947794563131      cycles:u                                                      (25.00%)
+        6524088672      cycles:k                                                      (16.67%)
+      670679439036      instructions:u            #    0.71  insn per cycle           (25.00%)
+         762071210      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119323844638      branches                                                      (33.33%)
+        8830414876      branch-misses             #    7.40% of all branches          (33.33%)
+      398500271543      L1-dcache-loads                                               (33.33%)
+        8860765013      L1-dcache-load-misses     #    2.22% of all L1-dcache hits    (33.33%)
+        9307090416      LLC-loads                                                     (33.33%)
+         118352332      LLC-load-misses           #    1.27% of all LL-cache hits     (33.33%)
+      398568660149      dTLB-loads                                                    (33.33%)
+          79248876      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     323.879944293 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 3104288416
+occupancy  : 0.2
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 153380)...
+Successfully attached to process 153380.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 318.76
+==================================================================================
+Performance counter stats for process id '153380':
+
+               869      context-switches                                            
+                 1      cpu-migrations                                              
+             55976      page-faults                                                 
+      947123813824      cycles:u                                                      (25.00%)
+        6907537035      cycles:k                                                      (16.67%)
+      670627400046      instructions:u            #    0.71  insn per cycle           (25.00%)
+         912972848      instructions:k            #    0.13  insn per cycle           (33.34%)
+      119266597686      branches                                                      (33.34%)
+        8824809815      branch-misses             #    7.40% of all branches          (33.33%)
+      397815393921      L1-dcache-loads                                               (33.33%)
+        8890430449      L1-dcache-load-misses     #    2.23% of all L1-dcache hits    (33.33%)
+        9344280331      LLC-loads                                                     (33.33%)
+         120190880      LLC-load-misses           #    1.29% of all LL-cache hits     (33.33%)
+      398098493996      dTLB-loads                                                    (33.33%)
+          82255673      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     323.746729646 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 2369769630
+occupancy  : 0.3
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 153505)...
+Successfully attached to process 153505.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 320.5
+==================================================================================
+Performance counter stats for process id '153505':
+
+               884      context-switches                                            
+                 1      cpu-migrations                                              
+             60828      page-faults                                                 
+      952340074821      cycles:u                                                      (25.00%)
+        6501066539      cycles:k                                                      (16.67%)
+      670394020206      instructions:u            #    0.70  insn per cycle           (25.01%)
+         807885510      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119288205403      branches                                                      (33.34%)
+        8828413297      branch-misses             #    7.40% of all branches          (33.34%)
+      398990291448      L1-dcache-loads                                               (33.33%)
+        8946491023      L1-dcache-load-misses     #    2.24% of all L1-dcache hits    (33.33%)
+        9379109142      LLC-loads                                                     (33.33%)
+         116643061      LLC-load-misses           #    1.24% of all LL-cache hits     (33.33%)
+      399127394809      dTLB-loads                                                    (33.33%)
+          82640619      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     325.479777534 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 3979482588
+occupancy  : 0.4
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 153672)...
+Successfully attached to process 153672.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 320.017
+==================================================================================
+Performance counter stats for process id '153672':
+
+               833      context-switches                                            
+                 1      cpu-migrations                                              
+             62741      page-faults                                                 
+      950639603366      cycles:u                                                      (25.01%)
+        6817755668      cycles:k                                                      (16.67%)
+      670376218258      instructions:u            #    0.71  insn per cycle           (25.01%)
+         893751949      instructions:k            #    0.13  insn per cycle           (33.34%)
+      119288937959      branches                                                      (33.34%)
+        8825309966      branch-misses             #    7.40% of all branches          (33.34%)
+      398298475002      L1-dcache-loads                                               (33.34%)
+        9179828466      L1-dcache-load-misses     #    2.30% of all L1-dcache hits    (33.34%)
+        9665225682      LLC-loads                                                     (33.34%)
+         119612243      LLC-load-misses           #    1.24% of all LL-cache hits     (33.34%)
+      398462405819      dTLB-loads                                                    (33.34%)
+          85818078      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.01%)
+
+     325.002783534 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 898028716
+occupancy  : 0.5
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 153838)...
+Successfully attached to process 153838.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 317.27
+==================================================================================
+Performance counter stats for process id '153838':
+
+               788      context-switches                                            
+                 1      cpu-migrations                                              
+             61987      page-faults                                                 
+      942780730975      cycles:u                                                      (25.00%)
+        6697021159      cycles:k                                                      (16.67%)
+      670759434366      instructions:u            #    0.71  insn per cycle           (25.00%)
+         839830527      instructions:k            #    0.13  insn per cycle           (33.34%)
+      119322105678      branches                                                      (33.34%)
+        8824233285      branch-misses             #    7.40% of all branches          (33.33%)
+      398103404074      L1-dcache-loads                                               (33.33%)
+        9174947807      L1-dcache-load-misses     #    2.30% of all L1-dcache hits    (33.33%)
+        9644714566      LLC-loads                                                     (33.33%)
+         118328903      LLC-load-misses           #    1.23% of all LL-cache hits     (33.33%)
+      398233206463      dTLB-loads                                                    (33.33%)
+          81377920      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     322.251715428 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 3103136314
+occupancy  : 0.6
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 153970)...
+Successfully attached to process 153970.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 316.977
+==================================================================================
+Performance counter stats for process id '153970':
+
+               785      context-switches                                            
+                 1      cpu-migrations                                              
+             63107      page-faults                                                 
+      942110704325      cycles:u                                                      (25.00%)
+        6467794953      cycles:k                                                      (16.67%)
+      670572406261      instructions:u            #    0.71  insn per cycle           (25.00%)
+         782207875      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119256378502      branches                                                      (33.33%)
+        8836723647      branch-misses             #    7.41% of all branches          (33.33%)
+      397939040281      L1-dcache-loads                                               (33.33%)
+        9033426202      L1-dcache-load-misses     #    2.27% of all L1-dcache hits    (33.33%)
+        9536229896      LLC-loads                                                     (33.33%)
+         116300590      LLC-load-misses           #    1.22% of all LL-cache hits     (33.33%)
+      398311783075      dTLB-loads                                                    (33.33%)
+          87843985      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     321.964544825 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 3255544135
+occupancy  : 0.7
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 154035)...
+Successfully attached to process 154035.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 318.057
+==================================================================================
+Performance counter stats for process id '154035':
+
+               778      context-switches                                            
+                 1      cpu-migrations                                              
+             63622      page-faults                                                 
+      945475850508      cycles:u                                                      (25.00%)
+        6544305251      cycles:k                                                      (16.67%)
+      670931536752      instructions:u            #    0.71  insn per cycle           (25.00%)
+         763589778      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119318018693      branches                                                      (33.33%)
+        8847942950      branch-misses             #    7.42% of all branches          (33.33%)
+      398521371437      L1-dcache-loads                                               (33.33%)
+        9397203402      L1-dcache-load-misses     #    2.36% of all L1-dcache hits    (33.33%)
+        9888026926      LLC-loads                                                     (33.33%)
+         117654428      LLC-load-misses           #    1.19% of all LL-cache hits     (33.33%)
+      398621311791      dTLB-loads                                                    (33.33%)
+          81538546      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     323.045666271 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 763075339
+occupancy  : 0.8
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 154096)...
+Successfully attached to process 154096.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 318.446
+==================================================================================
+Performance counter stats for process id '154096':
+
+               727      context-switches                                            
+                 1      cpu-migrations                                              
+             65228      page-faults                                                 
+      946631160193      cycles:u                                                      (25.00%)
+        6508064558      cycles:k                                                      (16.67%)
+      670169153632      instructions:u            #    0.71  insn per cycle           (25.00%)
+         780020527      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119266514158      branches                                                      (33.33%)
+        8849102285      branch-misses             #    7.42% of all branches          (33.33%)
+      398831048482      L1-dcache-loads                                               (33.33%)
+        9068581701      L1-dcache-load-misses     #    2.27% of all L1-dcache hits    (33.33%)
+        9561981131      LLC-loads                                                     (33.33%)
+         116628318      LLC-load-misses           #    1.22% of all LL-cache hits     (33.33%)
+      399040764235      dTLB-loads                                                    (33.33%)
+          75275605      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     323.428335158 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 2293011936
+occupancy  : 0.9
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 154153)...
+Successfully attached to process 154153.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 316.397
+==================================================================================
+Performance counter stats for process id '154153':
+
+               698      context-switches                                            
+                 1      cpu-migrations                                              
+             65739      page-faults                                                 
+      940529768407      cycles:u                                                      (25.00%)
+        6914154962      cycles:k                                                      (16.67%)
+      670366870292      instructions:u            #    0.71  insn per cycle           (25.00%)
+         892706310      instructions:k            #    0.13  insn per cycle           (33.34%)
+      119262695077      branches                                                      (33.33%)
+        8857162548      branch-misses             #    7.43% of all branches          (33.33%)
+      398168840179      L1-dcache-loads                                               (33.33%)
+        9100789965      L1-dcache-load-misses     #    2.29% of all L1-dcache hits    (33.33%)
+        9583276515      LLC-loads                                                     (33.33%)
+         115739659      LLC-load-misses           #    1.21% of all LL-cache hits     (33.33%)
+      398504278704      dTLB-loads                                                    (33.33%)
+          79897828      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     321.375218030 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 507094330
+occupancy  : 1
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 154181)...
+Successfully attached to process 154181.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 317.05
+==================================================================================
+Performance counter stats for process id '154181':
+
+               688      context-switches                                            
+                 1      cpu-migrations                                              
+             60085      page-faults                                                 
+      942630193841      cycles:u                                                      (25.00%)
+        6709812565      cycles:k                                                      (16.67%)
+      670309671875      instructions:u            #    0.71  insn per cycle           (25.00%)
+         788421753      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119205456979      branches                                                      (33.33%)
+        8833168941      branch-misses             #    7.41% of all branches          (33.33%)
+      398037681235      L1-dcache-loads                                               (33.33%)
+        9256368143      L1-dcache-load-misses     #    2.33% of all L1-dcache hits    (33.33%)
+        9746563047      LLC-loads                                                     (33.33%)
+         113228207      LLC-load-misses           #    1.16% of all LL-cache hits     (33.33%)
+      398302240877      dTLB-loads                                                    (33.33%)
+          70608423      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     322.031829120 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 2341420754
+occupancy  : 0
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 154223)...
+Successfully attached to process 154223.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 318.364
+==================================================================================
+Performance counter stats for process id '154223':
+
+               675      context-switches                                            
+                 1      cpu-migrations                                              
+             44445      page-faults                                                 
+      946466409737      cycles:u                                                      (25.00%)
+        6179307878      cycles:k                                                      (16.67%)
+      670979886403      instructions:u            #    0.71  insn per cycle           (25.00%)
+         707297067      instructions:k            #    0.11  insn per cycle           (33.34%)
+      119255648515      branches                                                      (33.33%)
+        8848102506      branch-misses             #    7.42% of all branches          (33.33%)
+      398167447343      L1-dcache-loads                                               (33.33%)
+        9802551017      L1-dcache-load-misses     #    2.46% of all L1-dcache hits    (33.33%)
+       10312555910      LLC-loads                                                     (33.33%)
+         116986962      LLC-load-misses           #    1.13% of all LL-cache hits     (33.33%)
+      398351449634      dTLB-loads                                                    (33.33%)
+          68990945      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     323.349146918 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 140024764
+occupancy  : 0.1
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 154367)...
+Successfully attached to process 154367.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 319.442
+==================================================================================
+Performance counter stats for process id '154367':
+
+               779      context-switches                                            
+                 1      cpu-migrations                                              
+             58486      page-faults                                                 
+      949724769820      cycles:u                                                      (25.00%)
+        6366397048      cycles:k                                                      (16.67%)
+      670650322365      instructions:u            #    0.71  insn per cycle           (25.00%)
+         787693178      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119319628239      branches                                                      (33.34%)
+        8848109160      branch-misses             #    7.42% of all branches          (33.34%)
+      399071033775      L1-dcache-loads                                               (33.34%)
+        9019527042      L1-dcache-load-misses     #    2.26% of all L1-dcache hits    (33.33%)
+        9456257474      LLC-loads                                                     (33.33%)
+         120281832      LLC-load-misses           #    1.27% of all LL-cache hits     (33.33%)
+      399057806884      dTLB-loads                                                    (33.33%)
+          80546983      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     324.429763961 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 18344276
+occupancy  : 0.2
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 154428)...
+Successfully attached to process 154428.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 320.395
+==================================================================================
+Performance counter stats for process id '154428':
+
+               768      context-switches                                            
+                 1      cpu-migrations                                              
+             57342      page-faults                                                 
+      952269340692      cycles:u                                                      (25.00%)
+        6620086902      cycles:k                                                      (16.67%)
+      670333083155      instructions:u            #    0.70  insn per cycle           (25.01%)
+         834841897      instructions:k            #    0.13  insn per cycle           (33.34%)
+      119264427395      branches                                                      (33.34%)
+        8830179062      branch-misses             #    7.40% of all branches          (33.34%)
+      398964516406      L1-dcache-loads                                               (33.33%)
+        9311938185      L1-dcache-load-misses     #    2.33% of all L1-dcache hits    (33.33%)
+        9777523873      LLC-loads                                                     (33.33%)
+         115972622      LLC-load-misses           #    1.19% of all LL-cache hits     (33.33%)
+      399083692075      dTLB-loads                                                    (33.33%)
+          80334671      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     325.380507750 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 3879753891
+occupancy  : 0.3
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 154467)...
+Successfully attached to process 154467.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 319.896
+==================================================================================
+Performance counter stats for process id '154467':
+
+               785      context-switches                                            
+                 1      cpu-migrations                                              
+             59929      page-faults                                                 
+      950863022419      cycles:u                                                      (25.00%)
+        6743030860      cycles:k                                                      (16.67%)
+      670171302289      instructions:u            #    0.70  insn per cycle           (25.00%)
+         793582560      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119220445133      branches                                                      (33.33%)
+        8820651463      branch-misses             #    7.40% of all branches          (33.33%)
+      398696470354      L1-dcache-loads                                               (33.33%)
+        9417169243      L1-dcache-load-misses     #    2.36% of all L1-dcache hits    (33.33%)
+        9872709883      LLC-loads                                                     (33.33%)
+         118145629      LLC-load-misses           #    1.20% of all LL-cache hits     (33.33%)
+      398993899281      dTLB-loads                                                    (33.33%)
+          87387785      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     324.871301050 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 543462653
+occupancy  : 0.4
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 154526)...
+Successfully attached to process 154526.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 320.059
+==================================================================================
+Performance counter stats for process id '154526':
+
+               850      context-switches                                            
+                 1      cpu-migrations                                              
+             62425      page-faults                                                 
+      950768404043      cycles:u                                                      (25.00%)
+        6818262481      cycles:k                                                      (16.67%)
+      670459438329      instructions:u            #    0.71  insn per cycle           (25.00%)
+         868343210      instructions:k            #    0.13  insn per cycle           (33.34%)
+      119306505453      branches                                                      (33.34%)
+        8830274948      branch-misses             #    7.40% of all branches          (33.34%)
+      399023962037      L1-dcache-loads                                               (33.33%)
+        9069826315      L1-dcache-load-misses     #    2.27% of all L1-dcache hits    (33.33%)
+        9551239349      LLC-loads                                                     (33.33%)
+         120341854      LLC-load-misses           #    1.26% of all LL-cache hits     (33.33%)
+      399060532969      dTLB-loads                                                    (33.33%)
+          81319061      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     325.041326973 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 3247500772
+occupancy  : 0.5
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 154623)...
+Successfully attached to process 154623.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 319.228
+==================================================================================
+Performance counter stats for process id '154623':
+
+               811      context-switches                                            
+                 1      cpu-migrations                                              
+             62219      page-faults                                                 
+      948339893215      cycles:u                                                      (25.00%)
+        6629452833      cycles:k                                                      (16.67%)
+      670374765613      instructions:u            #    0.71  insn per cycle           (25.00%)
+         794721886      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119271035078      branches                                                      (33.33%)
+        8833548451      branch-misses             #    7.41% of all branches          (33.33%)
+      398751319451      L1-dcache-loads                                               (33.33%)
+        9027720297      L1-dcache-load-misses     #    2.26% of all L1-dcache hits    (33.33%)
+        9505343965      LLC-loads                                                     (33.33%)
+         121830416      LLC-load-misses           #    1.28% of all LL-cache hits     (33.33%)
+      398947407074      dTLB-loads                                                    (33.33%)
+          84925930      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     324.187297818 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 1498414746
+occupancy  : 0.6
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 154776)...
+Successfully attached to process 154776.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 318.563
+==================================================================================
+Performance counter stats for process id '154776':
+
+               699      context-switches                                            
+                 3      cpu-migrations                                              
+             63423      page-faults                                                 
+      945891655660      cycles:u                                                      (25.00%)
+        6750051532      cycles:k                                                      (16.67%)
+      670639098316      instructions:u            #    0.71  insn per cycle           (25.00%)
+         885380575      instructions:k            #    0.13  insn per cycle           (33.34%)
+      119286164213      branches                                                      (33.34%)
+        8831406728      branch-misses             #    7.40% of all branches          (33.33%)
+      397955875620      L1-dcache-loads                                               (33.33%)
+        9290135445      L1-dcache-load-misses     #    2.33% of all L1-dcache hits    (33.33%)
+        9761789105      LLC-loads                                                     (33.33%)
+         118907780      LLC-load-misses           #    1.22% of all LL-cache hits     (33.33%)
+      398239028455      dTLB-loads                                                    (33.33%)
+          83798866      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     323.547433774 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 2198305225
+occupancy  : 0.7
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 154911)...
+Successfully attached to process 154911.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 320.044
+==================================================================================
+Performance counter stats for process id '154911':
+
+               716      context-switches                                            
+                 1      cpu-migrations                                              
+             63580      page-faults                                                 
+      950557445326      cycles:u                                                      (25.00%)
+        6634002601      cycles:k                                                      (16.67%)
+      670554230006      instructions:u            #    0.71  insn per cycle           (25.00%)
+         798171271      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119289925053      branches                                                      (33.33%)
+        8873846753      branch-misses             #    7.44% of all branches          (33.33%)
+      399263768949      L1-dcache-loads                                               (33.33%)
+        9567128002      L1-dcache-load-misses     #    2.40% of all L1-dcache hits    (33.33%)
+       10073741551      LLC-loads                                                     (33.33%)
+         122160888      LLC-load-misses           #    1.21% of all LL-cache hits     (33.33%)
+      399386488870      dTLB-loads                                                    (33.33%)
+          81336502      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     325.038730643 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 3164329565
+occupancy  : 0.8
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 155048)...
+Successfully attached to process 155048.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 317.624
+==================================================================================
+Performance counter stats for process id '155048':
+
+               624      context-switches                                            
+                 1      cpu-migrations                                              
+             64704      page-faults                                                 
+      944261308569      cycles:u                                                      (25.00%)
+        6835371936      cycles:k                                                      (16.67%)
+      670428499376      instructions:u            #    0.71  insn per cycle           (25.00%)
+         868468965      instructions:k            #    0.13  insn per cycle           (33.34%)
+      119251538694      branches                                                      (33.33%)
+        8848824374      branch-misses             #    7.42% of all branches          (33.33%)
+      398323952925      L1-dcache-loads                                               (33.34%)
+        9096688023      L1-dcache-load-misses     #    2.28% of all L1-dcache hits    (33.34%)
+        9604375101      LLC-loads                                                     (33.33%)
+         118167983      LLC-load-misses           #    1.23% of all LL-cache hits     (33.33%)
+      398621025043      dTLB-loads                                                    (33.33%)
+          78395392      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     322.597435678 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 3433386623
+occupancy  : 0.9
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 155104)...
+Successfully attached to process 155104.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 316.386
+==================================================================================
+Performance counter stats for process id '155104':
+
+               575      context-switches                                            
+                 1      cpu-migrations                                              
+             65979      page-faults                                                 
+      940459157852      cycles:u                                                      (25.00%)
+        6689084801      cycles:k                                                      (16.67%)
+      670252798301      instructions:u            #    0.71  insn per cycle           (25.00%)
+         826819062      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119236082417      branches                                                      (33.33%)
+        8824748753      branch-misses             #    7.40% of all branches          (33.33%)
+      397633758871      L1-dcache-loads                                               (33.33%)
+        8945188398      L1-dcache-load-misses     #    2.25% of all L1-dcache hits    (33.33%)
+        9428752648      LLC-loads                                                     (33.33%)
+         113840077      LLC-load-misses           #    1.21% of all LL-cache hits     (33.33%)
+      398064859310      dTLB-loads                                                    (33.33%)
+          76315499      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     321.364897671 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 2562496720
+occupancy  : 1
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 155149)...
+Successfully attached to process 155149.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 316.233
+==================================================================================
+Performance counter stats for process id '155149':
+
+               565      context-switches                                            
+                 1      cpu-migrations                                              
+             59885      page-faults                                                 
+      939979938195      cycles:u                                                      (25.00%)
+        6549850340      cycles:k                                                      (16.67%)
+      670286053591      instructions:u            #    0.71  insn per cycle           (25.00%)
+         775849215      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119307424416      branches                                                      (33.33%)
+        8843226856      branch-misses             #    7.41% of all branches          (33.33%)
+      398018451822      L1-dcache-loads                                               (33.33%)
+        9483917228      L1-dcache-load-misses     #    2.38% of all L1-dcache hits    (33.33%)
+        9963856265      LLC-loads                                                     (33.33%)
+         113080940      LLC-load-misses           #    1.13% of all LL-cache hits     (33.33%)
+      398021426020      dTLB-loads                                                    (33.33%)
+          73340658      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     321.241953524 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 2694202795
+occupancy  : 0
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 155196)...
+Successfully attached to process 155196.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 318.334
+==================================================================================
+Performance counter stats for process id '155196':
+
+               589      context-switches                                            
+                 1      cpu-migrations                                              
+             44077      page-faults                                                 
+      946176171730      cycles:u                                                      (25.00%)
+        6456449523      cycles:k                                                      (16.67%)
+      670898083854      instructions:u            #    0.71  insn per cycle           (25.00%)
+         762170172      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119372460574      branches                                                      (33.34%)
+        8830022274      branch-misses             #    7.40% of all branches          (33.33%)
+      398043325291      L1-dcache-loads                                               (33.33%)
+        9807594240      L1-dcache-load-misses     #    2.46% of all L1-dcache hits    (33.33%)
+       10318786283      LLC-loads                                                     (33.33%)
+         117422115      LLC-load-misses           #    1.14% of all LL-cache hits     (33.33%)
+      398114837179      dTLB-loads                                                    (33.33%)
+          69265924      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     323.310667553 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 1476661456
+occupancy  : 0.1
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 155307)...
+Successfully attached to process 155307.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 319.967
+==================================================================================
+Performance counter stats for process id '155307':
+
+               700      context-switches                                            
+                 1      cpu-migrations                                              
+             54966      page-faults                                                 
+      951043625088      cycles:u                                                      (25.00%)
+        6461456848      cycles:k                                                      (16.67%)
+      670510093096      instructions:u            #    0.71  insn per cycle           (25.01%)
+         793390896      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119291038199      branches                                                      (33.34%)
+        8837751921      branch-misses             #    7.41% of all branches          (33.34%)
+      398884855155      L1-dcache-loads                                               (33.33%)
+        9215720934      L1-dcache-load-misses     #    2.31% of all L1-dcache hits    (33.33%)
+        9689286316      LLC-loads                                                     (33.33%)
+         120060860      LLC-load-misses           #    1.24% of all LL-cache hits     (33.33%)
+      398830676619      dTLB-loads                                                    (33.33%)
+          78509754      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     324.955681404 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 1325411010
+occupancy  : 0.2
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 155382)...
+Successfully attached to process 155382.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 321.761
+==================================================================================
+Performance counter stats for process id '155382':
+
+               840      context-switches                                            
+                 1      cpu-migrations                                              
+             60679      page-faults                                                 
+      956497090862      cycles:u                                                      (25.00%)
+        6568174327      cycles:k                                                      (16.67%)
+      670714870097      instructions:u            #    0.70  insn per cycle           (25.00%)
+         745084832      instructions:k            #    0.11  insn per cycle           (33.34%)
+      119316267977      branches                                                      (33.33%)
+        8835835431      branch-misses             #    7.41% of all branches          (33.33%)
+      399195933418      L1-dcache-loads                                               (33.33%)
+        9712027974      L1-dcache-load-misses     #    2.43% of all L1-dcache hits    (33.33%)
+       10197949567      LLC-loads                                                     (33.33%)
+         119403417      LLC-load-misses           #    1.17% of all LL-cache hits     (33.33%)
+      399182752482      dTLB-loads                                                    (33.33%)
+          85879266      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     326.735933181 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 1752011888
+occupancy  : 0.3
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 155435)...
+Successfully attached to process 155435.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 320.486
+==================================================================================
+Performance counter stats for process id '155435':
+
+               830      context-switches                                            
+                 1      cpu-migrations                                              
+             59980      page-faults                                                 
+      952427016191      cycles:u                                                      (25.00%)
+        6721932819      cycles:k                                                      (16.67%)
+      670810695946      instructions:u            #    0.70  insn per cycle           (25.01%)
+         920025650      instructions:k            #    0.14  insn per cycle           (33.34%)
+      119328243169      branches                                                      (33.34%)
+        8818935112      branch-misses             #    7.39% of all branches          (33.33%)
+      398665023001      L1-dcache-loads                                               (33.33%)
+        9420796709      L1-dcache-load-misses     #    2.36% of all L1-dcache hits    (33.33%)
+        9900390820      LLC-loads                                                     (33.33%)
+         121240150      LLC-load-misses           #    1.22% of all LL-cache hits     (33.33%)
+      398742509540      dTLB-loads                                                    (33.33%)
+          83059848      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     325.456000968 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 1290110086
+occupancy  : 0.4
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 155501)...
+Successfully attached to process 155501.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 320.864
+==================================================================================
+Performance counter stats for process id '155501':
+
+               730      context-switches                                            
+                 1      cpu-migrations                                              
+             61867      page-faults                                                 
+      953932368988      cycles:u                                                      (25.00%)
+        6655020219      cycles:k                                                      (16.67%)
+      670723779618      instructions:u            #    0.70  insn per cycle           (25.00%)
+         826587615      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119283055175      branches                                                      (33.33%)
+        8843837488      branch-misses             #    7.41% of all branches          (33.33%)
+      399309657871      L1-dcache-loads                                               (33.33%)
+        9467820754      L1-dcache-load-misses     #    2.37% of all L1-dcache hits    (33.33%)
+        9961878829      LLC-loads                                                     (33.33%)
+         120918649      LLC-load-misses           #    1.21% of all LL-cache hits     (33.33%)
+      399447326749      dTLB-loads                                                    (33.33%)
+          82686179      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     325.852017389 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 868954658
+occupancy  : 0.5
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 155554)...
+Successfully attached to process 155554.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 319.913
+==================================================================================
+Performance counter stats for process id '155554':
+
+               814      context-switches                                            
+                 1      cpu-migrations                                              
+             61987      page-faults                                                 
+      950877992040      cycles:u                                                      (25.00%)
+        6524715690      cycles:k                                                      (16.67%)
+      670864360979      instructions:u            #    0.71  insn per cycle           (25.00%)
+         843043541      instructions:k            #    0.13  insn per cycle           (33.34%)
+      119303479580      branches                                                      (33.34%)
+        8845803099      branch-misses             #    7.41% of all branches          (33.34%)
+      398354660081      L1-dcache-loads                                               (33.33%)
+        9450627801      L1-dcache-load-misses     #    2.37% of all L1-dcache hits    (33.33%)
+        9917692518      LLC-loads                                                     (33.33%)
+         118967043      LLC-load-misses           #    1.20% of all LL-cache hits     (33.33%)
+      398598760530      dTLB-loads                                                    (33.33%)
+          84046239      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     324.896476010 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 2529836720
+occupancy  : 0.6
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 155619)...
+Successfully attached to process 155619.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 319.022
+==================================================================================
+Performance counter stats for process id '155619':
+
+               886      context-switches                                            
+                 1      cpu-migrations                                              
+             63082      page-faults                                                 
+      947817248275      cycles:u                                                      (25.00%)
+        6993696958      cycles:k                                                      (16.67%)
+      670601885888      instructions:u            #    0.71  insn per cycle           (25.00%)
+         856468113      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119303454368      branches                                                      (33.33%)
+        8825691925      branch-misses             #    7.40% of all branches          (33.33%)
+      398252437036      L1-dcache-loads                                               (33.33%)
+        9141578271      L1-dcache-load-misses     #    2.30% of all L1-dcache hits    (33.33%)
+        9613513058      LLC-loads                                                     (33.33%)
+         118299631      LLC-load-misses           #    1.23% of all LL-cache hits     (33.33%)
+      398408661085      dTLB-loads                                                    (33.33%)
+          87410390      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     324.006897351 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 1414475279
+occupancy  : 0.7
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 155781)...
+Successfully attached to process 155781.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 318.65
+==================================================================================
+Performance counter stats for process id '155781':
+
+              1016      context-switches                                            
+                 1      cpu-migrations                                              
+             63514      page-faults                                                 
+      946563817062      cycles:u                                                      (25.00%)
+        6472878819      cycles:k                                                      (16.67%)
+      670784955078      instructions:u            #    0.71  insn per cycle           (25.00%)
+         875669493      instructions:k            #    0.14  insn per cycle           (33.34%)
+      119238610984      branches                                                      (33.33%)
+        8838515323      branch-misses             #    7.41% of all branches          (33.33%)
+      397892581281      L1-dcache-loads                                               (33.33%)
+        9234577393      L1-dcache-load-misses     #    2.32% of all L1-dcache hits    (33.33%)
+        9708459007      LLC-loads                                                     (33.33%)
+         118274816      LLC-load-misses           #    1.22% of all LL-cache hits     (33.33%)
+      398351865857      dTLB-loads                                                    (33.33%)
+          85407471      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     323.643670406 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 1370957230
+occupancy  : 0.8
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 155898)...
+Successfully attached to process 155898.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 317.104
+==================================================================================
+Performance counter stats for process id '155898':
+
+               909      context-switches                                            
+                 1      cpu-migrations                                              
+             64646      page-faults                                                 
+      941952839988      cycles:u                                                      (25.00%)
+        6554459053      cycles:k                                                      (16.67%)
+      670828961076      instructions:u            #    0.71  insn per cycle           (25.01%)
+         759355412      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119269540338      branches                                                      (33.33%)
+        8839209181      branch-misses             #    7.41% of all branches          (33.33%)
+      397808468462      L1-dcache-loads                                               (33.33%)
+        9304410917      L1-dcache-load-misses     #    2.34% of all L1-dcache hits    (33.33%)
+        9816333981      LLC-loads                                                     (33.33%)
+         118805347      LLC-load-misses           #    1.21% of all LL-cache hits     (33.33%)
+      398098835328      dTLB-loads                                                    (33.33%)
+          79803583      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     322.085649807 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 522666223
+occupancy  : 0.9
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 1 seconds.
+Sleeping 5 seconds before starting the program (PID: 156008)...
+Successfully attached to process 156008.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 317.917
+==================================================================================
+Performance counter stats for process id '156008':
+
+               773      context-switches                                            
+                 1      cpu-migrations                                              
+             66183      page-faults                                                 
+      945132070479      cycles:u                                                      (25.00%)
+        6450854059      cycles:k                                                      (16.67%)
+      670611518807      instructions:u            #    0.71  insn per cycle           (25.00%)
+         778389022      instructions:k            #    0.12  insn per cycle           (33.34%)
+      119285942649      branches                                                      (33.33%)
+        8827690815      branch-misses             #    7.40% of all branches          (33.33%)
+      398015284079      L1-dcache-loads                                               (33.33%)
+        9496381555      L1-dcache-load-misses     #    2.39% of all L1-dcache hits    (33.33%)
+       10002914800      LLC-loads                                                     (33.33%)
+         115291626      LLC-load-misses           #    1.15% of all LL-cache hits     (33.33%)
+      398271275443      dTLB-loads                                                    (33.33%)
+          76647055      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     322.891704994 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : /home/nvankampen/nicovank/allocators/libmimalloc.so
+seed       : 4098197178
+occupancy  : 1
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 156083)...
+Successfully attached to process 156083.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 315.537
+==================================================================================
+Performance counter stats for process id '156083':
+
+               735      context-switches                                            
+                 1      cpu-migrations                                              
+             61323      page-faults                                                 
+      937912312365      cycles:u                                                      (25.00%)
+        6677672632      cycles:k                                                      (16.67%)
+      670654080950      instructions:u            #    0.72  insn per cycle           (25.01%)
+         849965243      instructions:k            #    0.13  insn per cycle           (33.34%)
+      119313393877      branches                                                      (33.33%)
+        8846972243      branch-misses             #    7.41% of all branches          (33.33%)
+      398090019254      L1-dcache-loads                                               (33.33%)
+        9245243227      L1-dcache-load-misses     #    2.32% of all L1-dcache hits    (33.33%)
+        9757242627      LLC-loads                                                     (33.33%)
+         114592039      LLC-load-misses           #    1.17% of all LL-cache hits     (33.33%)
+      398215871066      dTLB-loads                                                    (33.33%)
+          73561812      dTLB-load-misses          #    0.02% of all dTLB cache hits   (25.00%)
+
+     320.545673950 seconds time elapsed
+==================================================================================
+

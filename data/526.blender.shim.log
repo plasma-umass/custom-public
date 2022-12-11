@@ -1,0 +1,330 @@
+
+ Performance counter stats for '../../exe/blender_r_base.r2s-m64 sh5_reduced.blend --render-output sh5_reduced_ --threads 1 -b -F RAWTGA -s 234 -e 234 -a':
+
+         323957.58 msec task-clock                #    1.000 CPUs utilized          
+               838      context-switches          #    0.003 K/sec                  
+                 1      cpu-migrations            #    0.000 K/sec                  
+             63840      page-faults               #    0.197 K/sec                  
+      969437555703      cycles                    #    2.992 GHz                      (11.11%)
+      109268969317      stalled-cycles-frontend   #   11.27% frontend cycles idle     (11.11%)
+      266176086779      stalled-cycles-backend    #   27.46% backend cycles idle      (11.11%)
+      671708199128      instructions              #    0.69  insn per cycle         
+                                                  #    0.40  stalled cycles per insn  (16.67%)
+      119371131101      branches                  #  368.478 M/sec                    (22.22%)
+        8829819996      branch-misses             #    7.40% of all branches          (22.22%)
+      399453856641      L1-dcache-loads           # 1233.044 M/sec                    (22.22%)
+        9981051081      L1-dcache-load-misses     #    2.50% of all L1-dcache hits    (22.22%)
+       10491415021      LLC-loads                 #   32.385 M/sec                    (22.22%)
+         141112071      LLC-load-misses           #    1.35% of all LL-cache hits     (22.22%)
+      399120913680      L1-icache-loads           # 1232.016 M/sec                    (11.11%)
+         296401347      L1-icache-load-misses     #    0.07% of all L1-icache hits    (11.11%)
+      399562732816      dTLB-loads                # 1233.380 M/sec                    (16.67%)
+         103641527      dTLB-load-misses          #    0.03% of all dTLB cache hits   (16.67%)
+      399426435087      iTLB-loads                # 1232.959 M/sec                    (16.67%)
+              7955      iTLB-load-misses          #    0.00% of all iTLB cache hits   (11.11%)
+       11087375252      L1-dcache-prefetches      #   34.225 M/sec                    (11.11%)
+                 0      L1-dcache-prefetch-misses #    0.000 K/sec                    (11.11%)
+
+     323.991899209 seconds time elapsed
+
+     323.692524000 seconds user
+       0.263971000 seconds sys
+
+
+
+ Performance counter stats for '../../exe/blender_r_base.r2s-m64 sh5_reduced.blend --render-output sh5_reduced_ --threads 1 -b -F RAWTGA -s 234 -e 234 -a':
+
+         323681.21 msec task-clock                #    1.000 CPUs utilized          
+               570      context-switches          #    0.002 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+             40606      page-faults               #    0.125 K/sec                  
+      968449652567      cycles                    #    2.992 GHz                      (11.11%)
+      108912163107      stalled-cycles-frontend   #   11.25% frontend cycles idle     (11.11%)
+      267181809478      stalled-cycles-backend    #   27.59% backend cycles idle      (11.11%)
+      671434381310      instructions              #    0.69  insn per cycle         
+                                                  #    0.40  stalled cycles per insn  (16.67%)
+      119381427151      branches                  #  368.824 M/sec                    (22.22%)
+        8803900973      branch-misses             #    7.37% of all branches          (22.22%)
+      399255608505      L1-dcache-loads           # 1233.484 M/sec                    (22.22%)
+        9806339853      L1-dcache-load-misses     #    2.46% of all L1-dcache hits    (22.22%)
+       10338517364      LLC-loads                 #   31.940 M/sec                    (22.22%)
+         141505697      LLC-load-misses           #    1.37% of all LL-cache hits     (22.22%)
+      399637454877      L1-icache-loads           # 1234.664 M/sec                    (11.11%)
+         333905981      L1-icache-load-misses     #    0.08% of all L1-icache hits    (11.11%)
+      400104742849      dTLB-loads                # 1236.107 M/sec                    (16.67%)
+         105251868      dTLB-load-misses          #    0.03% of all dTLB cache hits   (16.67%)
+      399570031388      iTLB-loads                # 1234.455 M/sec                    (16.67%)
+              9764      iTLB-load-misses          #    0.00% of all iTLB cache hits   (11.11%)
+       11016889746      L1-dcache-prefetches      #   34.036 M/sec                    (11.11%)
+                 0      L1-dcache-prefetch-misses #    0.000 K/sec                    (11.11%)
+
+     323.709458131 seconds time elapsed
+
+     323.545182000 seconds user
+       0.135987000 seconds sys
+
+
+
+ Performance counter stats for '../../exe/blender_r_base.r2s-m64 sh5_reduced.blend --render-output sh5_reduced_ --threads 1 -b -F RAWTGA -s 234 -e 234 -a':
+
+         323257.32 msec task-clock                #    1.000 CPUs utilized          
+               648      context-switches          #    0.002 K/sec                  
+                 2      cpu-migrations            #    0.000 K/sec                  
+             70554      page-faults               #    0.218 K/sec                  
+      966832416051      cycles                    #    2.991 GHz                      (11.11%)
+      109041765396      stalled-cycles-frontend   #   11.28% frontend cycles idle     (11.11%)
+      263845428098      stalled-cycles-backend    #   27.29% backend cycles idle      (11.11%)
+      671463160713      instructions              #    0.69  insn per cycle         
+                                                  #    0.39  stalled cycles per insn  (16.67%)
+      119296239913      branches                  #  369.044 M/sec                    (22.23%)
+        8843385367      branch-misses             #    7.41% of all branches          (22.22%)
+      399433396718      L1-dcache-loads           # 1235.652 M/sec                    (22.22%)
+        9703736698      L1-dcache-load-misses     #    2.43% of all L1-dcache hits    (22.22%)
+       10202849848      LLC-loads                 #   31.563 M/sec                    (22.22%)
+         140506406      LLC-load-misses           #    1.38% of all LL-cache hits     (22.22%)
+      399165830558      L1-icache-loads           # 1234.824 M/sec                    (11.11%)
+         319853022      L1-icache-load-misses     #    0.08% of all L1-icache hits    (11.11%)
+      399743869429      dTLB-loads                # 1236.612 M/sec                    (16.67%)
+         102742999      dTLB-load-misses          #    0.03% of all dTLB cache hits   (16.67%)
+      399248896816      iTLB-loads                # 1235.081 M/sec                    (16.67%)
+             14067      iTLB-load-misses          #    0.00% of all iTLB cache hits   (11.11%)
+       11007876865      L1-dcache-prefetches      #   34.053 M/sec                    (11.11%)
+                 0      L1-dcache-prefetch-misses #    0.000 K/sec                    (11.11%)
+
+     323.287767178 seconds time elapsed
+
+     323.056958000 seconds user
+       0.199980000 seconds sys
+
+
+
+ Performance counter stats for '../../exe/blender_r_base.r2s-m64 sh5_reduced.blend --render-output sh5_reduced_ --threads 1 -b -F RAWTGA -s 234 -e 234 -a':
+
+         323397.31 msec task-clock                #    1.000 CPUs utilized          
+               787      context-switches          #    0.002 K/sec                  
+                 1      cpu-migrations            #    0.000 K/sec                  
+             64476      page-faults               #    0.199 K/sec                  
+      967669235154      cycles                    #    2.992 GHz                      (11.11%)
+      109173909908      stalled-cycles-frontend   #   11.28% frontend cycles idle     (11.11%)
+      264710259404      stalled-cycles-backend    #   27.36% backend cycles idle      (11.11%)
+      671839121940      instructions              #    0.69  insn per cycle         
+                                                  #    0.39  stalled cycles per insn  (16.67%)
+      119361353357      branches                  #  369.086 M/sec                    (22.23%)
+        8812384010      branch-misses             #    7.38% of all branches          (22.22%)
+      399405482882      L1-dcache-loads           # 1235.030 M/sec                    (22.22%)
+        9871231933      L1-dcache-load-misses     #    2.47% of all L1-dcache hits    (22.22%)
+       10406584031      LLC-loads                 #   32.179 M/sec                    (22.22%)
+         140107401      LLC-load-misses           #    1.35% of all LL-cache hits     (22.22%)
+      399168926732      L1-icache-loads           # 1234.299 M/sec                    (11.11%)
+         335548023      L1-icache-load-misses     #    0.08% of all L1-icache hits    (11.11%)
+      399542744200      dTLB-loads                # 1235.455 M/sec                    (16.67%)
+         104063060      dTLB-load-misses          #    0.03% of all dTLB cache hits   (16.67%)
+      399074225750      iTLB-loads                # 1234.006 M/sec                    (16.66%)
+              4950      iTLB-load-misses          #    0.00% of all iTLB cache hits   (11.11%)
+       11033938006      L1-dcache-prefetches      #   34.119 M/sec                    (11.11%)
+                 0      L1-dcache-prefetch-misses #    0.000 K/sec                    (11.11%)
+
+     323.432370315 seconds time elapsed
+
+     323.020549000 seconds user
+       0.375954000 seconds sys
+
+
+
+ Performance counter stats for '../../exe/blender_r_base.r2s-m64 sh5_reduced.blend --render-output sh5_reduced_ --threads 1 -b -F RAWTGA -s 234 -e 234 -a':
+
+         324126.50 msec task-clock                #    1.000 CPUs utilized          
+               711      context-switches          #    0.002 K/sec                  
+                 1      cpu-migrations            #    0.000 K/sec                  
+             63898      page-faults               #    0.197 K/sec                  
+      969270105781      cycles                    #    2.990 GHz                      (11.11%)
+      108771174903      stalled-cycles-frontend   #   11.22% frontend cycles idle     (11.11%)
+      267722069899      stalled-cycles-backend    #   27.62% backend cycles idle      (11.11%)
+      671133843312      instructions              #    0.69  insn per cycle         
+                                                  #    0.40  stalled cycles per insn  (16.67%)
+      119319447845      branches                  #  368.126 M/sec                    (22.23%)
+        8814273838      branch-misses             #    7.39% of all branches          (22.22%)
+      399686814965      L1-dcache-loads           # 1233.120 M/sec                    (22.22%)
+        9814582028      L1-dcache-load-misses     #    2.46% of all L1-dcache hits    (22.22%)
+       10334623298      LLC-loads                 #   31.885 M/sec                    (22.22%)
+         143251025      LLC-load-misses           #    1.39% of all LL-cache hits     (22.22%)
+      399437197237      L1-icache-loads           # 1232.350 M/sec                    (11.11%)
+         299896869      L1-icache-load-misses     #    0.08% of all L1-icache hits    (11.11%)
+      400360790379      dTLB-loads                # 1235.199 M/sec                    (16.67%)
+         102877403      dTLB-load-misses          #    0.03% of all dTLB cache hits   (16.67%)
+      399644626262      iTLB-loads                # 1232.990 M/sec                    (16.66%)
+              5004      iTLB-load-misses          #    0.00% of all iTLB cache hits   (11.11%)
+       11088431634      L1-dcache-prefetches      #   34.210 M/sec                    (11.11%)
+                 0      L1-dcache-prefetch-misses #    0.000 K/sec                    (11.11%)
+
+     324.158841111 seconds time elapsed
+
+     323.806277000 seconds user
+       0.319970000 seconds sys
+
+
+
+ Performance counter stats for '../../exe/blender_r_base.r2s-m64 sh5_reduced.blend --render-output sh5_reduced_ --threads 1 -b -F RAWTGA -s 234 -e 234 -a':
+
+         324626.57 msec task-clock                #    1.000 CPUs utilized          
+               572      context-switches          #    0.002 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+             40604      page-faults               #    0.125 K/sec                  
+      971105372177      cycles                    #    2.991 GHz                      (11.11%)
+      108808850357      stalled-cycles-frontend   #   11.20% frontend cycles idle     (11.11%)
+      267565400592      stalled-cycles-backend    #   27.55% backend cycles idle      (11.11%)
+      672580972302      instructions              #    0.69  insn per cycle         
+                                                  #    0.40  stalled cycles per insn  (16.67%)
+      119556527774      branches                  #  368.289 M/sec                    (22.22%)
+        8842567174      branch-misses             #    7.40% of all branches          (22.22%)
+      400144660398      L1-dcache-loads           # 1232.631 M/sec                    (22.22%)
+       10070051176      L1-dcache-load-misses     #    2.52% of all L1-dcache hits    (22.22%)
+       10577088688      LLC-loads                 #   32.582 M/sec                    (22.22%)
+         140528189      LLC-load-misses           #    1.33% of all LL-cache hits     (22.22%)
+      399816183932      L1-icache-loads           # 1231.619 M/sec                    (11.11%)
+         315828107      L1-icache-load-misses     #    0.08% of all L1-icache hits    (11.11%)
+      400500253386      dTLB-loads                # 1233.726 M/sec                    (16.67%)
+         104438228      dTLB-load-misses          #    0.03% of all dTLB cache hits   (16.67%)
+      399954007125      iTLB-loads                # 1232.043 M/sec                    (16.67%)
+             10701      iTLB-load-misses          #    0.00% of all iTLB cache hits   (11.11%)
+       11009719280      L1-dcache-prefetches      #   33.915 M/sec                    (11.11%)
+                 0      L1-dcache-prefetch-misses #    0.000 K/sec                    (11.11%)
+
+     324.654027065 seconds time elapsed
+
+     324.498287000 seconds user
+       0.127988000 seconds sys
+
+
+
+ Performance counter stats for '../../exe/blender_r_base.r2s-m64 sh5_reduced.blend --render-output sh5_reduced_ --threads 1 -b -F RAWTGA -s 234 -e 234 -a':
+
+         324615.36 msec task-clock                #    1.000 CPUs utilized          
+               701      context-switches          #    0.002 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+             40610      page-faults               #    0.125 K/sec                  
+      971051922659      cycles                    #    2.991 GHz                      (11.11%)
+      109150398871      stalled-cycles-frontend   #   11.24% frontend cycles idle     (11.11%)
+      267443550151      stalled-cycles-backend    #   27.54% backend cycles idle      (11.11%)
+      671974007976      instructions              #    0.69  insn per cycle         
+                                                  #    0.40  stalled cycles per insn  (16.67%)
+      119488240369      branches                  #  368.092 M/sec                    (22.22%)
+        8838068210      branch-misses             #    7.40% of all branches          (22.22%)
+      400216480652      L1-dcache-loads           # 1232.894 M/sec                    (22.22%)
+        9996861078      L1-dcache-load-misses     #    2.50% of all L1-dcache hits    (22.22%)
+       10508983945      LLC-loads                 #   32.374 M/sec                    (22.22%)
+         140693683      LLC-load-misses           #    1.34% of all LL-cache hits     (22.22%)
+      400026667325      L1-icache-loads           # 1232.310 M/sec                    (11.11%)
+         301549676      L1-icache-load-misses     #    0.08% of all L1-icache hits    (11.11%)
+      400602642224      dTLB-loads                # 1234.084 M/sec                    (16.67%)
+         105727293      dTLB-load-misses          #    0.03% of all dTLB cache hits   (16.67%)
+      399705162771      iTLB-loads                # 1231.319 M/sec                    (16.67%)
+             10530      iTLB-load-misses          #    0.00% of all iTLB cache hits   (11.11%)
+       11288593718      L1-dcache-prefetches      #   34.775 M/sec                    (11.11%)
+                 0      L1-dcache-prefetch-misses #    0.000 K/sec                    (11.11%)
+
+     324.649717631 seconds time elapsed
+
+     324.470695000 seconds user
+       0.143985000 seconds sys
+
+
+
+ Performance counter stats for '../../exe/blender_r_base.r2s-m64 sh5_reduced.blend --render-output sh5_reduced_ --threads 1 -b -F RAWTGA -s 234 -e 234 -a':
+
+         324542.67 msec task-clock                #    1.000 CPUs utilized          
+               687      context-switches          #    0.002 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+             40605      page-faults               #    0.125 K/sec                  
+      970644874394      cycles                    #    2.991 GHz                      (11.11%)
+      109249363670      stalled-cycles-frontend   #   11.26% frontend cycles idle     (11.11%)
+      268643501930      stalled-cycles-backend    #   27.68% backend cycles idle      (11.11%)
+      671865595753      instructions              #    0.69  insn per cycle         
+                                                  #    0.40  stalled cycles per insn  (16.67%)
+      119411442426      branches                  #  367.938 M/sec                    (22.22%)
+        8792835658      branch-misses             #    7.36% of all branches          (22.22%)
+      398984946414      L1-dcache-loads           # 1229.376 M/sec                    (22.22%)
+       10228994200      L1-dcache-load-misses     #    2.56% of all L1-dcache hits    (22.22%)
+       10757133180      LLC-loads                 #   33.146 M/sec                    (22.22%)
+         141923404      LLC-load-misses           #    1.32% of all LL-cache hits     (22.22%)
+      399809852860      L1-icache-loads           # 1231.918 M/sec                    (11.11%)
+         304398855      L1-icache-load-misses     #    0.08% of all L1-icache hits    (11.11%)
+      400282487176      dTLB-loads                # 1233.374 M/sec                    (16.67%)
+         105896064      dTLB-load-misses          #    0.03% of all dTLB cache hits   (16.67%)
+      399870002640      iTLB-loads                # 1232.103 M/sec                    (16.67%)
+              5453      iTLB-load-misses          #    0.00% of all iTLB cache hits   (11.11%)
+       11129421007      L1-dcache-prefetches      #   34.293 M/sec                    (11.11%)
+                 0      L1-dcache-prefetch-misses #    0.000 K/sec                    (11.11%)
+
+     324.575663107 seconds time elapsed
+
+     324.368590000 seconds user
+       0.171981000 seconds sys
+
+
+
+ Performance counter stats for '../../exe/blender_r_base.r2s-m64 sh5_reduced.blend --render-output sh5_reduced_ --threads 1 -b -F RAWTGA -s 234 -e 234 -a':
+
+         327898.15 msec task-clock                #    1.000 CPUs utilized          
+               580      context-switches          #    0.002 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+             40611      page-faults               #    0.124 K/sec                  
+      980561387663      cycles                    #    2.990 GHz                      (11.11%)
+      139287985785      stalled-cycles-frontend   #   14.20% frontend cycles idle     (11.11%)
+      244391628731      stalled-cycles-backend    #   24.92% backend cycles idle      (11.11%)
+      671366033895      instructions              #    0.68  insn per cycle         
+                                                  #    0.36  stalled cycles per insn  (16.67%)
+      119373113196      branches                  #  364.055 M/sec                    (22.23%)
+        8820384682      branch-misses             #    7.39% of all branches          (22.22%)
+      399671182835      L1-dcache-loads           # 1218.888 M/sec                    (22.22%)
+       10010141100      L1-dcache-load-misses     #    2.50% of all L1-dcache hits    (22.22%)
+       13819543702      LLC-loads                 #   42.146 M/sec                    (22.22%)
+         141834551      LLC-load-misses           #    1.03% of all LL-cache hits     (22.22%)
+      422873685371      L1-icache-loads           # 1289.650 M/sec                    (11.11%)
+        3631585133      L1-icache-load-misses     #    0.86% of all L1-icache hits    (11.11%)
+      399932304385      dTLB-loads                # 1219.685 M/sec                    (16.67%)
+         103239266      dTLB-load-misses          #    0.03% of all dTLB cache hits   (16.66%)
+      422967415176      iTLB-loads                # 1289.935 M/sec                    (16.66%)
+              4554      iTLB-load-misses          #    0.00% of all iTLB cache hits   (11.11%)
+       10975751896      L1-dcache-prefetches      #   33.473 M/sec                    (11.11%)
+                 0      L1-dcache-prefetch-misses #    0.000 K/sec                    (11.11%)
+
+     327.926505047 seconds time elapsed
+
+     327.753560000 seconds user
+       0.143988000 seconds sys
+
+
+
+ Performance counter stats for '../../exe/blender_r_base.r2s-m64 sh5_reduced.blend --render-output sh5_reduced_ --threads 1 -b -F RAWTGA -s 234 -e 234 -a':
+
+         326530.10 msec task-clock                #    1.000 CPUs utilized          
+               598      context-switches          #    0.002 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+             40610      page-faults               #    0.124 K/sec                  
+      976697441985      cycles                    #    2.991 GHz                      (11.11%)
+      134237202426      stalled-cycles-frontend   #   13.74% frontend cycles idle     (11.11%)
+      244985145246      stalled-cycles-backend    #   25.08% backend cycles idle      (11.11%)
+      671047138055      instructions              #    0.69  insn per cycle         
+                                                  #    0.37  stalled cycles per insn  (16.67%)
+      119338699162      branches                  #  365.475 M/sec                    (22.23%)
+        8833936519      branch-misses             #    7.40% of all branches          (22.22%)
+      399507318669      L1-dcache-loads           # 1223.493 M/sec                    (22.22%)
+        9826995120      L1-dcache-load-misses     #    2.46% of all L1-dcache hits    (22.22%)
+       13621991763      LLC-loads                 #   41.717 M/sec                    (22.22%)
+         143307856      LLC-load-misses           #    1.05% of all LL-cache hits     (22.22%)
+      419745329568      L1-icache-loads           # 1285.472 M/sec                    (11.11%)
+        3408323957      L1-icache-load-misses     #    0.81% of all L1-icache hits    (11.11%)
+      400427878900      dTLB-loads                # 1226.312 M/sec                    (16.67%)
+         103622771      dTLB-load-misses          #    0.03% of all dTLB cache hits   (16.66%)
+      419939756606      iTLB-loads                # 1286.068 M/sec                    (16.66%)
+              8154      iTLB-load-misses          #    0.00% of all iTLB cache hits   (11.11%)
+       10985092869      L1-dcache-prefetches      #   33.642 M/sec                    (11.11%)
+                 0      L1-dcache-prefetch-misses #    0.000 K/sec                    (11.11%)
+
+     326.559199088 seconds time elapsed
+
+     326.393421000 seconds user
+       0.135987000 seconds sys
+
+

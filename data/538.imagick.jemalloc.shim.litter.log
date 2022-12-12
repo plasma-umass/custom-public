@@ -1,0 +1,2090 @@
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 3247328640
+occupancy  : 0
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 217405)...
+Successfully attached to process 217405.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.838
+==================================================================================
+Performance counter stats for process id '217405':
+
+               189      context-switches                                            
+                 4      cpu-migrations                                              
+              4443      page-faults                                                 
+      155857513611      cycles:u                                                      (25.00%)
+        1016506292      cycles:k                                                      (16.67%)
+      294684506264      instructions:u            #    1.89  insn per cycle           (25.00%)
+         117201295      instructions:k            #    0.12  insn per cycle           (33.33%)
+       29159050123      branches                                                      (33.33%)
+          47819171      branch-misses             #    0.16% of all branches          (33.33%)
+      142832380630      L1-dcache-loads                                               (33.33%)
+         205609356      L1-dcache-load-misses     #    0.14% of all L1-dcache hits    (33.34%)
+        2434625697      LLC-loads                                                     (33.33%)
+          21608259      LLC-load-misses           #    0.89% of all LL-cache hits     (33.33%)
+      142825152730      dTLB-loads                                                    (33.33%)
+            220309      dTLB-load-misses          #    0.00% of all dTLB cache hits   (25.00%)
+
+      61.798859702 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 4021900677
+occupancy  : 0.1
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 217465)...
+Successfully attached to process 217465.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.656
+==================================================================================
+Performance counter stats for process id '217465':
+
+               151      context-switches                                            
+                 0      cpu-migrations                                              
+              3980      page-faults                                                 
+      155600264737      cycles:u                                                      (25.00%)
+        1099476954      cycles:k                                                      (16.68%)
+      294492255250      instructions:u            #    1.89  insn per cycle           (25.01%)
+         145266314      instructions:k            #    0.13  insn per cycle           (33.34%)
+       29132303230      branches                                                      (33.33%)
+          47806562      branch-misses             #    0.16% of all branches          (33.33%)
+      142784223569      L1-dcache-loads                                               (33.33%)
+         184452681      L1-dcache-load-misses     #    0.13% of all L1-dcache hits    (33.33%)
+        2420545940      LLC-loads                                                     (33.33%)
+          17958087      LLC-load-misses           #    0.74% of all LL-cache hits     (33.33%)
+      142815466160      dTLB-loads                                                    (33.33%)
+            169893      dTLB-load-misses          #    0.00% of all dTLB cache hits   (25.00%)
+
+      61.644093972 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 190925146
+occupancy  : 0.2
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 217498)...
+Successfully attached to process 217498.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.724
+==================================================================================
+Performance counter stats for process id '217498':
+
+               144      context-switches                                            
+                 1      cpu-migrations                                              
+              5519      page-faults                                                 
+      155633796653      cycles:u                                                      (25.00%)
+        1025415269      cycles:k                                                      (16.68%)
+      294544835680      instructions:u            #    1.89  insn per cycle           (25.01%)
+         131247817      instructions:k            #    0.13  insn per cycle           (33.35%)
+       29156350398      branches                                                      (33.35%)
+          47739990      branch-misses             #    0.16% of all branches          (33.35%)
+      142619234548      L1-dcache-loads                                               (33.35%)
+         194037640      L1-dcache-load-misses     #    0.14% of all L1-dcache hits    (33.34%)
+        2424167177      LLC-loads                                                     (33.33%)
+          16494560      LLC-load-misses           #    0.68% of all LL-cache hits     (33.32%)
+      142869738548      dTLB-loads                                                    (33.32%)
+             94830      dTLB-load-misses          #    0.00% of all dTLB cache hits   (24.99%)
+
+      61.712925924 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 1646065026
+occupancy  : 0.3
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 217518)...
+Successfully attached to process 217518.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.63
+==================================================================================
+Performance counter stats for process id '217518':
+
+               135      context-switches                                            
+                 0      cpu-migrations                                              
+              3918      page-faults                                                 
+      155375170129      cycles:u                                                      (24.99%)
+         995309920      cycles:k                                                      (16.67%)
+      294515152604      instructions:u            #    1.90  insn per cycle           (25.01%)
+         116142250      instructions:k            #    0.12  insn per cycle           (33.34%)
+       29122936890      branches                                                      (33.34%)
+          47828559      branch-misses             #    0.16% of all branches          (33.34%)
+      142637785457      L1-dcache-loads                                               (33.34%)
+         188629093      L1-dcache-load-misses     #    0.13% of all L1-dcache hits    (33.34%)
+        2420853920      LLC-loads                                                     (33.33%)
+          11900007      LLC-load-misses           #    0.49% of all LL-cache hits     (33.33%)
+      142686841032      dTLB-loads                                                    (33.32%)
+            108194      dTLB-load-misses          #    0.00% of all dTLB cache hits   (24.99%)
+
+      61.618604114 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 2876197229
+occupancy  : 0.4
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 217538)...
+Successfully attached to process 217538.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.646
+==================================================================================
+Performance counter stats for process id '217538':
+
+               180      context-switches                                            
+                 0      cpu-migrations                                              
+              4439      page-faults                                                 
+      155423169445      cycles:u                                                      (25.00%)
+         990494080      cycles:k                                                      (16.67%)
+      294515552013      instructions:u            #    1.89  insn per cycle           (25.00%)
+         113644906      instructions:k            #    0.11  insn per cycle           (33.34%)
+       29128724565      branches                                                      (33.34%)
+          47642283      branch-misses             #    0.16% of all branches          (33.34%)
+      142666180505      L1-dcache-loads                                               (33.34%)
+         201603167      L1-dcache-load-misses     #    0.14% of all L1-dcache hits    (33.34%)
+        2435733299      LLC-loads                                                     (33.33%)
+          12229226      LLC-load-misses           #    0.50% of all LL-cache hits     (33.33%)
+      142712598320      dTLB-loads                                                    (33.33%)
+             74915      dTLB-load-misses          #    0.00% of all dTLB cache hits   (24.99%)
+
+      61.634319271 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 473440056
+occupancy  : 0.5
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 217550)...
+Successfully attached to process 217550.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.621
+==================================================================================
+Performance counter stats for process id '217550':
+
+               179      context-switches                                            
+                 0      cpu-migrations                                              
+              4448      page-faults                                                 
+      155758725231      cycles:u                                                      (25.00%)
+         986485075      cycles:k                                                      (16.67%)
+      294703939330      instructions:u            #    1.89  insn per cycle           (25.01%)
+         134077045      instructions:k            #    0.14  insn per cycle           (33.35%)
+       29139288224      branches                                                      (33.35%)
+          47911967      branch-misses             #    0.16% of all branches          (33.35%)
+      142692196220      L1-dcache-loads                                               (33.34%)
+         201260155      L1-dcache-load-misses     #    0.14% of all L1-dcache hits    (33.33%)
+        2436232714      LLC-loads                                                     (33.32%)
+          13847990      LLC-load-misses           #    0.57% of all LL-cache hits     (33.32%)
+      142692192787      dTLB-loads                                                    (33.32%)
+            120780      dTLB-load-misses          #    0.00% of all dTLB cache hits   (24.99%)
+
+      61.610183020 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 1565259392
+occupancy  : 0.6
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 217578)...
+Successfully attached to process 217578.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.898
+==================================================================================
+Performance counter stats for process id '217578':
+
+               207      context-switches                                            
+                 0      cpu-migrations                                              
+              3333      page-faults                                                 
+      155708586894      cycles:u                                                      (25.00%)
+        1060274851      cycles:k                                                      (16.68%)
+      294367817071      instructions:u            #    1.89  insn per cycle           (25.02%)
+         145201205      instructions:k            #    0.14  insn per cycle           (33.35%)
+       29133149034      branches                                                      (33.34%)
+          47893457      branch-misses             #    0.16% of all branches          (33.34%)
+      142895599956      L1-dcache-loads                                               (33.33%)
+         187275557      L1-dcache-load-misses     #    0.13% of all L1-dcache hits    (33.33%)
+        2421061783      LLC-loads                                                     (33.33%)
+          21088273      LLC-load-misses           #    0.87% of all LL-cache hits     (33.33%)
+      142832753410      dTLB-loads                                                    (33.33%)
+            120711      dTLB-load-misses          #    0.00% of all dTLB cache hits   (24.99%)
+
+      61.886214383 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 13168108
+occupancy  : 0.7
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 217599)...
+Successfully attached to process 217599.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.511
+==================================================================================
+Performance counter stats for process id '217599':
+
+               172      context-switches                                            
+                 0      cpu-migrations                                              
+              4444      page-faults                                                 
+      155417615317      cycles:u                                                      (25.00%)
+        1033561521      cycles:k                                                      (16.67%)
+      294610835729      instructions:u            #    1.90  insn per cycle           (25.00%)
+         136453824      instructions:k            #    0.13  insn per cycle           (33.34%)
+       29151489537      branches                                                      (33.33%)
+          47764712      branch-misses             #    0.16% of all branches          (33.33%)
+      142652810625      L1-dcache-loads                                               (33.33%)
+         210456524      L1-dcache-load-misses     #    0.15% of all L1-dcache hits    (33.33%)
+        2442055274      LLC-loads                                                     (33.34%)
+          10926300      LLC-load-misses           #    0.45% of all LL-cache hits     (33.34%)
+      142715063301      dTLB-loads                                                    (33.34%)
+            133358      dTLB-load-misses          #    0.00% of all dTLB cache hits   (25.00%)
+
+      61.500074560 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 4057128332
+occupancy  : 0.8
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 217614)...
+Successfully attached to process 217614.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.618
+==================================================================================
+Performance counter stats for process id '217614':
+
+               181      context-switches                                            
+                 0      cpu-migrations                                              
+              4445      page-faults                                                 
+      155425365256      cycles:u                                                      (25.00%)
+        1021892705      cycles:k                                                      (16.67%)
+      294515254798      instructions:u            #    1.89  insn per cycle           (25.01%)
+         151460949      instructions:k            #    0.15  insn per cycle           (33.36%)
+       29156239143      branches                                                      (33.35%)
+          47747056      branch-misses             #    0.16% of all branches          (33.34%)
+      142601301661      L1-dcache-loads                                               (33.33%)
+         207297513      L1-dcache-load-misses     #    0.15% of all L1-dcache hits    (33.32%)
+        2437254044      LLC-loads                                                     (33.32%)
+          12620374      LLC-load-misses           #    0.52% of all LL-cache hits     (33.32%)
+      142758684810      dTLB-loads                                                    (33.32%)
+             58337      dTLB-load-misses          #    0.00% of all dTLB cache hits   (24.99%)
+
+      61.606313602 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 4178498413
+occupancy  : 0.9
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 217626)...
+Successfully attached to process 217626.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 57.06
+==================================================================================
+Performance counter stats for process id '217626':
+
+               150      context-switches                                            
+                 1      cpu-migrations                                              
+              3936      page-faults                                                 
+      156728040512      cycles:u                                                      (24.99%)
+         983722693      cycles:k                                                      (16.67%)
+      294439289048      instructions:u            #    1.88  insn per cycle           (25.00%)
+         116255575      instructions:k            #    0.12  insn per cycle           (33.34%)
+       29123762086      branches                                                      (33.35%)
+          47886071      branch-misses             #    0.16% of all branches          (33.35%)
+      142680031887      L1-dcache-loads                                               (33.35%)
+         267264368      L1-dcache-load-misses     #    0.19% of all L1-dcache hits    (33.34%)
+        2498566466      LLC-loads                                                     (33.34%)
+          13120836      LLC-load-misses           #    0.53% of all LL-cache hits     (33.33%)
+      142779885259      dTLB-loads                                                    (33.32%)
+             70066      dTLB-load-misses          #    0.00% of all dTLB cache hits   (24.99%)
+
+      62.047606468 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 743666619
+occupancy  : 1
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 217643)...
+Successfully attached to process 217643.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.666
+==================================================================================
+Performance counter stats for process id '217643':
+
+               151      context-switches                                            
+                 1      cpu-migrations                                              
+              3937      page-faults                                                 
+      155767266593      cycles:u                                                      (25.00%)
+        1094262909      cycles:k                                                      (16.68%)
+      294455272782      instructions:u            #    1.89  insn per cycle           (25.01%)
+         145842781      instructions:k            #    0.13  insn per cycle           (33.35%)
+       29147730215      branches                                                      (33.35%)
+          47809575      branch-misses             #    0.16% of all branches          (33.34%)
+      142797290284      L1-dcache-loads                                               (33.33%)
+         184930376      L1-dcache-load-misses     #    0.13% of all L1-dcache hits    (33.33%)
+        2419578545      LLC-loads                                                     (33.32%)
+          19486620      LLC-load-misses           #    0.81% of all LL-cache hits     (33.32%)
+      142859092927      dTLB-loads                                                    (33.32%)
+             87523      dTLB-load-misses          #    0.00% of all dTLB cache hits   (24.99%)
+
+      61.653916142 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 3040432794
+occupancy  : 0
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 217667)...
+Successfully attached to process 217667.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.718
+==================================================================================
+Performance counter stats for process id '217667':
+
+               110      context-switches                                            
+                 1      cpu-migrations                                              
+              4448      page-faults                                                 
+      155953942462      cycles:u                                                      (24.99%)
+        1030514257      cycles:k                                                      (16.67%)
+      294623807197      instructions:u            #    1.89  insn per cycle           (25.01%)
+         115142163      instructions:k            #    0.11  insn per cycle           (33.34%)
+       29134156983      branches                                                      (33.34%)
+          47689270      branch-misses             #    0.16% of all branches          (33.34%)
+      142778666790      L1-dcache-loads                                               (33.34%)
+         191911767      L1-dcache-load-misses     #    0.13% of all L1-dcache hits    (33.34%)
+        2423412683      LLC-loads                                                     (33.34%)
+          23802935      LLC-load-misses           #    0.98% of all LL-cache hits     (33.33%)
+      142950891737      dTLB-loads                                                    (33.33%)
+             39942      dTLB-load-misses          #    0.00% of all dTLB cache hits   (24.98%)
+
+      61.705434418 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 2077443466
+occupancy  : 0.1
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 217684)...
+Successfully attached to process 217684.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.563
+==================================================================================
+Performance counter stats for process id '217684':
+
+               117      context-switches                                            
+                 0      cpu-migrations                                              
+              4444      page-faults                                                 
+      155734330728      cycles:u                                                      (25.00%)
+        1138732252      cycles:k                                                      (16.68%)
+      294358034231      instructions:u            #    1.89  insn per cycle           (25.02%)
+         149169164      instructions:k            #    0.13  insn per cycle           (33.35%)
+       29140190311      branches                                                      (33.34%)
+          47738532      branch-misses             #    0.16% of all branches          (33.33%)
+      142811750313      L1-dcache-loads                                               (33.33%)
+         198231054      L1-dcache-load-misses     #    0.14% of all L1-dcache hits    (33.33%)
+        2431678954      LLC-loads                                                     (33.33%)
+          16466366      LLC-load-misses           #    0.68% of all LL-cache hits     (33.33%)
+      142873906227      dTLB-loads                                                    (33.33%)
+             48076      dTLB-load-misses          #    0.00% of all dTLB cache hits   (24.99%)
+
+      61.551050020 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 1429565479
+occupancy  : 0.2
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 217701)...
+Successfully attached to process 217701.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.503
+==================================================================================
+Performance counter stats for process id '217701':
+
+               110      context-switches                                            
+                 0      cpu-migrations                                              
+              4448      page-faults                                                 
+      155788545647      cycles:u                                                      (25.00%)
+        1144734062      cycles:k                                                      (16.68%)
+      294315243246      instructions:u            #    1.89  insn per cycle           (25.01%)
+         149445863      instructions:k            #    0.13  insn per cycle           (33.35%)
+       29137718540      branches                                                      (33.34%)
+          47716719      branch-misses             #    0.16% of all branches          (33.33%)
+      142688080397      L1-dcache-loads                                               (33.33%)
+         207398522      L1-dcache-load-misses     #    0.15% of all L1-dcache hits    (33.33%)
+        2442449533      LLC-loads                                                     (33.33%)
+          10024166      LLC-load-misses           #    0.41% of all LL-cache hits     (33.33%)
+      142743209141      dTLB-loads                                                    (33.33%)
+             38465      dTLB-load-misses          #    0.00% of all dTLB cache hits   (25.00%)
+
+      61.491327740 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 481962361
+occupancy  : 0.3
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 217716)...
+Successfully attached to process 217716.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.589
+==================================================================================
+Performance counter stats for process id '217716':
+
+               137      context-switches                                            
+                 0      cpu-migrations                                              
+              3979      page-faults                                                 
+      155812942957      cycles:u                                                      (24.99%)
+        1062860612      cycles:k                                                      (16.67%)
+      294664175261      instructions:u            #    1.89  insn per cycle           (25.01%)
+         109919457      instructions:k            #    0.10  insn per cycle           (33.34%)
+       29141587316      branches                                                      (33.34%)
+          47784080      branch-misses             #    0.16% of all branches          (33.34%)
+      142784369666      L1-dcache-loads                                               (33.34%)
+         185206571      L1-dcache-load-misses     #    0.13% of all L1-dcache hits    (33.34%)
+        2419850100      LLC-loads                                                     (33.34%)
+          19454672      LLC-load-misses           #    0.80% of all LL-cache hits     (33.33%)
+      142756964422      dTLB-loads                                                    (33.33%)
+             46007      dTLB-load-misses          #    0.00% of all dTLB cache hits   (24.98%)
+
+      61.576788002 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 846423884
+occupancy  : 0.4
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 217798)...
+Successfully attached to process 217798.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.458
+==================================================================================
+Performance counter stats for process id '217798':
+
+               146      context-switches                                            
+                 0      cpu-migrations                                              
+              4446      page-faults                                                 
+      155609960904      cycles:u                                                      (25.00%)
+        1156860154      cycles:k                                                      (16.68%)
+      294290092737      instructions:u            #    1.89  insn per cycle           (25.01%)
+         157509659      instructions:k            #    0.14  insn per cycle           (33.35%)
+       29136062591      branches                                                      (33.34%)
+          47725511      branch-misses             #    0.16% of all branches          (33.34%)
+      142700952049      L1-dcache-loads                                               (33.33%)
+         187500869      L1-dcache-load-misses     #    0.13% of all L1-dcache hits    (33.33%)
+        2420488703      LLC-loads                                                     (33.32%)
+          13870276      LLC-load-misses           #    0.57% of all LL-cache hits     (33.32%)
+      142836977186      dTLB-loads                                                    (33.32%)
+             42778      dTLB-load-misses          #    0.00% of all dTLB cache hits   (24.99%)
+
+      61.446975488 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 356855606
+occupancy  : 0.5
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 217824)...
+Successfully attached to process 217824.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.557
+==================================================================================
+Performance counter stats for process id '217824':
+
+               134      context-switches                                            
+                 0      cpu-migrations                                              
+              4445      page-faults                                                 
+      155790878979      cycles:u                                                      (25.01%)
+        1157485747      cycles:k                                                      (16.67%)
+      294392889701      instructions:u            #    1.89  insn per cycle           (25.01%)
+         138364613      instructions:k            #    0.12  insn per cycle           (33.34%)
+       29146635345      branches                                                      (33.33%)
+          47735751      branch-misses             #    0.16% of all branches          (33.33%)
+      142769667018      L1-dcache-loads                                               (33.33%)
+         184210528      L1-dcache-load-misses     #    0.13% of all L1-dcache hits    (33.33%)
+        2419948065      LLC-loads                                                     (33.33%)
+          16709166      LLC-load-misses           #    0.69% of all LL-cache hits     (33.33%)
+      142821798394      dTLB-loads                                                    (33.33%)
+             42529      dTLB-load-misses          #    0.00% of all dTLB cache hits   (25.00%)
+
+      61.545783754 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 3145058804
+occupancy  : 0.6
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 217845)...
+Successfully attached to process 217845.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.422
+==================================================================================
+Performance counter stats for process id '217845':
+
+               148      context-switches                                            
+                 0      cpu-migrations                                              
+              4444      page-faults                                                 
+      155555939718      cycles:u                                                      (25.00%)
+        1032828233      cycles:k                                                      (16.67%)
+      294589950254      instructions:u            #    1.89  insn per cycle           (25.01%)
+         123409343      instructions:k            #    0.12  insn per cycle           (33.35%)
+       29133553199      branches                                                      (33.35%)
+          47711709      branch-misses             #    0.16% of all branches          (33.35%)
+      142611220128      L1-dcache-loads                                               (33.35%)
+         192783429      L1-dcache-load-misses     #    0.14% of all L1-dcache hits    (33.34%)
+        2426385204      LLC-loads                                                     (33.33%)
+          13599861      LLC-load-misses           #    0.56% of all LL-cache hits     (33.32%)
+      142816255103      dTLB-loads                                                    (33.32%)
+             33665      dTLB-load-misses          #    0.00% of all dTLB cache hits   (24.99%)
+
+      61.410365896 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 3518024955
+occupancy  : 0.7
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 217861)...
+Successfully attached to process 217861.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.405
+==================================================================================
+Performance counter stats for process id '217861':
+
+               138      context-switches                                            
+                 0      cpu-migrations                                              
+              3919      page-faults                                                 
+      155408666487      cycles:u                                                      (25.00%)
+        1037443936      cycles:k                                                      (16.67%)
+      294659514290      instructions:u            #    1.90  insn per cycle           (25.00%)
+         110032372      instructions:k            #    0.11  insn per cycle           (33.34%)
+       29146457446      branches                                                      (33.34%)
+          47737559      branch-misses             #    0.16% of all branches          (33.34%)
+      142726310820      L1-dcache-loads                                               (33.34%)
+         182743743      L1-dcache-load-misses     #    0.13% of all L1-dcache hits    (33.34%)
+        2417362921      LLC-loads                                                     (33.33%)
+          13617969      LLC-load-misses           #    0.56% of all LL-cache hits     (33.33%)
+      142696666336      dTLB-loads                                                    (33.34%)
+             43053      dTLB-load-misses          #    0.00% of all dTLB cache hits   (24.99%)
+
+      61.392216802 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 2320063438
+occupancy  : 0.8
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 217882)...
+Successfully attached to process 217882.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.585
+==================================================================================
+Performance counter stats for process id '217882':
+
+               133      context-switches                                            
+                 0      cpu-migrations                                              
+              4460      page-faults                                                 
+      155815162404      cycles:u                                                      (24.99%)
+        1046847723      cycles:k                                                      (16.67%)
+      294639386024      instructions:u            #    1.89  insn per cycle           (25.00%)
+         110202000      instructions:k            #    0.11  insn per cycle           (33.33%)
+       29138557478      branches                                                      (33.34%)
+          47732123      branch-misses             #    0.16% of all branches          (33.34%)
+      142837845389      L1-dcache-loads                                               (33.33%)
+         199538364      L1-dcache-load-misses     #    0.14% of all L1-dcache hits    (33.34%)
+        2429780638      LLC-loads                                                     (33.34%)
+          22096899      LLC-load-misses           #    0.91% of all LL-cache hits     (33.34%)
+      142846010946      dTLB-loads                                                    (33.34%)
+             43530      dTLB-load-misses          #    0.00% of all dTLB cache hits   (25.00%)
+
+      61.573463084 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 2416567366
+occupancy  : 0.9
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 217903)...
+Successfully attached to process 217903.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.458
+==================================================================================
+Performance counter stats for process id '217903':
+
+               130      context-switches                                            
+                 0      cpu-migrations                                              
+              3935      page-faults                                                 
+      155503809981      cycles:u                                                      (25.00%)
+        1109016306      cycles:k                                                      (16.67%)
+      294591798958      instructions:u            #    1.89  insn per cycle           (25.00%)
+         129289513      instructions:k            #    0.12  insn per cycle           (33.34%)
+       29140189251      branches                                                      (33.33%)
+          47692463      branch-misses             #    0.16% of all branches          (33.33%)
+      142729139499      L1-dcache-loads                                               (33.33%)
+         211673615      L1-dcache-load-misses     #    0.15% of all L1-dcache hits    (33.33%)
+        2442119233      LLC-loads                                                     (33.33%)
+          15322140      LLC-load-misses           #    0.63% of all LL-cache hits     (33.33%)
+      142724773640      dTLB-loads                                                    (33.33%)
+             47032      dTLB-load-misses          #    0.00% of all dTLB cache hits   (25.00%)
+
+      61.445856817 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 872128546
+occupancy  : 1
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 217931)...
+Successfully attached to process 217931.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.438
+==================================================================================
+Performance counter stats for process id '217931':
+
+               139      context-switches                                            
+                 0      cpu-migrations                                              
+              4448      page-faults                                                 
+      155596739743      cycles:u                                                      (24.99%)
+        1032849625      cycles:k                                                      (16.67%)
+      294626258280      instructions:u            #    1.89  insn per cycle           (25.00%)
+         108138397      instructions:k            #    0.10  insn per cycle           (33.34%)
+       29144570902      branches                                                      (33.34%)
+          47694086      branch-misses             #    0.16% of all branches          (33.34%)
+      142699009932      L1-dcache-loads                                               (33.34%)
+         203073202      L1-dcache-load-misses     #    0.14% of all L1-dcache hits    (33.34%)
+        2438084907      LLC-loads                                                     (33.34%)
+          13240422      LLC-load-misses           #    0.54% of all LL-cache hits     (33.34%)
+      142720725516      dTLB-loads                                                    (33.33%)
+             35076      dTLB-load-misses          #    0.00% of all dTLB cache hits   (24.99%)
+
+      61.426709945 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 1976159244
+occupancy  : 0
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 217947)...
+Successfully attached to process 217947.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.426
+==================================================================================
+Performance counter stats for process id '217947':
+
+               150      context-switches                                            
+                 1      cpu-migrations                                              
+              5577      page-faults                                                 
+      155415495053      cycles:u                                                      (25.00%)
+        1146869016      cycles:k                                                      (16.68%)
+      294276647839      instructions:u            #    1.89  insn per cycle           (25.01%)
+         156764913      instructions:k            #    0.14  insn per cycle           (33.35%)
+       29132489497      branches                                                      (33.35%)
+          47749695      branch-misses             #    0.16% of all branches          (33.34%)
+      142714365815      L1-dcache-loads                                               (33.33%)
+         192091202      L1-dcache-load-misses     #    0.13% of all L1-dcache hits    (33.32%)
+        2427754000      LLC-loads                                                     (33.32%)
+           9283935      LLC-load-misses           #    0.38% of all LL-cache hits     (33.32%)
+      142696574994      dTLB-loads                                                    (33.32%)
+             59962      dTLB-load-misses          #    0.00% of all dTLB cache hits   (24.99%)
+
+      61.414385201 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 1904865143
+occupancy  : 0.1
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 217980)...
+Successfully attached to process 217980.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.342
+==================================================================================
+Performance counter stats for process id '217980':
+
+               127      context-switches                                            
+                 0      cpu-migrations                                              
+              4445      page-faults                                                 
+      155316378107      cycles:u                                                      (24.99%)
+        1025058529      cycles:k                                                      (16.67%)
+      294754189349      instructions:u            #    1.90  insn per cycle           (25.00%)
+         108907717      instructions:k            #    0.11  insn per cycle           (33.33%)
+       29162335307      branches                                                      (33.34%)
+          47672230      branch-misses             #    0.16% of all branches          (33.34%)
+      142565055952      L1-dcache-loads                                               (33.34%)
+         197512699      L1-dcache-load-misses     #    0.14% of all L1-dcache hits    (33.34%)
+        2425258896      LLC-loads                                                     (33.34%)
+           9958436      LLC-load-misses           #    0.41% of all LL-cache hits     (33.34%)
+      142683581693      dTLB-loads                                                    (33.34%)
+             28267      dTLB-load-misses          #    0.00% of all dTLB cache hits   (24.99%)
+
+      61.329814259 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 1850740734
+occupancy  : 0.2
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 217994)...
+Successfully attached to process 217994.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.313
+==================================================================================
+Performance counter stats for process id '217994':
+
+               135      context-switches                                            
+                 0      cpu-migrations                                              
+              3979      page-faults                                                 
+      155183495979      cycles:u                                                      (25.00%)
+        1059036543      cycles:k                                                      (16.67%)
+      294692692870      instructions:u            #    1.90  insn per cycle           (25.00%)
+         117631238      instructions:k            #    0.11  insn per cycle           (33.34%)
+       29151039478      branches                                                      (33.33%)
+          47729206      branch-misses             #    0.16% of all branches          (33.33%)
+      142621092921      L1-dcache-loads                                               (33.33%)
+         185973131      L1-dcache-load-misses     #    0.13% of all L1-dcache hits    (33.33%)
+        2414162731      LLC-loads                                                     (33.33%)
+           8721100      LLC-load-misses           #    0.36% of all LL-cache hits     (33.33%)
+      142633775339      dTLB-loads                                                    (33.33%)
+             43476      dTLB-load-misses          #    0.00% of all dTLB cache hits   (25.00%)
+
+      61.301077271 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 2043014868
+occupancy  : 0.3
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 218013)...
+Successfully attached to process 218013.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.36
+==================================================================================
+Performance counter stats for process id '218013':
+
+               130      context-switches                                            
+                 0      cpu-migrations                                              
+              3821      page-faults                                                 
+      155311315760      cycles:u                                                      (25.00%)
+        1117499259      cycles:k                                                      (16.67%)
+      294454736012      instructions:u            #    1.90  insn per cycle           (25.01%)
+         149431019      instructions:k            #    0.13  insn per cycle           (33.35%)
+       29131375274      branches                                                      (33.34%)
+          47682299      branch-misses             #    0.16% of all branches          (33.34%)
+      142720487569      L1-dcache-loads                                               (33.33%)
+         196628534      L1-dcache-load-misses     #    0.14% of all L1-dcache hits    (33.33%)
+        2430518411      LLC-loads                                                     (33.33%)
+          12267540      LLC-load-misses           #    0.50% of all LL-cache hits     (33.33%)
+      142751641392      dTLB-loads                                                    (33.33%)
+             38682      dTLB-load-misses          #    0.00% of all dTLB cache hits   (24.99%)
+
+      61.347564121 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 2059998980
+occupancy  : 0.4
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 218042)...
+Successfully attached to process 218042.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.379
+==================================================================================
+Performance counter stats for process id '218042':
+
+               112      context-switches                                            
+                 0      cpu-migrations                                              
+              3936      page-faults                                                 
+      155420637954      cycles:u                                                      (24.99%)
+        1031392861      cycles:k                                                      (16.67%)
+      294481716774      instructions:u            #    1.89  insn per cycle           (25.01%)
+         133625805      instructions:k            #    0.13  insn per cycle           (33.35%)
+       29129966144      branches                                                      (33.35%)
+          47623736      branch-misses             #    0.16% of all branches          (33.35%)
+      142628585920      L1-dcache-loads                                               (33.34%)
+         188107875      L1-dcache-load-misses     #    0.13% of all L1-dcache hits    (33.33%)
+        2418747028      LLC-loads                                                     (33.32%)
+          12792767      LLC-load-misses           #    0.53% of all LL-cache hits     (33.32%)
+      142782774055      dTLB-loads                                                    (33.32%)
+             28943      dTLB-load-misses          #    0.00% of all dTLB cache hits   (24.99%)
+
+      61.367236163 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 4054844069
+occupancy  : 0.5
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 218061)...
+Successfully attached to process 218061.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.54
+==================================================================================
+Performance counter stats for process id '218061':
+
+               101      context-switches                                            
+                 0      cpu-migrations                                              
+              3801      page-faults                                                 
+      155794878262      cycles:u                                                      (25.00%)
+        1047305637      cycles:k                                                      (16.67%)
+      294570651866      instructions:u            #    1.89  insn per cycle           (25.00%)
+         116895793      instructions:k            #    0.11  insn per cycle           (33.33%)
+       29143883283      branches                                                      (33.33%)
+          47672093      branch-misses             #    0.16% of all branches          (33.33%)
+      142827453689      L1-dcache-loads                                               (33.33%)
+         200590322      L1-dcache-load-misses     #    0.14% of all L1-dcache hits    (33.33%)
+        2436863292      LLC-loads                                                     (33.33%)
+          19878878      LLC-load-misses           #    0.82% of all LL-cache hits     (33.33%)
+      142787897809      dTLB-loads                                                    (33.33%)
+             43980      dTLB-load-misses          #    0.00% of all dTLB cache hits   (25.00%)
+
+      61.527829303 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 3239445201
+occupancy  : 0.6
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 218072)...
+Successfully attached to process 218072.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.484
+==================================================================================
+Performance counter stats for process id '218072':
+
+               132      context-switches                                            
+                 0      cpu-migrations                                              
+              3933      page-faults                                                 
+      155671323740      cycles:u                                                      (24.99%)
+        1045793032      cycles:k                                                      (16.67%)
+      294566675997      instructions:u            #    1.89  insn per cycle           (25.01%)
+         112964420      instructions:k            #    0.11  insn per cycle           (33.34%)
+       29135301851      branches                                                      (33.35%)
+          47659095      branch-misses             #    0.16% of all branches          (33.35%)
+      142681338587      L1-dcache-loads                                               (33.35%)
+         201362083      L1-dcache-load-misses     #    0.14% of all L1-dcache hits    (33.34%)
+        2436047104      LLC-loads                                                     (33.33%)
+          18326366      LLC-load-misses           #    0.75% of all LL-cache hits     (33.33%)
+      142859900045      dTLB-loads                                                    (33.32%)
+             36115      dTLB-load-misses          #    0.00% of all dTLB cache hits   (24.99%)
+
+      61.471300771 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 2449118824
+occupancy  : 0.7
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 218087)...
+Successfully attached to process 218087.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.506
+==================================================================================
+Performance counter stats for process id '218087':
+
+               142      context-switches                                            
+                 0      cpu-migrations                                              
+              4450      page-faults                                                 
+      155673786168      cycles:u                                                      (25.00%)
+        1159066999      cycles:k                                                      (16.67%)
+      294378946593      instructions:u            #    1.89  insn per cycle           (25.01%)
+         157393208      instructions:k            #    0.14  insn per cycle           (33.35%)
+       29134339343      branches                                                      (33.35%)
+          47718352      branch-misses             #    0.16% of all branches          (33.34%)
+      142777709897      L1-dcache-loads                                               (33.33%)
+         186076182      L1-dcache-load-misses     #    0.13% of all L1-dcache hits    (33.33%)
+        2422417874      LLC-loads                                                     (33.32%)
+          20531272      LLC-load-misses           #    0.85% of all LL-cache hits     (33.32%)
+      142878059321      dTLB-loads                                                    (33.32%)
+             35767      dTLB-load-misses          #    0.00% of all dTLB cache hits   (24.99%)
+
+      61.493866899 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 3237925360
+occupancy  : 0.8
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 218105)...
+Successfully attached to process 218105.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.696
+==================================================================================
+Performance counter stats for process id '218105':
+
+               118      context-switches                                            
+                 0      cpu-migrations                                              
+              4446      page-faults                                                 
+      156037027678      cycles:u                                                      (25.00%)
+        1063160452      cycles:k                                                      (16.67%)
+      294646621481      instructions:u            #    1.89  insn per cycle           (25.00%)
+         109105266      instructions:k            #    0.10  insn per cycle           (33.33%)
+       29141336750      branches                                                      (33.33%)
+          47709861      branch-misses             #    0.16% of all branches          (33.33%)
+      142918341995      L1-dcache-loads                                               (33.33%)
+         201518524      L1-dcache-load-misses     #    0.14% of all L1-dcache hits    (33.33%)
+        2433649567      LLC-loads                                                     (33.33%)
+          25265843      LLC-load-misses           #    1.04% of all LL-cache hits     (33.33%)
+      142843693105      dTLB-loads                                                    (33.33%)
+             44020      dTLB-load-misses          #    0.00% of all dTLB cache hits   (25.00%)
+
+      61.683822815 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 3559824786
+occupancy  : 0.9
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 218129)...
+Successfully attached to process 218129.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.613
+==================================================================================
+Performance counter stats for process id '218129':
+
+               128      context-switches                                            
+                 0      cpu-migrations                                              
+              4443      page-faults                                                 
+      155949525942      cycles:u                                                      (25.00%)
+        1073823742      cycles:k                                                      (16.67%)
+      294560565999      instructions:u            #    1.89  insn per cycle           (25.01%)
+         128287792      instructions:k            #    0.12  insn per cycle           (33.35%)
+       29133091463      branches                                                      (33.35%)
+          47781038      branch-misses             #    0.16% of all branches          (33.35%)
+      142746292274      L1-dcache-loads                                               (33.34%)
+         208204179      L1-dcache-load-misses     #    0.15% of all L1-dcache hits    (33.34%)
+        2435749119      LLC-loads                                                     (33.33%)
+          22104024      LLC-load-misses           #    0.91% of all LL-cache hits     (33.32%)
+      142934314443      dTLB-loads                                                    (33.32%)
+             25976      dTLB-load-misses          #    0.00% of all dTLB cache hits   (24.99%)
+
+      61.601481161 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 3581099014
+occupancy  : 1
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 218149)...
+Successfully attached to process 218149.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.559
+==================================================================================
+Performance counter stats for process id '218149':
+
+               144      context-switches                                            
+                 0      cpu-migrations                                              
+              3921      page-faults                                                 
+      155834438117      cycles:u                                                      (25.00%)
+        1125495225      cycles:k                                                      (16.68%)
+      294495651408      instructions:u            #    1.89  insn per cycle           (25.01%)
+         139061532      instructions:k            #    0.12  insn per cycle           (33.34%)
+       29144421799      branches                                                      (33.34%)
+          47704846      branch-misses             #    0.16% of all branches          (33.33%)
+      142806933203      L1-dcache-loads                                               (33.33%)
+         186205792      L1-dcache-load-misses     #    0.13% of all L1-dcache hits    (33.33%)
+        2422263230      LLC-loads                                                     (33.33%)
+          18967482      LLC-load-misses           #    0.78% of all LL-cache hits     (33.33%)
+      142839233432      dTLB-loads                                                    (33.33%)
+             46293      dTLB-load-misses          #    0.00% of all dTLB cache hits   (25.00%)
+
+      61.546952088 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 2881861868
+occupancy  : 0
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 218163)...
+Successfully attached to process 218163.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.409
+==================================================================================
+Performance counter stats for process id '218163':
+
+               128      context-switches                                            
+                 0      cpu-migrations                                              
+              4445      page-faults                                                 
+      155483190082      cycles:u                                                      (25.00%)
+        1146527531      cycles:k                                                      (16.68%)
+      294293319929      instructions:u            #    1.89  insn per cycle           (25.01%)
+         156141202      instructions:k            #    0.14  insn per cycle           (33.35%)
+       29134945618      branches                                                      (33.34%)
+          47678914      branch-misses             #    0.16% of all branches          (33.34%)
+      142716481955      L1-dcache-loads                                               (33.33%)
+         186140739      L1-dcache-load-misses     #    0.13% of all L1-dcache hits    (33.33%)
+        2418432141      LLC-loads                                                     (33.33%)
+          12723803      LLC-load-misses           #    0.53% of all LL-cache hits     (33.33%)
+      142803305595      dTLB-loads                                                    (33.33%)
+             30944      dTLB-load-misses          #    0.00% of all dTLB cache hits   (24.99%)
+
+      61.397408421 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 3391591932
+occupancy  : 0.1
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 218178)...
+Successfully attached to process 218178.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.742
+==================================================================================
+Performance counter stats for process id '218178':
+
+               115      context-switches                                            
+                 0      cpu-migrations                                              
+              3933      page-faults                                                 
+      156146799660      cycles:u                                                      (25.00%)
+        1028562826      cycles:k                                                      (16.67%)
+      294603931910      instructions:u            #    1.89  insn per cycle           (25.00%)
+         110406727      instructions:k            #    0.11  insn per cycle           (33.33%)
+       29142549070      branches                                                      (33.34%)
+          47714241      branch-misses             #    0.16% of all branches          (33.34%)
+      142934029586      L1-dcache-loads                                               (33.34%)
+         193892331      L1-dcache-load-misses     #    0.14% of all L1-dcache hits    (33.33%)
+        2424294687      LLC-loads                                                     (33.33%)
+          27054205      LLC-load-misses           #    1.12% of all LL-cache hits     (33.33%)
+      142905388689      dTLB-loads                                                    (33.33%)
+             40859      dTLB-load-misses          #    0.00% of all dTLB cache hits   (25.00%)
+
+      61.729895270 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 415817760
+occupancy  : 0.2
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 218192)...
+Successfully attached to process 218192.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.413
+==================================================================================
+Performance counter stats for process id '218192':
+
+               141      context-switches                                            
+                 0      cpu-migrations                                              
+              4447      page-faults                                                 
+      155537412778      cycles:u                                                      (25.00%)
+        1093384141      cycles:k                                                      (16.67%)
+      294535293412      instructions:u            #    1.89  insn per cycle           (25.01%)
+         139286394      instructions:k            #    0.13  insn per cycle           (33.35%)
+       29152722098      branches                                                      (33.35%)
+          47720028      branch-misses             #    0.16% of all branches          (33.34%)
+      142638028778      L1-dcache-loads                                               (33.33%)
+         191547176      L1-dcache-load-misses     #    0.13% of all L1-dcache hits    (33.33%)
+        2421081137      LLC-loads                                                     (33.32%)
+           9765744      LLC-load-misses           #    0.40% of all LL-cache hits     (33.32%)
+      142691776646      dTLB-loads                                                    (33.32%)
+             37133      dTLB-load-misses          #    0.00% of all dTLB cache hits   (24.99%)
+
+      61.402046893 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 2196159068
+occupancy  : 0.3
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 218214)...
+Successfully attached to process 218214.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.429
+==================================================================================
+Performance counter stats for process id '218214':
+
+               124      context-switches                                            
+                 0      cpu-migrations                                              
+              4446      page-faults                                                 
+      155537693689      cycles:u                                                      (25.00%)
+        1090287013      cycles:k                                                      (16.68%)
+      294384531825      instructions:u            #    1.89  insn per cycle           (25.02%)
+         139290539      instructions:k            #    0.13  insn per cycle           (33.35%)
+       29133933766      branches                                                      (33.35%)
+          47707375      branch-misses             #    0.16% of all branches          (33.34%)
+      142649012209      L1-dcache-loads                                               (33.34%)
+         197777853      L1-dcache-load-misses     #    0.14% of all L1-dcache hits    (33.33%)
+        2432538946      LLC-loads                                                     (33.32%)
+          10931176      LLC-load-misses           #    0.45% of all LL-cache hits     (33.32%)
+      142794061938      dTLB-loads                                                    (33.32%)
+             39637      dTLB-load-misses          #    0.00% of all dTLB cache hits   (24.99%)
+
+      61.416831731 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 2521758063
+occupancy  : 0.4
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 218232)...
+Successfully attached to process 218232.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.319
+==================================================================================
+Performance counter stats for process id '218232':
+
+               109      context-switches                                            
+                 0      cpu-migrations                                              
+              3976      page-faults                                                 
+      155373102899      cycles:u                                                      (25.00%)
+        1069941361      cycles:k                                                      (16.68%)
+      294346097506      instructions:u            #    1.89  insn per cycle           (25.01%)
+         139252812      instructions:k            #    0.13  insn per cycle           (33.35%)
+       29124535655      branches                                                      (33.35%)
+          47649288      branch-misses             #    0.16% of all branches          (33.34%)
+      142618079514      L1-dcache-loads                                               (33.34%)
+         187217282      L1-dcache-load-misses     #    0.13% of all L1-dcache hits    (33.33%)
+        2420125797      LLC-loads                                                     (33.32%)
+           7576986      LLC-load-misses           #    0.31% of all LL-cache hits     (33.32%)
+      142731035837      dTLB-loads                                                    (33.32%)
+             37510      dTLB-load-misses          #    0.00% of all dTLB cache hits   (24.99%)
+
+      61.307353588 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 1046018399
+occupancy  : 0.5
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 218245)...
+Successfully attached to process 218245.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.406
+==================================================================================
+Performance counter stats for process id '218245':
+
+               128      context-switches                                            
+                 1      cpu-migrations                                              
+              3916      page-faults                                                 
+      155472617872      cycles:u                                                      (25.00%)
+        1046009272      cycles:k                                                      (16.67%)
+      294568271820      instructions:u            #    1.89  insn per cycle           (25.00%)
+         121349502      instructions:k            #    0.12  insn per cycle           (33.34%)
+       29144973505      branches                                                      (33.33%)
+          47691772      branch-misses             #    0.16% of all branches          (33.33%)
+      142715532163      L1-dcache-loads                                               (33.34%)
+         198027043      L1-dcache-load-misses     #    0.14% of all L1-dcache hits    (33.34%)
+        2430187815      LLC-loads                                                     (33.33%)
+          13092833      LLC-load-misses           #    0.54% of all LL-cache hits     (33.33%)
+      142687770685      dTLB-loads                                                    (33.33%)
+             44562      dTLB-load-misses          #    0.00% of all dTLB cache hits   (24.99%)
+
+      61.393681568 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 3636351191
+occupancy  : 0.6
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 218261)...
+Successfully attached to process 218261.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.589
+==================================================================================
+Performance counter stats for process id '218261':
+
+               127      context-switches                                            
+                 0      cpu-migrations                                              
+              3935      page-faults                                                 
+      155681791882      cycles:u                                                      (25.00%)
+        1070711399      cycles:k                                                      (16.67%)
+      294686509320      instructions:u            #    1.89  insn per cycle           (25.00%)
+         126623958      instructions:k            #    0.12  insn per cycle           (33.34%)
+       29144939673      branches                                                      (33.33%)
+          47623430      branch-misses             #    0.16% of all branches          (33.33%)
+      142750989395      L1-dcache-loads                                               (33.33%)
+         189854955      L1-dcache-load-misses     #    0.13% of all L1-dcache hits    (33.33%)
+        2423515584      LLC-loads                                                     (33.33%)
+          16214827      LLC-load-misses           #    0.67% of all LL-cache hits     (33.33%)
+      142748482018      dTLB-loads                                                    (33.33%)
+             41343      dTLB-load-misses          #    0.00% of all dTLB cache hits   (25.00%)
+
+      61.576978630 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 2589898248
+occupancy  : 0.7
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 218276)...
+Successfully attached to process 218276.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.738
+==================================================================================
+Performance counter stats for process id '218276':
+
+               137      context-switches                                            
+                 0      cpu-migrations                                              
+              3914      page-faults                                                 
+      155928440674      cycles:u                                                      (24.99%)
+        1023395380      cycles:k                                                      (16.67%)
+      294668791250      instructions:u            #    1.89  insn per cycle           (25.01%)
+         109707876      instructions:k            #    0.11  insn per cycle           (33.34%)
+       29144873967      branches                                                      (33.34%)
+          47718492      branch-misses             #    0.16% of all branches          (33.34%)
+      142869683881      L1-dcache-loads                                               (33.34%)
+         202558831      L1-dcache-load-misses     #    0.14% of all L1-dcache hits    (33.34%)
+        2432347362      LLC-loads                                                     (33.34%)
+          19380474      LLC-load-misses           #    0.80% of all LL-cache hits     (33.34%)
+      142859334770      dTLB-loads                                                    (33.33%)
+             37985      dTLB-load-misses          #    0.00% of all dTLB cache hits   (24.99%)
+
+      61.725984651 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 3997483434
+occupancy  : 0.8
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 218298)...
+Successfully attached to process 218298.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.82
+==================================================================================
+Performance counter stats for process id '218298':
+
+               155      context-switches                                            
+                 0      cpu-migrations                                              
+              3938      page-faults                                                 
+      156205271978      cycles:u                                                      (24.99%)
+        1009179431      cycles:k                                                      (16.67%)
+      294779415624      instructions:u            #    1.89  insn per cycle           (25.00%)
+         109436832      instructions:k            #    0.11  insn per cycle           (33.34%)
+       29139988084      branches                                                      (33.34%)
+          47684789      branch-misses             #    0.16% of all branches          (33.34%)
+      142844443399      L1-dcache-loads                                               (33.34%)
+         206083258      L1-dcache-load-misses     #    0.14% of all L1-dcache hits    (33.34%)
+        2439738241      LLC-loads                                                     (33.34%)
+          24294558      LLC-load-misses           #    1.00% of all LL-cache hits     (33.34%)
+      142930752574      dTLB-loads                                                    (33.33%)
+             44954      dTLB-load-misses          #    0.00% of all dTLB cache hits   (24.99%)
+
+      61.807558893 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 2865557801
+occupancy  : 0.9
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 218320)...
+Successfully attached to process 218320.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.828
+==================================================================================
+Performance counter stats for process id '218320':
+
+               129      context-switches                                            
+                 0      cpu-migrations                                              
+              4445      page-faults                                                 
+      156232285356      cycles:u                                                      (24.99%)
+        1006100742      cycles:k                                                      (16.67%)
+      294565898532      instructions:u            #    1.89  insn per cycle           (25.00%)
+         112612146      instructions:k            #    0.11  insn per cycle           (33.34%)
+       29138570630      branches                                                      (33.34%)
+          47761421      branch-misses             #    0.16% of all branches          (33.34%)
+      142827908641      L1-dcache-loads                                               (33.34%)
+         206329679      L1-dcache-load-misses     #    0.14% of all L1-dcache hits    (33.34%)
+        2434954446      LLC-loads                                                     (33.34%)
+          26871058      LLC-load-misses           #    1.10% of all LL-cache hits     (33.34%)
+      142984023582      dTLB-loads                                                    (33.33%)
+             30610      dTLB-load-misses          #    0.00% of all dTLB cache hits   (24.99%)
+
+      61.815204322 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 1762506427
+occupancy  : 1
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 218336)...
+Successfully attached to process 218336.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.765
+==================================================================================
+Performance counter stats for process id '218336':
+
+               130      context-switches                                            
+                 0      cpu-migrations                                              
+              4445      page-faults                                                 
+      156099489634      cycles:u                                                      (24.99%)
+        1019765983      cycles:k                                                      (16.67%)
+      294728122576      instructions:u            #    1.89  insn per cycle           (25.00%)
+         113092336      instructions:k            #    0.11  insn per cycle           (33.34%)
+       29139029495      branches                                                      (33.34%)
+          47716659      branch-misses             #    0.16% of all branches          (33.34%)
+      142784957693      L1-dcache-loads                                               (33.34%)
+         200871616      L1-dcache-load-misses     #    0.14% of all L1-dcache hits    (33.34%)
+        2431988217      LLC-loads                                                     (33.34%)
+          20845588      LLC-load-misses           #    0.86% of all LL-cache hits     (33.33%)
+      142921271233      dTLB-loads                                                    (33.33%)
+             37367      dTLB-load-misses          #    0.00% of all dTLB cache hits   (24.99%)
+
+      61.753438065 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 2493178345
+occupancy  : 0
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 218414)...
+Successfully attached to process 218414.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.628
+==================================================================================
+Performance counter stats for process id '218414':
+
+               149      context-switches                                            
+                 1      cpu-migrations                                              
+              4182      page-faults                                                 
+      156012669144      cycles:u                                                      (24.99%)
+        1048103009      cycles:k                                                      (16.68%)
+      294592854899      instructions:u            #    1.89  insn per cycle           (25.01%)
+         117977342      instructions:k            #    0.11  insn per cycle           (33.35%)
+       29131191307      branches                                                      (33.34%)
+          47646831      branch-misses             #    0.16% of all branches          (33.35%)
+      142734506589      L1-dcache-loads                                               (33.35%)
+         190324447      L1-dcache-load-misses     #    0.13% of all L1-dcache hits    (33.34%)
+        2422466696      LLC-loads                                                     (33.33%)
+          21342010      LLC-load-misses           #    0.88% of all LL-cache hits     (33.32%)
+      142931599023      dTLB-loads                                                    (33.32%)
+             30777      dTLB-load-misses          #    0.00% of all dTLB cache hits   (24.99%)
+
+      61.615984052 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 466704569
+occupancy  : 0.1
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 218436)...
+Successfully attached to process 218436.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.844
+==================================================================================
+Performance counter stats for process id '218436':
+
+               114      context-switches                                            
+                 0      cpu-migrations                                              
+              4444      page-faults                                                 
+      156530458662      cycles:u                                                      (25.00%)
+        1133279624      cycles:k                                                      (16.67%)
+      294285671031      instructions:u            #    1.88  insn per cycle           (25.01%)
+         153274398      instructions:k            #    0.14  insn per cycle           (33.35%)
+       29138502064      branches                                                      (33.35%)
+          47725000      branch-misses             #    0.16% of all branches          (33.34%)
+      143016366354      L1-dcache-loads                                               (33.33%)
+         207065870      L1-dcache-load-misses     #    0.14% of all L1-dcache hits    (33.33%)
+        2436442221      LLC-loads                                                     (33.32%)
+          31505820      LLC-load-misses           #    1.29% of all LL-cache hits     (33.32%)
+      143100370915      dTLB-loads                                                    (33.32%)
+             35075      dTLB-load-misses          #    0.00% of all dTLB cache hits   (24.99%)
+
+      61.832645260 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 259201262
+occupancy  : 0.2
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 218447)...
+Successfully attached to process 218447.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 57.303
+==================================================================================
+Performance counter stats for process id '218447':
+
+               163      context-switches                                            
+                 0      cpu-migrations                                              
+              4446      page-faults                                                 
+      158134841006      cycles:u                                                      (24.99%)
+        1037984700      cycles:k                                                      (16.67%)
+      294622388871      instructions:u            #    1.86  insn per cycle           (25.00%)
+         113498831      instructions:k            #    0.11  insn per cycle           (33.34%)
+       29135941652      branches                                                      (33.34%)
+          47708168      branch-misses             #    0.16% of all branches          (33.34%)
+      142737202371      L1-dcache-loads                                               (33.34%)
+         435970603      L1-dcache-load-misses     #    0.31% of all L1-dcache hits    (33.34%)
+        2666568519      LLC-loads                                                     (33.34%)
+          21075037      LLC-load-misses           #    0.79% of all LL-cache hits     (33.33%)
+      142977130273      dTLB-loads                                                    (33.32%)
+             43597      dTLB-load-misses          #    0.00% of all dTLB cache hits   (24.99%)
+
+      62.291227844 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 1558520754
+occupancy  : 0.3
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 218465)...
+Successfully attached to process 218465.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.562
+==================================================================================
+Performance counter stats for process id '218465':
+
+               186      context-switches                                            
+                 0      cpu-migrations                                              
+              3816      page-faults                                                 
+      155907036313      cycles:u                                                      (24.99%)
+        1031967104      cycles:k                                                      (16.67%)
+      294506345522      instructions:u            #    1.89  insn per cycle           (25.01%)
+         133093833      instructions:k            #    0.13  insn per cycle           (33.35%)
+       29139806773      branches                                                      (33.35%)
+          47689761      branch-misses             #    0.16% of all branches          (33.35%)
+      142733075645      L1-dcache-loads                                               (33.34%)
+         193207627      L1-dcache-load-misses     #    0.14% of all L1-dcache hits    (33.33%)
+        2422650573      LLC-loads                                                     (33.33%)
+          18130834      LLC-load-misses           #    0.75% of all LL-cache hits     (33.32%)
+      142897700922      dTLB-loads                                                    (33.32%)
+             40702      dTLB-load-misses          #    0.00% of all dTLB cache hits   (24.99%)
+
+      61.549359041 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 899070928
+occupancy  : 0.4
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 218487)...
+Successfully attached to process 218487.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.74
+==================================================================================
+Performance counter stats for process id '218487':
+
+               132      context-switches                                            
+                 0      cpu-migrations                                              
+              3487      page-faults                                                 
+      156414465165      cycles:u                                                      (24.99%)
+        1070770622      cycles:k                                                      (16.67%)
+      294594989102      instructions:u            #    1.88  insn per cycle           (25.00%)
+         110152823      instructions:k            #    0.10  insn per cycle           (33.34%)
+       29140783851      branches                                                      (33.34%)
+          47696827      branch-misses             #    0.16% of all branches          (33.34%)
+      142848787197      L1-dcache-loads                                               (33.34%)
+         204273126      L1-dcache-load-misses     #    0.14% of all L1-dcache hits    (33.34%)
+        2438874634      LLC-loads                                                     (33.34%)
+          22284820      LLC-load-misses           #    0.91% of all LL-cache hits     (33.34%)
+      142860166920      dTLB-loads                                                    (33.33%)
+             40053      dTLB-load-misses          #    0.00% of all dTLB cache hits   (24.99%)
+
+      61.727804588 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 1213924701
+occupancy  : 0.5
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 218499)...
+Successfully attached to process 218499.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.444
+==================================================================================
+Performance counter stats for process id '218499':
+
+               160      context-switches                                            
+                 0      cpu-migrations                                              
+              4445      page-faults                                                 
+      155569123389      cycles:u                                                      (24.99%)
+        1062641603      cycles:k                                                      (16.67%)
+      294610576088      instructions:u            #    1.89  insn per cycle           (25.00%)
+         108431917      instructions:k            #    0.10  insn per cycle           (33.34%)
+       29139146118      branches                                                      (33.34%)
+          47681893      branch-misses             #    0.16% of all branches          (33.34%)
+      142772252923      L1-dcache-loads                                               (33.34%)
+         183747692      L1-dcache-load-misses     #    0.13% of all L1-dcache hits    (33.34%)
+        2419190968      LLC-loads                                                     (33.34%)
+          16799202      LLC-load-misses           #    0.69% of all LL-cache hits     (33.34%)
+      142719873845      dTLB-loads                                                    (33.34%)
+             49385      dTLB-load-misses          #    0.00% of all dTLB cache hits   (24.99%)
+
+      61.432108936 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 1858336100
+occupancy  : 0.6
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 218534)...
+Successfully attached to process 218534.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.415
+==================================================================================
+Performance counter stats for process id '218534':
+
+               139      context-switches                                            
+                 0      cpu-migrations                                              
+              4197      page-faults                                                 
+      155426045935      cycles:u                                                      (25.00%)
+        1135510203      cycles:k                                                      (16.68%)
+      294456408494      instructions:u            #    1.89  insn per cycle           (25.01%)
+         139262643      instructions:k            #    0.12  insn per cycle           (33.34%)
+       29143112404      branches                                                      (33.34%)
+          47705138      branch-misses             #    0.16% of all branches          (33.33%)
+      142695716763      L1-dcache-loads                                               (33.33%)
+         183561598      L1-dcache-load-misses     #    0.13% of all L1-dcache hits    (33.33%)
+        2419637975      LLC-loads                                                     (33.33%)
+          11416806      LLC-load-misses           #    0.47% of all LL-cache hits     (33.33%)
+      142716029558      dTLB-loads                                                    (33.33%)
+             46986      dTLB-load-misses          #    0.00% of all dTLB cache hits   (24.99%)
+
+      61.403491233 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 3986425293
+occupancy  : 0.7
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 218580)...
+Successfully attached to process 218580.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.592
+==================================================================================
+Performance counter stats for process id '218580':
+
+               145      context-switches                                            
+                 0      cpu-migrations                                              
+              4448      page-faults                                                 
+      155820140075      cycles:u                                                      (25.01%)
+        1098614324      cycles:k                                                      (16.67%)
+      294599860906      instructions:u            #    1.89  insn per cycle           (25.01%)
+         128327732      instructions:k            #    0.12  insn per cycle           (33.34%)
+       29141073597      branches                                                      (33.33%)
+          47645870      branch-misses             #    0.16% of all branches          (33.33%)
+      142839119387      L1-dcache-loads                                               (33.33%)
+         188542216      L1-dcache-load-misses     #    0.13% of all L1-dcache hits    (33.33%)
+        2419281867      LLC-loads                                                     (33.33%)
+          21939772      LLC-load-misses           #    0.91% of all LL-cache hits     (33.33%)
+      142822685360      dTLB-loads                                                    (33.33%)
+             34484      dTLB-load-misses          #    0.00% of all dTLB cache hits   (25.00%)
+
+      61.580466268 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 882158833
+occupancy  : 0.8
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 218595)...
+Successfully attached to process 218595.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.555
+==================================================================================
+Performance counter stats for process id '218595':
+
+               137      context-switches                                            
+                 0      cpu-migrations                                              
+              4444      page-faults                                                 
+      155749833682      cycles:u                                                      (25.00%)
+        1095495906      cycles:k                                                      (16.67%)
+      294593082146      instructions:u            #    1.89  insn per cycle           (25.00%)
+         128467625      instructions:k            #    0.12  insn per cycle           (33.34%)
+       29143541018      branches                                                      (33.33%)
+          47701859      branch-misses             #    0.16% of all branches          (33.33%)
+      142838902168      L1-dcache-loads                                               (33.33%)
+         186490174      L1-dcache-load-misses     #    0.13% of all L1-dcache hits    (33.33%)
+        2420884583      LLC-loads                                                     (33.33%)
+          19625816      LLC-load-misses           #    0.81% of all LL-cache hits     (33.33%)
+      142844781079      dTLB-loads                                                    (33.33%)
+             50980      dTLB-load-misses          #    0.00% of all dTLB cache hits   (25.00%)
+
+      61.542918604 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 976703037
+occupancy  : 0.9
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 218611)...
+Successfully attached to process 218611.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.435
+==================================================================================
+Performance counter stats for process id '218611':
+
+               139      context-switches                                            
+                 0      cpu-migrations                                              
+              3935      page-faults                                                 
+      155565429217      cycles:u                                                      (24.99%)
+        1049173170      cycles:k                                                      (16.67%)
+      294647793134      instructions:u            #    1.89  insn per cycle           (25.01%)
+         108746520      instructions:k            #    0.10  insn per cycle           (33.34%)
+       29141619119      branches                                                      (33.34%)
+          47714304      branch-misses             #    0.16% of all branches          (33.34%)
+      142731758391      L1-dcache-loads                                               (33.34%)
+         194762433      L1-dcache-load-misses     #    0.14% of all L1-dcache hits    (33.34%)
+        2430546038      LLC-loads                                                     (33.34%)
+          15857645      LLC-load-misses           #    0.65% of all LL-cache hits     (33.33%)
+      142721707193      dTLB-loads                                                    (33.33%)
+             35429      dTLB-load-misses          #    0.00% of all dTLB cache hits   (24.99%)
+
+      61.423014563 seconds time elapsed
+==================================================================================
+
+==================================== Litterer ====================================
+malloc     : ../../exe/imagick_r_base.r2s-m64
+seed       : 3544575108
+occupancy  : 1
+shuffle    : yes
+sleep      : 5
+multiplier : 1
+timestamp  : Dec  8 2022 13:18:32
+==================================================================================
+Finished littering. Time taken: 0 seconds.
+Sleeping 5 seconds before starting the program (PID: 218624)...
+Successfully attached to process 218624.
+Starting program now!
+==================================================================================
+==================================================================================
+Time elapsed: 56.347
+==================================================================================
+Performance counter stats for process id '218624':
+
+               186      context-switches                                            
+                 3      cpu-migrations                                              
+              3931      page-faults                                                 
+      155281032148      cycles:u                                                      (24.99%)
+        1020511072      cycles:k                                                      (16.67%)
+      294764938979      instructions:u            #    1.90  insn per cycle           (25.01%)
+         108861649      instructions:k            #    0.11  insn per cycle           (33.34%)
+       29166614594      branches                                                      (33.34%)
+          47773410      branch-misses             #    0.16% of all branches          (33.34%)
+      142593103002      L1-dcache-loads                                               (33.34%)
+         200331631      L1-dcache-load-misses     #    0.14% of all L1-dcache hits    (33.34%)
+        2434270890      LLC-loads                                                     (33.34%)
+          12229011      LLC-load-misses           #    0.50% of all LL-cache hits     (33.33%)
+      142704951083      dTLB-loads                                                    (33.33%)
+             52449      dTLB-load-misses          #    0.00% of all dTLB cache hits   (24.98%)
+
+      61.334301093 seconds time elapsed
+==================================================================================
+

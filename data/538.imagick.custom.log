@@ -1,0 +1,330 @@
+
+ Performance counter stats for '../../exe/imagick_r_base.r2-m64 -limit disk 0 train_input.tga -resize 320x240 -shear 31 -edge 140 -negate -flop -resize 900x900 -edge 10 train_output.tga':
+
+          56930.74 msec task-clock                #    1.000 CPUs utilized          
+               166      context-switches          #    0.003 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+              5082      page-faults               #    0.089 K/sec                  
+      156669177013      cycles                    #    2.752 GHz                      (11.10%)
+        1003590381      stalled-cycles-frontend   #    0.64% frontend cycles idle     (11.11%)
+       61237391990      stalled-cycles-backend    #   39.09% backend cycles idle      (11.12%)
+      294630482030      instructions              #    1.88  insn per cycle         
+                                                  #    0.21  stalled cycles per insn  (16.67%)
+       29147095140      branches                  #  511.975 M/sec                    (22.23%)
+          47753535      branch-misses             #    0.16% of all branches          (22.23%)
+      142697796757      L1-dcache-loads           # 2506.516 M/sec                    (22.23%)
+         205492173      L1-dcache-load-misses     #    0.14% of all L1-dcache hits    (22.23%)
+        2429547056      LLC-loads                 #   42.675 M/sec                    (22.23%)
+          17788658      LLC-load-misses           #    0.73% of all LL-cache hits     (22.23%)
+       48785859942      L1-icache-loads           #  856.934 M/sec                    (11.12%)
+           3996911      L1-icache-load-misses     #    0.01% of all L1-icache hits    (11.11%)
+      142708165271      dTLB-loads                # 2506.698 M/sec                    (16.67%)
+            171527      dTLB-load-misses          #    0.00% of all dTLB cache hits   (16.67%)
+       48745392439      iTLB-loads                #  856.223 M/sec                    (16.66%)
+              2512      iTLB-load-misses          #    0.00% of all iTLB cache hits   (11.10%)
+        2380897361      L1-dcache-prefetches      #   41.821 M/sec                    (11.10%)
+                 0      L1-dcache-prefetch-misses #    0.000 K/sec                    (11.10%)
+
+      56.949451315 seconds time elapsed
+
+      56.903098000 seconds user
+       0.027997000 seconds sys
+
+
+
+ Performance counter stats for '../../exe/imagick_r_base.r2-m64 -limit disk 0 train_input.tga -resize 320x240 -shear 31 -edge 140 -negate -flop -resize 900x900 -edge 10 train_output.tga':
+
+          56728.60 msec task-clock                #    1.000 CPUs utilized          
+               172      context-switches          #    0.003 K/sec                  
+                 1      cpu-migrations            #    0.000 K/sec                  
+              5086      page-faults               #    0.090 K/sec                  
+      156688823866      cycles                    #    2.762 GHz                      (11.11%)
+        1056819195      stalled-cycles-frontend   #    0.67% frontend cycles idle     (11.11%)
+       61223753346      stalled-cycles-backend    #   39.07% backend cycles idle      (11.11%)
+      294590725311      instructions              #    1.88  insn per cycle         
+                                                  #    0.21  stalled cycles per insn  (16.67%)
+       29142251866      branches                  #  513.714 M/sec                    (22.22%)
+          47879591      branch-misses             #    0.16% of all branches          (22.22%)
+      142584392439      L1-dcache-loads           # 2513.448 M/sec                    (22.22%)
+         191679792      L1-dcache-load-misses     #    0.13% of all L1-dcache hits    (22.22%)
+        2420185153      LLC-loads                 #   42.663 M/sec                    (22.22%)
+          18373677      LLC-load-misses           #    0.76% of all LL-cache hits     (22.22%)
+       48797378180      L1-icache-loads           #  860.190 M/sec                    (11.11%)
+           4330200      L1-icache-load-misses     #    0.01% of all L1-icache hits    (11.11%)
+      142881370437      dTLB-loads                # 2518.683 M/sec                    (16.67%)
+             82349      dTLB-load-misses          #    0.00% of all dTLB cache hits   (16.67%)
+       48838737460      iTLB-loads                #  860.919 M/sec                    (16.67%)
+              1358      iTLB-load-misses          #    0.00% of all iTLB cache hits   (11.11%)
+        2360705667      L1-dcache-prefetches      #   41.614 M/sec                    (11.11%)
+                 0      L1-dcache-prefetch-misses #    0.000 K/sec                    (11.11%)
+
+      56.747059757 seconds time elapsed
+
+      56.708842000 seconds user
+       0.019997000 seconds sys
+
+
+
+ Performance counter stats for '../../exe/imagick_r_base.r2-m64 -limit disk 0 train_input.tga -resize 320x240 -shear 31 -edge 140 -negate -flop -resize 900x900 -edge 10 train_output.tga':
+
+          56874.69 msec task-clock                #    1.000 CPUs utilized          
+               174      context-switches          #    0.003 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+              5081      page-faults               #    0.089 K/sec                  
+      156649020785      cycles                    #    2.754 GHz                      (11.11%)
+        1024677812      stalled-cycles-frontend   #    0.65% frontend cycles idle     (11.11%)
+       61452847615      stalled-cycles-backend    #   39.23% backend cycles idle      (11.11%)
+      294807369352      instructions              #    1.88  insn per cycle         
+                                                  #    0.21  stalled cycles per insn  (16.67%)
+       29157675821      branches                  #  512.665 M/sec                    (22.22%)
+          47710133      branch-misses             #    0.16% of all branches          (22.22%)
+      142648884188      L1-dcache-loads           # 2508.126 M/sec                    (22.22%)
+         205688630      L1-dcache-load-misses     #    0.14% of all L1-dcache hits    (22.22%)
+        2434741356      LLC-loads                 #   42.809 M/sec                    (22.22%)
+          14436779      LLC-load-misses           #    0.59% of all LL-cache hits     (22.22%)
+       48788527261      L1-icache-loads           #  857.825 M/sec                    (11.11%)
+           4162756      L1-icache-load-misses     #    0.01% of all L1-icache hits    (11.11%)
+      142744885552      dTLB-loads                # 2509.814 M/sec                    (16.67%)
+             60234      dTLB-load-misses          #    0.00% of all dTLB cache hits   (16.66%)
+       48727716008      iTLB-loads                #  856.756 M/sec                    (16.67%)
+              1350      iTLB-load-misses          #    0.00% of all iTLB cache hits   (11.11%)
+        2381229929      L1-dcache-prefetches      #   41.868 M/sec                    (11.11%)
+                 0      L1-dcache-prefetch-misses #    0.000 K/sec                    (11.11%)
+
+      56.893411739 seconds time elapsed
+
+      56.843298000 seconds user
+       0.031995000 seconds sys
+
+
+
+ Performance counter stats for '../../exe/imagick_r_base.r2-m64 -limit disk 0 train_input.tga -resize 320x240 -shear 31 -edge 140 -negate -flop -resize 900x900 -edge 10 train_output.tga':
+
+          56639.40 msec task-clock                #    1.000 CPUs utilized          
+               194      context-switches          #    0.003 K/sec                  
+                 1      cpu-migrations            #    0.000 K/sec                  
+              5085      page-faults               #    0.090 K/sec                  
+      156468639754      cycles                    #    2.763 GHz                      (11.10%)
+        1080864388      stalled-cycles-frontend   #    0.69% frontend cycles idle     (11.11%)
+       61079586769      stalled-cycles-backend    #   39.04% backend cycles idle      (11.12%)
+      294602086960      instructions              #    1.88  insn per cycle         
+                                                  #    0.21  stalled cycles per insn  (16.67%)
+       29152628691      branches                  #  514.706 M/sec                    (22.23%)
+          47964298      branch-misses             #    0.16% of all branches          (22.23%)
+      142605644182      L1-dcache-loads           # 2517.782 M/sec                    (22.23%)
+         207991440      L1-dcache-load-misses     #    0.15% of all L1-dcache hits    (22.23%)
+        2439897738      LLC-loads                 #   43.078 M/sec                    (22.23%)
+          13377596      LLC-load-misses           #    0.55% of all LL-cache hits     (22.23%)
+       48796371284      L1-icache-loads           #  861.527 M/sec                    (11.12%)
+           8490859      L1-icache-load-misses     #    0.02% of all L1-icache hits    (11.12%)
+      142691636682      dTLB-loads                # 2519.300 M/sec                    (16.67%)
+            131382      dTLB-load-misses          #    0.00% of all dTLB cache hits   (16.67%)
+       48755614517      iTLB-loads                #  860.807 M/sec                    (16.67%)
+               963      iTLB-load-misses          #    0.00% of all iTLB cache hits   (11.10%)
+        2383942606      L1-dcache-prefetches      #   42.090 M/sec                    (11.10%)
+                 0      L1-dcache-prefetch-misses #    0.000 K/sec                    (11.10%)
+
+      56.658659672 seconds time elapsed
+
+      56.607519000 seconds user
+       0.031995000 seconds sys
+
+
+
+ Performance counter stats for '../../exe/imagick_r_base.r2-m64 -limit disk 0 train_input.tga -resize 320x240 -shear 31 -edge 140 -negate -flop -resize 900x900 -edge 10 train_output.tga':
+
+          57107.45 msec task-clock                #    1.000 CPUs utilized          
+               184      context-switches          #    0.003 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+              5083      page-faults               #    0.089 K/sec                  
+      157261749149      cycles                    #    2.754 GHz                      (11.11%)
+        1108489452      stalled-cycles-frontend   #    0.70% frontend cycles idle     (11.12%)
+       61688900178      stalled-cycles-backend    #   39.23% backend cycles idle      (11.12%)
+      294473277524      instructions              #    1.87  insn per cycle         
+                                                  #    0.21  stalled cycles per insn  (16.68%)
+       29132668742      branches                  #  510.138 M/sec                    (22.24%)
+          47686086      branch-misses             #    0.16% of all branches          (22.24%)
+      142806102800      L1-dcache-loads           # 2500.656 M/sec                    (22.23%)
+         202970962      L1-dcache-load-misses     #    0.14% of all L1-dcache hits    (22.23%)
+        2437589950      LLC-loads                 #   42.684 M/sec                    (22.22%)
+          30400996      LLC-load-misses           #    1.25% of all LL-cache hits     (22.21%)
+       48900220174      L1-icache-loads           #  856.284 M/sec                    (11.11%)
+           4905696      L1-icache-load-misses     #    0.01% of all L1-icache hits    (11.11%)
+      143052683335      dTLB-loads                # 2504.974 M/sec                    (16.66%)
+            120499      dTLB-load-misses          #    0.00% of all dTLB cache hits   (16.66%)
+       48926065448      iTLB-loads                #  856.737 M/sec                    (16.66%)
+               243      iTLB-load-misses          #    0.00% of all iTLB cache hits   (11.11%)
+        2378121421      L1-dcache-prefetches      #   41.643 M/sec                    (11.11%)
+                 0      L1-dcache-prefetch-misses #    0.000 K/sec                    (11.11%)
+
+      57.133344538 seconds time elapsed
+
+      57.088201000 seconds user
+       0.019994000 seconds sys
+
+
+
+ Performance counter stats for '../../exe/imagick_r_base.r2-m64 -limit disk 0 train_input.tga -resize 320x240 -shear 31 -edge 140 -negate -flop -resize 900x900 -edge 10 train_output.tga':
+
+          56786.00 msec task-clock                #    1.000 CPUs utilized          
+               147      context-switches          #    0.003 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+              5082      page-faults               #    0.089 K/sec                  
+      156304922006      cycles                    #    2.753 GHz                      (11.10%)
+         966688131      stalled-cycles-frontend   #    0.62% frontend cycles idle     (11.11%)
+       60962472610      stalled-cycles-backend    #   39.00% backend cycles idle      (11.12%)
+      294508716234      instructions              #    1.88  insn per cycle         
+                                                  #    0.21  stalled cycles per insn  (16.67%)
+       29135364304      branches                  #  513.073 M/sec                    (22.23%)
+          47785370      branch-misses             #    0.16% of all branches          (22.23%)
+      142599006259      L1-dcache-loads           # 2511.165 M/sec                    (22.23%)
+         203328525      L1-dcache-load-misses     #    0.14% of all L1-dcache hits    (22.23%)
+        2433902949      LLC-loads                 #   42.861 M/sec                    (22.23%)
+          11355589      LLC-load-misses           #    0.47% of all LL-cache hits     (22.23%)
+       48718012775      L1-icache-loads           #  857.923 M/sec                    (11.11%)
+           4032821      L1-icache-load-misses     #    0.01% of all L1-icache hits    (11.11%)
+      142673000816      dTLB-loads                # 2512.468 M/sec                    (16.67%)
+            129627      dTLB-load-misses          #    0.00% of all dTLB cache hits   (16.67%)
+       48700114288      iTLB-loads                #  857.608 M/sec                    (16.67%)
+              1197      iTLB-load-misses          #    0.00% of all iTLB cache hits   (11.10%)
+        2381162546      L1-dcache-prefetches      #   41.932 M/sec                    (11.10%)
+                 0      L1-dcache-prefetch-misses #    0.000 K/sec                    (11.10%)
+
+      56.804109764 seconds time elapsed
+
+      56.770536000 seconds user
+       0.015998000 seconds sys
+
+
+
+ Performance counter stats for '../../exe/imagick_r_base.r2-m64 -limit disk 0 train_input.tga -resize 320x240 -shear 31 -edge 140 -negate -flop -resize 900x900 -edge 10 train_output.tga':
+
+          56846.15 msec task-clock                #    1.000 CPUs utilized          
+               212      context-switches          #    0.004 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+              5086      page-faults               #    0.089 K/sec                  
+      156834778765      cycles                    #    2.759 GHz                      (11.10%)
+        1100112517      stalled-cycles-frontend   #    0.70% frontend cycles idle     (11.11%)
+       61265588906      stalled-cycles-backend    #   39.06% backend cycles idle      (11.12%)
+      294577844855      instructions              #    1.88  insn per cycle         
+                                                  #    0.21  stalled cycles per insn  (16.68%)
+       29137883169      branches                  #  512.574 M/sec                    (22.23%)
+          47888002      branch-misses             #    0.16% of all branches          (22.23%)
+      142729913296      L1-dcache-loads           # 2510.810 M/sec                    (22.23%)
+         205092751      L1-dcache-load-misses     #    0.14% of all L1-dcache hits    (22.23%)
+        2433679653      LLC-loads                 #   42.812 M/sec                    (22.23%)
+          20783708      LLC-load-misses           #    0.85% of all LL-cache hits     (22.23%)
+       48833526603      L1-icache-loads           #  859.047 M/sec                    (11.12%)
+           5866182      L1-icache-load-misses     #    0.01% of all L1-icache hits    (11.12%)
+      142768410220      dTLB-loads                # 2511.488 M/sec                    (16.67%)
+             99929      dTLB-load-misses          #    0.00% of all dTLB cache hits   (16.66%)
+       48863113562      iTLB-loads                #  859.568 M/sec                    (16.65%)
+               351      iTLB-load-misses          #    0.00% of all iTLB cache hits   (11.10%)
+        2381327031      L1-dcache-prefetches      #   41.891 M/sec                    (11.10%)
+                 0      L1-dcache-prefetch-misses #    0.000 K/sec                    (11.10%)
+
+      56.866321984 seconds time elapsed
+
+      56.822315000 seconds user
+       0.023995000 seconds sys
+
+
+
+ Performance counter stats for '../../exe/imagick_r_base.r2-m64 -limit disk 0 train_input.tga -resize 320x240 -shear 31 -edge 140 -negate -flop -resize 900x900 -edge 10 train_output.tga':
+
+          56520.56 msec task-clock                #    1.000 CPUs utilized          
+               100      context-switches          #    0.002 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+              5085      page-faults               #    0.090 K/sec                  
+      156351434955      cycles                    #    2.766 GHz                      (11.11%)
+        1004005158      stalled-cycles-frontend   #    0.64% frontend cycles idle     (11.12%)
+       61173202139      stalled-cycles-backend    #   39.13% backend cycles idle      (11.12%)
+      294312509972      instructions              #    1.88  insn per cycle         
+                                                  #    0.21  stalled cycles per insn  (16.67%)
+       29123903916      branches                  #  515.280 M/sec                    (22.23%)
+          47615175      branch-misses             #    0.16% of all branches          (22.22%)
+      142612003202      L1-dcache-loads           # 2523.188 M/sec                    (22.22%)
+         201803859      L1-dcache-load-misses     #    0.14% of all L1-dcache hits    (22.22%)
+        2431872944      LLC-loads                 #   43.026 M/sec                    (22.22%)
+          15266991      LLC-load-misses           #    0.63% of all LL-cache hits     (22.22%)
+       48783696467      L1-icache-loads           #  863.114 M/sec                    (11.11%)
+           4203169      L1-icache-load-misses     #    0.01% of all L1-icache hits    (11.11%)
+      142783803398      dTLB-loads                # 2526.228 M/sec                    (16.67%)
+             30081      dTLB-load-misses          #    0.00% of all dTLB cache hits   (16.66%)
+       48779952352      iTLB-loads                #  863.048 M/sec                    (16.66%)
+                 0      iTLB-load-misses          #    0.00% of all iTLB cache hits   (11.11%)
+        2380049371      L1-dcache-prefetches      #   42.109 M/sec                    (11.11%)
+                 0      L1-dcache-prefetch-misses #    0.000 K/sec                    (11.11%)
+
+      56.536827130 seconds time elapsed
+
+      56.493282000 seconds user
+       0.027998000 seconds sys
+
+
+
+ Performance counter stats for '../../exe/imagick_r_base.r2-m64 -limit disk 0 train_input.tga -resize 320x240 -shear 31 -edge 140 -negate -flop -resize 900x900 -edge 10 train_output.tga':
+
+          56924.63 msec task-clock                #    1.000 CPUs utilized          
+               205      context-switches          #    0.004 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+              5081      page-faults               #    0.089 K/sec                  
+      156835810442      cycles                    #    2.755 GHz                      (11.10%)
+         996747805      stalled-cycles-frontend   #    0.64% frontend cycles idle     (11.11%)
+       61284270344      stalled-cycles-backend    #   39.08% backend cycles idle      (11.12%)
+      294429352188      instructions              #    1.88  insn per cycle         
+                                                  #    0.21  stalled cycles per insn  (16.67%)
+       29113868534      branches                  #  511.446 M/sec                    (22.23%)
+          47786323      branch-misses             #    0.16% of all branches          (22.23%)
+      142727023011      L1-dcache-loads           # 2507.298 M/sec                    (22.23%)
+         194679179      L1-dcache-load-misses     #    0.14% of all L1-dcache hits    (22.23%)
+        2419000345      LLC-loads                 #   42.495 M/sec                    (22.23%)
+          21052263      LLC-load-misses           #    0.87% of all LL-cache hits     (22.23%)
+       48797293786      L1-icache-loads           #  857.226 M/sec                    (11.12%)
+           4380534      L1-icache-load-misses     #    0.01% of all L1-icache hits    (11.12%)
+      142675424446      dTLB-loads                # 2506.392 M/sec                    (16.67%)
+             73338      dTLB-load-misses          #    0.00% of all dTLB cache hits   (16.67%)
+       48809507282      iTLB-loads                #  857.441 M/sec                    (16.66%)
+              1279      iTLB-load-misses          #    0.00% of all iTLB cache hits   (11.10%)
+        2356561196      L1-dcache-prefetches      #   41.398 M/sec                    (11.10%)
+                 0      L1-dcache-prefetch-misses #    0.000 K/sec                    (11.10%)
+
+      56.941545446 seconds time elapsed
+
+      56.901143000 seconds user
+       0.023995000 seconds sys
+
+
+
+ Performance counter stats for '../../exe/imagick_r_base.r2-m64 -limit disk 0 train_input.tga -resize 320x240 -shear 31 -edge 140 -negate -flop -resize 900x900 -edge 10 train_output.tga':
+
+          56715.50 msec task-clock                #    1.000 CPUs utilized          
+               129      context-switches          #    0.002 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+              5084      page-faults               #    0.090 K/sec                  
+      156232285181      cycles                    #    2.755 GHz                      (11.11%)
+         977498808      stalled-cycles-frontend   #    0.63% frontend cycles idle     (11.12%)
+       61036924170      stalled-cycles-backend    #   39.07% backend cycles idle      (11.12%)
+      294507327408      instructions              #    1.89  insn per cycle         
+                                                  #    0.21  stalled cycles per insn  (16.67%)
+       29125293037      branches                  #  513.533 M/sec                    (22.23%)
+          47737343      branch-misses             #    0.16% of all branches          (22.23%)
+      142507803694      L1-dcache-loads           # 2512.678 M/sec                    (22.23%)
+         206439507      L1-dcache-load-misses     #    0.14% of all L1-dcache hits    (22.23%)
+        2434118648      LLC-loads                 #   42.918 M/sec                    (22.23%)
+          11307645      LLC-load-misses           #    0.46% of all LL-cache hits     (22.23%)
+       48775439460      L1-icache-loads           #  860.002 M/sec                    (11.12%)
+           4937752      L1-icache-load-misses     #    0.01% of all L1-icache hits    (11.12%)
+      142708694760      dTLB-loads                # 2516.220 M/sec                    (16.67%)
+             73660      dTLB-load-misses          #    0.00% of all dTLB cache hits   (16.67%)
+       48724404521      iTLB-loads                #  859.102 M/sec                    (16.66%)
+              1567      iTLB-load-misses          #    0.00% of all iTLB cache hits   (11.10%)
+        2384636640      L1-dcache-prefetches      #   42.046 M/sec                    (11.10%)
+                 0      L1-dcache-prefetch-misses #    0.000 K/sec                    (11.10%)
+
+      56.732774662 seconds time elapsed
+
+      56.683956000 seconds user
+       0.031999000 seconds sys
+
+

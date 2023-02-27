@@ -81,8 +81,8 @@ extern "C" EXPORT void* reallocarray(void* pointer, size_t n, size_t size) {
 
 struct Initialization {
     Initialization() {
-        fmt::print("[LITTERER] Initialized\n");
-        fmt::print("[LITTERER] PID: {}\n", getpid());
+        fmt::print(stderr, "[LITTERER] Initialized\n");
+        fmt::print(stderr, "[LITTERER] PID: {}\n", getpid());
     }
 };
 

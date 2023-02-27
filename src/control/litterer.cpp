@@ -1,13 +1,14 @@
 #include <dlfcn.h>
 #include <unistd.h>
 
+#include <cstdint>
 #include <cstdio>
 
 #include <fmt/core.h>
 
 #define EXPORT __attribute__((visibility("default")))
 
-static thread_local uint32_t busy; 
+static thread_local uint32_t busy;
 
 extern "C" EXPORT void* malloc(size_t size) {
     static decltype(malloc)* nextMalloc = (decltype(malloc)*) dlsym(RTLD_NEXT, "malloc");

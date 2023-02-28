@@ -13,6 +13,7 @@
 #include <fmt/core.h>
 
 #define EXPORT __attribute__((visibility("default")))
+#define INLINE __attribute__((always_inline))
 
 static thread_local uint32_t busy;
 static int sockfd;
@@ -45,6 +46,16 @@ struct Initialization {
 };
 
 static const Initialization _;
+
+
+static thread_local uint64_t timer = 1000;
+
+// This function will run on every malloc/free.
+INLINE void f() {
+    // 0. Timing.
+    // 1. Check if we should run something.
+    // 2. Aquire socket lock, read from socket.
+}
 
 extern "C" EXPORT void* malloc(size_t size) {
     static decltype(malloc)* nextMalloc = (decltype(malloc)*) dlsym(RTLD_NEXT, "malloc");

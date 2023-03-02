@@ -1,32 +1,44 @@
 #include <litterer/litterer.h>
 
 #include <dlfcn.h>
+#include <fcntl.h>
 #include <unistd.h>
 
 #include <algorithm>
 #include <chrono>
+#include <cstdio>
 #include <filesystem>
 #include <fstream>
-#include <iostream>
+#include <optional>
 #include <random>
+#include <string>
 #include <thread>
 #include <vector>
+
+#include <fmt/core.h>
 
 #include <nlohmann/json.hpp>
 
 using Clock = std::chrono::steady_clock;
 
+template <typename... T> void assertOrExit(bool condition, fmt::format_string<T...> format, T&&... args) {
+    if (!condition) {
+        fmt::print(stderr, "[ERROR] {}\n", format, args...);
+        exit(1);
+    }
+}
+
 extern "C" ATTRIBUTE_EXPORT void runLitterer() {
-    auto seed = std::random_device{}();
+    uint32_t seed = std::random_device{}();
     if (const char* env = std::getenv("LITTER_SEED")) {
         seed = atoi(env);
     }
     std::mt19937_64 generator(seed);
 
-    auto occupancy = 0.95;
+    double occupancy = 0.95;
     if (const char* env = std::getenv("LITTER_OCCUPANCY")) {
         occupancy = atof(env);
-        assert(occupancy >= 0 && occupancy <= 1);
+        assertOrExit(occupancy >= 0 && occupancy <= 1, "Occupancy must be between 0 and 1.");
     }
 
     bool shuffle = true;
@@ -34,35 +46,40 @@ extern "C" ATTRIBUTE_EXPORT void runLitterer() {
         shuffle = atoi(env) == 0;
     }
 
-    unsigned sleepDelay = 0;
+    uint32_t sleepDelay = 0;
     if (const char* env = std::getenv("LITTER_SLEEP")) {
         sleepDelay = atoi(env);
     }
 
-    auto multiplier = 20;
+    uint32_t multiplier = 20;
     if (const char* env = std::getenv("LITTER_MULTIPLIER")) {
         multiplier = atoi(env);
     }
 
-    if (!std::filesystem::exists(DETECTOR_OUTPUT_FILENAME)) {
-        std::cout << "[ERROR] " << DETECTOR_OUTPUT_FILENAME << " does not exist..." << std::endl;
-        exit(1);
+    FILE* log = stderr;
+    if (const char* env = std::getenv("LITTER_LOG_FILENAME")) {
+        log = fopen(env, "w");
     }
+
+    assertOrExit(std::filesystem::exists(DETECTOR_OUTPUT_FILENAME), "{} does not exist.", DETECTOR_OUTPUT_FILENAME);
+
     std::ifstream inputFile(DETECTOR_OUTPUT_FILENAME);
     nlohmann::json data;
     inputFile >> data;
 
     Dl_info mallocInfo;
-    assert(dladdr((void*) &malloc, &mallocInfo) != 0);
-    std::cerr << "==================================== Litterer ====================================" << std::endl;
-    std::cerr << "malloc     : " << mallocInfo.dli_fname << std::endl;
-    std::cerr << "seed       : " << seed << std::endl;
-    std::cerr << "occupancy  : " << occupancy << std::endl;
-    std::cerr << "shuffle    : " << (shuffle ? "no" : "yes") << std::endl;
-    std::cerr << "sleep      : " << (sleepDelay ? std::to_string(sleepDelay) : "no") << std::endl;
-    std::cerr << "multiplier : " << multiplier << std::endl;
-    std::cerr << "timestamp  : " << __DATE__ << " " << __TIME__ << std::endl;
-    std::cerr << "==================================================================================" << std::endl;
+    auto status = dladdr((void*) &malloc, &mallocInfo);
+    assert(status != 0);
+
+    fmt::print(log, "==================================== Litterer ====================================\n");
+    fmt::print(log, "malloc     : {}\n", mallocInfo.dli_fname);
+    fmt::print(log, "seed       : {}\n", seed);
+    fmt::print(log, "occupancy  : {}\n", occupancy);
+    fmt::print(log, "shuffle    : {}\n", shuffle ? "no" : "yes");
+    fmt::print(log, "sleep      : {}\n", sleepDelay ? std::to_string(sleepDelay) : "no");
+    fmt::print(log, "multiplier : {}\n", multiplier);
+    fmt::print(log, "timestamp  : {} {}\n", __DATE__, __TIME__);
+    fmt::print(log, "==================================================================================\n");
 
     long long int nAllocations = data["NAllocations"].get<long long int>();
     long long int maxLiveAllocations = data["MaxLiveAllocations"].get<long long int>();
@@ -71,12 +88,10 @@ extern "C" ATTRIBUTE_EXPORT void runLitterer() {
     // This can happen if no allocations were recorded.
     if (!data["Bins"].empty()) {
         if (data["Bins"][data["SizeClasses"].size()].get<int>() != 0) {
-            std::cerr << "[WARNING] Allocations of size greater than the maximum size class were recorded."
-                      << std::endl;
-            std::cerr << "[WARNING] There will be no littering for these allocations." << std::endl;
-            std::cerr << "[WARNING] This represents "
-                      << ((double) data["Bins"][data["SizeClasses"].size()] / (double) nAllocations) * 100
-                      << "% of all allocations recorded." << std::endl;
+            fmt::print("[WARNING] Allocations of size greater than the maximum size class were recorded.\n");
+            fmt::print("[WARNING] There will be no littering for these allocations.\n");
+            fmt::print("[WARNING] This represents {:.2f}% of all allocations recorded.\n",
+                       (static_cast<double>(data["Bins"][data["SizeClasses"].size()]) / nAllocations) * 100);
         }
 
         std::chrono::high_resolution_clock::time_point litterStart = std::chrono::high_resolution_clock::now();
@@ -122,15 +137,14 @@ extern "C" ATTRIBUTE_EXPORT void runLitterer() {
 
         std::chrono::high_resolution_clock::time_point litterEnd = std::chrono::high_resolution_clock::now();
         std::chrono::seconds elapsed = std::chrono::duration_cast<std::chrono::seconds>((litterEnd - litterStart));
-        std::cerr << "Finished littering. Time taken: " << elapsed.count() << " seconds." << std::endl;
+        fmt::print(log, "Finished littering. Time taken: {} seconds.\n", elapsed.count());
     }
 
     if (sleepDelay) {
-        std::cerr << "Sleeping " << sleepDelay << " seconds before resuming (PID: " << getpid() << " / TID: " << std::this_thread::get_id() << ")..."
-                  << std::endl;
+        fmt::print("Sleeping {} seconds before resuming (PID: {} / TID: {})...", sleepDelay, getpid());
         sleep(sleepDelay);
-        std::cerr << "Starting program now!" << std::endl;
+        fmt::print("Resuming program now!\n");
     }
 
-    std::cerr << "==================================================================================" << std::endl;
+    fmt::print("==================================================================================\n");
 }

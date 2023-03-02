@@ -1,11 +1,12 @@
 CXX := clang++
 CXXFLAGS := --std=c++17 -fPIC -O3 -fvisibility=hidden -Wall -Wextra -Werror
 LDFLAGS := -fPIC -shared
+ARFLAGS := -crs
 
 BUILD_DIRECTORY := build
 
 .PHONY: all
-all: $(BUILD_DIRECTORY)/libdetector.so $(BUILD_DIRECTORY)/liblitterer.so
+all: $(BUILD_DIRECTORY)/libdetector.so $(BUILD_DIRECTORY)/liblitterer.so $(BUILD_DIRECTORY)/liblitterer.a
 
 .PHONY: clean
 clean:
@@ -18,11 +19,15 @@ $(BUILD_DIRECTORY)/libdetector.so: detector.cpp
 ifdef OUTPUT_PERF_DATA
 $(BUILD_DIRECTORY)/liblitterer.so: litterer.cpp vendor/libpfm4
 	mkdir -p $(BUILD_DIRECTORY)
-	$(CXX) $< $(CXXFLAGS) -Ivendor/libpfm4/include -DOUTPUT_PERF_DATA $(EXTRAFLAGS) $(LDFLAGS) -Lvendor/libpfm4/lib -o $@ -ldl -lpfm
+	$(CXX) $< $(CXXFLAGS) -Ivendor/libpfm4/include -DOUTPUT_PERF_DATA $(LDFLAGS) -Lvendor/libpfm4/lib -o $@ -lpfm
 else
-$(BUILD_DIRECTORY)/liblitterer.so: litterer.cpp
+$(BUILD_DIRECTORY)/litterer.o: litterer.cpp
 	mkdir -p $(BUILD_DIRECTORY)
-	$(CXX) $< $(CXXFLAGS) $(EXTRAFLAGS) $(LDFLAGS) -o $@ -ldl
+	$(CXX) $< $(CXXFLAGS) -c -o $@
+$(BUILD_DIRECTORY)/liblitterer.so: $(BUILD_DIRECTORY)/litterer.o
+	$(CXX) $< $(LDFLAGS) -o $@
+$(BUILD_DIRECTORY)/liblitterer.a: $(BUILD_DIRECTORY)/litterer.o
+	$(AR) $(ARFLAGS) $@ $<
 endif
 
 vendor/libpfm4:

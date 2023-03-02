@@ -31,9 +31,9 @@ extern "C" ATTRIBUTE_EXPORT void runLitterer() {
         assert(occupancy >= 0 && occupancy <= 1);
     }
 
-    bool noShuffle = false;
-    if (const char* env = std::getenv("LITTER_NO_SHUFFLE")) {
-        noShuffle = atoi(env) != 0;
+    bool shuffle = true;
+    if (const char* env = std::getenv("LITTER_SHUFFLE")) {
+        shuffle = atoi(env) == 0;
     }
 
     unsigned sleepDelay = 0;
@@ -60,7 +60,7 @@ extern "C" ATTRIBUTE_EXPORT void runLitterer() {
     std::cerr << "malloc     : " << mallocInfo.dli_fname << std::endl;
     std::cerr << "seed       : " << seed << std::endl;
     std::cerr << "occupancy  : " << occupancy << std::endl;
-    std::cerr << "shuffle    : " << (noShuffle ? "no" : "yes") << std::endl;
+    std::cerr << "shuffle    : " << (shuffle ? "no" : "yes") << std::endl;
     std::cerr << "sleep      : " << (sleepDelay ? std::to_string(sleepDelay) : "no") << std::endl;
     std::cerr << "multiplier : " << multiplier << std::endl;
     std::cerr << "timestamp  : " << __DATE__ << " " << __TIME__ << std::endl;
@@ -108,14 +108,14 @@ extern "C" ATTRIBUTE_EXPORT void runLitterer() {
 
         long long int nObjectsToBeFreed = (1 - occupancy) * nAllocationsLitter;
 
-        if (noShuffle) {
-            std::sort(objects.begin(), objects.end(), std::greater<void*>());
-        } else {
+        if (shuffle) {
             for (int i = 0; i < nObjectsToBeFreed; ++i) {
                 std::uniform_int_distribution<int> indexDistribution(i, objects.size() - 1);
                 int index = indexDistribution(generator);
                 std::swap(objects[i], objects[index]);
             }
+        } else {
+            std::sort(objects.begin(), objects.end(), std::greater<void*>());
         }
 
         for (long long int i = 0; i < nObjectsToBeFreed; ++i) {

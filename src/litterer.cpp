@@ -86,7 +86,7 @@ class Initialization {
                           << "% of all allocations recorded." << std::endl;
             }
 
-            std::chrono::high_resolution_clock::time_point startTime = std::chrono::high_resolution_clock::now();
+            std::chrono::high_resolution_clock::time_point litterStart = std::chrono::high_resolution_clock::now();
 
             std::uniform_int_distribution<long long int> distribution(
                 0, nAllocations - data["Bins"][data["SizeClasses"].size()].get<int>() - 1);
@@ -127,8 +127,8 @@ class Initialization {
                 free(objects[i]);
             }
 
-            std::chrono::high_resolution_clock::time_point endTime = std::chrono::high_resolution_clock::now();
-            std::chrono::seconds elapsed = std::chrono::duration_cast<std::chrono::seconds>((endTime - startTime));
+            std::chrono::high_resolution_clock::time_point litterEnd = std::chrono::high_resolution_clock::now();
+            std::chrono::seconds elapsed = std::chrono::duration_cast<std::chrono::seconds>((litterEnd - litterStart));
             std::cerr << "Finished littering. Time taken: " << elapsed.count() << " seconds." << std::endl;
         }
 

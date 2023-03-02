@@ -69,7 +69,7 @@ extern "C" ATTRIBUTE_EXPORT void runLitterer() {
 
     Dl_info mallocInfo;
     auto status = dladdr((void*) &malloc, &mallocInfo);
-    assert(status != 0);
+    assert(status != 0, "Could not get malloc info.");
 
     fmt::print(log, "==================================== Litterer ====================================\n");
     fmt::print(log, "malloc     : {}\n", mallocInfo.dli_fname);

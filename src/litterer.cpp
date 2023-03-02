@@ -12,9 +12,7 @@
 #include <thread>
 #include <vector>
 
-// https://json.nlohmann.me
-#include "json.hpp"
-using json = nlohmann::json;
+#include <nlohmann/json.hpp>
 
 using Clock = std::chrono::steady_clock;
 
@@ -51,7 +49,7 @@ extern "C" ATTRIBUTE_EXPORT void runLitterer() {
         exit(1);
     }
     std::ifstream inputFile(DETECTOR_OUTPUT_FILENAME);
-    json data;
+    nlohmann::json data;
     inputFile >> data;
 
     Dl_info mallocInfo;

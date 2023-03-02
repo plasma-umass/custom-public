@@ -149,7 +149,8 @@ class Initialization {
     ~Initialization() {
         auto End = Clock::now();
         std::cerr << "==================================================================================" << std::endl;
-        std::cerr << "Time elapsed: " << std::chrono::duration_cast<std::chrono::milliseconds>(End - Start).count() / 1000.0 << std::endl;
+        std::cerr << "Time elapsed: "
+                  << std::chrono::duration_cast<std::chrono::milliseconds>(End - Start).count() / 1000.0 << std::endl;
         std::cerr << "==================================================================================" << std::endl;
     }
 };

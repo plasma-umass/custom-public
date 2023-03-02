@@ -32,4 +32,4 @@ endif
 
 .PHONY: format
 format:
-	clang-format -i constants.hpp detector.cpp litterer.cpp PFMWrapper.hpp
+	clang-format -i constants.hpp detector.cpp litterer.cpp

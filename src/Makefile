@@ -30,11 +30,6 @@ $(BUILD_DIRECTORY)/liblitterer.a: $(BUILD_DIRECTORY)/litterer.o
 	$(AR) $(ARFLAGS) $@ $<
 endif
 
-vendor/libpfm4:
-	mkdir vendor
-	git clone https://github.com/wcohen/libpfm4 $@
-	cd $@ && make
-
 .PHONY: format
 format:
 	clang-format -i constants.hpp detector.cpp litterer.cpp PFMWrapper.hpp

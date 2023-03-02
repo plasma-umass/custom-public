@@ -12,10 +12,6 @@
 #include <dlfcn.h>
 #include <unistd.h>
 
-#ifdef OUTPUT_PERF_DATA
-#include "PFMWrapper.hpp"
-#endif
-
 // https://json.nlohmann.me
 #include "json.hpp"
 using json = nlohmann::json;
@@ -28,18 +24,6 @@ Clock::time_point Start;
 class Initialization {
   public:
     Initialization() {
-#ifdef OUTPUT_PERF_DATA
-        PFMWrapper::initialize();
-        PFMWrapper::addEvent("instructions");
-        PFMWrapper::addEvent("cycles");
-        PFMWrapper::addEvent("L1-dcache-loads");
-        PFMWrapper::addEvent("L1-dcache-load-misses");
-        PFMWrapper::addEvent("LLC-loads");
-        PFMWrapper::addEvent("LLC-load-misses");
-        PFMWrapper::addEvent("dTLB-loads");
-        PFMWrapper::addEvent("dTLB-load-misses");
-#endif
-
         auto Seed = std::random_device{}();
         if (const char* env = std::getenv("LITTER_SEED")) {
             Seed = atoi(env);
@@ -159,10 +143,6 @@ class Initialization {
 
         std::cerr << "==================================================================================" << std::endl;
 
-#ifdef OUTPUT_PERF_DATA
-        PFMWrapper::start();
-#endif
-
         Start = Clock::now();
     }
 
@@ -171,12 +151,6 @@ class Initialization {
         std::cerr << "==================================================================================" << std::endl;
         std::cerr << "Time elapsed: " << std::chrono::duration_cast<std::chrono::milliseconds>(End - Start).count() / 1000.0 << std::endl;
         std::cerr << "==================================================================================" << std::endl;
-        
-#ifdef OUTPUT_PERF_DATA
-        PFMWrapper::stop();
-        PFMWrapper::print();
-        PFMWrapper::cleanup();
-#endif
     }
 };
 

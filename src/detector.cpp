@@ -6,8 +6,8 @@
 
 #include "constants.hpp"
 
-static std::atomic_bool Ready{false};
-static thread_local int Busy{0};
+static std::atomic_bool ready{false};
+static thread_local int busy{0};
 static thread_local bool in_dlsym{false};
 
 #ifndef SIZE_CLASSES
@@ -22,7 +22,7 @@ static thread_local bool in_dlsym{false};
             16777216, 20971520, 25165824, 29360128, 33554432, 41943040, 50331648, 58720256, 67108864                   \
     }
 
-// Default: Powers of 2 up to 2 ** 30
+// Powers of 2 up to 2 ** 30
 // #define SIZE_CLASSES \
 //     { \
 //         2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536, 131072, 262144, 524288, \
@@ -32,46 +32,46 @@ static thread_local bool in_dlsym{false};
 #define SIZE_CLASSES JEMALLOC_SIZE_CLASSES
 #endif
 
-static const std::vector<size_t> SizeClasses = SIZE_CLASSES;
-static std::vector<std::atomic_int> Bins(SizeClasses.size() + 1);
+static const std::vector<size_t> sizeClasses = SIZE_CLASSES;
+static std::vector<std::atomic_int> bins(sizeClasses.size() + 1);
 
-static std::atomic_int64_t NAllocations{0};
-static std::atomic<double> Average{0};
+static std::atomic_uint64_t nAllocations{0};
+static std::atomic<double> average{0};
 
 // Increments by 1 on malloc/calloc, and decrements by 1 on free.
-static std::atomic_int64_t LiveAllocations{0};
-static std::atomic_int64_t MaxLiveAllocations{0};
+static std::atomic_int64_t liveAllocations{0};
+static std::atomic_int64_t maxLiveAllocations{0};
 
 class Initialization {
   public:
-    Initialization() { Ready = true; }
+    Initialization() { ready = true; }
 
     ~Initialization() {
-        Ready = false;
+        ready = false;
 
-        std::ofstream OutputFile(DETECTOR_OUTPUT_FILENAME);
+        std::ofstream outputFile(DETECTOR_OUTPUT_FILENAME);
 
-        OutputFile << "{" << std::endl;
+        outputFile << "{" << std::endl;
 
-        if (SizeClasses.size() == 0) {
-            OutputFile << "\t\"SizeClasses\": []," << std::endl;
+        if (sizeClasses.size() == 0) {
+            outputFile << "\t\"SizeClasses\": []," << std::endl;
         } else {
-            OutputFile << "\t\"SizeClasses\": [ " << SizeClasses[0];
-            for (size_t i = 1; i < SizeClasses.size(); ++i) {
-                OutputFile << ", " << SizeClasses[i];
+            outputFile << "\t\"SizeClasses\": [ " << sizeClasses[0];
+            for (size_t i = 1; i < sizeClasses.size(); ++i) {
+                outputFile << ", " << sizeClasses[i];
             }
-            OutputFile << " ]," << std::endl;
+            outputFile << " ]," << std::endl;
         }
 
-        OutputFile << "\t\"Bins\": [ " << Bins[0];
-        for (size_t i = 1; i < Bins.size(); ++i) {
-            OutputFile << ", " << Bins[i];
+        outputFile << "\t\"Bins\": [ " << bins[0];
+        for (size_t i = 1; i < bins.size(); ++i) {
+            outputFile << ", " << bins[i];
         }
-        OutputFile << "]," << std::endl;
+        outputFile << "]," << std::endl;
 
-        OutputFile << "\t\"NAllocations\": " << NAllocations << ", \"Average\": " << Average
-                   << ", \"MaxLiveAllocations\": " << MaxLiveAllocations << std::endl;
-        OutputFile << "}" << std::endl;
+        outputFile << "\t\"NAllocations\": " << nAllocations << ", \"Average\": " << average
+                   << ", \"MaxLiveAllocations\": " << maxLiveAllocations << std::endl;
+        outputFile << "}" << std::endl;
     }
 };
 
@@ -79,86 +79,86 @@ static Initialization _;
 
 static void* local_dlsym(void* handle, const char* symbol) {
     in_dlsym = true;
-    auto result = ::dlsym(handle, symbol);
+    auto result = dlsym(handle, symbol);
     in_dlsym = false;
     return result;
 }
 
-extern "C" ATTRIBUTE_EXPORT void* malloc(size_t Size) noexcept {
+extern "C" ATTRIBUTE_EXPORT void* malloc(size_t size) noexcept {
     if (in_dlsym) {
         return nullptr;
     }
-    static decltype(::malloc)* Malloc = (decltype(::malloc)*) local_dlsym(RTLD_NEXT, "malloc");
+    static decltype(malloc)* nextMalloc = (decltype(malloc)*) local_dlsym(RTLD_NEXT, "malloc");
 
-    void* Pointer = (*Malloc)(Size);
+    void* pointer = nextMalloc(size);
 
-    if (!Busy && Ready) {
-        ++Busy;
+    if (!busy && ready) {
+        ++busy;
 
         size_t index = 0;
-        while (Size > SizeClasses[index] && index < SizeClasses.size()) {
+        while (size > sizeClasses[index] && index < sizeClasses.size()) {
             ++index;
         }
-        Bins[index]++;
+        bins[index]++;
 
-        Average = Average + (Size - Average) / (NAllocations + 1);
-        NAllocations++;
+        average = average + (size - average) / (nAllocations + 1);
+        nAllocations++;
 
-        long int LiveAllocationsSnapshot = LiveAllocations.fetch_add(1) + 1;
-        long int MaxLiveAllocationsSnapshot = MaxLiveAllocations;
-        while (LiveAllocationsSnapshot > MaxLiveAllocationsSnapshot) {
-            MaxLiveAllocations.compare_exchange_weak(MaxLiveAllocationsSnapshot, LiveAllocationsSnapshot);
-            MaxLiveAllocationsSnapshot = MaxLiveAllocations;
+        long int liveAllocationsSnapshot = liveAllocations.fetch_add(1) + 1;
+        long int maxLiveAllocationsSnapshot = maxLiveAllocations;
+        while (liveAllocationsSnapshot > maxLiveAllocationsSnapshot) {
+            maxLiveAllocations.compare_exchange_weak(maxLiveAllocationsSnapshot, liveAllocationsSnapshot);
+            maxLiveAllocationsSnapshot = maxLiveAllocations;
         }
 
-        --Busy;
+        --busy;
     }
 
-    return Pointer;
+    return pointer;
 }
 
-extern "C" ATTRIBUTE_EXPORT void* calloc(size_t N, size_t Size) noexcept {
+extern "C" ATTRIBUTE_EXPORT void* calloc(size_t n, size_t size) noexcept {
     if (in_dlsym) {
         return nullptr;
     }
-    static decltype(::calloc)* Calloc = (decltype(::calloc)*) local_dlsym(RTLD_NEXT, "calloc");
+    static decltype(calloc)* nextCalloc = (decltype(calloc)*) local_dlsym(RTLD_NEXT, "calloc");
 
-    void* Pointer = (*Calloc)(N, Size);
+    void* pointer = nextCalloc(n, size);
 
-    size_t TotalSize = N * Size;
-    if (!Busy && Ready) {
-        ++Busy;
+    size_t totalSize = n * size;
+    if (!busy && ready) {
+        ++busy;
 
         size_t index = 0;
-        while (Size > SizeClasses[index] && index < SizeClasses.size()) {
+        while (size > sizeClasses[index] && index < sizeClasses.size()) {
             ++index;
         }
-        Bins[index]++;
+        bins[index]++;
 
-        Average = Average + (TotalSize - Average) / (NAllocations + 1);
-        NAllocations++;
+        average = average + (totalSize - average) / (nAllocations + 1);
+        nAllocations++;
 
-        long int LiveAllocationsSnapshot = LiveAllocations.fetch_add(1) + 1;
-        long int MaxLiveAllocationsSnapshot = MaxLiveAllocations;
-        while (LiveAllocationsSnapshot > MaxLiveAllocationsSnapshot) {
-            MaxLiveAllocations.compare_exchange_weak(MaxLiveAllocationsSnapshot, LiveAllocationsSnapshot);
-            MaxLiveAllocationsSnapshot = MaxLiveAllocations;
+        long int liveAllocationsSnapshot = liveAllocations.fetch_add(1) + 1;
+        long int maxLiveAllocationsSnapshot = maxLiveAllocations;
+        while (liveAllocationsSnapshot > maxLiveAllocationsSnapshot) {
+            maxLiveAllocations.compare_exchange_weak(maxLiveAllocationsSnapshot, liveAllocationsSnapshot);
+            maxLiveAllocationsSnapshot = maxLiveAllocations;
         }
 
-        --Busy;
+        --busy;
     }
 
-    return Pointer;
+    return pointer;
 }
 
-extern "C" ATTRIBUTE_EXPORT void free(void* Pointer) noexcept {
-    static decltype(::free)* Free = (decltype(::free)*) local_dlsym(RTLD_NEXT, "free");
+extern "C" ATTRIBUTE_EXPORT void free(void* pointer) noexcept {
+    static decltype(free)* nextFree = (decltype(free)*) local_dlsym(RTLD_NEXT, "free");
 
-    if (!Busy && Ready) {
-        ++Busy;
-        LiveAllocations--;
-        --Busy;
+    if (!busy && ready) {
+        ++busy;
+        liveAllocations--;
+        --busy;
     }
 
-    (*Free)(Pointer);
+    nextFree(pointer);
 }

@@ -16,11 +16,6 @@ $(BUILD_DIRECTORY)/libdetector.so: detector.cpp
 	mkdir -p $(BUILD_DIRECTORY)
 	$(CXX) $< $(CXXFLAGS) $(LDFLAGS) -o $@ -ldl
 
-ifdef OUTPUT_PERF_DATA
-$(BUILD_DIRECTORY)/liblitterer.so: litterer.cpp vendor/libpfm4
-	mkdir -p $(BUILD_DIRECTORY)
-	$(CXX) $< $(CXXFLAGS) -Ivendor/libpfm4/include -DOUTPUT_PERF_DATA $(LDFLAGS) -Lvendor/libpfm4/lib -o $@ -lpfm
-else
 $(BUILD_DIRECTORY)/litterer.o: litterer.cpp
 	mkdir -p $(BUILD_DIRECTORY)
 	$(CXX) $< $(CXXFLAGS) -c -o $@
@@ -28,7 +23,6 @@ $(BUILD_DIRECTORY)/liblitterer.so: $(BUILD_DIRECTORY)/litterer.o
 	$(CXX) $< $(LDFLAGS) -o $@
 $(BUILD_DIRECTORY)/liblitterer.a: $(BUILD_DIRECTORY)/litterer.o
 	$(AR) $(ARFLAGS) $@ $<
-endif
 
 .PHONY: format
 format:

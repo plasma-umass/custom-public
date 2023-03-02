@@ -4,7 +4,7 @@
 #include <iostream>
 #include <vector>
 
-#include "constants.hpp"
+#include <litterer/constants.h>
 
 static std::atomic_bool ready{false};
 static thread_local int busy{0};

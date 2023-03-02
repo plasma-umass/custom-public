@@ -1,5 +1,5 @@
-#ifndef CONSTANTS_HPP
-#define CONSTANTS_HPP
+#ifndef LITTERER_CONSTANTS_H
+#define LITTERER_CONSTANTS_H
 
 #define ATTRIBUTE_EXPORT __attribute__((visibility("default")))
 

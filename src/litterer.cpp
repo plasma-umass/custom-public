@@ -141,10 +141,10 @@ extern "C" ATTRIBUTE_EXPORT void runLitterer() {
     }
 
     if (sleepDelay) {
-        fmt::print("Sleeping {} seconds before resuming (PID: {} / TID: {})...", sleepDelay, getpid());
+        fmt::print(log, "Sleeping {} seconds before resuming (PID: {})...\n", sleepDelay, getpid());
         sleep(sleepDelay);
-        fmt::print("Resuming program now!\n");
+        fmt::print(log, "Resuming program now!\n");
     }
 
-    fmt::print("==================================================================================\n");
+    fmt::print(log, "==================================================================================\n");
 }

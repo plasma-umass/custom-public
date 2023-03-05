@@ -28,7 +28,7 @@ template <typename... T> void assertOrExit(bool condition, fmt::format_string<T.
     }
 }
 
-extern "C" ATTRIBUTE_EXPORT void runLitterer() {
+void runLitterer() {
     uint32_t seed = std::random_device{}();
     if (const char* env = std::getenv("LITTER_SEED")) {
         seed = atoi(env);

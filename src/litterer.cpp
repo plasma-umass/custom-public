@@ -19,6 +19,8 @@
 
 #include <nlohmann/json.hpp>
 
+#include <litterer/constants.h>
+
 using Clock = std::chrono::steady_clock;
 
 template <typename... T> void assertOrExit(bool condition, fmt::format_string<T...> format, T&&... args) {

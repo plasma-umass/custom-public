@@ -76,7 +76,7 @@ static void* local_dlsym(void* handle, const char* symbol) {
     return result;
 }
 
-extern "C" ATTRIBUTE_EXPORT void* malloc(size_t size) noexcept {
+extern "C" __attribute__((visibility("default"))) void* malloc(size_t size) noexcept {
     if (in_dlsym) {
         return nullptr;
     }
@@ -109,7 +109,7 @@ extern "C" ATTRIBUTE_EXPORT void* malloc(size_t size) noexcept {
     return pointer;
 }
 
-extern "C" ATTRIBUTE_EXPORT void* calloc(size_t n, size_t size) noexcept {
+extern "C" __attribute__((visibility("default"))) void* calloc(size_t n, size_t size) noexcept {
     if (in_dlsym) {
         return nullptr;
     }
@@ -143,7 +143,7 @@ extern "C" ATTRIBUTE_EXPORT void* calloc(size_t n, size_t size) noexcept {
     return pointer;
 }
 
-extern "C" ATTRIBUTE_EXPORT void free(void* pointer) noexcept {
+extern "C" __attribute__((visibility("default"))) void free(void* pointer) noexcept {
     static decltype(free)* nextFree = (decltype(free)*) local_dlsym(RTLD_NEXT, "free");
 
     if (!busy && ready) {

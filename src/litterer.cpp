@@ -25,7 +25,7 @@ using Clock = std::chrono::steady_clock;
 
 template <typename... T> void assertOrExit(bool condition, fmt::format_string<T...> format, T&&... args) {
     if (!condition) {
-        fmt::print(stderr, "[ERROR] {}\n", format, args...);
+        fmt::print(stderr, "[ERROR] {}\n", format, std::forward<T>(args)...);
         exit(1);
     }
 }

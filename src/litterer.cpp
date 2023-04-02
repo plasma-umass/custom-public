@@ -65,9 +65,14 @@ void runLitterer() {
         log = fopen(env, "w");
     }
 
-    assertOrExit(std::filesystem::exists(DETECTOR_OUTPUT_FILENAME), "{} does not exist.", DETECTOR_OUTPUT_FILENAME);
+    std::string dataFilename = DETECTOR_OUTPUT_FILENAME;
+    if (const char* env = std::getenv("LITTER_DATA_FILENAME")) {
+        dataFilename = env;
+    }
 
-    std::ifstream inputFile(DETECTOR_OUTPUT_FILENAME);
+    assertOrExit(std::filesystem::exists(dataFilename), "{} does not exist.", dataFilename);
+
+    std::ifstream inputFile(dataFilename);
     nlohmann::json data;
     inputFile >> data;
 

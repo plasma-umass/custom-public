@@ -84,12 +84,25 @@ void runLitterer() {
     nlohmann::json data;
     inputFile >> data;
 
+#if _WIN32
+    HMODULE mallocModule;
+    const auto status
+        = GetModuleHandleEx(GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS | GET_MODULE_HANDLE_EX_FLAG_UNCHANGED_REFCOUNT,
+                            (LPCSTR) &malloc, &mallocModule);
+    assert(status && "Could not get malloc info.");
+
+    char mallocFileName[MAX_PATH];
+    GetModuleFileName(mallocModule, mallocFileName, MAX_PATH);
+    const std::string mallocSourceObject = mallocFileName;
+#else
     Dl_info mallocInfo;
-    auto status = dladdr((void*) &malloc, &mallocInfo);
+    const auto status = dladdr((void*) &malloc, &mallocInfo);
     assertOrExit(status != 0, "Could not get malloc info.");
+    const std::string mallocSourceObject = mallocInfo.dli_fname;
+#endif
 
     fmt::print(log, "==================================== Litterer ====================================\n");
-    fmt::print(log, "malloc     : {}\n", mallocInfo.dli_fname);
+    fmt::print(log, "malloc     : {}\n", mallocSourceObject);
     fmt::print(log, "seed       : {}\n", seed);
     fmt::print(log, "occupancy  : {}\n", occupancy);
     fmt::print(log, "shuffle    : {}\n", shuffle ? "no" : "yes");
@@ -98,9 +111,9 @@ void runLitterer() {
     fmt::print(log, "timestamp  : {} {}\n", __DATE__, __TIME__);
     fmt::print(log, "==================================================================================\n");
 
-    std::size_t nAllocations = data["NAllocations"].get<std::size_t>();
-    std::size_t maxLiveAllocations = data["MaxLiveAllocations"].get<std::size_t>();
-    std::size_t nAllocationsLitter = maxLiveAllocations * multiplier;
+    const std::size_t nAllocations = data["NAllocations"].get<std::size_t>();
+    const std::size_t maxLiveAllocations = data["MaxLiveAllocations"].get<std::size_t>();
+    const std::size_t nAllocationsLitter = maxLiveAllocations * multiplier;
 
     // This can happen if no allocations were recorded.
     if (!data["Bins"].empty()) {
@@ -111,7 +124,7 @@ void runLitterer() {
                        (static_cast<double>(data["Bins"][data["SizeClasses"].size()]) / nAllocations) * 100);
         }
 
-        std::chrono::high_resolution_clock::time_point litterStart = std::chrono::high_resolution_clock::now();
+        const auto litterStart = std::chrono::high_resolution_clock::now();
 
         std::uniform_int_distribution<std::size_t> distribution(
             0, nAllocations - data["Bins"][data["SizeClasses"].size()].get<int>() - 1);
@@ -128,15 +141,15 @@ void runLitterer() {
                 ++sizeClassIndex;
                 offset -= static_cast<std::size_t>(data["Bins"][sizeClassIndex].get<int>());
             }
-            std::size_t maxAllocationSize = data["SizeClasses"][sizeClassIndex].get<std::size_t>();
+            const std::size_t maxAllocationSize = data["SizeClasses"][sizeClassIndex].get<std::size_t>();
             std::uniform_int_distribution<std::size_t> allocationSizeDistribution(minAllocationSize, maxAllocationSize);
-            std::size_t allocationSize = allocationSizeDistribution(generator);
+            const std::size_t allocationSize = allocationSizeDistribution(generator);
 
             void* pointer = malloc(allocationSize);
             objects.push_back(pointer);
         }
 
-        std::size_t nObjectsToBeFreed = (1 - occupancy) * nAllocationsLitter;
+        const std::size_t nObjectsToBeFreed = static_cast<std::size_t>((1 - occupancy) * nAllocationsLitter);
 
         if (shuffle) {
             for (std::size_t i = 0; i < nObjectsToBeFreed; ++i) {
@@ -152,13 +165,18 @@ void runLitterer() {
             free(objects[i]);
         }
 
-        std::chrono::high_resolution_clock::time_point litterEnd = std::chrono::high_resolution_clock::now();
-        std::chrono::seconds elapsed = std::chrono::duration_cast<std::chrono::seconds>((litterEnd - litterStart));
+        const auto litterEnd = std::chrono::high_resolution_clock::now();
+        const auto elapsed = std::chrono::duration_cast<std::chrono::seconds>((litterEnd - litterStart));
         fmt::print(log, "Finished littering. Time taken: {} seconds.\n", elapsed.count());
     }
 
     if (sleepDelay) {
-        fmt::print(log, "Sleeping {} seconds before resuming (PID: {})...\n", sleepDelay, getpid());
+#ifdef WIN32
+        const auto pid = GetCurrentProcessId();
+#else
+        const auto pid = getpid();
+#endif
+        fmt::print(log, "Sleeping {} seconds before resuming (PID: {})...\n", sleepDelay, pid);
         std::this_thread::sleep_for(std::chrono::seconds(sleepDelay));
         fmt::print(log, "Resuming program now!\n");
     }

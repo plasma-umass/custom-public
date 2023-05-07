@@ -43,7 +43,7 @@ target_link_libraries(litterer PRIVATE litterer_static)
 
 if(MSVC)
     target_compile_options(detector PRIVATE /W4 /WX)
-    target_compile_options(litterer_static PRIVATE -Wall -Wextra -Wpedantic -Werror)
+    target_compile_options(litterer_static PRIVATE /W4 /WX)
     target_compile_options(litterer PRIVATE /W4 /WX)
 else()
     target_compile_options(detector PRIVATE -Wall -Wextra -Wpedantic -Werror)

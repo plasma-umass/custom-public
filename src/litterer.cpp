@@ -17,6 +17,7 @@
 #include <functional>
 #include <random>
 #include <string>
+#include <thread>
 #include <utility>
 #include <vector>
 
@@ -158,7 +159,7 @@ void runLitterer() {
 
     if (sleepDelay) {
         fmt::print(log, "Sleeping {} seconds before resuming (PID: {})...\n", sleepDelay, getpid());
-        sleep(sleepDelay);
+        std::this_thread::sleep_for(std::chrono::seconds(sleepDelay));
         fmt::print(log, "Resuming program now!\n");
     }
 

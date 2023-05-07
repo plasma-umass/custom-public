@@ -8,6 +8,8 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -Wall -Wextra -Werror")
 
+find_package(Threads REQUIRED)
+
 FetchContent_Declare(
     fmt
     GIT_REPOSITORY https://github.com/fmtlib/fmt.git
@@ -30,10 +32,13 @@ add_library(detector SHARED detector.cpp)
 target_include_directories(detector PRIVATE include)
 target_link_libraries(detector PRIVATE ${CMAKE_DL_LIBS})
 
-add_library(litterer-static STATIC litterer.cpp)
-target_include_directories(litterer-static PUBLIC include)
-target_link_libraries(litterer-static PRIVATE fmt nlohmann_json ${CMAKE_DL_LIBS})
+add_library(litterer_static STATIC litterer.cpp)
+target_include_directories(litterer_static PUBLIC include)
+target_link_libraries(litterer_static PRIVATE ${CMAKE_DL_LIBS})
+target_link_libraries(litterer_static PRIVATE fmt)
+target_link_libraries(litterer_static PRIVATE nlohmann_json)
+target_link_libraries(litterer_static PRIVATE Threads::Threads)
 
 add_library(litterer SHARED litterer-standalone.cpp)
-target_link_libraries(litterer PRIVATE litterer-static)
+target_link_libraries(litterer PRIVATE litterer_static)
 

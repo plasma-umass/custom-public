@@ -1,14 +1,10 @@
 #include <atomic>
-#include <dlfcn.h>
 #include <fstream>
-#include <iostream>
 #include <vector>
 
-#include <litterer/constants.h>
+#include <dlfcn.h>
 
-static std::atomic_bool ready{false};
-static thread_local int busy{0};
-static thread_local bool in_dlsym{false};
+#include <litterer/constants.h>
 
 #ifndef SIZE_CLASSES
 // See http://jemalloc.net/jemalloc.3.html, up to 64MiB.
@@ -23,6 +19,11 @@ static thread_local bool in_dlsym{false};
     }
 #define SIZE_CLASSES JEMALLOC_SIZE_CLASSES
 #endif
+
+namespace {
+static std::atomic_bool ready{false};
+static thread_local int busy{0};
+static thread_local bool in_dlsym{false};
 
 static const std::vector<size_t> sizeClasses = SIZE_CLASSES;
 static std::vector<std::atomic_int> bins(sizeClasses.size() + 1);
@@ -75,8 +76,9 @@ static void* local_dlsym(void* handle, const char* symbol) {
     in_dlsym = false;
     return result;
 }
+} // namespace
 
-extern "C" __attribute__((visibility("default"))) void* malloc(size_t size) noexcept {
+extern "C" void* malloc(size_t size) noexcept {
     if (in_dlsym) {
         return nullptr;
     }
@@ -109,7 +111,7 @@ extern "C" __attribute__((visibility("default"))) void* malloc(size_t size) noex
     return pointer;
 }
 
-extern "C" __attribute__((visibility("default"))) void* calloc(size_t n, size_t size) noexcept {
+extern "C" void* calloc(size_t n, size_t size) noexcept {
     if (in_dlsym) {
         return nullptr;
     }
@@ -143,7 +145,7 @@ extern "C" __attribute__((visibility("default"))) void* calloc(size_t n, size_t 
     return pointer;
 }
 
-extern "C" __attribute__((visibility("default"))) void free(void* pointer) noexcept {
+extern "C" void free(void* pointer) noexcept {
     static decltype(free)* nextFree = (decltype(free)*) local_dlsym(RTLD_NEXT, "free");
 
     if (!busy && ready) {

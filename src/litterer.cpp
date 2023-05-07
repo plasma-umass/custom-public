@@ -1,7 +1,11 @@
 #include <litterer/litterer.h>
 
+#if _WIN32
+#include <Windows.h>
+#else
 #include <dlfcn.h>
 #include <unistd.h>
+#endif
 
 #include <algorithm>
 #include <chrono>
@@ -22,6 +26,7 @@
 
 #include <litterer/constants.h>
 
+namespace {
 using Clock = std::chrono::steady_clock;
 
 template <typename... T> void assertOrExit(bool condition, fmt::format_string<T...> format, T&&... args) {
@@ -32,6 +37,7 @@ template <typename... T> void assertOrExit(bool condition, fmt::format_string<T.
         exit(1);
     }
 }
+} // namespace
 
 void runLitterer() {
     std::uint32_t seed = std::random_device{}();

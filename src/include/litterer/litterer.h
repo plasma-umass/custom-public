@@ -2,9 +2,9 @@
 #define LITTERER_LITTERER_H
 
 #ifdef __cplusplus
-extern "C" __attribute__((visibility("default"))) void runLitterer();
+extern "C" void runLitterer();
 #else
-__attribute__((visibility("default"))) void runLitterer();
+void runLitterer();
 #endif
 
 #endif

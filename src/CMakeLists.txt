@@ -6,7 +6,6 @@ project(litterer)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
-set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -Wall -Wextra -Werror")
 
 find_package(Threads REQUIRED)
 
@@ -42,3 +41,12 @@ target_link_libraries(litterer_static PRIVATE Threads::Threads)
 add_library(litterer SHARED litterer-standalone.cpp)
 target_link_libraries(litterer PRIVATE litterer_static)
 
+if(MSVC)
+    target_compile_options(detector PRIVATE /W4 /WX)
+    target_compile_options(litterer_static PRIVATE -Wall -Wextra -Wpedantic -Werror)
+    target_compile_options(litterer PRIVATE /W4 /WX)
+else()
+    target_compile_options(detector PRIVATE -Wall -Wextra -Wpedantic -Werror)
+    target_compile_options(litterer_static PRIVATE -Wall -Wextra -Wpedantic -Werror)
+    target_compile_options(litterer PRIVATE -Wall -Wextra -Wpedantic -Werror)
+endif()

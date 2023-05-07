@@ -10,21 +10,28 @@ env:
   BUILD_TYPE: Debug
 
 jobs:
-  main:
-    runs-on: ubuntu-latest
+  build:
+    strategy:
+      matrix:
+        platform: [ubuntu-latest, windows-latest]
+    runs-on: ${{matrix.platform}}
 
     steps:
     - uses: actions/checkout@v3
-    
-    - name: Install dependencies
-      run: |
-           sudo apt install -y clang-format
 
     - name: Configure CMake
       run: cmake ${{github.workspace}}/src -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
 
     - name: Build
       run: cmake --build ${{github.workspace}}/build
+
+  format:
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Install dependencies
+      run: |
+           sudo apt install -y clang-format
       
     - name: Check clang-format
       run: find src -name '*.cpp' -o -name '*.h' | xargs clang-format --dry-run --Werror

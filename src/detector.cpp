@@ -2,7 +2,7 @@
 #include <fstream>
 #include <vector>
 
-#include <dlfcn.h>
+#include <mimalloc.h>
 
 #include <litterer/constants.h>
 
@@ -23,7 +23,6 @@
 namespace {
 static std::atomic_bool ready{false};
 static thread_local int busy{0};
-static thread_local bool in_dlsym{false};
 
 static const std::vector<size_t> sizeClasses = SIZE_CLASSES;
 static std::vector<std::atomic_int> bins(sizeClasses.size() + 1);
@@ -69,22 +68,10 @@ class Initialization {
 };
 
 static Initialization _;
-
-static void* local_dlsym(void* handle, const char* symbol) {
-    in_dlsym = true;
-    auto result = dlsym(handle, symbol);
-    in_dlsym = false;
-    return result;
-}
 } // namespace
 
 extern "C" void* malloc(size_t size) noexcept {
-    if (in_dlsym) {
-        return nullptr;
-    }
-    static decltype(malloc)* nextMalloc = (decltype(malloc)*) local_dlsym(RTLD_NEXT, "malloc");
-
-    void* pointer = nextMalloc(size);
+    void* pointer = mi_malloc(size);
 
     if (!busy && ready) {
         ++busy;
@@ -112,12 +99,7 @@ extern "C" void* malloc(size_t size) noexcept {
 }
 
 extern "C" void* calloc(size_t n, size_t size) noexcept {
-    if (in_dlsym) {
-        return nullptr;
-    }
-    static decltype(calloc)* nextCalloc = (decltype(calloc)*) local_dlsym(RTLD_NEXT, "calloc");
-
-    void* pointer = nextCalloc(n, size);
+    void* pointer = mi_calloc(n, size);
 
     size_t totalSize = n * size;
     if (!busy && ready) {
@@ -146,13 +128,11 @@ extern "C" void* calloc(size_t n, size_t size) noexcept {
 }
 
 extern "C" void free(void* pointer) noexcept {
-    static decltype(free)* nextFree = (decltype(free)*) local_dlsym(RTLD_NEXT, "free");
-
     if (!busy && ready) {
         ++busy;
         liveAllocations--;
         --busy;
     }
 
-    nextFree(pointer);
+    mi_free(pointer);
 }

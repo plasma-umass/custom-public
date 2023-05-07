@@ -16,6 +16,12 @@ FetchContent_Declare(
 )
 
 FetchContent_Declare(
+    mimalloc
+    GIT_REPOSITORY https://github.com/microsoft/mimalloc.git
+    GIT_TAG 43ce4bd7fd34bcc730c1c7471c99995597415488 # v2.1.2
+)
+
+FetchContent_Declare(
     nlohmann_json
     GIT_REPOSITORY https://github.com/nlohmann/json.git
     GIT_TAG bc889afb4c5bf1c0d8ee29ef35eaaf4c8bef8a5d # v3.11.2
@@ -24,6 +30,10 @@ FetchContent_Declare(
 message(STATUS "Downloading and configuring {fmt}")
 FetchContent_MakeAvailable(fmt)
 
+message(STATUS "Downloading and configuring mimalloc")
+set(MI_OVERRIDE OFF)
+FetchContent_MakeAvailable(mimalloc)
+
 message(STATUS "Downloading and configuring nlohmann::json")
 FetchContent_MakeAvailable(nlohmann_json)
 
@@ -31,6 +41,7 @@ if(NOT WIN32)
 add_library(detector SHARED detector.cpp)
 target_include_directories(detector PRIVATE include)
 target_link_libraries(detector PRIVATE ${CMAKE_DL_LIBS})
+target_link_libraries(detector PUBLIC mimalloc-static)
 endif()
 
 add_library(litterer_static STATIC litterer.cpp)

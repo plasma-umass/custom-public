@@ -1,18 +1,19 @@
 #include <litterer/litterer.h>
 
 #include <dlfcn.h>
-#include <fcntl.h>
 #include <unistd.h>
 
 #include <algorithm>
 #include <chrono>
+#include <cstdint>
 #include <cstdio>
+#include <cstdlib>
 #include <filesystem>
 #include <fstream>
-#include <optional>
+#include <functional>
 #include <random>
 #include <string>
-#include <thread>
+#include <utility>
 #include <vector>
 
 #include <fmt/core.h>
@@ -33,7 +34,7 @@ template <typename... T> void assertOrExit(bool condition, fmt::format_string<T.
 }
 
 void runLitterer() {
-    uint32_t seed = std::random_device{}();
+    std::uint32_t seed = std::random_device{}();
     if (const char* env = std::getenv("LITTER_SEED")) {
         seed = atoi(env);
     }
@@ -50,12 +51,12 @@ void runLitterer() {
         shuffle = atoi(env) == 0;
     }
 
-    uint32_t sleepDelay = 0;
+    std::uint32_t sleepDelay = 0;
     if (const char* env = std::getenv("LITTER_SLEEP")) {
         sleepDelay = atoi(env);
     }
 
-    uint32_t multiplier = 20;
+    std::uint32_t multiplier = 20;
     if (const char* env = std::getenv("LITTER_MULTIPLIER")) {
         multiplier = atoi(env);
     }
@@ -90,9 +91,9 @@ void runLitterer() {
     fmt::print(log, "timestamp  : {} {}\n", __DATE__, __TIME__);
     fmt::print(log, "==================================================================================\n");
 
-    long long int nAllocations = data["NAllocations"].get<long long int>();
-    long long int maxLiveAllocations = data["MaxLiveAllocations"].get<long long int>();
-    long long int nAllocationsLitter = maxLiveAllocations * multiplier;
+    std::size_t nAllocations = data["NAllocations"].get<std::size_t>();
+    std::size_t maxLiveAllocations = data["MaxLiveAllocations"].get<std::size_t>();
+    std::size_t nAllocationsLitter = maxLiveAllocations * multiplier;
 
     // This can happen if no allocations were recorded.
     if (!data["Bins"].empty()) {
@@ -105,42 +106,42 @@ void runLitterer() {
 
         std::chrono::high_resolution_clock::time_point litterStart = std::chrono::high_resolution_clock::now();
 
-        std::uniform_int_distribution<long long int> distribution(
+        std::uniform_int_distribution<std::size_t> distribution(
             0, nAllocations - data["Bins"][data["SizeClasses"].size()].get<int>() - 1);
         std::vector<void*> objects = *(new std::vector<void*>);
         objects.reserve(nAllocationsLitter);
 
-        for (long long int i = 0; i < nAllocationsLitter; ++i) {
-            size_t minAllocationSize = 0;
-            size_t sizeClassIndex = 0;
-            long long int offset = distribution(generator) - (long long int) data["Bins"][0].get<int>();
+        for (std::size_t i = 0; i < nAllocationsLitter; ++i) {
+            std::size_t minAllocationSize = 0;
+            std::size_t sizeClassIndex = 0;
+            std::int64_t offset = static_cast<int64_t>(distribution(generator)) - data["Bins"][0].get<std::int64_t>();
 
-            while (offset >= 0LL) {
-                minAllocationSize = data["SizeClasses"][sizeClassIndex].get<size_t>() + 1;
+            while (offset >= 0) {
+                minAllocationSize = data["SizeClasses"][sizeClassIndex].get<std::size_t>() + 1;
                 ++sizeClassIndex;
-                offset -= (long long int) data["Bins"][sizeClassIndex].get<int>();
+                offset -= static_cast<std::size_t>(data["Bins"][sizeClassIndex].get<int>());
             }
-            size_t maxAllocationSize = data["SizeClasses"][sizeClassIndex].get<size_t>();
-            std::uniform_int_distribution<size_t> allocationSizeDistribution(minAllocationSize, maxAllocationSize);
-            size_t allocationSize = allocationSizeDistribution(generator);
+            std::size_t maxAllocationSize = data["SizeClasses"][sizeClassIndex].get<std::size_t>();
+            std::uniform_int_distribution<std::size_t> allocationSizeDistribution(minAllocationSize, maxAllocationSize);
+            std::size_t allocationSize = allocationSizeDistribution(generator);
 
             void* pointer = malloc(allocationSize);
             objects.push_back(pointer);
         }
 
-        long long int nObjectsToBeFreed = (1 - occupancy) * nAllocationsLitter;
+        std::size_t nObjectsToBeFreed = (1 - occupancy) * nAllocationsLitter;
 
         if (shuffle) {
-            for (int i = 0; i < nObjectsToBeFreed; ++i) {
-                std::uniform_int_distribution<int> indexDistribution(i, objects.size() - 1);
-                int index = indexDistribution(generator);
+            for (std::size_t i = 0; i < nObjectsToBeFreed; ++i) {
+                std::uniform_int_distribution<std::size_t> indexDistribution(i, objects.size() - 1);
+                std::size_t index = indexDistribution(generator);
                 std::swap(objects[i], objects[index]);
             }
         } else {
             std::sort(objects.begin(), objects.end(), std::greater<void*>());
         }
 
-        for (long long int i = 0; i < nObjectsToBeFreed; ++i) {
+        for (std::size_t i = 0; i < nObjectsToBeFreed; ++i) {
             free(objects[i]);
         }
 

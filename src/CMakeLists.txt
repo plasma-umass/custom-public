@@ -49,7 +49,7 @@ if(NOT WIN32)
     target_compile_options(detector PRIVATE -fno-builtin-malloc)
     target_include_directories(detector PRIVATE include)
     target_link_libraries(detector PRIVATE ${CMAKE_DL_LIBS})
-    target_link_libraries(detector PUBLIC mimalloc-static)
+    target_link_libraries(detector PRIVATE mimalloc-static)
 
     add_library(litterer SHARED litterer-standalone.cpp)
     target_link_libraries(litterer PRIVATE litterer_static)

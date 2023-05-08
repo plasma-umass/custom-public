@@ -30,10 +30,6 @@ FetchContent_Declare(
 message(STATUS "Downloading and configuring {fmt}")
 FetchContent_MakeAvailable(fmt)
 
-message(STATUS "Downloading and configuring mimalloc")
-set(MI_OVERRIDE OFF)
-FetchContent_MakeAvailable(mimalloc)
-
 message(STATUS "Downloading and configuring nlohmann::json")
 FetchContent_MakeAvailable(nlohmann_json)
 
@@ -45,6 +41,10 @@ target_link_libraries(litterer_static PRIVATE nlohmann_json)
 target_link_libraries(litterer_static PRIVATE Threads::Threads)
 
 if(NOT WIN32)
+    message(STATUS "Downloading and configuring mimalloc")
+    set(MI_OVERRIDE OFF)
+    FetchContent_MakeAvailable(mimalloc)
+
     add_library(detector SHARED detector.cpp)
     target_compile_options(detector PRIVATE -fno-builtin-malloc)
     target_include_directories(detector PRIVATE include)

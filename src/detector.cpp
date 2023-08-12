@@ -35,7 +35,7 @@ static std::atomic<double> average{0};
 static std::atomic_int64_t liveAllocations{0};
 static std::atomic_int64_t maxLiveAllocations{0};
 
-void processAllocation(std::size_t size, bool addToTotal) {
+template <bool addToTotal> void processAllocation(std::size_t size) {
     // Update average.
     average = average + (size - average) / (nAllocations + 1);
     nAllocations++;
@@ -47,7 +47,7 @@ void processAllocation(std::size_t size, bool addToTotal) {
     }
     bins[index]++;
 
-    if (addToTotal) {
+    if constexpr (addToTotal) {
         // Increment total live allocations and possibly update maximum.
         std::int64_t liveAllocationsSnapshot = liveAllocations.fetch_add(1) + 1;
         std::int64_t maxLiveAllocationsSnapshot = maxLiveAllocations;
@@ -99,7 +99,7 @@ extern "C" void* malloc(std::size_t size) {
 
     if (!busy && ready) {
         ++busy;
-        processAllocation(size, true);
+        processAllocation<true>(size);
         --busy;
     }
 
@@ -121,7 +121,7 @@ extern "C" void* calloc(std::size_t nmemb, std::size_t size) {
 
     if (!busy && ready) {
         ++busy;
-        processAllocation(nmemb * size, true);
+        processAllocation<true>(nmemb * size);
         --busy;
     }
 
@@ -133,7 +133,7 @@ extern "C" void* realloc(void* ptr, std::size_t size) {
 
     if (!busy && ready) {
         ++busy;
-        processAllocation(size, false);
+        processAllocation<false>(size);
         --busy;
     }
 
@@ -145,7 +145,7 @@ extern "C" void* reallocarray(void* ptr, std::size_t nmemb, std::size_t size) {
 
     if (!busy && ready) {
         ++busy;
-        processAllocation(nmemb * size, false);
+        processAllocation<false>(nmemb * size);
         --busy;
     }
 
@@ -157,7 +157,7 @@ extern "C" int posix_memalign(void** memptr, std::size_t alignment, std::size_t 
 
     if (!busy && ready) {
         ++busy;
-        processAllocation(size, true);
+        processAllocation<true>(size);
         --busy;
     }
 
@@ -169,7 +169,7 @@ extern "C" void* aligned_alloc(std::size_t alignment, std::size_t size) {
 
     if (!busy && ready) {
         ++busy;
-        processAllocation(size, true);
+        processAllocation<true>(size);
         --busy;
     }
 

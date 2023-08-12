@@ -35,8 +35,8 @@ static std::atomic<double> average{0};
 static std::atomic_int64_t liveAllocations{0};
 static std::atomic_int64_t maxLiveAllocations{0};
 
-void processAllocation(std::size_t size) {
-    // update average.
+void processAllocation(std::size_t size, bool addToTotal) {
+    // Update average.
     average = average + (size - average) / (nAllocations + 1);
     nAllocations++;
 
@@ -47,12 +47,14 @@ void processAllocation(std::size_t size) {
     }
     bins[index]++;
 
-    // Increment total live allocations and possibly update maximum.
-    std::int64_t liveAllocationsSnapshot = liveAllocations.fetch_add(1) + 1;
-    std::int64_t maxLiveAllocationsSnapshot = maxLiveAllocations;
-    while (liveAllocationsSnapshot > maxLiveAllocationsSnapshot) {
-        maxLiveAllocations.compare_exchange_weak(maxLiveAllocationsSnapshot, liveAllocationsSnapshot);
-        maxLiveAllocationsSnapshot = maxLiveAllocations;
+    if (addToTotal) {
+        // Increment total live allocations and possibly update maximum.
+        std::int64_t liveAllocationsSnapshot = liveAllocations.fetch_add(1) + 1;
+        std::int64_t maxLiveAllocationsSnapshot = maxLiveAllocations;
+        while (liveAllocationsSnapshot > maxLiveAllocationsSnapshot) {
+            maxLiveAllocations.compare_exchange_weak(maxLiveAllocationsSnapshot, liveAllocationsSnapshot);
+            maxLiveAllocationsSnapshot = maxLiveAllocations;
+        }
     }
 }
 
@@ -97,7 +99,7 @@ extern "C" void* malloc(std::size_t size) {
 
     if (!busy && ready) {
         ++busy;
-        processAllocation(size);
+        processAllocation(size, true);
         --busy;
     }
 
@@ -114,12 +116,60 @@ extern "C" void free(void* pointer) {
     mi_free(pointer);
 }
 
-extern "C" void* calloc(std::size_t n, std::size_t size) {
-    void* pointer = mi_calloc(n, size);
+extern "C" void* calloc(std::size_t nmemb, std::size_t size) {
+    void* pointer = mi_calloc(nmemb, size);
 
     if (!busy && ready) {
         ++busy;
-        processAllocation(n * size);
+        processAllocation(nmemb * size, true);
+        --busy;
+    }
+
+    return pointer;
+}
+
+extern "C" void* realloc(void* ptr, std::size_t size) {
+    void* pointer = mi_realloc(ptr, size);
+
+    if (!busy && ready) {
+        ++busy;
+        processAllocation(size, false);
+        --busy;
+    }
+
+    return pointer;
+}
+
+extern "C" void* reallocarray(void* ptr, std::size_t nmemb, std::size_t size) {
+    void* pointer = mi_reallocarray(ptr, nmemb, size);
+
+    if (!busy && ready) {
+        ++busy;
+        processAllocation(nmemb * size, false);
+        --busy;
+    }
+
+    return pointer;
+}
+
+extern "C" int posix_memalign(void** memptr, std::size_t alignment, std::size_t size) {
+    int result = mi_posix_memalign(memptr, alignment, size);
+
+    if (!busy && ready) {
+        ++busy;
+        processAllocation(size, true);
+        --busy;
+    }
+
+    return result;
+}
+
+extern "C" void* aligned_alloc(std::size_t alignment, std::size_t size) {
+    void* pointer = mi_aligned_alloc(alignment, size);
+
+    if (!busy && ready) {
+        ++busy;
+        processAllocation(size, true);
         --busy;
     }
 

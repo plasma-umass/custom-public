@@ -1,4 +1,5 @@
 #include <atomic>
+#include <cstddef>
 #include <fstream>
 #include <vector>
 
@@ -24,7 +25,7 @@ namespace {
 static std::atomic_bool ready{false};
 static thread_local int busy{0};
 
-static const std::vector<size_t> sizeClasses = SIZE_CLASSES;
+static const std::vector<std::size_t> sizeClasses = SIZE_CLASSES;
 static std::vector<std::atomic_int> bins(sizeClasses.size() + 1);
 
 static std::atomic_uint64_t nAllocations{0};
@@ -33,6 +34,27 @@ static std::atomic<double> average{0};
 // Increments by 1 on malloc/calloc, and decrements by 1 on free.
 static std::atomic_int64_t liveAllocations{0};
 static std::atomic_int64_t maxLiveAllocations{0};
+
+void processAllocation(std::size_t size) {
+    // update average.
+    average = average + (size - average) / (nAllocations + 1);
+    nAllocations++;
+
+    // Increment histogram entry.
+    std::size_t index = 0;
+    while (size > sizeClasses[index] && index < sizeClasses.size()) {
+        ++index;
+    }
+    bins[index]++;
+
+    // Increment total live allocations and possibly update maximum.
+    std::int64_t liveAllocationsSnapshot = liveAllocations.fetch_add(1) + 1;
+    std::int64_t maxLiveAllocationsSnapshot = maxLiveAllocations;
+    while (liveAllocationsSnapshot > maxLiveAllocationsSnapshot) {
+        maxLiveAllocations.compare_exchange_weak(maxLiveAllocationsSnapshot, liveAllocationsSnapshot);
+        maxLiveAllocationsSnapshot = maxLiveAllocations;
+    }
+}
 
 class Initialization {
   public:
@@ -49,14 +71,14 @@ class Initialization {
             outputFile << "\t\"SizeClasses\": []," << std::endl;
         } else {
             outputFile << "\t\"SizeClasses\": [ " << sizeClasses[0];
-            for (size_t i = 1; i < sizeClasses.size(); ++i) {
+            for (std::size_t i = 1; i < sizeClasses.size(); ++i) {
                 outputFile << ", " << sizeClasses[i];
             }
             outputFile << " ]," << std::endl;
         }
 
         outputFile << "\t\"Bins\": [ " << bins[0];
-        for (size_t i = 1; i < bins.size(); ++i) {
+        for (std::size_t i = 1; i < bins.size(); ++i) {
             outputFile << ", " << bins[i];
         }
         outputFile << "]," << std::endl;
@@ -70,64 +92,19 @@ class Initialization {
 static Initialization _;
 } // namespace
 
-extern "C" void* malloc(size_t size) noexcept {
+extern "C" void* malloc(std::size_t size) {
     void* pointer = mi_malloc(size);
 
     if (!busy && ready) {
         ++busy;
-
-        size_t index = 0;
-        while (size > sizeClasses[index] && index < sizeClasses.size()) {
-            ++index;
-        }
-        bins[index]++;
-
-        average = average + (size - average) / (nAllocations + 1);
-        nAllocations++;
-
-        long int liveAllocationsSnapshot = liveAllocations.fetch_add(1) + 1;
-        long int maxLiveAllocationsSnapshot = maxLiveAllocations;
-        while (liveAllocationsSnapshot > maxLiveAllocationsSnapshot) {
-            maxLiveAllocations.compare_exchange_weak(maxLiveAllocationsSnapshot, liveAllocationsSnapshot);
-            maxLiveAllocationsSnapshot = maxLiveAllocations;
-        }
-
+        processAllocation(size);
         --busy;
     }
 
     return pointer;
 }
 
-extern "C" void* calloc(size_t n, size_t size) noexcept {
-    void* pointer = mi_calloc(n, size);
-
-    size_t totalSize = n * size;
-    if (!busy && ready) {
-        ++busy;
-
-        size_t index = 0;
-        while (size > sizeClasses[index] && index < sizeClasses.size()) {
-            ++index;
-        }
-        bins[index]++;
-
-        average = average + (totalSize - average) / (nAllocations + 1);
-        nAllocations++;
-
-        long int liveAllocationsSnapshot = liveAllocations.fetch_add(1) + 1;
-        long int maxLiveAllocationsSnapshot = maxLiveAllocations;
-        while (liveAllocationsSnapshot > maxLiveAllocationsSnapshot) {
-            maxLiveAllocations.compare_exchange_weak(maxLiveAllocationsSnapshot, liveAllocationsSnapshot);
-            maxLiveAllocationsSnapshot = maxLiveAllocations;
-        }
-
-        --busy;
-    }
-
-    return pointer;
-}
-
-extern "C" void free(void* pointer) noexcept {
+extern "C" void free(void* pointer) {
     if (!busy && ready) {
         ++busy;
         liveAllocations--;
@@ -135,4 +112,16 @@ extern "C" void free(void* pointer) noexcept {
     }
 
     mi_free(pointer);
+}
+
+extern "C" void* calloc(std::size_t n, std::size_t size) {
+    void* pointer = mi_calloc(n, size);
+
+    if (!busy && ready) {
+        ++busy;
+        processAllocation(n * size);
+        --busy;
+    }
+
+    return pointer;
 }

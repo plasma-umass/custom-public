@@ -35,7 +35,8 @@ static std::atomic<double> average{0};
 static std::atomic_int64_t liveAllocations{0};
 static std::atomic_int64_t maxLiveAllocations{0};
 
-template <bool addToTotal> void processAllocation(std::size_t size) {
+template <bool addToTotal>
+void processAllocation(std::size_t size) {
     // Update average.
     average = average + (size - average) / (nAllocations + 1);
     nAllocations++;
@@ -60,7 +61,9 @@ template <bool addToTotal> void processAllocation(std::size_t size) {
 
 class Initialization {
   public:
-    Initialization() { ready = true; }
+    Initialization() {
+        ready = true;
+    }
 
     ~Initialization() {
         ready = false;

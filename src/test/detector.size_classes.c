@@ -1,5 +1,6 @@
-#include <cassert>
-#include <cstdlib>
+#include <assert.h>
+#include <malloc.h>
+#include <stdlib.h>
 
 // This test is tuned for the jemalloc size classes.
 int main() {

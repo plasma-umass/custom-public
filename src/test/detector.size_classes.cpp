@@ -6,7 +6,7 @@ int main() {
     void* ptr;
 
     ptr = malloc(1);
-    ptr = realloc(ptr, 9);
+    ptr = realloc(ptr, 8);
     free(ptr);
 
     ptr = calloc(1, 16);

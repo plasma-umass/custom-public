@@ -43,7 +43,7 @@ void processAllocation(std::size_t size) {
 
     // Increment histogram entry.
     std::size_t index = 0;
-    while (size > sizeClasses[index] && index < sizeClasses.size()) {
+    while (size >= sizeClasses[index] && index < sizeClasses.size()) {
         ++index;
     }
     bins[index]++;

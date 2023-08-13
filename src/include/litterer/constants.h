@@ -1,8 +1,5 @@
-#ifndef LITTERER_CONSTANTS_H
-#define LITTERER_CONSTANTS_H
+#pragma once
 
 #ifndef DETECTOR_OUTPUT_FILENAME
 #define DETECTOR_OUTPUT_FILENAME "detector.out"
-#endif
-
 #endif

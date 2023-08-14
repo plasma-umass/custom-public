@@ -102,26 +102,27 @@ void runLitterer() {
     const std::string mallocSourceObject = mallocInfo.dli_fname;
 #endif
 
+    const std::size_t nAllocations = data["NAllocations"].get<std::size_t>();
+    const std::size_t maxLiveAllocations = data["MaxLiveAllocations"].get<std::size_t>();
+    const std::size_t nAllocationsLitter = maxLiveAllocations * multiplier;
+
     fmt::print(log, "==================================== Litterer ====================================\n");
     fmt::print(log, "malloc     : {}\n", mallocSourceObject);
     fmt::print(log, "seed       : {}\n", seed);
     fmt::print(log, "occupancy  : {}\n", occupancy);
     fmt::print(log, "shuffle    : {}\n", shuffle ? "no" : "yes");
     fmt::print(log, "sleep      : {}\n", sleepDelay ? std::to_string(sleepDelay) : "no");
-    fmt::print(log, "multiplier : {}\n", multiplier);
+    fmt::print(log, "litter     : {}\n", nAllocationsLitter);
     fmt::print(log, "timestamp  : {} {}\n", __DATE__, __TIME__);
     fmt::print(log, "==================================================================================\n");
 
-    const std::size_t nAllocations = data["NAllocations"].get<std::size_t>();
-    const std::size_t maxLiveAllocations = data["MaxLiveAllocations"].get<std::size_t>();
-    const std::size_t nAllocationsLitter = maxLiveAllocations * multiplier;
-
-    // This can happen if no allocations were recorded.
-    if (!data["Bins"].empty()) {
+    if (data["Bins"].empty()) {
+        fmt::print("[WARNING] No allocations were recorded, hence littering is not possible.\n");
+    } else {
         if (data["Bins"][data["SizeClasses"].size()].get<int>() != 0) {
-            fmt::print("[WARNING] Allocations of size greater than the maximum size class were recorded.\n");
-            fmt::print("[WARNING] There will be no littering for these allocations.\n");
-            fmt::print("[WARNING] This represents {:.2f}% of all allocations recorded.\n",
+            fmt::print(log, "[WARNING] Allocations of size greater than the maximum size class were recorded.\n");
+            fmt::print(log, "[WARNING] There will be no littering for these allocations.\n");
+            fmt::print(log, "[WARNING] This represents {:.2f}% of all allocations recorded.\n",
                        (static_cast<double>(data["Bins"][data["SizeClasses"].size()]) / nAllocations) * 100);
         }
 

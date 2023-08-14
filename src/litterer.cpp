@@ -106,7 +106,7 @@ void runLitterer() {
     fprintf(log, "occupancy  : %f\n", occupancy);
     fprintf(log, "shuffle    : %s\n", shuffle ? "no" : "yes");
     fprintf(log, "sleep      : %s\n", sleepDelay ? std::to_string(sleepDelay).c_str() : "no");
-    fprintf(log, "litter     : %lu\n", nAllocationsLitter);
+    fprintf(log, "litter     : %zu\n", nAllocationsLitter);
     fprintf(log, "timestamp  : %s %s\n", __DATE__, __TIME__);
     fprintf(log, "==================================================================================\n");
 
@@ -163,7 +163,7 @@ void runLitterer() {
 
         const auto litterEnd = std::chrono::high_resolution_clock::now();
         const auto elapsed = std::chrono::duration_cast<std::chrono::seconds>((litterEnd - litterStart));
-        fprintf(log, "Finished littering. Time taken: %lu seconds.\n", elapsed.count());
+        fprintf(log, "Finished littering. Time taken: %s seconds.\n", std::to_string(elapsed.count()).c_str());
     }
 
     if (sleepDelay) {

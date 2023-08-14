@@ -5,8 +5,6 @@
 
 #include <mimalloc.h>
 
-#include <litterer/constants.h>
-
 #ifndef SIZE_CLASSES
 // See http://jemalloc.net/jemalloc.3.html, up to 64MiB.
 #define JEMALLOC_SIZE_CLASSES                                                                                          \
@@ -68,7 +66,7 @@ class Initialization {
     ~Initialization() {
         ready = false;
 
-        std::ofstream outputFile(DETECTOR_OUTPUT_FILENAME);
+        std::ofstream outputFile("detector.out");
 
         outputFile << "{" << std::endl;
 

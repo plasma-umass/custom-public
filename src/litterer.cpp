@@ -23,8 +23,6 @@
 
 #include <nlohmann/json.hpp>
 
-#include <litterer/constants.h>
-
 namespace {
 using Clock = std::chrono::steady_clock;
 
@@ -70,7 +68,7 @@ void runLitterer() {
         multiplier = atoi(env);
     }
 
-    std::string dataFilename = DETECTOR_OUTPUT_FILENAME;
+    std::string dataFilename = "detector.out";
     if (const char* env = std::getenv("LITTER_DATA_FILENAME")) {
         dataFilename = env;
     }

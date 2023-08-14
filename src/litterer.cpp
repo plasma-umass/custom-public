@@ -138,11 +138,11 @@ void runLitterer() {
             std::int64_t offset = static_cast<int64_t>(distribution(generator)) - data["Bins"][0].get<std::int64_t>();
 
             while (offset >= 0) {
-                minAllocationSize = data["SizeClasses"][sizeClassIndex].get<std::size_t>() + 1;
+                minAllocationSize = data["SizeClasses"][sizeClassIndex].get<std::size_t>();
                 ++sizeClassIndex;
                 offset -= static_cast<std::size_t>(data["Bins"][sizeClassIndex].get<int>());
             }
-            const std::size_t maxAllocationSize = data["SizeClasses"][sizeClassIndex].get<std::size_t>();
+            const std::size_t maxAllocationSize = data["SizeClasses"][sizeClassIndex].get<std::size_t>() - 1;
             std::uniform_int_distribution<std::size_t> allocationSizeDistribution(minAllocationSize, maxAllocationSize);
             const std::size_t allocationSize = allocationSizeDistribution(generator);
 

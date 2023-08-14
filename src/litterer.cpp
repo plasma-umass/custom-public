@@ -21,8 +21,6 @@
 #include <utility>
 #include <vector>
 
-#include <fmt/core.h>
-
 #include <nlohmann/json.hpp>
 
 #include <litterer/constants.h>
@@ -31,17 +29,20 @@ namespace {
 using Clock = std::chrono::steady_clock;
 
 template <typename... T>
-void assertOrExit(bool condition, fmt::format_string<T...> format, T&&... args) {
+void assertOrExit(bool condition, FILE* log, const std::string& message) {
     if (!condition) {
-        fmt::print(stderr, "[ERROR] ");
-        fmt::print(stderr, format, std::forward<T>(args)...);
-        fmt::print(stderr, "\n");
-        exit(1);
+        fprintf(log, "[ERROR] %s\n", message.c_str());
+        exit(EXIT_FAILURE);
     }
 }
 } // namespace
 
 void runLitterer() {
+    FILE* log = stderr;
+    if (const char* env = std::getenv("LITTER_LOG_FILENAME")) {
+        log = fopen(env, "w");
+    }
+
     std::uint32_t seed = std::random_device{}();
     if (const char* env = std::getenv("LITTER_SEED")) {
         seed = atoi(env);
@@ -51,7 +52,7 @@ void runLitterer() {
     double occupancy = 0.95;
     if (const char* env = std::getenv("LITTER_OCCUPANCY")) {
         occupancy = atof(env);
-        assertOrExit(occupancy >= 0 && occupancy <= 1, "Occupancy must be between 0 and 1.");
+        assertOrExit(occupancy >= 0 && occupancy <= 1, log, "Occupancy must be between 0 and 1.");
     }
 
     bool shuffle = true;
@@ -69,17 +70,12 @@ void runLitterer() {
         multiplier = atoi(env);
     }
 
-    FILE* log = stderr;
-    if (const char* env = std::getenv("LITTER_LOG_FILENAME")) {
-        log = fopen(env, "w");
-    }
-
     std::string dataFilename = DETECTOR_OUTPUT_FILENAME;
     if (const char* env = std::getenv("LITTER_DATA_FILENAME")) {
         dataFilename = env;
     }
 
-    assertOrExit(std::filesystem::exists(dataFilename), "{} does not exist.", dataFilename);
+    assertOrExit(std::filesystem::exists(dataFilename), log, dataFilename + " does not exist.");
 
     std::ifstream inputFile(dataFilename);
     nlohmann::json data;
@@ -90,7 +86,7 @@ void runLitterer() {
     const auto status
         = GetModuleHandleEx(GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS | GET_MODULE_HANDLE_EX_FLAG_UNCHANGED_REFCOUNT,
                             (LPCSTR) &malloc, &mallocModule);
-    assert(status && "Could not get malloc info.");
+    assertOrExit(status, log, "Could not get malloc info.");
 
     char mallocFileName[MAX_PATH];
     GetModuleFileName(mallocModule, mallocFileName, MAX_PATH);
@@ -98,7 +94,7 @@ void runLitterer() {
 #else
     Dl_info mallocInfo;
     const auto status = dladdr((void*) &malloc, &mallocInfo);
-    assertOrExit(status != 0, "Could not get malloc info.");
+    assertOrExit(status != 0, log, "Could not get malloc info.");
     const std::string mallocSourceObject = mallocInfo.dli_fname;
 #endif
 
@@ -106,24 +102,24 @@ void runLitterer() {
     const std::size_t maxLiveAllocations = data["MaxLiveAllocations"].get<std::size_t>();
     const std::size_t nAllocationsLitter = maxLiveAllocations * multiplier;
 
-    fmt::print(log, "==================================== Litterer ====================================\n");
-    fmt::print(log, "malloc     : {}\n", mallocSourceObject);
-    fmt::print(log, "seed       : {}\n", seed);
-    fmt::print(log, "occupancy  : {}\n", occupancy);
-    fmt::print(log, "shuffle    : {}\n", shuffle ? "no" : "yes");
-    fmt::print(log, "sleep      : {}\n", sleepDelay ? std::to_string(sleepDelay) : "no");
-    fmt::print(log, "litter     : {}\n", nAllocationsLitter);
-    fmt::print(log, "timestamp  : {} {}\n", __DATE__, __TIME__);
-    fmt::print(log, "==================================================================================\n");
+    fprintf(log, "==================================== Litterer ====================================\n");
+    fprintf(log, "malloc     : %s\n", mallocSourceObject.c_str());
+    fprintf(log, "seed       : %u\n", seed);
+    fprintf(log, "occupancy  : %f\n", occupancy);
+    fprintf(log, "shuffle    : %s\n", shuffle ? "no" : "yes");
+    fprintf(log, "sleep      : %s\n", sleepDelay ? std::to_string(sleepDelay).c_str() : "no");
+    fprintf(log, "litter     : %lu\n", nAllocationsLitter);
+    fprintf(log, "timestamp  : %s %s\n", __DATE__, __TIME__);
+    fprintf(log, "==================================================================================\n");
 
     if (data["Bins"].empty()) {
-        fmt::print("[WARNING] No allocations were recorded, hence littering is not possible.\n");
+        fprintf(log, "[WARNING] No allocations were recorded, hence littering is not possible.\n");
     } else {
         if (data["Bins"][data["SizeClasses"].size()].get<int>() != 0) {
-            fmt::print(log, "[WARNING] Allocations of size greater than the maximum size class were recorded.\n");
-            fmt::print(log, "[WARNING] There will be no littering for these allocations.\n");
-            fmt::print(log, "[WARNING] This represents {:.2f}% of all allocations recorded.\n",
-                       (static_cast<double>(data["Bins"][data["SizeClasses"].size()]) / nAllocations) * 100);
+            fprintf(log, "[WARNING] Allocations of size greater than the maximum size class were recorded.\n");
+            fprintf(log, "[WARNING] There will be no littering for these allocations.\n");
+            fprintf(log, "[WARNING] This represents %.2f of all allocations recorded.\n",
+                    (static_cast<double>(data["Bins"][data["SizeClasses"].size()]) / nAllocations) * 100);
         }
 
         const auto litterStart = std::chrono::high_resolution_clock::now();
@@ -169,7 +165,7 @@ void runLitterer() {
 
         const auto litterEnd = std::chrono::high_resolution_clock::now();
         const auto elapsed = std::chrono::duration_cast<std::chrono::seconds>((litterEnd - litterStart));
-        fmt::print(log, "Finished littering. Time taken: {} seconds.\n", elapsed.count());
+        fprintf(log, "Finished littering. Time taken: %lu seconds.\n", elapsed.count());
     }
 
     if (sleepDelay) {
@@ -178,10 +174,10 @@ void runLitterer() {
 #else
         const auto pid = getpid();
 #endif
-        fmt::print(log, "Sleeping {} seconds before resuming (PID: {})...\n", sleepDelay, pid);
+        fprintf(log, "Sleeping %u seconds before resuming (PID: %d)...\n", sleepDelay, pid);
         std::this_thread::sleep_for(std::chrono::seconds(sleepDelay));
-        fmt::print(log, "Resuming program now!\n");
+        fprintf(log, "Resuming program now!\n");
     }
 
-    fmt::print(log, "==================================================================================\n");
+    fprintf(log, "==================================================================================\n");
 }

@@ -82,12 +82,12 @@ void runLitterer() {
 #if _WIN32
     HMODULE mallocModule;
     const auto status
-        = GetModuleHandleEx(GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS | GET_MODULE_HANDLE_EX_FLAG_UNCHANGED_REFCOUNT,
-                            (LPCSTR) &malloc, &mallocModule);
+        = GetModuleHandleExA(GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS | GET_MODULE_HANDLE_EX_FLAG_UNCHANGED_REFCOUNT,
+                             (LPCSTR) &malloc, &mallocModule);
     assertOrExit(status, log, "Could not get malloc info.");
 
     char mallocFileName[MAX_PATH];
-    GetModuleFileName(mallocModule, mallocFileName, MAX_PATH);
+    GetModuleFileNameA(mallocModule, mallocFileName, MAX_PATH);
     const std::string mallocSourceObject = mallocFileName;
 #else
     Dl_info mallocInfo;

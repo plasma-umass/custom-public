@@ -55,7 +55,7 @@ void runLitterer() {
 
     bool shuffle = true;
     if (const char* env = std::getenv("LITTER_SHUFFLE")) {
-        shuffle = atoi(env) == 0;
+        shuffle = atoi(env);
     }
 
     std::uint32_t sleepDelay = 0;
@@ -104,7 +104,7 @@ void runLitterer() {
     fprintf(log, "malloc     : %s\n", mallocSourceObject.c_str());
     fprintf(log, "seed       : %u\n", seed);
     fprintf(log, "occupancy  : %f\n", occupancy);
-    fprintf(log, "shuffle    : %s\n", shuffle ? "no" : "yes");
+    fprintf(log, "shuffle    : %s\n", shuffle ? "yes" : "no");
     fprintf(log, "sleep      : %s\n", sleepDelay ? std::to_string(sleepDelay).c_str() : "no");
     fprintf(log, "litter     : %zu\n", nAllocationsLitter);
     fprintf(log, "timestamp  : %s %s\n", __DATE__, __TIME__);
@@ -148,6 +148,7 @@ void runLitterer() {
         const std::size_t nObjectsToBeFreed = static_cast<std::size_t>((1 - occupancy) * nAllocationsLitter);
 
         if (shuffle) {
+            fprintf(log, "Shuffling %zu object(s) to be freed.\n", nObjectsToBeFreed);
             for (std::size_t i = 0; i < nObjectsToBeFreed; ++i) {
                 std::uniform_int_distribution<std::size_t> indexDistribution(i, objects.size() - 1);
                 std::size_t index = indexDistribution(generator);

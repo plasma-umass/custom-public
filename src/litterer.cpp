@@ -149,11 +149,10 @@ void runLitterer() {
         const std::size_t nObjectsToBeFreed = static_cast<std::size_t>((1 - occupancy) * nAllocationsLitter);
 
         if (shuffle) {
-            fprintf(log, "Shuffling %zu object(s) to be freed.\n",
-                    std::distance(objects.begin(),
-                                  std::next(objects.begin(), std::min(nObjectsToBeFreed, objects.size()))));
-            std::shuffle(objects.begin(), std::next(objects.begin(), std::min(nObjectsToBeFreed, objects.size())),
-                         generator);
+            auto begin = objects.begin();
+            auto end = std::next(objects.begin(), std::min(nObjectsToBeFreed, objects.size()));
+            fprintf(log, "Shuffling %zu object(s) to be freed.\n", std::distance(begin, end));
+            std::shuffle(begin, end, generator);
         } else {
             std::sort(objects.begin(), objects.end(), std::greater<void*>());
         }

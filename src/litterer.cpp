@@ -15,6 +15,7 @@
 #include <filesystem>
 #include <fstream>
 #include <functional>
+#include <iterator>
 #include <random>
 #include <string>
 #include <thread>
@@ -106,7 +107,7 @@ void runLitterer() {
     fprintf(log, "occupancy  : %f\n", occupancy);
     fprintf(log, "shuffle    : %s\n", shuffle ? "yes" : "no");
     fprintf(log, "sleep      : %s\n", sleepDelay ? std::to_string(sleepDelay).c_str() : "no");
-    fprintf(log, "litter     : %zu\n", nAllocationsLitter);
+    fprintf(log, "litter     : %u * %zu = %zu\n", multiplier, maxLiveAllocations, nAllocationsLitter);
     fprintf(log, "timestamp  : %s %s\n", __DATE__, __TIME__);
     fprintf(log, "==================================================================================\n");
 
@@ -148,12 +149,11 @@ void runLitterer() {
         const std::size_t nObjectsToBeFreed = static_cast<std::size_t>((1 - occupancy) * nAllocationsLitter);
 
         if (shuffle) {
-            fprintf(log, "Shuffling %zu object(s) to be freed.\n", nObjectsToBeFreed);
-            for (std::size_t i = 0; i < nObjectsToBeFreed; ++i) {
-                std::uniform_int_distribution<std::size_t> indexDistribution(i, objects.size() - 1);
-                std::size_t index = indexDistribution(generator);
-                std::swap(objects[i], objects[index]);
-            }
+            fprintf(log, "Shuffling %zu object(s) to be freed.\n",
+                    std::distance(objects.begin(),
+                                  std::next(objects.begin(), std::min(nObjectsToBeFreed, objects.size()))));
+            std::shuffle(objects.begin(), std::next(objects.begin(), std::min(nObjectsToBeFreed, objects.size())),
+                         generator);
         } else {
             std::sort(objects.begin(), objects.end(), std::greater<void*>());
         }

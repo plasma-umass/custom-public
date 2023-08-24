@@ -6,9 +6,7 @@
 #include <random>
 #include <vector>
 
-#include <unistd.h>
-
-#include <DoNotOptimize.hpp>
+#include <benchmark/benchmark.h>
 
 namespace {
 std::size_t guess(std::size_t objectSize, std::size_t nObjectsAlreadyAllocated, std::size_t nPagesFilled,
@@ -24,7 +22,7 @@ T abs(T x) {
 } // namespace
 
 void litter(std::size_t objectSize, std::size_t nPages, std::size_t seed = std::random_device()(),
-            std::size_t pageSize = sysconf(_SC_PAGESIZE)) {
+            std::size_t pageSize = 4096) {
     std::vector<void*> allocated;
 
     auto nAllocations = guess(objectSize, 0, 0, nPages, pageSize) * 1.05;
@@ -73,7 +71,7 @@ void litter(std::size_t objectSize, std::size_t nPages, std::size_t seed = std::
     }
 }
 
-#define N 5'000         // Number of pages.
+#define N 10'000        // Number of pages.
 #define OBJECT_SIZE 256 // Size of objects.
 
 #define ITERATIONS 40'000
@@ -91,7 +89,7 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv) {
     }
 
     std::sort(objects.begin(), objects.end());
-    std::size_t minDistance = 999999999999999999;
+    auto minDistance = std::numeric_limits<std::size_t>::max();
     double avgDistance = 0;
     for (std::size_t i = 1; i < objects.size(); ++i) {
         const auto distance
@@ -112,13 +110,13 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv) {
     for (std::size_t i = 0; i < ITERATIONS; i++) {
         for (const auto object : objects) {
             char buffer[OBJECT_SIZE];
-            std::memcpy((void*) (buffer), object, OBJECT_SIZE);
+            std::memcpy(buffer, object, OBJECT_SIZE);
             count += buffer[OBJECT_SIZE - 1];
-            DoNotOptimize(buffer);
+            benchmark::DoNotOptimize(buffer);
         }
     }
-    DoNotOptimize(count);
-    DoNotOptimize(objects);
+    benchmark::DoNotOptimize(count);
+    benchmark::DoNotOptimize(objects);
 
     const auto end = std::chrono::high_resolution_clock::now();
     const auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();

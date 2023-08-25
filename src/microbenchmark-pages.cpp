@@ -8,11 +8,13 @@
 
 #include <benchmark/benchmark.h>
 
+#define PAGE_SIZE 4096
+
 namespace {
 std::size_t guess(std::size_t objectSize, std::size_t nObjectsAlreadyAllocated, std::size_t nPagesFilled,
-                  std::size_t nPages, std::size_t PageSize) {
+                  std::size_t nPages, std::size_t pageSize = PAGE_SIZE) {
     return (nObjectsAlreadyAllocated && nPagesFilled) ? nObjectsAlreadyAllocated * nPages / nPagesFilled
-                                                      : nPages * PageSize / objectSize;
+                                                      : nPages * pageSize / objectSize;
 }
 
 template <typename T>
@@ -22,7 +24,7 @@ T abs(T x) {
 } // namespace
 
 void litter(std::size_t objectSize, std::size_t nPages, std::size_t seed = std::random_device()(),
-            std::size_t pageSize = 4096) {
+            std::size_t pageSize = PAGE_SIZE) {
     std::vector<void*> allocated;
 
     auto nAllocations = guess(objectSize, 0, 0, nPages, pageSize) * 1.05;

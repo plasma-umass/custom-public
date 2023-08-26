@@ -41,7 +41,6 @@ void assertOrExit(bool condition, FILE* log, const std::string& message) {
 template <typename T, typename Generator>
 void partial_shuffle(std::vector<T>& v, std::size_t n, Generator& g) {
     const auto m = std::min(n, v.size() - 2);
-    fprintf(log, "Shuffling %zu object(s)...\n", m);
     for (std::size_t i = 0; i < m; ++i) {
         const auto j = std::uniform_int_distribution<std::size_t>(i, v.size() - 1)(g);
         std::swap(v[i], v[j]);
@@ -162,6 +161,7 @@ void runLitterer() {
         const std::size_t nObjectsToBeFreed = static_cast<std::size_t>((1 - occupancy) * nAllocationsLitter);
 
         if (shuffle) {
+            fprintf(log, "Shuffling %zu object(s) to be freed.\n", nObjectsToBeFreed);
             partial_shuffle(objects, nObjectsToBeFreed, generator);
         } else {
             std::sort(objects.begin(), objects.end(), std::greater<void*>());

@@ -27,6 +27,9 @@
 
 #include <nlohmann/json.hpp>
 
+#define MALLOC ::malloc
+#define FREE ::free
+
 namespace {
 using Clock = std::chrono::steady_clock;
 
@@ -154,7 +157,7 @@ void runLitterer() {
             std::uniform_int_distribution<std::size_t> allocationSizeDistribution(minAllocationSize, maxAllocationSize);
             const std::size_t allocationSize = allocationSizeDistribution(generator);
 
-            void* pointer = malloc(allocationSize);
+            void* pointer = MALLOC(allocationSize);
             objects.push_back(pointer);
         }
 
@@ -168,7 +171,7 @@ void runLitterer() {
         }
 
         for (std::size_t i = 0; i < nObjectsToBeFreed; ++i) {
-            free(objects[i]);
+            FREE(objects[i]);
         }
 
         const auto litterEnd = std::chrono::high_resolution_clock::now();

@@ -37,6 +37,16 @@ void assertOrExit(bool condition, FILE* log, const std::string& message) {
         exit(EXIT_FAILURE);
     }
 }
+
+template <typename T, typename Generator>
+void partial_shuffle(std::vector<T>& v, std::size_t n, Generator& g) {
+    const auto m = std::min(n, v.size() - 2);
+    fprintf(log, "Shuffling %zu object(s)...\n", m);
+    for (std::size_t i = 0; i < m; ++i) {
+        const auto j = std::uniform_int_distribution<std::size_t>(i, v.size() - 1)(g);
+        std::swap(v[i], v[j]);
+    }
+}
 } // namespace
 
 void runLitterer() {
@@ -152,10 +162,7 @@ void runLitterer() {
         const std::size_t nObjectsToBeFreed = static_cast<std::size_t>((1 - occupancy) * nAllocationsLitter);
 
         if (shuffle) {
-            auto begin = objects.begin();
-            auto end = std::next(objects.begin(), std::min(nObjectsToBeFreed, objects.size()));
-            fprintf(log, "Shuffling %zu object(s) to be freed.\n", std::distance(begin, end));
-            std::shuffle(begin, end, generator);
+            partial_shuffle(objects, nObjectsToBeFreed, generator);
         } else {
             std::sort(objects.begin(), objects.end(), std::greater<void*>());
         }

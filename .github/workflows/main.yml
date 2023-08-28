@@ -10,11 +10,26 @@ env:
   BUILD_TYPE: Debug
 
 jobs:
-  build:
-    strategy:
-      matrix:
-        platform: [ubuntu-latest, windows-latest]
-    runs-on: ${{matrix.platform}}
+  build-ubuntu:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Install dependencies
+      run: sudo apt install -y clang-format
+
+    - name: Configure CMake
+      run: cmake ${{github.workspace}}/src -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
+
+    - name: Build
+      run: cmake --build ${{github.workspace}}/build
+      
+    - name: Check clang-format
+      run: find src -name '*.cpp' -o -name '*.h' | xargs clang-format --dry-run --Werror
+
+  build-windows:
+    runs-on: windows-latest
 
     steps:
     - uses: actions/checkout@v3
@@ -23,15 +38,7 @@ jobs:
       run: cmake ${{github.workspace}}/src -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
 
     - name: Build
-      run: cmake --build ${{github.workspace}}/build
+      run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
 
-  format:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    
-    - name: Install dependencies
-      run: sudo apt install -y clang-format
-      
-    - name: Check clang-format
-      run: find src -name '*.cpp' -o -name '*.h' | xargs clang-format --dry-run --Werror
+    - name: Check size-classes
+       run: ${{github.workspace}}/build/${{env.BUILD_TYPE}}/size-classes.exe

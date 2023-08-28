@@ -56,6 +56,9 @@ if(NOT WIN32)
 
     add_library(litterer SHARED litterer-standalone.cpp)
     target_link_libraries(litterer PRIVATE litterer_static)
+else()
+    add_executable(size-classes size-classes.cpp)
+    target_link_libraries(size-classes PRIVATE Psapi)
 endif()
 
 if(MSVC)

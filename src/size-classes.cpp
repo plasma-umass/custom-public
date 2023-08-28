@@ -1,14 +1,12 @@
 #include <iostream>
 #include <stdio.h>
 
-// To ensure correct resolution of symbols, add Psapi.lib to TARGETLIBS
-// and compile with -DPSAPI_VERSION=1
+#include <windows.h>
 
 #if !defined(PSAPI_VERSION)
 #define PSAPI_VERSION 1
 #endif
 #include <psapi.h>
-#include <windows.h>
 
 SIZE_T getHeapMemoryUsed() {
     SIZE_T heapSize = 0;

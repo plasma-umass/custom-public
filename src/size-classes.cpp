@@ -1,5 +1,5 @@
 #include <iostream>
-#include <stdio.h>
+#include <cstdio>
 
 #include <windows.h>
 
@@ -7,6 +7,34 @@
 #define PSAPI_VERSION 1
 #endif
 #include <psapi.h>
+
+std::string GetHeapType() {
+    ULONG heapFragValue = 0;
+    
+    // Use HeapQueryInformation to get heap information.
+    BOOL success = HeapQueryInformation(
+        GetProcessHeap(), // Handle to the default process heap
+        HeapCompatibilityInformation,
+        &heapFragValue,
+        sizeof(heapFragValue),
+        nullptr
+    );
+    
+    if (!success) {
+        return "Failed to retrieve heap information.";
+    }
+    
+    switch (heapFragValue) {
+        case 0:
+            return "Default heap.";
+        case 1:
+            return "Non-growable heap.";
+        case 2:
+            return "Low-fragmentation heap (LFH).";
+        default:
+            return "Unknown heap type.";
+    }
+}
 
 SIZE_T getHeapMemoryUsed() {
     SIZE_T heapSize = 0;
@@ -83,31 +111,7 @@ void PrintMemoryInfo(DWORD processID) {
     }
 }
 
-int main(void) {
-    auto pid = GetCurrentProcessId();
-    PrintMemoryInfo(pid);
-
-#if 0
-  // Get the list of process identifiers.
-
-    DWORD aProcesses[1024], cbNeeded, cProcesses;
-    unsigned int i;
-
-    if ( !EnumProcesses( aProcesses, sizeof(aProcesses), &cbNeeded ) )
-    {
-        return 1;
-    }
-
-    // Calculate how many process identifiers were returned.
-
-    cProcesses = cbNeeded / sizeof(DWORD);
-
-    // Print the memory usage for each process
-
-    for ( i = 0; i < cProcesses; i++ )
-    {
-        PrintMemoryInfo( aProcesses[i] );
-    }
-#endif
-    return 0;
+int main() {
+    std::cout << "Heap type: " << GetHeapType() << std::endl;
+    PrintMemoryInfo(GetCurrentProcessId());
 }

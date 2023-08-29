@@ -1,5 +1,5 @@
-#include <iostream>
 #include <cstdio>
+#include <iostream>
 
 #include <windows.h>
 
@@ -10,29 +10,24 @@
 
 std::string GetHeapType() {
     ULONG heapFragValue = 0;
-    
+
     // Use HeapQueryInformation to get heap information.
-    BOOL success = HeapQueryInformation(
-        GetProcessHeap(), // Handle to the default process heap
-        HeapCompatibilityInformation,
-        &heapFragValue,
-        sizeof(heapFragValue),
-        nullptr
-    );
-    
+    BOOL success = HeapQueryInformation(GetProcessHeap(), // Handle to the default process heap
+                                        HeapCompatibilityInformation, &heapFragValue, sizeof(heapFragValue), nullptr);
+
     if (!success) {
         return "Failed to retrieve heap information.";
     }
-    
+
     switch (heapFragValue) {
-        case 0:
-            return "Default heap.";
-        case 1:
-            return "Non-growable heap.";
-        case 2:
-            return "Low-fragmentation heap (LFH).";
-        default:
-            return "Unknown heap type.";
+    case 0:
+        return "Default heap.";
+    case 1:
+        return "Non-growable heap.";
+    case 2:
+        return "Low-fragmentation heap (LFH).";
+    default:
+        return "Unknown heap type.";
     }
 }
 

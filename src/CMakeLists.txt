@@ -40,8 +40,15 @@ target_link_libraries(litterer_static PRIVATE ${CMAKE_DL_LIBS})
 target_link_libraries(litterer_static PRIVATE nlohmann_json)
 target_link_libraries(litterer_static PRIVATE Threads::Threads)
 
-add_executable(microbenchmark-pages microbenchmark-pages.cpp)
-target_link_libraries(microbenchmark-pages PRIVATE benchmark)
+foreach(OBJECT_SIZE IN ITEMS 16 32 64 128)
+    add_executable(microbenchmark-pages-${OBJECT_SIZE} microbenchmark-pages.cpp)
+    target_link_libraries(microbenchmark-pages-${OBJECT_SIZE} PRIVATE benchmark)
+    target_compile_definitions(microbenchmark-pages-${OBJECT_SIZE} PRIVATE -DOBJECT_SIZE=${OBJECT_SIZE})
+
+    add_executable(microbenchmark-pages-litter-${OBJECT_SIZE} microbenchmark-pages.cpp)
+    target_link_libraries(microbenchmark-pages-litter-${OBJECT_SIZE} PRIVATE benchmark)
+    target_compile_definitions(microbenchmark-pages-litter-${OBJECT_SIZE} PRIVATE -DLITTER -DOBJECT_SIZE=${OBJECT_SIZE})
+endforeach()
 
 if(NOT WIN32)
     message(STATUS "Downloading and configuring mimalloc")

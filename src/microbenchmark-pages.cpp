@@ -18,6 +18,19 @@
 
 #define PAGE_SIZE 4096
 
+template <typename T>
+std::ostream& operator<<(std::ostream& o, const std::vector<T>& v) {
+    if (v.empty()) {
+        return o << "[]";
+    }
+
+    o << "[" << v[0];
+    for (std::size_t i = 1; i < v.size(); ++i) {
+        o << ", " << v[i];
+    }
+    return o << "]";
+}
+
 namespace {
 std::size_t guess(std::size_t objectSize, std::size_t nObjectsAlreadyAllocated, std::size_t nPagesFilled,
                   std::size_t nPages, std::size_t pageSize = PAGE_SIZE) {
@@ -93,6 +106,9 @@ void litter(std::size_t objectSize, std::size_t nPages, std::size_t seed = std::
 #define ITERATIONS 40'000
 #endif
 
+const auto nMinDistances = 64;
+const auto distanceClampMax = PAGE_SIZE;
+
 int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv) {
     std::uint32_t sleepDelay = 0;
     if (const char* env = std::getenv("LITTER_SLEEP")) {
@@ -122,19 +138,24 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv) {
     }
 
     std::sort(objects.begin(), objects.end());
-    auto minDistance = std::numeric_limits<std::size_t>::max();
-    double avgDistance = 0;
-    for (std::size_t i = 1; i < objects.size(); ++i) {
-        const auto distance
-            = reinterpret_cast<std::uintptr_t>(objects[i]) - reinterpret_cast<std::uintptr_t>(objects[i - 1]);
-        if (distance < minDistance) {
-            minDistance = distance;
-        }
-        avgDistance += distance;
-    }
-    avgDistance /= objects.size() - 1;
 
-    std::cout << "Min distance: " << minDistance << std::endl;
+    auto minDistances = std::vector<std::size_t>(nMinDistances, std::numeric_limits<std::size_t>::max());
+    std::size_t sumDistances = 0;
+
+    for (std::size_t i = 1; i < objects.size(); ++i) {
+        const auto distance = std::clamp<std::size_t>(reinterpret_cast<std::uintptr_t>(objects[i])
+                                                          - reinterpret_cast<std::uintptr_t>(objects[i - 1]),
+                                                      0, distanceClampMax);
+
+        sumDistances += distance;
+
+        minDistances.insert(std::upper_bound(minDistances.begin(), minDistances.end(), distance), distance);
+        minDistances.erase(minDistances.end() - 1);
+    }
+
+    const auto avgDistance = (double) sumDistances / (objects.size() - 1);
+
+    std::cout << "Min distances: " << minDistances << std::endl;
     std::cout << "Avg distance: " << avgDistance << std::endl;
 
     const auto start = std::chrono::high_resolution_clock::now();

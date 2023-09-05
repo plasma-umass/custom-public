@@ -73,10 +73,17 @@ void litter(std::size_t objectSize, std::size_t nPages, std::size_t seed = std::
     }
 }
 
-#define N 10'000        // Number of pages.
-#define OBJECT_SIZE 256 // Size of objects.
+#ifndef N
+#define N 100'000 // Number of pages.
+#endif
 
+#ifndef OBJECT_SIZE
+#define OBJECT_SIZE 256 // Size of objects.
+#endif
+
+#ifndef ITERATIONS
 #define ITERATIONS 40'000
+#endif
 
 int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv) {
 #ifdef LITTER

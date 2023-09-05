@@ -4,7 +4,15 @@
 #include <cstring>
 #include <iostream>
 #include <random>
+#include <thread>
 #include <vector>
+
+#if _WIN32
+#ifndef NOMINMAX
+#define NOMINMAX
+#endif
+#include <windows.h>
+#endif
 
 #include <benchmark/benchmark.h>
 
@@ -86,9 +94,25 @@ void litter(std::size_t objectSize, std::size_t nPages, std::size_t seed = std::
 #endif
 
 int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv) {
+    std::uint32_t sleepDelay = 0;
+    if (const char* env = std::getenv("LITTER_SLEEP")) {
+        sleepDelay = atoi(env);
+    }
+
 #ifdef LITTER
     litter(OBJECT_SIZE, N);
 #endif
+
+    if (sleepDelay) {
+#ifdef _WIN32
+        const auto pid = GetCurrentProcessId();
+#else
+        const auto pid = getpid();
+#endif
+        std::cout << "Sleeping " << sleepDelay << " seconds before resuming (PID: " << pid << ")..." << std::endl;
+        std::this_thread::sleep_for(std::chrono::seconds(sleepDelay));
+        std::cout << "Resuming program now!" << std::endl;
+    }
 
     std::vector<void*> objects;
     objects.reserve(N);

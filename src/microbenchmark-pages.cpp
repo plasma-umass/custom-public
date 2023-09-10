@@ -90,7 +90,7 @@ void litter(std::size_t objectSize, std::size_t nPages, std::size_t seed = std::
     std::cout << "Freeing " << toBeFreed.size() << " objects..." << std::endl;
     std::shuffle(toBeFreed.begin(), toBeFreed.end(), std::default_random_engine(seed));
     for (auto ptr : toBeFreed) {
-        free(ptr);
+        std::free(ptr);
     }
 }
 

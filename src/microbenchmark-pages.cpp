@@ -5,6 +5,7 @@
 #include <iostream>
 #include <random>
 #include <thread>
+#include <unordered_set>
 #include <vector>
 
 #if _WIN32

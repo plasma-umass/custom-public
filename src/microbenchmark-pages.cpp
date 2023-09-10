@@ -44,8 +44,8 @@ T abs(T x) {
 }
 } // namespace
 
-void litter(std::size_t objectSize, std::size_t nPages, std::size_t seed = std::random_device()(),
-            std::size_t pageSize = PAGE_SIZE) {
+std::unordered_set<void*> litter(std::size_t objectSize, std::size_t nPages, std::size_t seed = std::random_device()(),
+                                 std::size_t pageSize = PAGE_SIZE) {
     std::vector<void*> allocated;
 
     auto nAllocations = guess(objectSize, 0, 0, nPages, pageSize) * 1.05;
@@ -81,7 +81,7 @@ void litter(std::size_t objectSize, std::size_t nPages, std::size_t seed = std::
 
     auto previous = reinterpret_cast<std::uintptr_t>(allocated[0]);
     for (std::size_t i = 1; i < allocated.size(); ++i) {
-        if (abs(reinterpret_cast<std::uintptr_t>(allocated[i]) - previous) >= pageSize) {
+        if (reinterpret_cast<std::uintptr_t>(allocated[i]) - previous >= pageSize) {
             toBeFreed.push_back((void*) previous);
             previous = reinterpret_cast<std::uintptr_t>(allocated[i]);
         }
@@ -92,6 +92,8 @@ void litter(std::size_t objectSize, std::size_t nPages, std::size_t seed = std::
     for (auto ptr : toBeFreed) {
         std::free(ptr);
     }
+
+    return std::unordered_set<void*>(toBeFreed.begin(), toBeFreed.end());
 }
 
 #ifndef N

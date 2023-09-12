@@ -15,8 +15,6 @@
 #include <windows.h>
 #endif
 
-#include <benchmark/benchmark.h>
-
 #define PAGE_SIZE 4096
 
 template <typename T>
@@ -163,17 +161,14 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv) {
 
     const auto start = std::chrono::high_resolution_clock::now();
 
-    std::uint8_t count = 0;
+    volatile std::uint8_t count = 0;
     for (std::size_t i = 0; i < ITERATIONS; i++) {
         for (const auto object : objects) {
-            char buffer[OBJECT_SIZE];
-            std::memcpy(buffer, object, OBJECT_SIZE);
+            volatile char buffer[OBJECT_SIZE];
+            std::memcpy((void*) buffer, object, OBJECT_SIZE);
             count += buffer[OBJECT_SIZE - 1];
-            benchmark::DoNotOptimize(buffer);
         }
     }
-    benchmark::DoNotOptimize(count);
-    benchmark::DoNotOptimize(objects);
 
     const auto end = std::chrono::high_resolution_clock::now();
     const auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();

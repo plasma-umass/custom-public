@@ -154,12 +154,8 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv) {
         minDistances.erase(minDistances.end() - 1);
     }
 
-    int intersection = 0;
-    for (const auto o : objects) {
-        if (freed.contains(o)) {
-            ++intersection;
-        }
-    }
+    const auto intersection
+        = std::count_if(objects.begin(), objects.end(), [&](const auto o) { return freed.contains(o); });
 
     std::cout << "Intersection: " << intersection << " / " << objects.size() << std::endl;
 

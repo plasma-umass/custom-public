@@ -107,7 +107,7 @@ std::unordered_set<void*> litter(std::size_t objectSize, std::size_t nPages, std
 #define ITERATIONS 40'000
 #endif
 
-const auto nMinDistances = 64;
+const auto nMinDistances = std::min(256, N - 1);
 const auto distanceClampMax = PAGE_SIZE;
 
 int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv) {

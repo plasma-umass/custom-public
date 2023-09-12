@@ -15,7 +15,8 @@
 #include <windows.h>
 #endif
 
-#define PAGE_SIZE 4096
+#define PAGE_SIZE 3194
+// Good: 3194, Bad: 3195.
 
 template <typename T>
 std::ostream& operator<<(std::ostream& o, const std::vector<T>& v) {
@@ -43,11 +44,12 @@ T abs(T x) {
 }
 } // namespace
 
-std::unordered_set<void*> litter(std::size_t objectSize, std::size_t nPages, std::size_t seed = std::random_device()(),
+std::unordered_set<void*> litter(std::size_t objectSize, std::size_t nPages,
+                                 std::default_random_engine::result_type seed = std::random_device()(),
                                  std::size_t pageSize = PAGE_SIZE) {
     std::vector<void*> allocated;
 
-    auto nAllocations = guess(objectSize, 0, 0, nPages, pageSize) * 1.05;
+    auto nAllocations = guess(objectSize, 0, 0, nPages, pageSize);
     std::size_t PagesFilled = 0;
 
     for (;;) {
@@ -61,7 +63,7 @@ std::unordered_set<void*> litter(std::size_t objectSize, std::size_t nPages, std
         PagesFilled = 0;
         std::uintptr_t previous = (std::uintptr_t) allocated[0];
         for (std::size_t i = 1; i < allocated.size(); ++i) {
-            if (abs(((std::uintptr_t) allocated[i]) - previous) >= pageSize) {
+            if ((std::uintptr_t) allocated[i] - previous >= pageSize) {
                 previous = (std::uintptr_t) allocated[i];
                 ++PagesFilled;
             }
@@ -96,7 +98,7 @@ std::unordered_set<void*> litter(std::size_t objectSize, std::size_t nPages, std
 }
 
 #ifndef N
-#define N 100'000 // Number of pages.
+#define N 10'000 // Number of pages.
 #endif
 
 #ifndef OBJECT_SIZE
@@ -116,9 +118,10 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv) {
         sleepDelay = atoi(env);
     }
 
-#ifdef LITTER
-    litter(OBJECT_SIZE, N);
-#endif
+    std::vector<void*> objects;
+    objects.reserve(N);
+
+    const auto freed = litter(OBJECT_SIZE, N);
 
     if (sleepDelay) {
 #ifdef _WIN32
@@ -130,9 +133,6 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv) {
         std::this_thread::sleep_for(std::chrono::seconds(sleepDelay));
         std::cout << "Resuming program now!" << std::endl;
     }
-
-    std::vector<void*> objects;
-    objects.reserve(N);
 
     for (std::size_t i = 0; i < N; ++i) {
         objects.push_back(std::malloc(OBJECT_SIZE));
@@ -153,6 +153,15 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv) {
         minDistances.insert(std::upper_bound(minDistances.begin(), minDistances.end(), distance), distance);
         minDistances.erase(minDistances.end() - 1);
     }
+
+    int intersection = 0;
+    for (const auto o : objects) {
+        if (freed.contains(o)) {
+            ++intersection;
+        }
+    }
+
+    std::cout << "Intersection: " << intersection << " / " << objects.size() << std::endl;
 
     const auto avgDistance = (double) sumDistances / (objects.size() - 1);
 

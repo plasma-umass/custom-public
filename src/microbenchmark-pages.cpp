@@ -15,8 +15,11 @@
 #include <windows.h>
 #endif
 
-#define PAGE_SIZE 3194
-// Good: 3194, Bad: 3195.
+#define PAGE_SIZE 4096
+
+#ifndef OBJECT_DISTANCE
+#define OBJECT_DISTANCE PAGE_SIZE
+#endif
 
 template <typename T>
 std::ostream& operator<<(std::ostream& o, const std::vector<T>& v) {
@@ -118,10 +121,13 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv) {
         sleepDelay = atoi(env);
     }
 
+    std::cout << "Object size: " << OBJECT_SIZE << std::endl;
+    std::cout << "Object distance: " << OBJECT_DISTANCE << std::endl;
+
     std::vector<void*> objects;
     objects.reserve(N);
 
-    const auto freed = litter(OBJECT_SIZE, N);
+    const auto freed = litter(OBJECT_SIZE, N, std::random_device()(), OBJECT_DISTANCE);
 
     if (sleepDelay) {
 #ifdef _WIN32

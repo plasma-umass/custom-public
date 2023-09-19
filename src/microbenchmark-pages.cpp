@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <cstring>
 #include <iostream>
+#include <map>
 #include <random>
 #include <thread>
 #include <unordered_set>
@@ -112,7 +113,6 @@ std::unordered_set<void*> litter(std::size_t objectSize, std::size_t nPages,
 #define ITERATIONS 40'000
 #endif
 
-const auto nMinDistances = std::min(256, N - 1);
 const auto distanceClampMax = PAGE_SIZE;
 
 int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv) {
@@ -146,7 +146,7 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv) {
 
     std::sort(objects.begin(), objects.end());
 
-    auto minDistances = std::vector<std::size_t>(nMinDistances, std::numeric_limits<std::size_t>::max());
+    auto distances = std::map<std::size_t, std::size_t>();
     std::size_t sumDistances = 0;
 
     for (std::size_t i = 1; i < objects.size(); ++i) {
@@ -155,9 +155,7 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv) {
                                                       0, distanceClampMax);
 
         sumDistances += distance;
-
-        minDistances.insert(std::upper_bound(minDistances.begin(), minDistances.end(), distance), distance);
-        minDistances.erase(minDistances.end() - 1);
+        ++distances[distance];
     }
 
     const auto intersection
@@ -167,7 +165,12 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv) {
 
     const auto avgDistance = (double) sumDistances / (objects.size() - 1);
 
-    std::cout << "Min distances: " << minDistances << std::endl;
+    std::cout << "Min distances:" << std::endl;
+    for (const auto [distance, count] : distances) {
+        if (count > 20) {
+            std::cout << "\t" << distance << ": " << count << std::endl;
+        }
+    }
     std::cout << "Avg distance: " << avgDistance << std::endl;
 
     const auto start = std::chrono::high_resolution_clock::now();

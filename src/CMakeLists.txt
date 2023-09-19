@@ -32,6 +32,12 @@ target_link_libraries(litterer_static PRIVATE Threads::Threads)
 
 add_executable(microbenchmark-pages microbenchmark-pages.cpp)
 target_link_libraries(microbenchmark-pages PRIVATE Threads::Threads)
+if (MBP_OBJECT_DISTANCE)
+    target_compile_definitions(microbenchmark-pages PUBLIC OBJECT_DISTANCE=${MBP_OBJECT_DISTANCE})
+endif()
+if (MBP_OBJECT_SIZE)
+    target_compile_definitions(microbenchmark-pages PUBLIC OBJECT_SIZE=${MBP_OBJECT_SIZE})
+endif()
 
 if(NOT WIN32)
     message(STATUS "Downloading and configuring mimalloc")

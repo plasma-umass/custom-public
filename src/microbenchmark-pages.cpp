@@ -106,7 +106,7 @@ std::unordered_set<void*> litter(std::size_t objectSize, std::size_t nPages,
 #endif
 
 #ifndef OBJECT_SIZE
-#define OBJECT_SIZE 256 // Size of objects.
+#define OBJECT_SIZE 32 // Size of objects.
 #endif
 
 #ifndef ITERATIONS

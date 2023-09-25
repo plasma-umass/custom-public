@@ -16,7 +16,13 @@
 #include <windows.h>
 #else
 #include <unistd.h>
+// For use by the replacement printf routines (see
+// https://github.com/mpaland/printf)
+extern "C" void _putchar(char ch) { ::write(1, (void *)&ch, 1); }
+
 #endif
+
+#include "printf.h"
 
 #define PAGE_SIZE 4096
 
@@ -70,6 +76,8 @@ int litter(std::array<void*, MAX_OBJECTS>& toBeFreed,
 	    std::default_random_engine::result_type seed = std::random_device()(),
 	    std::size_t pageSize = PAGE_SIZE)
 {
+  printf_("Littering begins.\n");
+  
     auto nAllocations = guess(objectSize, 0, 0, nPages, pageSize);
     std::array<void*, MAX_OBJECTS> allocated;
     int nAllocated = 0;
@@ -77,7 +85,8 @@ int litter(std::array<void*, MAX_OBJECTS>& toBeFreed,
     std::size_t PagesFilled = 0;
 
     for (;;) {
-      std::cout << "Allocating " << (nAllocations - nAllocated) << " objects..." << std::endl;
+      printf_("allocating %d objects...\n", (nAllocations - nAllocated));
+      //      std::cout << "Allocating " << (nAllocations - nAllocated) << " objects..." << std::endl;
       while ((nAllocated < nAllocations) && (nAllocated < MAX_OBJECTS)) {
 	  auto ptr = std::malloc(objectSize);
 	  // std::cout << "  allocated " << objectSize << " : " << (uintptr_t) ptr << std::endl;
@@ -102,6 +111,7 @@ int litter(std::array<void*, MAX_OBJECTS>& toBeFreed,
 
         nAllocations = guess(objectSize, nAllocations, PagesFilled, nPages, pageSize);
     }
+      printf_("Littering: done allocating.\n");
 
     auto previous = reinterpret_cast<std::uintptr_t>(allocated[0]);
     for (std::size_t i = 1; i < nAllocated; ++i) {
@@ -110,13 +120,15 @@ int litter(std::array<void*, MAX_OBJECTS>& toBeFreed,
             previous = reinterpret_cast<std::uintptr_t>(allocated[i]);
         }
     }
-
-    // std::cout << "Freeing " << toBeFreed.size() << " objects..." << std::endl;
-    std::shuffle(toBeFreed.begin(), toBeFreed.begin() + nFreed, std::default_random_engine(seed));
+      printf_("Littering: freeing.\n");
+      // std::cout << "Freeing " << toBeFreed.size() << " objects..." << std::endl;
+      std::shuffle(toBeFreed.begin(), toBeFreed.begin() + nFreed, std::default_random_engine(seed));
     for (auto i = 0; i < nFreed; i++) {
       //      std::cout << "  freeing " << (uintptr_t) ptr << std::endl;
       std::free(toBeFreed[i]);
     }
+      printf_("Littering: done freeing.\n");
+    printf_("*** DONE LITTERING ***\n");
     return nFreed;
 }
 
@@ -149,11 +161,13 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv)
     std::array<void*, N> objects;
     //    objects.reserve(N);
 
+    printf_("allocating %d objects\n", N);
     for (std::size_t i = 0; i < N; ++i) {
       auto ptr = std::malloc(OBJECT_SIZE);
       // std::cout << "object " << OBJECT_SIZE << " pushing " << (uintptr_t) ptr << std::endl;
       objects[i] = ptr;
     }
+    printf_("done allocating.\n");
 
     std::sort(objects.begin(), objects.end());
 
@@ -202,7 +216,8 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv)
     }
     
     std::cout << "Intersection (objects): " << intersection << " / " << (objects.size()) << std::endl;
-    std::cout << "Intersection (bytes): " << intersectionBytes << " / " << (OBJECT_SIZE * objects.size()) << std::endl;
+    auto ratioBytes = (float) intersectionBytes / (float) (OBJECT_SIZE * objects.size());
+    std::cout << "Intersection (bytes): " << intersectionBytes << " / " << (OBJECT_SIZE * objects.size()) << " (" << ratioBytes << ")" << std::endl;
 
     const auto avgDistance = (double) sumDistances / (objects.size() - 1);
 
@@ -215,40 +230,44 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv)
     std::cout << "Avg distance: " << avgDistance << std::endl;
 
 
+    printf_("Starting benchmark.\n");
+    
     volatile unsigned long count = 0;
-    auto start = std::chrono::high_resolution_clock::now();
+    decltype(std::chrono::high_resolution_clock::now()) start, end;
 
+    start = std::chrono::high_resolution_clock::now();
+    
     for (std::size_t i = 0; i < ITERATIONS; i++) {
-        for (const auto object : objects) {
-            volatile char buffer[OBJECT_SIZE];
-            std::memcpy((void*) buffer, object, OBJECT_SIZE);
-            count += buffer[OBJECT_SIZE - 1];
-        }
-    }
-
-    auto end = std::chrono::high_resolution_clock::now();
-    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
-    std::cout << "Elapsed (littered): " << duration << "ms" << std::endl;
-
-
-    std::array<void*, N> newObjects;
-    for (auto i = 0; i < N; i++) {
-      newObjects[i] = std::malloc(OBJECT_SIZE);
+      for (const auto object : objects) {
+	volatile char buffer[OBJECT_SIZE];
+	std::memcpy((void*) buffer, object, OBJECT_SIZE);
+	count += buffer[OBJECT_SIZE - 1];
+      }
     }
     
-    start = std::chrono::high_resolution_clock::now();
+    end = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+    printf_("Elapsed (littered): %d ms\n", duration);
 
-    for (std::size_t i = 0; i < ITERATIONS; i++) {
-        for (const auto object : newObjects) {
-            volatile char buffer[OBJECT_SIZE];
-            std::memcpy((void*) buffer, object, OBJECT_SIZE);
-            count += buffer[OBJECT_SIZE - 1];
-        }
+    std::array<void*, N> newObjects;
+    volatile char buf[N * OBJECT_SIZE];
+    for (auto i = 0; i < N; i++) {
+      newObjects[i] = (void *) &buf[i * OBJECT_SIZE]; // std::malloc(OBJECT_SIZE);
     }
-
+    printf_("Starting contiguous.\n");
+    
+    start = std::chrono::high_resolution_clock::now();
+    
+    for (std::size_t i = 0; i < ITERATIONS; i++) {
+      for (volatile const auto object : newObjects) {
+	volatile char buffer[OBJECT_SIZE];
+	std::memcpy((void*) buffer, object, OBJECT_SIZE);
+	count += buffer[OBJECT_SIZE - 1];
+      }
+    }
+    
     end = std::chrono::high_resolution_clock::now();
     auto durationContiguous = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
-    std::cout << "Elapsed (contiguous): " << durationContiguous << "ms" << std::endl;
-
-    std::cout << "Ratio = " << (float) duration / (float) durationContiguous << std::endl;
+    printf_("Elapsed (contiguous): %d ms\n", durationContiguous);
+    printf_("Ratio = %f\n", (float) duration / (float) durationContiguous);
 }

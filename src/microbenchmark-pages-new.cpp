@@ -68,7 +68,7 @@ T abs(T x) {
 } // namespace
 
 #ifndef N
-#define N 1'000 // Number of pages. // was 15'000
+#define N 15'000 // Number of pages.
 #endif
 
 #ifndef OBJECT_SIZE

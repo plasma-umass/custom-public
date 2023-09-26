@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <array>
 #include <chrono>
 #include <cstdlib>
 #include <cstring>
@@ -9,11 +10,21 @@
 #include <unordered_set>
 #include <vector>
 
+#include <assert.h>
+
 #if _WIN32
 #ifndef NOMINMAX
 #define NOMINMAX
 #endif
 #include <windows.h>
+extern "C" void _putchar(char ch) {
+  DWORD written;
+  WriteFile(GetStdHandle(STD_OUTPUT_HANDLE),
+	    &ch,
+	    1,
+	    &written,
+	    NULL);
+}
 #else
 #include <unistd.h>
 // For use by the replacement printf routines (see
@@ -57,7 +68,7 @@ T abs(T x) {
 } // namespace
 
 #ifndef N
-#define N 15'000 // Number of pages.
+#define N 1'000 // Number of pages. // was 15'000
 #endif
 
 #ifndef OBJECT_SIZE

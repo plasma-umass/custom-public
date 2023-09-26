@@ -57,7 +57,7 @@ T abs(T x) {
 } // namespace
 
 #ifndef N
-#define N 10'000 // Number of pages.
+#define N 15'000 // Number of pages.
 #endif
 
 #ifndef OBJECT_SIZE
@@ -65,7 +65,7 @@ T abs(T x) {
 #endif
 
 #ifndef ITERATIONS
-#define ITERATIONS 40'000
+#define ITERATIONS 100'000
 #endif
 
 #define MAX_OBJECTS (N * PAGE_SIZE / OBJECT_SIZE + 1)

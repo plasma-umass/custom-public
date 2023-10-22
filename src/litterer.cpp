@@ -126,58 +126,52 @@ void runLitterer() {
     fprintf(log, "timestamp  : %s %s\n", __DATE__, __TIME__);
     fprintf(log, "==================================================================================\n");
 
-    if (data["Bins"].empty()) {
-        fprintf(log, "[WARNING] No allocations were recorded, hence littering is not possible.\n");
-    } else {
-        if (data["Bins"][data["SizeClasses"].size()].get<int>() != 0) {
-            fprintf(log, "[WARNING] Allocations of size greater than the maximum size class were recorded.\n");
-            fprintf(log, "[WARNING] There will be no littering for these allocations.\n");
-            fprintf(log, "[WARNING] This represents %.2f of all allocations recorded.\n",
-                    (static_cast<double>(data["Bins"][data["SizeClasses"].size()]) / nAllocations) * 100);
-        }
-
-        const auto litterStart = std::chrono::high_resolution_clock::now();
-
-        std::uniform_int_distribution<std::size_t> distribution(
-            0, nAllocations - data["Bins"][data["SizeClasses"].size()].get<int>() - 1);
-        std::vector<void*> objects = *(new std::vector<void*>);
-        objects.reserve(nAllocationsLitter);
-
-        for (std::size_t i = 0; i < nAllocationsLitter; ++i) {
-            std::size_t minAllocationSize = 0;
-            std::size_t sizeClassIndex = 0;
-            std::int64_t offset = static_cast<int64_t>(distribution(generator)) - data["Bins"][0].get<std::int64_t>();
-
-            while (offset >= 0) {
-                minAllocationSize = data["SizeClasses"][sizeClassIndex].get<std::size_t>();
-                ++sizeClassIndex;
-                offset -= static_cast<std::size_t>(data["Bins"][sizeClassIndex].get<int>());
+    assertOrExit(
+        [&] {
+            std::size_t sum = 0;
+            for (const auto& bin : data["Bins"]) {
+                sum += bin.get<std::size_t>();
             }
-            const std::size_t maxAllocationSize = data["SizeClasses"][sizeClassIndex].get<std::size_t>() - 1;
-            std::uniform_int_distribution<std::size_t> allocationSizeDistribution(minAllocationSize, maxAllocationSize);
-            const std::size_t allocationSize = allocationSizeDistribution(generator);
+            return sum;
+        }() == nAllocations,
+        log, "The sum of all bins should equal nAllocations.");
 
-            void* pointer = MALLOC(allocationSize);
-            objects.push_back(pointer);
+    const auto litterStart = std::chrono::high_resolution_clock::now();
+
+    std::uniform_int_distribution<std::size_t> distribution(0, nAllocations - 1);
+    std::vector<void*> objects = *(new std::vector<void*>);
+    objects.reserve(nAllocationsLitter);
+
+    for (std::size_t i = 0; i < nAllocationsLitter; ++i) {
+        std::size_t allocationSize = 1;
+        std::int64_t offset = static_cast<int64_t>(distribution(generator)) - data["Bins"][0].get<std::size_t>();
+
+        while (offset >= 0) {
+            ++allocationSize;
+            offset -= static_cast<std::size_t>(data["Bins"][allocationSize - 1].get<std::size_t>());
         }
 
-        const std::size_t nObjectsToBeFreed = static_cast<std::size_t>((1 - occupancy) * nAllocationsLitter);
-
-        if (shuffle) {
-            fprintf(log, "Shuffling %zu object(s) to be freed.\n", nObjectsToBeFreed);
-            partial_shuffle(objects, nObjectsToBeFreed, generator);
-        } else {
-            std::sort(objects.begin(), objects.end(), std::greater<void*>());
-        }
-
-        for (std::size_t i = 0; i < nObjectsToBeFreed; ++i) {
-            FREE(objects[i]);
-        }
-
-        const auto litterEnd = std::chrono::high_resolution_clock::now();
-        const auto elapsed = std::chrono::duration_cast<std::chrono::seconds>((litterEnd - litterStart));
-        fprintf(log, "Finished littering. Time taken: %s seconds.\n", std::to_string(elapsed.count()).c_str());
+        void* pointer = MALLOC(allocationSize);
+        objects.push_back(pointer);
     }
+
+    const std::size_t nObjectsToBeFreed = static_cast<std::size_t>((1 - occupancy) * nAllocationsLitter);
+
+    if (shuffle) {
+        fprintf(log, "Shuffling %zu object(s) to be freed.\n", nObjectsToBeFreed);
+        partial_shuffle(objects, nObjectsToBeFreed, generator);
+    } else {
+        // TODO: We should maybe make this a third-option.
+        std::sort(objects.begin(), objects.end(), std::greater<void*>());
+    }
+
+    for (std::size_t i = 0; i < nObjectsToBeFreed; ++i) {
+        FREE(objects[i]);
+    }
+
+    const auto litterEnd = std::chrono::high_resolution_clock::now();
+    const auto elapsed = std::chrono::duration_cast<std::chrono::seconds>((litterEnd - litterStart));
+    fprintf(log, "Finished littering. Time taken: %s seconds.\n", std::to_string(elapsed.count()).c_str());
 
     if (sleepDelay) {
 #ifdef _WIN32
@@ -191,5 +185,7 @@ void runLitterer() {
     }
 
     fprintf(log, "==================================================================================\n");
-    fclose(log);
+    if (log != stderr) {
+        fclose(log);
+    }
 }

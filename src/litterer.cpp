@@ -1,4 +1,5 @@
 #include <litterer/litterer.h>
+#include <numeric>
 
 #if _WIN32
 #ifndef NOMINMAX
@@ -48,6 +49,12 @@ void partial_shuffle(std::vector<T>& v, std::size_t n, Generator& g) {
         const auto j = std::uniform_int_distribution<std::size_t>(i, v.size() - 1)(g);
         std::swap(v[i], v[j]);
     }
+}
+
+std::vector<size_t> cumulative_sum(const std::vector<size_t>& bins) {
+    std::vector<size_t> cumsum(bins.size());
+    std::partial_sum(bins.begin(), bins.end(), cumsum.begin());
+    return cumsum;
 }
 } // namespace
 
@@ -112,8 +119,9 @@ void runLitterer() {
     const std::string mallocSourceObject = mallocInfo.dli_fname;
 #endif
 
-    const std::size_t nAllocations = data["NAllocations"].get<std::size_t>();
-    const std::size_t maxLiveAllocations = data["MaxLiveAllocations"].get<std::size_t>();
+    const auto bins = data["Bins"].get<std::vector<std::size_t>>();
+    const auto nAllocations = data["NAllocations"].get<std::size_t>();
+    const auto maxLiveAllocations = data["MaxLiveAllocations"].get<std::size_t>();
     const std::size_t nAllocationsLitter = maxLiveAllocations * multiplier;
 
     fprintf(log, "==================================== Litterer ====================================\n");
@@ -126,32 +134,21 @@ void runLitterer() {
     fprintf(log, "timestamp  : %s %s\n", __DATE__, __TIME__);
     fprintf(log, "==================================================================================\n");
 
-    assertOrExit(
-        [&] {
-            std::size_t sum = 0;
-            for (const auto& bin : data["Bins"]) {
-                sum += bin.get<std::size_t>();
-            }
-            return sum;
-        }() == nAllocations,
-        log, "The sum of all bins should equal nAllocations.");
+    assert(std::accumulate(bins.begin(), bins.end(), 0zu) == nAllocations);
+    const std::vector<std::size_t> binsCumSum = cumulative_sum(bins);
 
     const auto litterStart = std::chrono::high_resolution_clock::now();
 
-    std::uniform_int_distribution<std::size_t> distribution(0, nAllocations - 1);
+    std::uniform_int_distribution<std::int64_t> distribution(1, nAllocations);
     std::vector<void*> objects = *(new std::vector<void*>);
     objects.reserve(nAllocationsLitter);
 
     for (std::size_t i = 0; i < nAllocationsLitter; ++i) {
-        std::size_t allocationSize = 1;
-        std::int64_t offset = static_cast<int64_t>(distribution(generator)) - data["Bins"][0].get<std::size_t>();
-
-        while (offset >= 0) {
-            ++allocationSize;
-            offset -= static_cast<std::size_t>(data["Bins"][allocationSize - 1].get<std::size_t>());
-        }
-
-        void* pointer = MALLOC(allocationSize);
+        const auto offset = distribution(generator);
+        const auto it = std::lower_bound(binsCumSum.begin(), binsCumSum.end(), offset);
+        assert(it != binsCumSum.end());
+        const auto bin = std::distance(binsCumSum.begin(), it) + 1;
+        void* pointer = MALLOC(bin);
         objects.push_back(pointer);
     }
 

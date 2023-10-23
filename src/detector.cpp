@@ -11,7 +11,7 @@ namespace {
 static std::atomic_bool ready{false};
 static thread_local int busy{0};
 
-static std::vector<std::atomic_int> bins(PAGE_SIZE);
+static std::vector<std::atomic_uint64_t> bins(PAGE_SIZE);
 
 static std::atomic_uint64_t nAllocations{0};
 static std::atomic<double> average{0};

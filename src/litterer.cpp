@@ -51,8 +51,8 @@ void partial_shuffle(std::vector<T>& v, std::size_t n, Generator& g) {
     }
 }
 
-std::vector<size_t> cumulative_sum(const std::vector<size_t>& bins) {
-    std::vector<size_t> cumsum(bins.size());
+std::vector<std::uint64_t> cumulative_sum(const std::vector<std::uint64_t>& bins) {
+    std::vector<std::uint64_t> cumsum(bins.size());
     std::partial_sum(bins.begin(), bins.end(), cumsum.begin());
     return cumsum;
 }
@@ -119,9 +119,9 @@ void runLitterer() {
     const std::string mallocSourceObject = mallocInfo.dli_fname;
 #endif
 
-    const auto bins = data["Bins"].get<std::vector<std::size_t>>();
-    const auto nAllocations = data["NAllocations"].get<std::size_t>();
-    const auto maxLiveAllocations = data["MaxLiveAllocations"].get<std::size_t>();
+    const auto bins = data["Bins"].get<std::vector<std::uint64_t>>();
+    const auto nAllocations = data["NAllocations"].get<std::uint64_t>();
+    const auto maxLiveAllocations = data["MaxLiveAllocations"].get<std::int64_t>();
     const std::size_t nAllocationsLitter = maxLiveAllocations * multiplier;
 
     fprintf(log, "==================================== Litterer ====================================\n");
@@ -135,7 +135,7 @@ void runLitterer() {
     fprintf(log, "==================================================================================\n");
 
     assert(std::accumulate(bins.begin(), bins.end(), 0zu) == nAllocations);
-    const std::vector<std::size_t> binsCumSum = cumulative_sum(bins);
+    const std::vector<std::uint64_t> binsCumSum = cumulative_sum(bins);
 
     const auto litterStart = std::chrono::high_resolution_clock::now();
 

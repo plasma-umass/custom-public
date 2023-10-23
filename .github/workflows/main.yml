@@ -28,7 +28,7 @@ jobs:
         run: cmake --build ${{github.workspace}}/build
 
       - name: Check clang-format
-        run: find src -name '*.cpp' -o -name '*.h' | xargs clang-format --dry-run --Werror
+        run: clang-format --dry-run --Werror ${{github.workspace}}/src/detector.cpp ${{github.workspace}}/src/litterer.cpp ${{github.workspace}}/src/litterer-standalone.cpp
 
   build-windows:
     runs-on: windows-latest

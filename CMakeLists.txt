@@ -16,6 +16,3 @@ FetchContent_MakeAvailable(fmt)
 
 add_library(litterer_blank SHARED src/blank/litterer.cpp)
 target_link_libraries(litterer_blank ${CMAKE_DL_LIBS})
-set_property(TARGET litterer_blank PROPERTY C_VISIBILITY_PRESET hidden)
-set_property(TARGET litterer_blank PROPERTY CXX_VISIBILITY_PRESET hidden)
-set_property(TARGET litterer_blank PROPERTY VISIBILITY_INLINES_HIDDEN ON)

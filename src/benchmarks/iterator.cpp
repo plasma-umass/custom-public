@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <exception>
 #include <iostream>
+#include <vector>
 
 #include <argparse/argparse.hpp>
 #include <benchmark/benchmark.h>

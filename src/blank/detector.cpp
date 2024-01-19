@@ -1,5 +1,5 @@
 #include <dlfcn.h>
-#include <stdlib.h>
+#include <stdlib.h> // NOLINT(modernize-deprecated-headers)
 
 extern "C" void* malloc(size_t size) {
     static auto* next = reinterpret_cast<decltype(malloc)*>(dlsym(RTLD_NEXT, "malloc"));

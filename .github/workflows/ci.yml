@@ -30,7 +30,9 @@ jobs:
         run: sudo apt install -y gcc-11 g++-11
 
       - name: Configure CMake (GCC)
-        run: cmake . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=gcc-11 -DCMAKE_CXX_COMPILER=g++-11
+        run: >
+          cmake . -B build -DCMAKE_BUILD_TYPE=Release
+          -DCMAKE_C_COMPILER=gcc-11 -DCMAKE_CXX_COMPILER=g++-11
 
       - name: Build
         run: cmake --build build --parallel
@@ -45,8 +47,9 @@ jobs:
           curl -sSf https://apt.llvm.org/llvm.sh | sudo bash -s -- 17 all
 
       - name: Configure CMake (Clang)
-        run:
-          cmake . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=clang-17 -DCMAKE_CXX_COMPILER=clang++-17 \
+        run: >
+          cmake . -B build -DCMAKE_BUILD_TYPE=Release
+          -DCMAKE_C_COMPILER=clang-17 -DCMAKE_CXX_COMPILER=clang++-17
           -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 
       - name: Build

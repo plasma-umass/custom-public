@@ -23,12 +23,14 @@
 #include <thread>
 #include <vector>
 
+#include <fmt/core.h>
+
 #include <nlohmann/json.hpp>
 
 namespace {
 void assertOrExit(bool condition, FILE* log, const std::string& message) {
     if (!condition) {
-        fprintf(log, "[ERROR] %s\n", message.c_str());
+        fmt::println(log, "[ERROR] %s\n", message.c_str());
         exit(EXIT_FAILURE);
     }
 }
@@ -122,16 +124,16 @@ void runLitterer() {
     const auto maxLiveAllocations = data["maxLiveAllocations"].get<std::int64_t>();
     const std::size_t nAllocationsLitter = maxLiveAllocations * multiplier;
 
-    fprintf(log, "==================================== Litterer ====================================\n");
-    fprintf(log, "malloc     : %s\n", mallocSourceObject.c_str());
-    fprintf(log, "seed       : %u\n", seed);
-    fprintf(log, "occupancy  : %f\n", occupancy);
-    fprintf(log, "shuffle    : %s\n", shuffle ? "yes" : "no");
-    fprintf(log, "sort       : %s\n", sort ? "yes" : "no");
-    fprintf(log, "sleep      : %s\n", sleepDelay ? std::to_string(sleepDelay).c_str() : "no");
-    fprintf(log, "litter     : %u * %zu = %zu\n", multiplier, maxLiveAllocations, nAllocationsLitter);
-    fprintf(log, "timestamp  : %s %s\n", __DATE__, __TIME__);
-    fprintf(log, "==================================================================================\n");
+    fmt::println(log, "==================================== Litterer ====================================\n");
+    fmt::println(log, "malloc     : {}\n", mallocSourceObject);
+    fmt::println(log, "seed       : {}\n", seed);
+    fmt::println(log, "occupancy  : {}\n", occupancy);
+    fmt::println(log, "shuffle    : {}\n", shuffle ? "yes" : "no");
+    fmt::println(log, "sort       : {}\n", sort ? "yes" : "no");
+    fmt::println(log, "sleep      : {}\n", sleepDelay ? std::to_string(sleepDelay) : "no");
+    fmt::println(log, "litter     : {} * {} = {}\n", multiplier, maxLiveAllocations, nAllocationsLitter);
+    fmt::println(log, "timestamp  : {} {}\n", __DATE__, __TIME__);
+    fmt::println(log, "==================================================================================\n");
 
     assertOrExit(std::accumulate(bins.begin(), bins.end(), 0zu) == nAllocations, log, "Invalid bin distribution.");
     const std::vector<std::uint64_t> binsCumSum = cumulative_sum(bins);
@@ -151,10 +153,10 @@ void runLitterer() {
     const auto nObjectsToBeFreed = static_cast<std::size_t>((1 - occupancy) * nAllocationsLitter);
 
     if (shuffle) {
-        fprintf(log, "Shuffling %zu object(s) to be freed.\n", nObjectsToBeFreed);
+        fmt::println(log, "Shuffling {} object(s) to be freed.\n", nObjectsToBeFreed);
         partial_shuffle(objects, nObjectsToBeFreed, generator);
     } else if (sort) {
-        fprintf(log, "Sorting all %zu objects.\n", objects.size());
+        fmt::println(log, "Sorting all {} objects.\n", objects.size());
         std::sort(objects.begin(), objects.end(), std::greater<void*>());
     }
 
@@ -164,7 +166,7 @@ void runLitterer() {
 
     const auto end = std::chrono::high_resolution_clock::now();
     const auto elapsed = std::chrono::duration_cast<std::chrono::seconds>((end - start));
-    fprintf(log, "Finished littering. Time taken: %ld seconds.\n", elapsed.count());
+    fmt::println(log, "Finished littering. Time taken: {} seconds.\n", elapsed.count());
 
     if (sleepDelay) {
 #ifdef _WIN32
@@ -172,12 +174,12 @@ void runLitterer() {
 #else
         const auto pid = getpid();
 #endif
-        fprintf(log, "Sleeping %d seconds before resuming (PID: %d)...\n", sleepDelay, pid);
+        fmt::println(log, "Sleeping {} seconds before resuming (PID: {})...\n", sleepDelay, pid);
         std::this_thread::sleep_for(std::chrono::seconds(sleepDelay));
-        fprintf(log, "Resuming program now!\n");
+        fmt::println(log, "Resuming program now!\n");
     }
 
-    fprintf(log, "==================================================================================\n");
+    fmt::println(log, "==================================================================================\n");
     if (log != stderr) {
         fclose(log);
     }

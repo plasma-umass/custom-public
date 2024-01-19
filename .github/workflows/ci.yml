@@ -10,7 +10,7 @@ jobs:
   build:
     strategy:
       matrix:
-        platform: [ubuntu-latest, macos-latest, windows-latest]
+        platform: [macos-latest, windows-latest]
     runs-on: ${{matrix.platform}}
     steps:
       - uses: actions/checkout@v3
@@ -20,6 +20,31 @@ jobs:
 
       - name: Build
         run: cmake --build build
+
+  build-ubuntu:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Download GCC
+        run: sudo apt install -y gcc-12 g++-12
+
+      - name: Configure CMake (GCC)
+        run: cmake . -B build-gcc -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=gcc-17 -DCMAKE_CXX_COMPILER=g++-17
+
+      - name: Build
+        run: cmake --build build-gcc
+
+      - name: Download LLVM
+        run: |
+          sudo apt install lsb-release wget software-properties-common gnupg
+          curl -sSf https://apt.llvm.org/llvm.sh | sudo bash -s -- 17 all
+
+      - name: Configure CMake (Clang)
+        run: cmake . -B build-clang -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=clang-17 -DCMAKE_CXX_COMPILER=clang++-17
+
+      - name: Build
+        run: cmake --build build-clang
 
   format:
     runs-on: ubuntu-latest

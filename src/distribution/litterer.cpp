@@ -76,7 +76,7 @@ void runLitterer() {
 
     bool sort = false;
     if (const char* env = std::getenv("LITTER_SORT")) {
-        shuffle = std::atoi(env);
+        sort = std::atoi(env);
     }
 
     assertOrExit(!(shuffle && sort), log, "Select either shuffle or sort, not both.");

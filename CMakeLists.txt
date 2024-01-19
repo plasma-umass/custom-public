@@ -25,7 +25,7 @@ message(STATUS "Downloading and configuring Benchmark")
 set(BENCHMARK_ENABLE_TESTING OFF)
 FetchContent_MakeAvailable(google_benchmark)
 
-add_library(litterer_blank SHARED src/blank/litterer.cpp)
+add_library(litterer_blank SHARED src/blank.cpp)
 target_link_libraries(litterer_blank PRIVATE ${CMAKE_DL_LIBS})
 
 add_executable(benchmark_iterator src/benchmarks/iterator.cpp) 

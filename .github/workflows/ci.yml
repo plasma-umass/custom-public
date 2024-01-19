@@ -45,10 +45,15 @@ jobs:
           curl -sSf https://apt.llvm.org/llvm.sh | sudo bash -s -- 17 all
 
       - name: Configure CMake (Clang)
-        run: cmake . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=clang-17 -DCMAKE_CXX_COMPILER=clang++-17
+        run:
+          cmake . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=clang-17 -DCMAKE_CXX_COMPILER=clang++-17 \
+          -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 
       - name: Build
         run: cmake --build build --parallel
 
       - name: Check clang-format
         run: find src -name '*.cpp' | xargs clang-format-17 --dry-run --Werror
+
+      - name: Check clang-tidy
+        run: find src -name '*.cpp' | xargs clang-tidy-17 -p build --warnings-as-errors='*'

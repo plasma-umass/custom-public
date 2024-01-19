@@ -28,7 +28,7 @@
 #include <nlohmann/json.hpp>
 
 namespace {
-void assertOrExit(bool condition, FILE* log, const std::string& message) {
+void assertOrExit(bool condition, std::FILE* log, const std::string& message) {
     if (!condition) {
         fmt::println(log, "[ERROR] %s\n", message.c_str());
         exit(EXIT_FAILURE);
@@ -51,49 +51,44 @@ std::vector<std::uint64_t> cumulative_sum(const std::vector<std::uint64_t>& bins
 } // namespace
 
 void runLitterer() {
-    FILE* log = stderr;
+    std::FILE* log = stderr;
     if (const char* env = std::getenv("LITTER_LOG_FILENAME")) {
-#if _WIN32
-        const auto status = fopen_s(&log, env, "w");
-        assertOrExit(status == 0, log, "Could not open log file.");
-#else
-        log = fopen(env, "w");
+        log = std::fopen(env, "w");
         assertOrExit(log != nullptr, log, "Could not open log file.");
-#endif
     }
 
     std::uint32_t seed = std::random_device()();
     if (const char* env = std::getenv("LITTER_SEED")) {
-        seed = atoi(env);
+        seed = std::atoi(env);
     }
     auto generator = std::mt19937_64(seed);
 
     double occupancy = 0.95;
     if (const char* env = std::getenv("LITTER_OCCUPANCY")) {
-        occupancy = atof(env);
+        occupancy = std::atof(env);
         assertOrExit(occupancy >= 0 && occupancy <= 1, log, "Occupancy must be between 0 and 1.");
     }
 
     bool shuffle = true;
     if (const char* env = std::getenv("LITTER_SHUFFLE")) {
-        shuffle = atoi(env);
+        shuffle = std::atoi(env);
     }
 
     bool sort = false;
     if (const char* env = std::getenv("LITTER_SORT")) {
-        shuffle = atoi(env);
+        shuffle = std::atoi(env);
     }
 
     assertOrExit(!(shuffle && sort), log, "Select either shuffle or sort, not both.");
 
     std::uint32_t sleepDelay = 0;
     if (const char* env = std::getenv("LITTER_SLEEP")) {
-        sleepDelay = atoi(env);
+        sleepDelay = std::atoi(env);
     }
 
     std::uint32_t multiplier = 20;
     if (const char* env = std::getenv("LITTER_MULTIPLIER")) {
-        multiplier = atoi(env);
+        multiplier = std::atoi(env);
     }
 
     std::string dataFilename = "distribution.json";

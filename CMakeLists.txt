@@ -1,32 +1,56 @@
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.24)
 
 include(FetchContent)
 
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 23)
 
 project(litterer)
 
 FetchContent_Declare(
-    argparse
-    GIT_REPOSITORY https://github.com/p-ranav/argparse.git
-    GIT_TAG af442b4da0cd7a07b56fa709bd16571889dc7fda # v3.0
+  argparse
+  GIT_REPOSITORY https://github.com/p-ranav/argparse.git
+  GIT_TAG af442b4da0cd7a07b56fa709bd16571889dc7fda # v3.0
 )
 
 FetchContent_Declare(
-    google_benchmark
-    GIT_REPOSITORY https://github.com/google/benchmark.git
-    GIT_TAG 344117638c8ff7e239044fd0fa7085839fc03021 # v1.8.3
+  nlohmann_json
+  URL https://github.com/nlohmann/json/releases/download/v3.11.3/json.tar.xz
+)
+
+FetchContent_Declare(
+  benchmark
+  GIT_REPOSITORY https://github.com/google/benchmark.git
+  GIT_TAG 344117638c8ff7e239044fd0fa7085839fc03021 # v1.8.3
 )
 
 message(STATUS "Downloading and configuring argparse")
 FetchContent_MakeAvailable(argparse)
 
+message(STATUS "Downloading and configuring nlohmann::json")
+FetchContent_MakeAvailable(nlohmann_json)
+
 message(STATUS "Downloading and configuring Benchmark")
 set(BENCHMARK_ENABLE_TESTING OFF)
-FetchContent_MakeAvailable(google_benchmark)
+FetchContent_MakeAvailable(benchmark)
 
-add_library(litterer_blank SHARED src/blank/detector.cpp)
-target_link_libraries(litterer_blank PRIVATE ${CMAKE_DL_LIBS})
+if (MSVC)
+ add_compile_options(/W4)
+else()
+  add_compile_options(-Wall -Wextra -Wpedantic)
+endif()
+set(CMAKE_COMPILE_WARNING_AS_ERROR ON)
 
-add_executable(benchmark_iterator src/benchmarks/iterator.cpp) 
+# Interposition is not supported on Windows, so detectors are not useful.
+if(NOT WIN32)
+  add_library(detector_blank SHARED src/blank/detector.cpp)
+  target_link_libraries(detector_blank PRIVATE ${CMAKE_DL_LIBS})
+endif()
+
+add_library(litterer_distribution SHARED src/distribution/litterer.cpp)
+target_link_libraries(litterer_distribution PRIVATE nlohmann_json)
+if(NOT WIN32)
+  target_link_libraries(litterer_distribution PRIVATE ${CMAKE_DL_LIBS})
+endif()
+
+add_executable(benchmark_iterator src/benchmarks/iterator.cpp)
 target_link_libraries(benchmark_iterator PRIVATE argparse benchmark)

@@ -53,7 +53,13 @@ std::vector<std::uint64_t> cumulative_sum(const std::vector<std::uint64_t>& bins
 void runLitterer() {
     FILE* log = stderr;
     if (const char* env = std::getenv("LITTER_LOG_FILENAME")) {
+#if _WIN32
+        const auto status = fopen_s(&log, env, "w");
+        assertOrExit(status == 0, log, "Could not open log file.");
+#else
         log = fopen(env, "w");
+        assertOrExit(log != nullptr, log, "Could not open log file.");
+#endif
     }
 
     std::uint32_t seed = std::random_device()();

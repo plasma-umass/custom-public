@@ -135,7 +135,8 @@ void runLitterer() {
     fmt::println(log, "timestamp  : {} {}\n", __DATE__, __TIME__);
     fmt::println(log, "==================================================================================\n");
 
-    assertOrExit(std::accumulate(bins.begin(), bins.end(), 0zu) == nAllocations, log, "Invalid bin distribution.");
+    assertOrExit(std::accumulate(bins.begin(), bins.end(), std::uint64_t(0)) == nAllocations, log,
+                 "Invalid bin distribution.");
     const std::vector<std::uint64_t> binsCumSum = cumulative_sum(bins);
 
     const auto start = std::chrono::high_resolution_clock::now();
@@ -143,7 +144,7 @@ void runLitterer() {
     std::uniform_int_distribution<std::uint64_t> distribution(1, nAllocations);
     std::vector<void*> objects(nAllocationsLitter);
 
-    for (auto i = 0zu; i < nAllocationsLitter; ++i) {
+    for (std::size_t i = 0; i < nAllocationsLitter; ++i) {
         const auto offset = distribution(generator);
         const auto it = std::lower_bound(binsCumSum.begin(), binsCumSum.end(), offset);
         const auto bin = std::distance(binsCumSum.begin(), it) + 1;

@@ -7,7 +7,7 @@ on:
     branches: ["master"]
 
 jobs:
-  build:
+  cross-platform-check:
     strategy:
       matrix:
         platform: [macos-latest, windows-latest]
@@ -21,7 +21,7 @@ jobs:
       - name: Build
         run: cmake --build build
 
-  build-ubuntu:
+  ubuntu-check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -46,13 +46,5 @@ jobs:
       - name: Build
         run: cmake --build build-clang
 
-  format:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Install clang-format
-        run: sudo apt install -y clang-format
-
       - name: Check clang-format
-        run: find src -name '*.cpp' | xargs clang-format --dry-run --Werror
+        run: find src -name '*.cpp' | xargs clang-format-17 --dry-run --Werror

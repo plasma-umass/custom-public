@@ -7,7 +7,6 @@
 #include <cassert>
 #include <cstddef>
 
-// NOLINTBEGIN(cppcoreguidelines-pro-bounds-pointer-arithmetic)
 template <typename T> class static_vector {
   public:
     using value_type = T;
@@ -71,6 +70,5 @@ template <typename T> class static_vector {
     size_type size_ = 0;
     value_type* data_ = nullptr;
 };
-// NOLINTEND(cppcoreguidelines-pro-bounds-pointer-arithmetic)
 
 #endif

@@ -1,11 +1,14 @@
 #include <dlfcn.h>
 #include <stdlib.h> // NOLINT(modernize-deprecated-headers)
 
+#include <algorithm>
 #include <atomic>
 #include <cstddef>
+#include <cstdint>
 #include <cstdlib>
 #include <fstream>
 #include <iostream>
+#include <iterator>
 #include <string>
 #include <vector>
 

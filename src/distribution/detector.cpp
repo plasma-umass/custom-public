@@ -12,7 +12,7 @@
 #include <string>
 #include <vector>
 
-#include <nlohmann/json.hpp>
+#include <nlohmann/json.hpp> // NOLINT(misc-include-cleaner)
 
 #include <static_vector.hpp>
 
@@ -63,11 +63,12 @@ struct Initialization {
             outputFilename = env;
         }
 
-        nlohmann::json data = {
-            {"sizeClasses", sizeClasses},
-            {"bins", std::vector<std::uint64_t>(bins.begin(), bins.end())},
-            {"maxLiveAllocations", maxLiveAllocations.load()},
-        };
+        const nlohmann::json data = // NOLINT(misc-include-cleaner)
+            {
+                {"sizeClasses", sizeClasses},
+                {"bins", std::vector<std::uint64_t>(bins.begin(), bins.end())},
+                {"maxLiveAllocations", maxLiveAllocations.load()},
+            };
 
         std::ofstream output(outputFilename);
         output << data.dump(4) << std::endl;

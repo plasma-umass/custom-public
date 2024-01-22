@@ -1,3 +1,5 @@
+#include "litterer.hpp"
+
 #if _WIN32
 #ifndef NOMINMAX
 #define NOMINMAX
@@ -24,13 +26,12 @@
 #include <vector>
 
 #include <fmt/core.h>
-
 #include <nlohmann/json.hpp>
 
 namespace {
 void assertOrExit(bool condition, std::FILE* log, const std::string& message) {
     if (!condition) {
-        fmt::println(log, "[ERROR] %s\n", message.c_str());
+        fmt::println(log, "[ERROR] %s", message.c_str());
         exit(EXIT_FAILURE);
     }
 }
@@ -50,6 +51,7 @@ std::vector<std::uint64_t> cumulative_sum(const std::vector<std::uint64_t>& bins
 }
 } // namespace
 
+namespace litterer::distribution {
 void runLitterer() {
     std::FILE* log = stderr;
     if (const char* env = std::getenv("LITTER_LOG_FILENAME")) {
@@ -125,16 +127,16 @@ void runLitterer() {
     const auto maxLiveAllocations = data["maxLiveAllocations"].get<std::int64_t>();
     const std::size_t nAllocationsLitter = maxLiveAllocations * multiplier;
 
-    fmt::println(log, "==================================== Litterer ====================================\n");
-    fmt::println(log, "malloc     : {}\n", mallocSourceObject);
-    fmt::println(log, "seed       : {}\n", seed);
-    fmt::println(log, "occupancy  : {}\n", occupancy);
-    fmt::println(log, "shuffle    : {}\n", shuffle ? "yes" : "no");
-    fmt::println(log, "sort       : {}\n", sort ? "yes" : "no");
-    fmt::println(log, "sleep      : {}\n", sleepDelay != 0 ? std::to_string(sleepDelay) : "no");
-    fmt::println(log, "litter     : {} * {} = {}\n", multiplier, maxLiveAllocations, nAllocationsLitter);
-    fmt::println(log, "timestamp  : {} {}\n", __DATE__, __TIME__);
-    fmt::println(log, "==================================================================================\n");
+    fmt::println(log, "==================================== Litterer ====================================");
+    fmt::println(log, "malloc     : {}", mallocSourceObject);
+    fmt::println(log, "seed       : {}", seed);
+    fmt::println(log, "occupancy  : {}", occupancy);
+    fmt::println(log, "shuffle    : {}", shuffle ? "yes" : "no");
+    fmt::println(log, "sort       : {}", sort ? "yes" : "no");
+    fmt::println(log, "sleep      : {}", sleepDelay != 0 ? std::to_string(sleepDelay) : "no");
+    fmt::println(log, "litter     : {} * {} = {}", multiplier, maxLiveAllocations, nAllocationsLitter);
+    fmt::println(log, "timestamp  : {} {}", __DATE__, __TIME__);
+    fmt::println(log, "==================================================================================");
 
     assertOrExit(std::accumulate(bins.begin(), bins.end(), std::uint64_t(0)) == nAllocations, log,
                  "Invalid bin distribution.");
@@ -148,17 +150,17 @@ void runLitterer() {
     for (std::size_t i = 0; i < nAllocationsLitter; ++i) {
         const auto offset = distribution(generator);
         const auto it = std::lower_bound(binsCumSum.begin(), binsCumSum.end(), offset);
-        const auto bin = std::distance(binsCumSum.begin(), it) + 1;
-        objects[i] = std::malloc(bin);
+        const auto bin = std::distance(binsCumSum.begin(), it);
+        objects[i] = std::malloc(sizeClasses.at(bin));
     }
 
     const auto nObjectsToBeFreed = static_cast<std::size_t>((1 - occupancy) * static_cast<double>(nAllocationsLitter));
 
     if (shuffle) {
-        fmt::println(log, "Shuffling {} object(s) to be freed.\n", nObjectsToBeFreed);
+        fmt::println(log, "Shuffling {} object(s) to be freed.", nObjectsToBeFreed);
         partial_shuffle(objects, nObjectsToBeFreed, generator);
     } else if (sort) {
-        fmt::println(log, "Sorting all {} objects.\n", objects.size());
+        fmt::println(log, "Sorting all {} objects.", objects.size());
         std::sort(objects.begin(), objects.end(), std::greater<>());
     }
 
@@ -167,8 +169,8 @@ void runLitterer() {
     }
 
     const auto end = std::chrono::high_resolution_clock::now();
-    const auto elapsed = std::chrono::duration_cast<std::chrono::seconds>((end - start));
-    fmt::println(log, "Finished littering. Time taken: {} seconds.\n", elapsed.count());
+    const auto elapsed_ms = std::chrono::duration_cast<std::chrono::seconds>((end - start)).count();
+    fmt::println(log, "Finished littering. Time taken: {} seconds.", elapsed_ms);
 
     if (sleepDelay != 0) {
 #ifdef _WIN32
@@ -176,13 +178,14 @@ void runLitterer() {
 #else
         const auto pid = getpid();
 #endif
-        fmt::println(log, "Sleeping {} seconds before resuming (PID: {})...\n", sleepDelay, pid);
+        fmt::println(log, "Sleeping {} seconds before resuming (PID: {})...", sleepDelay, pid);
         std::this_thread::sleep_for(std::chrono::seconds(sleepDelay));
-        fmt::println(log, "Resuming program now!\n");
+        fmt::println(log, "Resuming program now!");
     }
 
-    fmt::println(log, "==================================================================================\n");
+    fmt::println(log, "==================================================================================");
     if (log != stderr) {
-        fclose(log);
+        std::fclose(log);
     }
 }
+} // namespace litterer::distribution

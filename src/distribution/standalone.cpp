@@ -7,6 +7,7 @@
 
 #include "litterer.hpp"
 
+namespace {
 struct Initialization {
     Initialization() {
         litterer::distribution::runLitterer();
@@ -40,6 +41,5 @@ struct Initialization {
     std::chrono::high_resolution_clock::time_point start;
 };
 
-namespace {
 const Initialization _;
-}
+} // namespace

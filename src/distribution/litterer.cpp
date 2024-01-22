@@ -123,8 +123,8 @@ void runLitterer() {
 
     const auto sizeClasses = data["sizeClasses"].get<std::vector<std::size_t>>();
     const auto bins = data["bins"].get<std::vector<std::uint64_t>>();
-    const auto nAllocations = data["nAllocations"].get<std::uint64_t>();
     const auto maxLiveAllocations = data["maxLiveAllocations"].get<std::int64_t>();
+    const auto nAllocations = std::accumulate(bins.begin(), bins.end(), std::uint64_t(0));
     const std::size_t nAllocationsLitter = maxLiveAllocations * multiplier;
 
     fmt::println(log, "==================================== Litterer ====================================");
@@ -138,8 +138,6 @@ void runLitterer() {
     fmt::println(log, "timestamp  : {} {}", __DATE__, __TIME__);
     fmt::println(log, "==================================================================================");
 
-    assertOrExit(std::accumulate(bins.begin(), bins.end(), std::uint64_t(0)) == nAllocations, log,
-                 "Invalid bin distribution.");
     const std::vector<std::uint64_t> binsCumSum = cumulative_sum(bins);
 
     const auto start = std::chrono::high_resolution_clock::now();

@@ -53,21 +53,21 @@ else()
 endif()
 set(CMAKE_COMPILE_WARNING_AS_ERROR ON)
 
-# Interposition is not supported on Windows, so detectors are not useful.
-if(NOT WIN32)
-  add_library(detector_blank SHARED src/blank/detector.cpp)
-  target_link_libraries(detector_blank PRIVATE ${CMAKE_DL_LIBS})
-endif()
-
 add_library(litterer_distribution SHARED src/distribution/litterer.cpp)
 target_link_libraries(litterer_distribution PRIVATE fmt nlohmann_json)
 if(NOT WIN32)
   target_link_libraries(litterer_distribution PRIVATE ${CMAKE_DL_LIBS})
 endif()
 
-add_library(litterer_distribution_standalone SHARED src/distribution/standalone.cpp)
-target_link_libraries(litterer_distribution_standalone PUBLIC litterer_distribution)
-target_link_libraries(litterer_distribution_standalone PRIVATE fmt)
-
 add_executable(benchmark_iterator src/benchmarks/iterator.cpp)
 target_link_libraries(benchmark_iterator PRIVATE argparse benchmark)
+
+# Interposition is not supported on Windows.
+if(NOT WIN32)
+  add_library(detector_blank SHARED src/blank/detector.cpp)
+  target_link_libraries(detector_blank PRIVATE ${CMAKE_DL_LIBS})
+
+  add_library(litterer_distribution_standalone SHARED src/distribution/standalone.cpp)
+  target_link_libraries(litterer_distribution_standalone PUBLIC litterer_distribution)
+  target_link_libraries(litterer_distribution_standalone PRIVATE fmt)
+endif()

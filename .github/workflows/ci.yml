@@ -18,19 +18,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4.1.1
 
-      - name: Install CWhy
+      - id: cwhy
+        name: Set up CWhy
         run: |
-          pip install cwhy
-          cwhy --version
+          echo "CWHY_VERSION=$(cwhy --version)" >> "$GITHUB_OUTPUT"
+          echo "CC=$(cwhy --wrapper --- clang)"
+          echo "CXX=$(cwhy --wrapper --- clang++)"
 
       - name: Configure CMake
         run: >
           cmake . -B build 
           -DCMAKE_BUILD_TYPE=${{matrix.build-type}}
-          -DCMAKE_C_COMPILER=`cwhy --wrapper clang`
-          -DCMAKE_CXX_COMPILER=`cwhy --wrapper clang++`
         env:
           CWHY_DISABLE: 1
+          CC: ${{ steps.cwhy.outputs.CC }}
+          CXX: ${{ steps.cwhy.outputs.CXX }}
 
       - name: Build
         run: cmake --build build --parallel
@@ -43,19 +45,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4.1.1
 
-      - name: Install CWhy
+      - name: Set up CWhy
         run: |
-          pip install cwhy
-          cwhy --version
+          echo "CWHY_VERSION=$(cwhy --version)" >> "$GITHUB_OUTPUT"
+          echo "CC=$(cwhy --wrapper --- cl)"
+          echo "CXX=$(cwhy --wrapper --- cl)"
 
       - name: Configure CMake
         run: >
           cmake . -B build
           -DCMAKE_BUILD_TYPE=${{matrix.build-type}}
-          -DCMAKE_C_COMPILER=`cwhy --wrapper cl`
-          -DCMAKE_CXX_COMPILER=`cwhy --wrapper cl`
+
         env:
           CWHY_DISABLE: 1
+          CC: ${{ steps.cwhy.outputs.CC }}
+          CXX: ${{ steps.cwhy.outputs.CXX }}
 
       - name: Build
         run: cmake --build build --parallel
@@ -68,22 +72,24 @@ jobs:
     steps:
       - uses: actions/checkout@v4.1.1
 
-      - name: Install CWhy
-        run: |
-          pip install cwhy
-          cwhy --version
-
       - name: Download GCC
         run: sudo apt install -y gcc-11 g++-11
+
+      - name: Set up CWhy
+        run: |
+          echo "CWHY_VERSION=$(cwhy --version)" >> "$GITHUB_OUTPUT"
+          echo "CC=$(cwhy --wrapper --- gcc-11)"
+          echo "CXX=$(cwhy --wrapper --- g++-11)"
 
       - name: Configure CMake (GCC)
         run: >
           cmake . -B build
           -DCMAKE_BUILD_TYPE=${{matrix.build-type}}
-          -DCMAKE_C_COMPILER=`cwhy --wrapper gcc-11`
-          -DCMAKE_CXX_COMPILER=`cwhy --wrapper g++-11`
+
         env:
           CWHY_DISABLE: 1
+          CC: ${{ steps.cwhy.outputs.CC }}
+          CXX: ${{ steps.cwhy.outputs.CXX }}
 
       - name: Build
         run: cmake --build build --parallel
@@ -96,25 +102,27 @@ jobs:
     steps:
       - uses: actions/checkout@v4.1.1
 
-      - name: Install CWhy
-        run: |
-          pip install cwhy
-          cwhy --version
-
       - name: Download LLVM
         run: |
           sudo apt install lsb-release wget software-properties-common gnupg
           curl -sSf https://apt.llvm.org/llvm.sh | sudo bash -s -- 17 all
 
+      - name: Set up CWhy
+        run: |
+          echo "CWHY_VERSION=$(cwhy --version)" >> "$GITHUB_OUTPUT"
+          echo "CC=$(cwhy --wrapper --- clang-17)"
+          echo "CXX=$(cwhy --wrapper --- clang++-17)"
+
       - name: Configure CMake (Clang)
         run: >
           cmake . -B build
           -DCMAKE_BUILD_TYPE=${{matrix.build-type}}
-          -DCMAKE_C_COMPILER=`cwhy --wrapper clang-17`
-          -DCMAKE_CXX_COMPILER=`cwhy --wrapper clang++-17`
           -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+
         env:
           CWHY_DISABLE: 1
+          CC: ${{ steps.cwhy.outputs.CC }}
+          CXX: ${{ steps.cwhy.outputs.CXX }}
 
       - name: Build
         run: cmake --build build --parallel

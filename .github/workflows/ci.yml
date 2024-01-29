@@ -19,7 +19,9 @@ jobs:
       - uses: actions/checkout@v4.1.1
 
       - name: Install CWhy
-        run: pip install cwhy
+        run: |
+          pip install cwhy
+          cwhy --version
 
       - name: Configure CMake
         run: >
@@ -41,6 +43,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4.1.1
 
+      - name: Install CWhy
+        run: |
+          pip install cwhy
+          cwhy --version
+
       - name: Configure CMake
         run: >
           cmake . -B build
@@ -60,6 +67,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.1.1
+
+      - name: Install CWhy
+        run: |
+          pip install cwhy
+          cwhy --version
 
       - name: Download GCC
         run: sudo apt install -y gcc-11 g++-11
@@ -83,6 +95,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.1.1
+
+      - name: Install CWhy
+        run: |
+          pip install cwhy
+          cwhy --version
+
       - name: Download LLVM
         run: |
           sudo apt install lsb-release wget software-properties-common gnupg

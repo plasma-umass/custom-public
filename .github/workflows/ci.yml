@@ -22,8 +22,8 @@ jobs:
         name: Set up CWhy
         run: |
           echo "CWHY_VERSION=$(cwhy --version)" >> "$GITHUB_OUTPUT"
-          echo "CC=$(cwhy --wrapper --- clang)"
-          echo "CXX=$(cwhy --wrapper --- clang++)"
+          echo "CC=$(cwhy --wrapper --- clang)" >> "$GITHUB_OUTPUT"
+          echo "CXX=$(cwhy --wrapper --- clang++)" >> "$GITHUB_OUTPUT"
 
       - name: Configure CMake
         run: >
@@ -48,8 +48,8 @@ jobs:
       - name: Set up CWhy
         run: |
           echo "CWHY_VERSION=$(cwhy --version)" >> "$GITHUB_OUTPUT"
-          echo "CC=$(cwhy --wrapper --- cl)"
-          echo "CXX=$(cwhy --wrapper --- cl)"
+          echo "CC=$(cwhy --wrapper --- cl)" >> "$GITHUB_OUTPUT"
+          echo "CXX=$(cwhy --wrapper --- cl)" >> "$GITHUB_OUTPUT"
 
       - name: Configure CMake
         run: >
@@ -78,8 +78,8 @@ jobs:
       - name: Set up CWhy
         run: |
           echo "CWHY_VERSION=$(cwhy --version)" >> "$GITHUB_OUTPUT"
-          echo "CC=$(cwhy --wrapper --- gcc-11)"
-          echo "CXX=$(cwhy --wrapper --- g++-11)"
+          echo "CC=$(cwhy --wrapper --- gcc-11)" >> "$GITHUB_OUTPUT"
+          echo "CXX=$(cwhy --wrapper --- g++-11)" >> "$GITHUB_OUTPUT"
 
       - name: Configure CMake (GCC)
         run: >
@@ -110,8 +110,8 @@ jobs:
       - name: Set up CWhy
         run: |
           echo "CWHY_VERSION=$(cwhy --version)" >> "$GITHUB_OUTPUT"
-          echo "CC=$(cwhy --wrapper --- clang-17)"
-          echo "CXX=$(cwhy --wrapper --- clang++-17)"
+          echo "CC=$(cwhy --wrapper --- clang-17)" >> "$GITHUB_OUTPUT"
+          echo "CXX=$(cwhy --wrapper --- clang++-17)" >> "$GITHUB_OUTPUT"
 
       - name: Configure CMake (Clang)
         run: >

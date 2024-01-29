@@ -84,5 +84,5 @@ int main(int argc, char** argv) {
 
     const auto end = std::chrono::high_resolution_clock::now();
     const auto elapsed_ms = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
-    std::cout << "Done. Time elapsed: " << elapsed_ms << "ms." << std::endl;
+    std::cout << "Done. Time elapsed: " << elapsed_ms << " ms." << std::endl;
 }

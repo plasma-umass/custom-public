@@ -29,9 +29,10 @@ int main(int argc, char** argv) {
         .help("the number of iterations over the entire allocated population")
         .metavar("N")
         .scan<'d', std::uint64_t>();
-    program.add_argument("--seed").default_value(std::random_device()()).scan<'d', unsigned int>();
-    program.add_argument("--min-chunk-size").default_value(std::size_t(8)).scan<'d', std::size_t>();
-    program.add_argument("--max-chunk-size").default_value(std::size_t(4096)).scan<'d', std::size_t>();
+    program.add_argument("--seed")
+        .help("initial seed for the random number generator")
+        .default_value(std::random_device()())
+        .scan<'d', unsigned int>();
 
     try {
         program.parse_args(argc, argv);
@@ -47,17 +48,11 @@ int main(int argc, char** argv) {
         = static_cast<std::size_t>(std::ceil(static_cast<double>(footprint) / static_cast<double>(allocationSize)));
     const auto iterations = program.get<std::uint64_t>("--iterations");
     const auto seed = program.get<unsigned int>("seed");
-    auto minChunkSize = program.get<std::size_t>("--min-chunk-size");
-    if (minChunkSize > allocationSize) {
-        minChunkSize = 1;
-    }
-    const auto maxChunkSize = std::min(program.get<std::size_t>("--max-chunk-size"), allocationSize);
 
     std::cout << "allocation size   : " << allocationSize << std::endl;
     std::cout << "number of objects : " << nObjects << std::endl;
     std::cout << "iterations        : " << iterations << std::endl;
     std::cout << "seed              : " << seed << std::endl;
-    std::cout << "chunk size        : " << minChunkSize << " - " << maxChunkSize << std::endl;
 
     std::mt19937_64 generator(seed);
 
@@ -65,7 +60,9 @@ int main(int argc, char** argv) {
     std::vector<void*> objects;
     objects.reserve(nObjects);
     for (std::uint64_t i = 0; i < nObjects; ++i) {
-        objects.push_back(std::malloc(allocationSize));
+        void* object = std::malloc(allocationSize);
+        std::generate_n(static_cast<std::uint8_t*>(object), allocationSize, std::ref(generator));
+        objects.push_back(object);
     }
 
     std::cout << "Iterating..." << std::endl;
@@ -73,14 +70,11 @@ int main(int argc, char** argv) {
 
     std::uint64_t sum = 0;
     for (std::uint64_t i = 0; i < iterations; ++i) {
-        const auto size = std::uniform_int_distribution<std::size_t>(minChunkSize, maxChunkSize)(generator);
-        const auto offset = std::uniform_int_distribution<std::size_t>(0, allocationSize - size)(generator);
+        const auto offset = std::uniform_int_distribution<std::size_t>(0, allocationSize - 1)(generator);
 
         for (const auto* object : objects) {
             const auto* ptr = static_cast<const std::uint8_t*>(object) + offset;
-            for (std::size_t k = 0; k < size; ++k) {
-                sum += ptr[k];
-            }
+            sum += *ptr;
         }
     }
     benchmark::DoNotOptimize(sum);

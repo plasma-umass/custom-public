@@ -1,11 +1,9 @@
-#include <algorithm>
 #include <chrono>
 #include <cmath>
 #include <cstddef>
 #include <cstdint>
 #include <cstdlib>
 #include <exception>
-#include <functional>
 #include <iostream>
 #include <random>
 #include <vector>

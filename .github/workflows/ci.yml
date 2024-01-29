@@ -11,17 +11,21 @@ jobs:
     strategy:
       matrix:
         platform: [macos-latest, windows-latest]
+        build-type: [Debug, Release]
     runs-on: ${{matrix.platform}}
     steps:
       - uses: actions/checkout@v4.1.1
 
       - name: Configure CMake
-        run: cmake . -B build -DCMAKE_BUILD_TYPE=Release
+        run: cmake . -B build -DCMAKE_BUILD_TYPE=${{matrix.build-type}}
 
       - name: Build
         run: cmake --build build --parallel
 
   ubuntu-check-gcc:
+    strategy:
+      matrix:
+        build-type: [Debug, Release]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.1.1
@@ -31,13 +35,16 @@ jobs:
 
       - name: Configure CMake (GCC)
         run: >
-          cmake . -B build -DCMAKE_BUILD_TYPE=Release
+          cmake . -B build -DCMAKE_BUILD_TYPE=${{matrix.build-type}}
           -DCMAKE_C_COMPILER=gcc-11 -DCMAKE_CXX_COMPILER=g++-11
 
       - name: Build
         run: cmake --build build --parallel
 
   ubuntu-check-clang:
+    strategy:
+      matrix:
+        build-type: [Debug, Release]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.1.1
@@ -48,7 +55,7 @@ jobs:
 
       - name: Configure CMake (Clang)
         run: >
-          cmake . -B build -DCMAKE_BUILD_TYPE=Release
+          cmake . -B build -DCMAKE_BUILD_TYPE=${{matrix.build-type}}
           -DCMAKE_C_COMPILER=clang-17 -DCMAKE_CXX_COMPILER=clang++-17
           -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 
@@ -56,7 +63,9 @@ jobs:
         run: cmake --build build --parallel
 
       - name: Check clang-format
+        if: ${{matrix.build-type}} == 'Debug'
         run: find src -name '*.cpp' | xargs clang-format-17 --dry-run --Werror
 
       - name: Check clang-tidy
+        if: ${{matrix.build-type}} == 'Debug'
         run: find src -name '*.cpp' | xargs clang-tidy-17 -p build --warnings-as-errors='*'

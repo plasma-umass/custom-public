@@ -1,5 +1,6 @@
 #! /usr/bin/env python3
 
+import itertools
 import os
 import re
 import shutil
@@ -8,6 +9,9 @@ import tempfile
 
 N = 5
 OUTPUT = "measure.csv"
+
+BENCHMARK_N = 50000
+BENCHMARK_I = 5000
 
 
 def main():
@@ -22,11 +26,11 @@ def main():
     )
 
     with open(OUTPUT, "w") as f:
-        for s in range(8, 4097, 8):
+        for s in itertools.chain(range(8, 289, 8), range(320, 4097, 32)):
             print(f"Testing with s = {s}...")
             # 1. Detect.
             subprocess.run(
-                f"{build_directory}/benchmark_iterator -n 50000 -i 10000 -s {s}",
+                f"{build_directory}/benchmark_iterator -n {BENCHMARK_N} -i {BENCHMARK_I} -s {s}",
                 shell=True,
                 check=True,
                 env={
@@ -40,7 +44,7 @@ def main():
             times_ms_2 = []
             for _ in range(N):
                 stdout = subprocess.check_output(
-                    f"{build_directory}/benchmark_iterator -n 50000 -i 10000 -s {s}",
+                    f"{build_directory}/benchmark_iterator -n {BENCHMARK_N} -i {BENCHMARK_I} -s {s}",
                     shell=True,
                     text=True,
                 )
@@ -52,7 +56,7 @@ def main():
             times_ms_3 = []
             for _ in range(N):
                 stdout = subprocess.check_output(
-                    f"{build_directory}/benchmark_iterator -n 50000 -i 10000 -s {s}",
+                    f"{build_directory}/benchmark_iterator -n {BENCHMARK_N} -i {BENCHMARK_I} -s {s}",
                     shell=True,
                     text=True,
                     stderr=subprocess.DEVNULL,
@@ -69,7 +73,7 @@ def main():
             times_ms_4 = []
             for _ in range(N):
                 stdout = subprocess.check_output(
-                    f"{build_directory}/benchmark_iterator -n 50000 -i 10000 -s {s}",
+                    f"{build_directory}/benchmark_iterator -n {BENCHMARK_N} -i {BENCHMARK_I} -s {s}",
                     shell=True,
                     text=True,
                     stderr=subprocess.DEVNULL,
@@ -88,7 +92,7 @@ def main():
             times_ms_5 = []
             for _ in range(N):
                 stdout = subprocess.check_output(
-                    f"{build_directory}/benchmark_iterator -n 50000 -i 10000 -s {s}",
+                    f"{build_directory}/benchmark_iterator -n {BENCHMARK_N} -i {BENCHMARK_I} -s {s}",
                     shell=True,
                     text=True,
                     stderr=subprocess.DEVNULL,
@@ -107,7 +111,7 @@ def main():
             times_ms_6 = []
             for _ in range(N):
                 stdout = subprocess.check_output(
-                    f"{build_directory}/benchmark_iterator -n 50000 -i 10000 -s {s}",
+                    f"{build_directory}/benchmark_iterator -n {BENCHMARK_N} -i {BENCHMARK_I} -s {s}",
                     shell=True,
                     text=True,
                     stderr=subprocess.DEVNULL,

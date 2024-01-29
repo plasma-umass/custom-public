@@ -22,6 +22,7 @@ jobs:
         name: Set up CWhy
         run: |
           python3 -m pip install cwhy
+          python3 -m cwhy --version
           echo "CWHY_VERSION=$(cwhy --version)" >> "$GITHUB_OUTPUT"
           echo "CC=$(python3 -m cwhy --wrapper --- clang)" >> "$GITHUB_OUTPUT"
           echo "CXX=$(python3 -m cwhy --wrapper --- clang++)" >> "$GITHUB_OUTPUT"
@@ -50,6 +51,7 @@ jobs:
         name: Set up CWhy
         run: |
           python3 -m pip install cwhy
+          python3 -m cwhy --version
           echo "CWHY_VERSION=$(cwhy --version)" >> "$GITHUB_OUTPUT"
           echo "CC=$(python3 -m cwhy --wrapper --- cl)" >> "$GITHUB_OUTPUT"
           echo "CXX=$(python3 -m cwhy --wrapper --- cl)" >> "$GITHUB_OUTPUT"
@@ -82,6 +84,7 @@ jobs:
         name: Set up CWhy
         run: |
           python3 -m pip install cwhy
+          python3 -m cwhy --version
           echo "CWHY_VERSION=$(cwhy --version)" >> "$GITHUB_OUTPUT"
           echo "CC=$(python3 -m cwhy --wrapper --- gcc-11)" >> "$GITHUB_OUTPUT"
           echo "CXX=$(python3 -m cwhy --wrapper --- g++-11)" >> "$GITHUB_OUTPUT"
@@ -115,6 +118,7 @@ jobs:
         name: Set up CWhy
         run: |
           python3 -m pip install cwhy
+          python3 -m cwhy --version
           echo "CWHY_VERSION=$(cwhy --version)" >> "$GITHUB_OUTPUT"
           echo "CC=$(python3 -m cwhy --wrapper --- clang-17)" >> "$GITHUB_OUTPUT"
           echo "CXX=$(python3 -m cwhy --wrapper --- clang++-17)" >> "$GITHUB_OUTPUT"

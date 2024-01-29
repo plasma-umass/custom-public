@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <chrono>
+#include <cmath>
 #include <cstddef>
 #include <cstdint>
 #include <cstdlib>
@@ -15,17 +16,17 @@ int main(int argc, char** argv) {
     auto program = argparse::ArgumentParser("benchmark_iterator", "", argparse::default_arguments::help);
     program.add_argument("-s", "--allocation-size")
         .required()
-        .help("the size of each allocated object (B).")
+        .help("the size in bytes of each allocated object")
         .metavar("SIZE")
         .scan<'d', std::size_t>();
-    program.add_argument("-n", "--number-of-objects")
+    program.add_argument("-f", "--footprint")
         .required()
-        .help("the number of objects.")
-        .metavar("N")
+        .help("the total number of bytes that should be allocated (n = f / s)")
+        .metavar("SIZE")
         .scan<'d', std::uint64_t>();
     program.add_argument("-i", "--iterations")
         .required()
-        .help("the number of iterations over the entire allocated population.")
+        .help("the number of iterations over the entire allocated population")
         .metavar("N")
         .scan<'d', std::uint64_t>();
     program.add_argument("--seed").default_value(std::random_device()()).scan<'d', unsigned int>();
@@ -41,7 +42,9 @@ int main(int argc, char** argv) {
     }
 
     const auto allocationSize = program.get<std::size_t>("--allocation-size");
-    const auto nObjects = program.get<std::uint64_t>("--number-of-objects");
+    const auto footprint = program.get<std::uint64_t>("--footprint");
+    const auto nObjects
+        = static_cast<std::size_t>(std::ceil(static_cast<double>(footprint) / static_cast<double>(allocationSize)));
     const auto iterations = program.get<std::uint64_t>("--iterations");
     const auto seed = program.get<unsigned int>("seed");
     auto minChunkSize = program.get<std::size_t>("--min-chunk-size");

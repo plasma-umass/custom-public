@@ -62,7 +62,9 @@ int main(int argc, char** argv) {
     objects.reserve(nObjects);
     for (std::uint64_t i = 0; i < nObjects; ++i) {
         void* object = std::malloc(allocationSize);
-        std::generate_n(static_cast<std::uint8_t*>(object), allocationSize, std::ref(generator));
+        for (std::size_t j = 0; j < allocationSize; ++j) {
+            static_cast<std::uint8_t*>(object)[j] = std::uniform_int_distribution<std::uint8_t>()(generator);
+        }
         objects.push_back(object);
     }
 

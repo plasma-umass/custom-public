@@ -30,7 +30,7 @@ def main():
             print(f"Testing with s = {s}...")
             # 1. Detect.
             subprocess.run(
-                f"{build_directory}/benchmark_iterator -n {BENCHMARK_N} -i {BENCHMARK_I} -s {s}",
+                f"{build_directory}/benchmark_iterator -n {BENCHMARK_N} -i {BENCHMARK_I} -s {s} --max-chunk-size 8",
                 shell=True,
                 check=True,
                 env={
@@ -45,7 +45,7 @@ def main():
             times_ms_2 = []
             for _ in range(N):
                 stdout = subprocess.check_output(
-                    f"{build_directory}/benchmark_iterator -n {BENCHMARK_N} -i {BENCHMARK_I} -s {s}",
+                    f"{build_directory}/benchmark_iterator -n {BENCHMARK_N} -i {BENCHMARK_I} -s {s} --max-chunk-size 8",
                     shell=True,
                     text=True,
                 )
@@ -57,7 +57,7 @@ def main():
             times_ms_3 = []
             for _ in range(N):
                 stdout = subprocess.check_output(
-                    f"{build_directory}/benchmark_iterator -n {BENCHMARK_N} -i {BENCHMARK_I} -s {s}",
+                    f"{build_directory}/benchmark_iterator -n {BENCHMARK_N} -i {BENCHMARK_I} -s {s} --max-chunk-size 8",
                     shell=True,
                     text=True,
                     stderr=subprocess.DEVNULL,
@@ -75,7 +75,7 @@ def main():
             times_ms_4 = []
             for _ in range(N):
                 stdout = subprocess.check_output(
-                    f"{build_directory}/benchmark_iterator -n {BENCHMARK_N} -i {BENCHMARK_I} -s {s}",
+                    f"{build_directory}/benchmark_iterator -n {BENCHMARK_N} -i {BENCHMARK_I} -s {s} --max-chunk-size 8",
                     shell=True,
                     text=True,
                     stderr=subprocess.DEVNULL,
@@ -95,7 +95,7 @@ def main():
             times_ms_5 = []
             for _ in range(N):
                 stdout = subprocess.check_output(
-                    f"{build_directory}/benchmark_iterator -n {BENCHMARK_N} -i {BENCHMARK_I} -s {s}",
+                    f"{build_directory}/benchmark_iterator -n {BENCHMARK_N} -i {BENCHMARK_I} -s {s} --max-chunk-size 8",
                     shell=True,
                     text=True,
                     stderr=subprocess.DEVNULL,
@@ -115,7 +115,7 @@ def main():
             times_ms_6 = []
             for _ in range(N):
                 stdout = subprocess.check_output(
-                    f"{build_directory}/benchmark_iterator -n {BENCHMARK_N} -i {BENCHMARK_I} -s {s}",
+                    f"{build_directory}/benchmark_iterator -n {BENCHMARK_N} -i {BENCHMARK_I} -s {s} --max-chunk-size 8",
                     shell=True,
                     text=True,
                     stderr=subprocess.DEVNULL,

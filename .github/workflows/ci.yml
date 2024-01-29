@@ -23,17 +23,15 @@ jobs:
         run: |
           python3 -m pip install cwhy
           python3 -m cwhy --version
-          echo "CC=$(python3 -m cwhy --wrapper --- clang)" >> "$GITHUB_OUTPUT"
-          echo "CXX=$(python3 -m cwhy --wrapper --- clang++)" >> "$GITHUB_OUTPUT"
 
       - name: Configure CMake
         run: >
           cmake . -B build 
           -DCMAKE_BUILD_TYPE=${{matrix.build-type}}
+          -DCMAKE_C_COMPILER=$(python3 -m cwhy --wrapper --- clang)
+          -DCMAKE_CXX_COMPILER=$(python3 -m cwhy --wrapper --- clang++)
         env:
           CWHY_DISABLE: 1
-          CC: ${{ steps.cwhy.outputs.CC }}
-          CXX: ${{ steps.cwhy.outputs.CXX }}
 
       - name: Build
         run: cmake --build build --parallel
@@ -51,18 +49,15 @@ jobs:
         run: |
           python3 -m pip install cwhy
           python3 -m cwhy --version
-          echo "CC=$(python3 -m cwhy --wrapper --- cl)" >> "$GITHUB_OUTPUT"
-          echo "CXX=$(python3 -m cwhy --wrapper --- cl)" >> "$GITHUB_OUTPUT"
 
       - name: Configure CMake
         run: >
           cmake . -B build
           -DCMAKE_BUILD_TYPE=${{matrix.build-type}}
-
+          -DCMAKE_C_COMPILER=$(python3 -m cwhy --wrapper --- cl)
+          -DCMAKE_CXX_COMPILER=$(python3 -m cwhy --wrapper --- cl)
         env:
           CWHY_DISABLE: 1
-          CC: ${{ steps.cwhy.outputs.CC }}
-          CXX: ${{ steps.cwhy.outputs.CXX }}
 
       - name: Build
         run: cmake --build build --parallel
@@ -83,17 +78,15 @@ jobs:
         run: |
           python3 -m pip install cwhy
           python3 -m cwhy --version
-          echo "CC=$(python3 -m cwhy --wrapper --- gcc-11)" >> "$GITHUB_OUTPUT"
-          echo "CXX=$(python3 -m cwhy --wrapper --- g++-11)" >> "$GITHUB_OUTPUT"
 
       - name: Configure CMake (GCC)
         run: >
           cmake . -B build
           -DCMAKE_BUILD_TYPE=${{matrix.build-type}}
+          -DCMAKE_C_COMPILER=$(python3 -m cwhy --wrapper --- gcc-11)
+          -DCMAKE_CXX_COMPILER=$(python3 -m cwhy --wrapper --- g++-11)
         env:
           CWHY_DISABLE: 1
-          CC: ${{ steps.cwhy.outputs.CC }}
-          CXX: ${{ steps.cwhy.outputs.CXX }}
 
       - name: Build
         run: cmake --build build --parallel
@@ -116,18 +109,15 @@ jobs:
         run: |
           python3 -m pip install cwhy
           python3 -m cwhy --version
-          echo "CC=$(python3 -m cwhy --wrapper --- clang-17)" >> "$GITHUB_OUTPUT"
-          echo "CXX=$(python3 -m cwhy --wrapper --- clang++-17)" >> "$GITHUB_OUTPUT"
 
       - name: Configure CMake (Clang)
         run: >
           cmake . -B build
           -DCMAKE_BUILD_TYPE=${{matrix.build-type}}
           -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+          -DCMAKE_C_COMPILER=$(python3 -m cwhy --wrapper --- clang-17)
         env:
           CWHY_DISABLE: 1
-          CC: ${{ steps.cwhy.outputs.CC }}
-          CXX: ${{ steps.cwhy.outputs.CXX }}
 
       - name: Build
         run: cmake --build build --parallel

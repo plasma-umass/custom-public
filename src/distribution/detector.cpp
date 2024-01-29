@@ -6,6 +6,7 @@
 #include <cstddef>
 #include <cstdint>
 #include <cstdlib>
+#include <deque>
 #include <fstream>
 #include <iostream>
 #include <iterator>
@@ -13,8 +14,6 @@
 #include <vector>
 
 #include <nlohmann/json.hpp> // NOLINT(misc-include-cleaner)
-
-#include <static_vector.hpp>
 
 namespace {
 const auto* kDefaultOutputFilename = "distribution.json";
@@ -25,7 +24,7 @@ std::atomic_bool initialized = false;
 thread_local auto busy = 0;
 auto enableOverflowBin = kDefaultEnableOverflowBin;
 std::vector<std::size_t> sizeClasses;
-static_vector<std::atomic_uint64_t> bins;
+std::deque<std::atomic_uint64_t> bins;
 std::atomic_int64_t liveAllocations = 0;
 std::atomic_int64_t maxLiveAllocations = 0;
 
@@ -50,7 +49,7 @@ struct Initialization {
             exit(EXIT_FAILURE);
         }
 
-        bins.reset(sizeClasses.size() + (enableOverflowBin ? 1 : 0));
+        bins.resize(sizeClasses.size() + (enableOverflowBin ? 1 : 0));
 
         initialized = true;
     }

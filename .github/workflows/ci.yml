@@ -22,7 +22,7 @@ jobs:
       - name: Build
         run: cmake --build build --parallel
 
-  ubuntu-check-gcc:
+  ubuntu-gcc-check:
     strategy:
       matrix:
         build-type: [Debug, Release]
@@ -41,7 +41,7 @@ jobs:
       - name: Build
         run: cmake --build build --parallel
 
-  ubuntu-check-clang:
+  ubuntu-clang-check:
     strategy:
       matrix:
         build-type: [Debug, Release]
@@ -63,9 +63,9 @@ jobs:
         run: cmake --build build --parallel
 
       - name: Check clang-format
-        if: ${{matrix.build-type}} == 'Debug'
+        if: ${{ matrix.build-type == 'Debug' }}
         run: find src -name '*.cpp' | xargs clang-format-17 --dry-run --Werror
 
       - name: Check clang-tidy
-        if: ${{matrix.build-type}} == 'Debug'
+        if: ${{ matrix.build-type == 'Debug' }}
         run: find src -name '*.cpp' | xargs clang-tidy-17 -p build --warnings-as-errors='*'

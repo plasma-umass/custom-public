@@ -21,9 +21,10 @@ jobs:
       - id: cwhy
         name: Set up CWhy
         run: |
+          python3 -m pip install cwhy
           echo "CWHY_VERSION=$(cwhy --version)" >> "$GITHUB_OUTPUT"
-          echo "CC=$(cwhy --wrapper --- clang)" >> "$GITHUB_OUTPUT"
-          echo "CXX=$(cwhy --wrapper --- clang++)" >> "$GITHUB_OUTPUT"
+          echo "CC=$(python3 -m cwhy --wrapper --- clang)" >> "$GITHUB_OUTPUT"
+          echo "CXX=$(python3 -m cwhy --wrapper --- clang++)" >> "$GITHUB_OUTPUT"
 
       - name: Configure CMake
         run: >
@@ -45,11 +46,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4.1.1
 
-      - name: Set up CWhy
+      - id: cwhy
+        name: Set up CWhy
         run: |
+          python3 -m pip install cwhy
           echo "CWHY_VERSION=$(cwhy --version)" >> "$GITHUB_OUTPUT"
-          echo "CC=$(cwhy --wrapper --- cl)" >> "$GITHUB_OUTPUT"
-          echo "CXX=$(cwhy --wrapper --- cl)" >> "$GITHUB_OUTPUT"
+          echo "CC=$(python3 -m cwhy --wrapper --- cl)" >> "$GITHUB_OUTPUT"
+          echo "CXX=$(python3 -m cwhy --wrapper --- cl)" >> "$GITHUB_OUTPUT"
 
       - name: Configure CMake
         run: >
@@ -75,17 +78,18 @@ jobs:
       - name: Download GCC
         run: sudo apt install -y gcc-11 g++-11
 
-      - name: Set up CWhy
+      - id: cwhy
+        name: Set up CWhy
         run: |
+          python3 -m pip install cwhy
           echo "CWHY_VERSION=$(cwhy --version)" >> "$GITHUB_OUTPUT"
-          echo "CC=$(cwhy --wrapper --- gcc-11)" >> "$GITHUB_OUTPUT"
-          echo "CXX=$(cwhy --wrapper --- g++-11)" >> "$GITHUB_OUTPUT"
+          echo "CC=$(python3 -m cwhy --wrapper --- gcc-11)" >> "$GITHUB_OUTPUT"
+          echo "CXX=$(python3 -m cwhy --wrapper --- g++-11)" >> "$GITHUB_OUTPUT"
 
       - name: Configure CMake (GCC)
         run: >
           cmake . -B build
           -DCMAKE_BUILD_TYPE=${{matrix.build-type}}
-
         env:
           CWHY_DISABLE: 1
           CC: ${{ steps.cwhy.outputs.CC }}
@@ -107,18 +111,19 @@ jobs:
           sudo apt install lsb-release wget software-properties-common gnupg
           curl -sSf https://apt.llvm.org/llvm.sh | sudo bash -s -- 17 all
 
-      - name: Set up CWhy
+      - id: cwhy
+        name: Set up CWhy
         run: |
+          python3 -m pip install cwhy
           echo "CWHY_VERSION=$(cwhy --version)" >> "$GITHUB_OUTPUT"
-          echo "CC=$(cwhy --wrapper --- clang-17)" >> "$GITHUB_OUTPUT"
-          echo "CXX=$(cwhy --wrapper --- clang++-17)" >> "$GITHUB_OUTPUT"
+          echo "CC=$(python3 -m cwhy --wrapper --- clang-17)" >> "$GITHUB_OUTPUT"
+          echo "CXX=$(python3 -m cwhy --wrapper --- clang++-17)" >> "$GITHUB_OUTPUT"
 
       - name: Configure CMake (Clang)
         run: >
           cmake . -B build
           -DCMAKE_BUILD_TYPE=${{matrix.build-type}}
           -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
-
         env:
           CWHY_DISABLE: 1
           CC: ${{ steps.cwhy.outputs.CC }}

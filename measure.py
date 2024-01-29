@@ -35,6 +35,7 @@ def main():
                 check=True,
                 env={
                     "LD_PRELOAD": f"{build_directory}/libdetector_distribution.so",
+                    "DYLD_INSERT_LIBRARIES": f"{build_directory}/libdetector_distribution.dylib",
                     **os.environ,
                 },
                 stdout=subprocess.DEVNULL,
@@ -62,6 +63,7 @@ def main():
                     stderr=subprocess.DEVNULL,
                     env={
                         "LD_PRELOAD": f"{build_directory}/liblitterer_distribution_standalone.so",
+                        "DYLD_INSERT_LIBRARIES": f"{build_directory}/liblitterer_distribution_standalone.dylib",
                         **os.environ,
                     },
                 )
@@ -79,6 +81,7 @@ def main():
                     stderr=subprocess.DEVNULL,
                     env={
                         "LD_PRELOAD": f"{build_directory}/liblitterer_distribution_standalone.so",
+                        "DYLD_INSERT_LIBRARIES": f"{build_directory}/liblitterer_distribution_standalone.dylib",
                         "LITTER_MULTIPLIER": "1",
                         "LITTER_OCCUPANCY": "0.4",
                         **os.environ,
@@ -98,6 +101,7 @@ def main():
                     stderr=subprocess.DEVNULL,
                     env={
                         "LD_PRELOAD": f"{build_directory}/liblitterer_distribution_standalone.so",
+                        "DYLD_INSERT_LIBRARIES": f"{build_directory}/liblitterer_distribution_standalone.dylib",
                         "LITTER_MULTIPLIER": "5",
                         "LITTER_OCCUPANCY": "0",
                         **os.environ,
@@ -117,6 +121,7 @@ def main():
                     stderr=subprocess.DEVNULL,
                     env={
                         "LD_PRELOAD": f"{build_directory}/liblitterer_distribution_standalone.so",
+                        "DYLD_INSERT_LIBRARIES": f"{build_directory}/liblitterer_distribution_standalone.dylib",
                         "LITTER_MULTIPLIER": "5",
                         "LITTER_OCCUPANCY": "1",
                         **os.environ,

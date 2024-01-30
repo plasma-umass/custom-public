@@ -52,6 +52,9 @@ jobs:
           python3 -m pip install cwhy
           python3 -m cwhy --version
 
+      - name: Check what generators are available
+        run: cmake --help
+
       - name: Configure CMake
         run: >
           cmake . -B build -G 'NMake Makefiles'

@@ -54,14 +54,15 @@ jobs:
 
       - name: Configure CMake
         run: >
-          cmake . -B build
-          # -DCMAKE_C_COMPILER=$(python3 -m cwhy --wrapper --- cl)
-          # -DCMAKE_CXX_COMPILER=$(python3 -m cwhy --wrapper --- cl)
+          cmake . -B build -G Ninja
+          -DCMAKE_BUILD_TYPE=${{matrix.build-type}}
+          -DCMAKE_C_COMPILER="$(python3 -m cwhy --wrapper --- cl)"
+          -DCMAKE_CXX_COMPILER="$(python3 -m cwhy --wrapper --- cl)"
         env:
           CWHY_DISABLE: 1
 
       - name: Build
-        run: cmake --build build --parallel --config ${{matrix.build-type}}
+        run: cmake --build build --parallel
 
   ubuntu-gcc-check:
     strategy:

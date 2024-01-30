@@ -45,6 +45,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Set up Ninja
+        run: choco install ninja
+
       - id: cwhy
         name: Set up CWhy
         run: |

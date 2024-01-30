@@ -10,9 +10,15 @@ import tempfile
 N = 5
 OUTPUT = "measure.csv"
 
-BENCHMARK_N = 50000
-BENCHMARK_I = 5000
+BENCHMARK_FOOTPRINT = 10_000_000 # 10MB
+BENCHMARK_ITERATIONS = 1000
 
+SETTINGS = [
+    {"LITTER_MULTIPLIER": "20", "LITTER_OCCUPANCY": "0.95"},
+    {"LITTER_MULTIPLIER": "1", "LITTER_OCCUPANCY": "0.4"},
+    {"LITTER_MULTIPLIER": "5", "LITTER_OCCUPANCY": "0"},
+    {"LITTER_MULTIPLIER": "5", "LITTER_OCCUPANCY": "1"},
+]
 
 def main():
     build_directory = tempfile.mkdtemp()
@@ -28,9 +34,10 @@ def main():
     with open(OUTPUT, "w") as f:
         for s in itertools.chain(range(8, 289, 8), range(320, 4097, 32)):
             print(f"Testing with s = {s}...")
+
             # 1. Detect.
             subprocess.run(
-                f"{build_directory}/benchmark_iterator -n {BENCHMARK_N} -i {BENCHMARK_I} -s {s} --max-chunk-size 8",
+                f"{build_directory}/benchmark_iterator -f {BENCHMARK_FOOTPRINT} -i {BENCHMARK_ITERATIONS} -s {s}",
                 shell=True,
                 check=True,
                 env={
@@ -41,99 +48,45 @@ def main():
                 stdout=subprocess.DEVNULL,
             )
 
+            row = [s]
+
             # 2. Run vanilla.
-            times_ms_2 = []
+            times = []
             for _ in range(N):
                 stdout = subprocess.check_output(
-                    f"{build_directory}/benchmark_iterator -n {BENCHMARK_N} -i {BENCHMARK_I} -s {s} --max-chunk-size 8",
-                    shell=True,
-                    text=True,
-                )
-                m = re.search(r"Done. Time elapsed: (\d+) ms.", stdout)
-                assert m
-                times_ms_2.append(int(m.group(1)))
-
-            # 3. Run with litterer.
-            times_ms_3 = []
-            for _ in range(N):
-                stdout = subprocess.check_output(
-                    f"{build_directory}/benchmark_iterator -n {BENCHMARK_N} -i {BENCHMARK_I} -s {s} --max-chunk-size 8",
+                    f"{build_directory}/benchmark_iterator -f {BENCHMARK_FOOTPRINT} -i {BENCHMARK_ITERATIONS} -s {s}",
                     shell=True,
                     text=True,
                     stderr=subprocess.DEVNULL,
-                    env={
-                        "LD_PRELOAD": f"{build_directory}/liblitterer_distribution_standalone.so",
-                        "DYLD_INSERT_LIBRARIES": f"{build_directory}/liblitterer_distribution_standalone.dylib",
-                        **os.environ,
-                    },
+                    env=os.environ,
                 )
-                m = re.search(r"Done. Time elapsed: (\d+) ms.", stdout)
-                assert m
-                times_ms_3.append(int(m.group(1)))
+                times.append(int(re.search(r"Done. Time elapsed: (\d+) ms.", stdout).group(1)))
+            row.append(sum(times) / N)
 
-            # 4. Run with sweetened litterer.
-            times_ms_4 = []
-            for _ in range(N):
-                stdout = subprocess.check_output(
-                    f"{build_directory}/benchmark_iterator -n {BENCHMARK_N} -i {BENCHMARK_I} -s {s} --max-chunk-size 8",
-                    shell=True,
-                    text=True,
-                    stderr=subprocess.DEVNULL,
-                    env={
-                        "LD_PRELOAD": f"{build_directory}/liblitterer_distribution_standalone.so",
-                        "DYLD_INSERT_LIBRARIES": f"{build_directory}/liblitterer_distribution_standalone.dylib",
-                        "LITTER_MULTIPLIER": "1",
-                        "LITTER_OCCUPANCY": "0.4",
-                        **os.environ,
-                    },
-                )
-                m = re.search(r"Done. Time elapsed: (\d+) ms.", stdout)
-                assert m
-                times_ms_4.append(int(m.group(1)))
-
-            # 5. Run with zero litterer.
-            times_ms_5 = []
-            for _ in range(N):
-                stdout = subprocess.check_output(
-                    f"{build_directory}/benchmark_iterator -n {BENCHMARK_N} -i {BENCHMARK_I} -s {s} --max-chunk-size 8",
-                    shell=True,
-                    text=True,
-                    stderr=subprocess.DEVNULL,
-                    env={
-                        "LD_PRELOAD": f"{build_directory}/liblitterer_distribution_standalone.so",
-                        "DYLD_INSERT_LIBRARIES": f"{build_directory}/liblitterer_distribution_standalone.dylib",
-                        "LITTER_MULTIPLIER": "5",
-                        "LITTER_OCCUPANCY": "0",
-                        **os.environ,
-                    },
-                )
-                m = re.search(r"Done. Time elapsed: (\d+) ms.", stdout)
-                assert m
-                times_ms_5.append(int(m.group(1)))
-
-            # 6. Run with one litterer.
-            times_ms_6 = []
-            for _ in range(N):
-                stdout = subprocess.check_output(
-                    f"{build_directory}/benchmark_iterator -n {BENCHMARK_N} -i {BENCHMARK_I} -s {s} --max-chunk-size 8",
-                    shell=True,
-                    text=True,
-                    stderr=subprocess.DEVNULL,
-                    env={
-                        "LD_PRELOAD": f"{build_directory}/liblitterer_distribution_standalone.so",
-                        "DYLD_INSERT_LIBRARIES": f"{build_directory}/liblitterer_distribution_standalone.dylib",
-                        "LITTER_MULTIPLIER": "5",
-                        "LITTER_OCCUPANCY": "1",
-                        **os.environ,
-                    },
-                )
-                m = re.search(r"Done. Time elapsed: (\d+) ms.", stdout)
-                assert m
-                times_ms_6.append(int(m.group(1)))
+            # 3. Run with all settings.
+            for setting in SETTINGS:
+                env = {
+                    "LD_PRELOAD": f"{build_directory}/liblitterer_distribution_standalone.so",
+                    "DYLD_INSERT_LIBRARIES": f"{build_directory}/liblitterer_distribution_standalone.dylib",
+                    **setting,
+                    **os.environ,
+                }
+                times = []
+                for _ in range(N):
+                    stdout = subprocess.check_output(
+                        f"{build_directory}/benchmark_iterator -f {BENCHMARK_FOOTPRINT} -i {BENCHMARK_ITERATIONS} -s {s}",
+                        shell=True,
+                        text=True,
+                        stderr=subprocess.DEVNULL,
+                        env=env,
+                    )
+                    times.append(int(re.search(r"Done. Time elapsed: (\d+) ms.", stdout).group(1)))
+                row.append(sum(times) / N)
             
-            f.write(f"{s}\t{sum(times_ms_2) / N}\t{sum(times_ms_3) / N}\t{sum(times_ms_4) / N}\t{sum(times_ms_5) / N}\t{sum(times_ms_6) / N}\n")
-            print(f"{s}\t{sum(times_ms_2) / N}\t{sum(times_ms_3) / N}\t{sum(times_ms_4) / N}\t{sum(times_ms_5) / N}\t{sum(times_ms_6) / N}\n")
-
+            
+            f.write("\t".join(str(e) for e in row) + "\n")
+            print("\t".join(str(e) for e in row))
+            
     shutil.rmtree(build_directory)
 
 

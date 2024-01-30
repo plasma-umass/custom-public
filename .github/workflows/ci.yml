@@ -55,12 +55,9 @@ jobs:
           python3 -m pip install cwhy
           python3 -m cwhy --version
 
-      - name: Check what generators are available
-        run: cmake --help
-
       - name: Configure CMake
         run: >
-          cmake . -B build -G 'NMake Makefiles'
+          cmake . -B build -G Ninja
           -DCMAKE_BUILD_TYPE=${{matrix.build-type}}
           -DCMAKE_C_COMPILER="$(python3 -m cwhy --wrapper --- cl)"
           -DCMAKE_CXX_COMPILER="$(python3 -m cwhy --wrapper --- cl)"

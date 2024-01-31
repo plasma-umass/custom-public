@@ -45,10 +45,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Print MSVC version
-        run: |
-          cl
-          Get-Command cl
+      - name: Enable access to MSVC
+        run: C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat
 
       - name: Set up Ninja
         run: choco install ninja

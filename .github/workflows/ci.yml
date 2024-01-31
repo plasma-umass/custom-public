@@ -32,7 +32,7 @@ jobs:
           -DCMAKE_C_COMPILER="$(python3 -m cwhy --wrapper --- clang)"
           -DCMAKE_CXX_COMPILER="$(python3 -m cwhy --wrapper --- clang++)"
         env:
-          CWHY_DISABLE: 1
+          CWHY_DISABLE: ON
 
       - name: Build
         run: cmake --build build --parallel
@@ -93,7 +93,7 @@ jobs:
           -DCMAKE_C_COMPILER="$(python3 -m cwhy --wrapper --- gcc-11)"
           -DCMAKE_CXX_COMPILER="$(python3 -m cwhy --wrapper --- g++-11)"
         env:
-          CWHY_DISABLE: 1
+          CWHY_DISABLE: ON
 
       - name: Build
         run: cmake --build build --parallel
@@ -126,7 +126,7 @@ jobs:
           -DCMAKE_C_COMPILER="$(python3 -m cwhy --wrapper --- clang-17)"
           -DCMAKE_CXX_COMPILER="$(python3 -m cwhy --wrapper --- clang++-17)"
         env:
-          CWHY_DISABLE: 1
+          CWHY_DISABLE: ON
 
       - name: Build
         run: cmake --build build --parallel

@@ -45,9 +45,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Enable access to MSVC
-        run: '"C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat"'
-
       - name: Set up Ninja
         run: choco install ninja
 
@@ -57,17 +54,16 @@ jobs:
           python3 -m pip install --upgrade pip
           python3 -m pip install cwhy
 
-      - name: Configure CMake
-        run: >
-          cmake . -B build -G Ninja
-          -DCMAKE_BUILD_TYPE=${{matrix.build-type}}
-          -DCMAKE_C_COMPILER="$(python3 -m cwhy --wrapper --- cl)"
-          -DCMAKE_CXX_COMPILER="$(python3 -m cwhy --wrapper --- cl)"
-        env:
-          CWHY_DISABLE: 1
-
-      - name: Build
-        run: cmake --build build --parallel
+      - name: Configure and build
+        run: |
+          '"C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat"'
+          $env:CWHY_DISABLE='ON'
+          cmake . -B build -G Ninja \
+            -DCMAKE_BUILD_TYPE=${{matrix.build-type}} \
+            -DCMAKE_C_COMPILER="$(python3 -m cwhy --wrapper --- cl)" \
+            -DCMAKE_CXX_COMPILER="$(python3 -m cwhy --wrapper --- cl)"
+          $env:CWHY_DISABLE=''
+          cmake --build build --parallel
 
   ubuntu-gcc-check:
     strategy:

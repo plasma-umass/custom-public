@@ -54,16 +54,19 @@ jobs:
           python3 -m pip install --upgrade pip
           python3 -m pip install cwhy
 
-      - name: Configure and build
-        shell: cmd
+      - uses: ilammy/msvc-dev-cmd@v1
+
+      - name: Configure
         run: >
-          '"C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat"';
-          cl;
-          Get-Command cl;
-          set CWHY_DISABLE='ON';
-          cmake . -B build -G Ninja -DCMAKE_BUILD_TYPE=${{matrix.build-type}} -DCMAKE_C_COMPILER="$(python3 -m cwhy --wrapper --- cl)" -DCMAKE_CXX_COMPILER="$(python3 -m cwhy --wrapper --- cl)";
-          set CWHY_DISABLE='';
-          cmake --build build --parallel
+          cmake . -B build -G Ninja
+            -DCMAKE_BUILD_TYPE=${{matrix.build-type}}
+            -DCMAKE_C_COMPILER="$(python3 -m cwhy --wrapper --- cl)"
+            -DCMAKE_CXX_COMPILER="$(python3 -m cwhy --wrapper --- cl)"
+        env:
+          CWHY_DISABLE: ON
+
+      - name: Build
+        run: cmake --build build --parallel
 
   ubuntu-gcc-check:
     strategy:

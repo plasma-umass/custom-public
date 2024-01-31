@@ -25,6 +25,11 @@ jobs:
           python3 -m pip install cwhy
           python3 -m cwhy --version
 
+      - name: Print MSVC version
+        run: |
+          cl
+          Get-Command cl
+
       - name: Configure CMake
         run: >
           cmake . -B build 

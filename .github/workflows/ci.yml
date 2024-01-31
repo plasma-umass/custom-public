@@ -23,7 +23,6 @@ jobs:
         run: |
           python3 -m pip install --upgrade pip
           python3 -m pip install cwhy
-          python3 -m cwhy --version
 
       - name: Configure CMake
         run: >
@@ -84,7 +83,6 @@ jobs:
         run: |
           python3 -m pip install --upgrade pip
           python3 -m pip install cwhy
-          python3 -m cwhy --version
 
       - name: Configure CMake (GCC)
         run: >
@@ -116,7 +114,6 @@ jobs:
         run: |
           python3 -m pip install --upgrade pip
           python3 -m pip install cwhy
-          python3 -m cwhy --version
 
       - name: Configure CMake (Clang)
         run: >

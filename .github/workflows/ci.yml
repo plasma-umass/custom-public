@@ -59,9 +59,9 @@ jobs:
       - name: Configure
         run: >
           cmake . -B build -G Ninja
-            -DCMAKE_BUILD_TYPE=${{matrix.build-type}}
-            -DCMAKE_C_COMPILER="$(python3 -m cwhy --wrapper --- cl)"
-            -DCMAKE_CXX_COMPILER="$(python3 -m cwhy --wrapper --- cl)"
+          -DCMAKE_BUILD_TYPE=${{matrix.build-type}}
+          -DCMAKE_C_COMPILER="$(python3 -m cwhy --wrapper --- cl)"
+          -DCMAKE_CXX_COMPILER="$(python3 -m cwhy --wrapper --- cl)"
         env:
           CWHY_DISABLE: ON
 

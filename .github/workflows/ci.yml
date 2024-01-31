@@ -25,11 +25,6 @@ jobs:
           python3 -m pip install cwhy
           python3 -m cwhy --version
 
-      - name: Print MSVC version
-        run: |
-          cl
-          Get-Command cl
-
       - name: Configure CMake
         run: >
           cmake . -B build 
@@ -49,6 +44,11 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Print MSVC version
+        run: |
+          cl
+          Get-Command cl
 
       - name: Set up Ninja
         run: choco install ninja

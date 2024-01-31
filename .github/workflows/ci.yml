@@ -55,8 +55,9 @@ jobs:
           python3 -m pip install cwhy
 
       - name: Configure and build
+        shell: cmd
         run: >
-          '& "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat"';
+          '"C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat"';
           cl;
           Get-Command cl;
           $env:CWHY_DISABLE='ON';

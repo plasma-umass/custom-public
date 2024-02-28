@@ -2,14 +2,14 @@
 #include <stdlib.h> // NOLINT(modernize-deprecated-headers)
 
 #ifdef __APPLE__
-#include <dyld-interposing.h>
+#include <mach-o/dyld-interposing.h>
 #define GET_REAL_FUNCTION(NAME) ::NAME
 #define INTERPOSE_FUNCTION_NAME(NAME) interpose_##NAME##__
-#define INTERPOSE(REPLACEMENT, REPLACEE) DYLD_INTERPOSE(REPLACEMENT, REPLACEE)
+#define INTERPOSE(NAME) DYLD_INTERPOSE(INTERPOSE_FUNCTION_NAME(NAME), NAME)
 #else
 #define GET_REAL_FUNCTION(NAME) reinterpret_cast<decltype(::NAME)*>(dlsym(RTLD_NEXT, #NAME))
 #define INTERPOSE_FUNCTION_NAME(NAME) NAME
-#define INTERPOSE(REPLACEMENT, REPLACEE)
+#define INTERPOSE(NAME)
 #endif
 
 extern "C" void* INTERPOSE_FUNCTION_NAME(malloc)(size_t size) {
@@ -47,10 +47,10 @@ extern "C" void* INTERPOSE_FUNCTION_NAME(aligned_alloc)(size_t alignment, size_t
     return real(alignment, size);
 }
 
-INTERPOSE(INTERPOSE_FUNCTION_NAME(malloc), malloc)
-INTERPOSE(INTERPOSE_FUNCTION_NAME(free), free)
-INTERPOSE(INTERPOSE_FUNCTION_NAME(calloc), calloc)
-INTERPOSE(INTERPOSE_FUNCTION_NAME(realloc), realloc)
-INTERPOSE(INTERPOSE_FUNCTION_NAME(reallocarray), reallocarray)
-INTERPOSE(INTERPOSE_FUNCTION_NAME(posix_memalign), posix_memalign)
-INTERPOSE(INTERPOSE_FUNCTION_NAME(aligned_alloc), aligned_alloc)
+INTERPOSE(malloc)
+INTERPOSE(free)
+INTERPOSE(calloc)
+INTERPOSE(realloc)
+INTERPOSE(reallocarray)
+INTERPOSE(posix_memalign)
+INTERPOSE(aligned_alloc)

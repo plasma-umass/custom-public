@@ -154,7 +154,7 @@ extern "C" void* INTERPOSE_FUNCTION_NAME(realloc)(void* pointer, size_t size) {
 }
 INTERPOSE(realloc);
 
-#ifdnef __APPLE__
+#ifndef __APPLE__
 extern "C" void* INTERPOSE_FUNCTION_NAME(reallocarray)(void* pointer, size_t n, size_t size) {
     static auto* next = GET_REAL_FUNCTION(reallocarray);
     processAllocation<false>(n * size);

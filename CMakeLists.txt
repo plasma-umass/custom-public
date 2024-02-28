@@ -25,12 +25,6 @@ FetchContent_Declare(
 )
 
 FetchContent_Declare(
-  interpose
-  GIT_REPOSITORY https://github.com/nicovank/interpose.git
-  GIT_TAG 36c553ee51b8b0e9cec30092fe022a0809c45a0c # master as of 2024-02-26.
-)
-
-FetchContent_Declare(
   nlohmann_json
   URL https://github.com/nlohmann/json/releases/download/v3.11.3/json.tar.xz
 )
@@ -47,9 +41,6 @@ set(BUILD_SHARED_LIBS_OLD ${BUILD_SHARED_LIBS})
 set(BUILD_SHARED_LIBS ON)
 FetchContent_MakeAvailable(fmt)
 set(BUILD_SHARED_LIBS ${BUILD_SHARED_LIBS_OLD})
-
-message(STATUS "Downloading and configuring interpose")
-FetchContent_MakeAvailable(interpose)
 
 message(STATUS "Downloading and configuring nlohmann::json")
 FetchContent_MakeAvailable(nlohmann_json)

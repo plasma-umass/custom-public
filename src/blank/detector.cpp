@@ -1,37 +1,56 @@
 #include <dlfcn.h>
 #include <stdlib.h> // NOLINT(modernize-deprecated-headers)
 
-extern "C" void* malloc(size_t size) {
-    static auto* next = reinterpret_cast<decltype(malloc)*>(dlsym(RTLD_NEXT, "malloc"));
-    return next(size);
+#ifdef __APPLE__
+#include <dyld-interposing.h>
+#define GET_REAL_FUNCTION(NAME) ::NAME
+#define INTERPOSE_FUNCTION_NAME(NAME) interpose_##NAME##__
+#define INTERPOSE(REPLACEMENT, REPLACEE) DYLD_INTERPOSE(REPLACEMENT, REPLACEE)
+#else
+#define GET_REAL_FUNCTION(NAME) reinterpret_cast<decltype(::NAME)*>(dlsym(RTLD_NEXT, #NAME))
+#define INTERPOSE_FUNCTION_NAME(NAME) NAME
+#define INTERPOSE(REPLACEMENT, REPLACEE)
+#endif
+
+extern "C" void* INTERPOSE_FUNCTION_NAME(malloc)(size_t size) {
+    static auto* real = GET_REAL_FUNCTION(malloc);
+    return real(size);
 }
 
-extern "C" void free(void* pointer) {
-    static auto* next = reinterpret_cast<decltype(free)*>(dlsym(RTLD_NEXT, "free"));
-    next(pointer);
+extern "C" void INTERPOSE_FUNCTION_NAME(free)(void* pointer) {
+    static auto* real = GET_REAL_FUNCTION(free);
+    real(pointer);
 }
 
-extern "C" void* calloc(size_t n, size_t size) {
-    static auto* next = reinterpret_cast<decltype(calloc)*>(dlsym(RTLD_NEXT, "calloc"));
-    return next(n, size);
+extern "C" void* INTERPOSE_FUNCTION_NAME(calloc)(size_t n, size_t size) {
+    static auto* real = GET_REAL_FUNCTION(calloc);
+    return real(n, size);
 }
 
-extern "C" void* realloc(void* pointer, size_t size) {
-    static auto* next = reinterpret_cast<decltype(realloc)*>(dlsym(RTLD_NEXT, "realloc"));
-    return next(pointer, size);
+extern "C" void* INTERPOSE_FUNCTION_NAME(realloc)(void* pointer, size_t size) {
+    static auto* real = GET_REAL_FUNCTION(realloc);
+    return real(pointer, size);
 }
 
-extern "C" void* reallocarray(void* pointer, size_t n, size_t size) {
-    static auto* next = reinterpret_cast<decltype(reallocarray)*>(dlsym(RTLD_NEXT, "reallocarray"));
-    return next(pointer, n, size);
+extern "C" void* INTERPOSE_FUNCTION_NAME(reallocarray)(void* pointer, size_t n, size_t size) {
+    static auto* real = GET_REAL_FUNCTION(reallocarray);
+    return real(pointer, n, size);
 }
 
-extern "C" int posix_memalign(void** memptr, size_t alignment, size_t size) {
-    static auto* next = reinterpret_cast<decltype(posix_memalign)*>(dlsym(RTLD_NEXT, "posix_memalign"));
-    return next(memptr, alignment, size);
+extern "C" int INTERPOSE_FUNCTION_NAME(posix_memalign)(void** memptr, size_t alignment, size_t size) {
+    static auto* real = GET_REAL_FUNCTION(posix_memalign);
+    return real(memptr, alignment, size);
 }
 
-extern "C" void* aligned_alloc(size_t alignment, size_t size) {
-    static auto* next = reinterpret_cast<decltype(aligned_alloc)*>(dlsym(RTLD_NEXT, "aligned_alloc"));
-    return next(alignment, size);
+extern "C" void* INTERPOSE_FUNCTION_NAME(aligned_alloc)(size_t alignment, size_t size) {
+    static auto* real = GET_REAL_FUNCTION(aligned_alloc);
+    return real(alignment, size);
 }
+
+INTERPOSE(INTERPOSE_FUNCTION_NAME(malloc), malloc)
+INTERPOSE(INTERPOSE_FUNCTION_NAME(free), free)
+INTERPOSE(INTERPOSE_FUNCTION_NAME(calloc), calloc)
+INTERPOSE(INTERPOSE_FUNCTION_NAME(realloc), realloc)
+INTERPOSE(INTERPOSE_FUNCTION_NAME(reallocarray), reallocarray)
+INTERPOSE(INTERPOSE_FUNCTION_NAME(posix_memalign), posix_memalign)
+INTERPOSE(INTERPOSE_FUNCTION_NAME(aligned_alloc), aligned_alloc)

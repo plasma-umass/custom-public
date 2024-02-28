@@ -7,7 +7,7 @@
 #define INTERPOSE_FUNCTION_NAME(NAME) interpose_##NAME##__
 #define INTERPOSE(NAME) DYLD_INTERPOSE(INTERPOSE_FUNCTION_NAME(NAME), NAME)
 #else
-#define GET_REAL_FUNCTION(NAME) reinterpret_cast<decltype(::NAME)*>(dlsym(RTLD_NEXT, #NAME))
+#define GET_REAL_FUNCTION(NAME) (reinterpret_cast<decltype(::NAME)*>(dlsym(RTLD_NEXT, #NAME)))
 #define INTERPOSE_FUNCTION_NAME(NAME) NAME
 #define INTERPOSE(NAME)
 #endif

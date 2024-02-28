@@ -65,10 +65,11 @@ target_link_libraries(benchmark_iterator PRIVATE argparse benchmark)
 # Interposition is not supported on Windows.
 if(NOT WIN32)
   add_library(detector_blank SHARED src/blank/detector.cpp)
+  target_include_directories(detector_blank PRIVATE src/include)
   target_link_libraries(detector_blank PRIVATE ${CMAKE_DL_LIBS})
 
   add_library(detector_distribution SHARED src/distribution/detector.cpp)
-  target_include_directories(detector_distribution PRIVATE include)
+  target_include_directories(detector_distribution PRIVATE src/include)
   target_link_libraries(detector_distribution PRIVATE nlohmann_json)
   target_link_libraries(detector_distribution PRIVATE ${CMAKE_DL_LIBS})
 

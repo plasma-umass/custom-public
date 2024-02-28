@@ -32,7 +32,7 @@ def main():
 
     with open(OUTPUT, "w") as f:
         for s in itertools.chain(
-            range(8, 63, 1), range(64, 289, 8), range(320, 4097, 32)
+            range(1, 63, 1), range(64, 289, 8), range(320, 4097, 32)
         ):
             print(f"Testing with s = {s}...")
 

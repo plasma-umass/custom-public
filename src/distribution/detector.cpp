@@ -1,4 +1,3 @@
-#include <dlfcn.h>
 #include <stdlib.h> // NOLINT(modernize-deprecated-headers)
 
 #include <algorithm>
@@ -14,6 +13,8 @@
 #include <vector>
 
 #include <nlohmann/json.hpp> // NOLINT(misc-include-cleaner)
+
+#include <interpose.h>
 
 namespace {
 const auto* kDefaultOutputFilename = "distribution.json";
@@ -125,44 +126,53 @@ void processFree(void* pointer) {
     --busy;
 }
 
-extern "C" void* malloc(size_t size) {
-    static auto* next = reinterpret_cast<decltype(malloc)*>(dlsym(RTLD_NEXT, "malloc"));
+extern "C" void* INTERPOSE_FUNCTION_NAME(malloc)(size_t size) {
+    static auto* next = GET_REAL_FUNCTION(malloc);
     processAllocation<true>(size);
     return next(size);
 }
+INTERPOSE(malloc);
 
-extern "C" void free(void* pointer) {
-    static auto* next = reinterpret_cast<decltype(free)*>(dlsym(RTLD_NEXT, "free"));
+extern "C" void INTERPOSE_FUNCTION_NAME(free)(void* pointer) {
+    static auto* next = GET_REAL_FUNCTION(free);
     processFree(pointer);
     next(pointer);
 }
+INTERPOSE(free);
 
-extern "C" void* calloc(size_t n, size_t size) {
-    static auto* next = reinterpret_cast<decltype(calloc)*>(dlsym(RTLD_NEXT, "calloc"));
+extern "C" void* INTERPOSE_FUNCTION_NAME(calloc)(size_t n, size_t size) {
+    static auto* next = GET_REAL_FUNCTION(calloc);
     processAllocation<true>(n * size);
     return next(n, size);
 }
+INTERPOSE(calloc);
 
-extern "C" void* realloc(void* pointer, size_t size) {
-    static auto* next = reinterpret_cast<decltype(realloc)*>(dlsym(RTLD_NEXT, "realloc"));
+extern "C" void* INTERPOSE_FUNCTION_NAME(realloc)(void* pointer, size_t size) {
+    static auto* next = GET_REAL_FUNCTION(realloc);
     processAllocation<false>(size);
     return next(pointer, size);
 }
+INTERPOSE(realloc);
 
-extern "C" void* reallocarray(void* pointer, size_t n, size_t size) {
-    static auto* next = reinterpret_cast<decltype(reallocarray)*>(dlsym(RTLD_NEXT, "reallocarray"));
+#ifdnef __APPLE__
+extern "C" void* INTERPOSE_FUNCTION_NAME(reallocarray)(void* pointer, size_t n, size_t size) {
+    static auto* next = GET_REAL_FUNCTION(reallocarray);
     processAllocation<false>(n * size);
     return next(pointer, n, size);
 }
+INTERPOSE(reallocarray);
+#endif
 
-extern "C" int posix_memalign(void** memptr, size_t alignment, size_t size) {
-    static auto* next = reinterpret_cast<decltype(posix_memalign)*>(dlsym(RTLD_NEXT, "posix_memalign"));
+extern "C" int INTERPOSE_FUNCTION_NAME(posix_memalign)(void** memptr, size_t alignment, size_t size) {
+    static auto* next = GET_REAL_FUNCTION(posix_memalign);
     processAllocation<true>(size);
     return next(memptr, alignment, size);
 }
+INTERPOSE(posix_memalign);
 
-extern "C" void* aligned_alloc(size_t alignment, size_t size) {
-    static auto* next = reinterpret_cast<decltype(aligned_alloc)*>(dlsym(RTLD_NEXT, "aligned_alloc"));
+extern "C" void* INTERPOSE_FUNCTION_NAME(aligned_alloc)(size_t alignment, size_t size) {
+    static auto* next = GET_REAL_FUNCTION(aligned_alloc);
     processAllocation<true>(size);
     return next(alignment, size);
 }
+INTERPOSE(aligned_alloc);

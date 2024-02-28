@@ -2,7 +2,13 @@
 #include <stdlib.h> // NOLINT(modernize-deprecated-headers)
 
 #ifdef __APPLE__
-#include <mach-o/dyld-interposing.h>
+#define DYLD_INTERPOSE(_replacment, _replacee)                                                                         \
+    __attribute__((used)) static struct {                                                                              \
+        const void* replacment;                                                                                        \
+        const void* replacee;                                                                                          \
+    } _interpose_##_replacee __attribute__((section("__DATA,__interpose")))                                            \
+    = {(const void*) (unsigned long) &_replacment, (const void*) (unsigned long) &_replacee};
+
 #define GET_REAL_FUNCTION(NAME) ::NAME
 #define INTERPOSE_FUNCTION_NAME(NAME) interpose_##NAME##__
 #define INTERPOSE(NAME) DYLD_INTERPOSE(INTERPOSE_FUNCTION_NAME(NAME), NAME)

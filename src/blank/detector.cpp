@@ -22,10 +22,12 @@ extern "C" void* INTERPOSE_FUNCTION_NAME(realloc)(void* pointer, size_t size) {
     return real(pointer, size);
 }
 
+#ifndef __APPLE__
 extern "C" void* INTERPOSE_FUNCTION_NAME(reallocarray)(void* pointer, size_t n, size_t size) {
     static auto* real = GET_REAL_FUNCTION(reallocarray);
     return real(pointer, n, size);
 }
+#endif
 
 extern "C" int INTERPOSE_FUNCTION_NAME(posix_memalign)(void** memptr, size_t alignment, size_t size) {
     static auto* real = GET_REAL_FUNCTION(posix_memalign);

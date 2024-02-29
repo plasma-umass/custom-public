@@ -5,12 +5,12 @@
 
 #include <fmt/core.h>
 
-#include "litterer.hpp"
+#include <distribution/litterer.hpp>
 
 namespace {
 struct Initialization {
     Initialization() {
-        litterer::distribution::runLitterer();
+        distribution::litterer::runLitterer();
         start = std::chrono::high_resolution_clock::now();
     }
 

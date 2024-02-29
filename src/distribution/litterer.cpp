@@ -1,4 +1,4 @@
-#include "litterer.hpp"
+#include <distribution/litterer.hpp>
 
 #if _WIN32
 #ifndef NOMINMAX
@@ -51,7 +51,7 @@ std::vector<std::uint64_t> cumulative_sum(const std::vector<std::uint64_t>& bins
 }
 } // namespace
 
-namespace litterer::distribution {
+namespace distribution::litterer {
 void runLitterer() {
     std::FILE* log = stderr;
     if (const char* env = std::getenv("LITTER_LOG_FILENAME")) {
@@ -186,4 +186,4 @@ void runLitterer() {
         std::fclose(log);
     }
 }
-} // namespace litterer::distribution
+} // namespace distribution::litterer

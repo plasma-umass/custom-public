@@ -22,7 +22,6 @@ const auto* kDefaultSizeClassScheme = "under-4096";
 const auto kDefaultEnableOverflowBin = false;
 
 std::atomic_bool initialized = false;
-thread_local auto busy = 0;
 auto enableOverflowBin = kDefaultEnableOverflowBin;
 std::vector<std::size_t> sizeClasses;
 std::deque<std::atomic_uint64_t> bins;
@@ -83,16 +82,15 @@ struct Initialization {
 const Initialization _;
 } // namespace
 
+// This function CANNOT call any memory allocation functions.
 template <bool NewAlloc> void processAllocation(std::size_t size) {
     if (size == 0) {
         return;
     }
 
-    if (busy || !initialized) {
+    if (!initialized) {
         return;
     }
-
-    ++busy;
 
     if (size > sizeClasses.back()) {
         if (enableOverflowBin) {
@@ -112,8 +110,6 @@ template <bool NewAlloc> void processAllocation(std::size_t size) {
             maxLiveAllocationsSnapshot = maxLiveAllocations.load();
         }
     }
-
-    --busy;
 }
 
 void processFree(void* pointer) {
@@ -121,9 +117,7 @@ void processFree(void* pointer) {
         return;
     }
 
-    ++busy;
     --liveAllocations;
-    --busy;
 }
 
 extern "C" void* INTERPOSE_FUNCTION_NAME(malloc)(size_t size) {

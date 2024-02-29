@@ -8,7 +8,6 @@
         const void* replacee;                                                                                          \
     } _interpose_##_replacee __attribute__((section("__DATA,__interpose")))                                            \
     = {(const void*) (unsigned long) &_replacment, (const void*) (unsigned long) &_replacee}
-
 #define GET_REAL_FUNCTION(NAME) ::NAME
 #define INTERPOSE_FUNCTION_NAME(NAME) interpose_##NAME##__
 #define INTERPOSE(NAME) DYLD_INTERPOSE(INTERPOSE_FUNCTION_NAME(NAME), NAME)

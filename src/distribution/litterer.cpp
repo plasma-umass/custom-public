@@ -36,7 +36,8 @@ void assertOrExit(bool condition, std::FILE* log, const std::string& message) {
     }
 }
 
-template <typename T, typename Generator> void partial_shuffle(std::vector<T>& v, std::size_t n, Generator& g) {
+template <typename T, typename Generator>
+void partial_shuffle(std::vector<T>& v, std::size_t n, Generator& g) {
     const auto m = std::min(n, v.size() - 2);
     for (std::size_t i = 0; i < m; ++i) {
         const auto j = std::uniform_int_distribution<std::size_t>(i, v.size() - 1)(g);

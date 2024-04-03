@@ -83,7 +83,8 @@ const Initialization _;
 } // namespace
 
 // This function CANNOT call any memory allocation functions.
-template <bool NewAlloc> void processAllocation(std::size_t size) {
+template <bool NewAlloc>
+void processAllocation(std::size_t size) {
     if (size == 0) {
         return;
     }

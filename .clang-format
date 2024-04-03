@@ -3,3 +3,6 @@ IndentWidth: 4
 PointerAlignment: Left
 SpaceAfterCStyleCast: true
 BreakBeforeBinaryOperators: All
+AllowShortFunctionsOnASingleLine: Empty
+AlwaysBreakTemplateDeclarations: Yes
+IndentCaseLabels: true

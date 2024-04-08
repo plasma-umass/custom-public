@@ -9,15 +9,16 @@ import shutil
 import subprocess
 import tempfile
 
-N = 5
+N = 3
 OUTPUT = "measure.csv"
 
 BENCHMARK_FOOTPRINT = 50_000_000  # 50MB
 BENCHMARK_ITERATIONS = 10_000_000
 
 SETTINGS = [
-    {"LITTER_MULTIPLIER": "20", "LITTER_OCCUPANCY": "0.95"},
-    {"LITTER_MULTIPLIER": "1", "LITTER_OCCUPANCY": "0.4"},
+    # ([], {"LITTER_MULTIPLIER": "20", "LITTER_OCCUPANCY": "0.95"}),
+    ([], {"LITTER_MULTIPLIER": "1", "LITTER_OCCUPANCY": "0.4"}),
+    (["--simulate-arena"], {"LITTER_MULTIPLIER": "1", "LITTER_OCCUPANCY": "0.4"}),
 ]
 
 
@@ -86,11 +87,11 @@ def main():
 
             # 3. Run with all settings.
             data["settings"] = []
-            for setting in SETTINGS:
+            for extra_args, litterer_setting in SETTINGS:
                 env = {
                     "LD_PRELOAD": f"{build_directory}/liblitterer_distribution_standalone.so",
                     "DYLD_INSERT_LIBRARIES": f"{build_directory}/liblitterer_distribution_standalone.dylib",
-                    **setting,
+                    **litterer_setting,
                     **os.environ,
                 }
                 times = []
@@ -104,6 +105,7 @@ def main():
                             f"{BENCHMARK_ITERATIONS}",
                             "-s",
                             f"{s}",
+                            *extra_args,
                         ],
                         cwd=build_directory,
                         text=True,

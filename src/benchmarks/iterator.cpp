@@ -32,6 +32,7 @@ int main(int argc, char** argv) {
         .help("initial seed for the random number generator")
         .default_value(std::random_device()())
         .scan<'d', unsigned int>();
+    program.add_argument("--simulate-arena").default_value(false).implicit_value(true);
 
     try {
         program.parse_args(argc, argv);
@@ -56,15 +57,25 @@ int main(int argc, char** argv) {
     std::mt19937_64 generator(seed);
 
     std::cout << "Allocating " << nObjects << " objects of size " << allocationSize << "..." << std::endl;
-    std::vector<void*> objects;
+    std::vector<std::uint8_t*> objects;
     objects.reserve(nObjects);
-    for (std::uint64_t i = 0; i < nObjects; ++i) {
-        void* object = std::malloc(allocationSize);
-        for (std::size_t j = 0; j < allocationSize; ++j) {
-            static_cast<std::uint8_t*>(object)[j]
-                = static_cast<std::uint8_t>(std::uniform_int_distribution<>()(generator));
+    if (program.get<bool>("--simulate-arena")) {
+        auto* allocation = reinterpret_cast<std::uint8_t*>(std::calloc(nObjects, allocationSize));
+        for (std::uint64_t i = 0; i < nObjects; ++i) {
+            auto* object = allocation + i * allocationSize;
+            for (std::size_t j = 0; j < allocationSize; ++j) {
+                object[j] = static_cast<std::uint8_t>(std::uniform_int_distribution<>()(generator));
+            }
+            objects.push_back(object);
         }
-        objects.push_back(object);
+    } else {
+        for (std::uint64_t i = 0; i < nObjects; ++i) {
+            auto* object = reinterpret_cast<std::uint8_t*>(std::malloc(allocationSize));
+            for (std::size_t j = 0; j < allocationSize; ++j) {
+                object[j] = static_cast<std::uint8_t>(std::uniform_int_distribution<>()(generator));
+            }
+            objects.push_back(object);
+        }
     }
 
     std::cout << "Iterating..." << std::endl;
@@ -74,7 +85,7 @@ int main(int argc, char** argv) {
     for (std::uint64_t i = 0; i < iterations; ++i) {
         const auto offset = std::uniform_int_distribution<std::size_t>(0, allocationSize - 1)(generator);
         for (std::uint64_t j = 0; j < 1024; ++j) {
-            const auto* ptr = static_cast<const std::uint8_t*>(objects[i % nObjects]) + offset;
+            const auto* ptr = objects[i % nObjects] + offset;
             sum += *ptr;
         }
     }

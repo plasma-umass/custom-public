@@ -87,7 +87,7 @@ int main(int argc, char** argv) {
         .default_value("individual-malloc")
 #ifdef _WIN32
         .choices("individual-malloc", "arena-malloc")
-#elifdef __APPLE__
+#elif defined(__APPLE__)
         .choices("individual-malloc", "arena-malloc", "arena-mmap")
 #else
         .choices("individual-malloc", "arena-malloc", "arena-mmap", "arena-mmap-hugepage")

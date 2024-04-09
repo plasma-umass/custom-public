@@ -11,10 +11,59 @@
 #include <exception>
 #include <iostream>
 #include <random>
+#include <string>
 #include <vector>
 
 #include <argparse/argparse.hpp>
 #include <benchmark/benchmark.h>
+
+std::vector<std::uint8_t*> allocateObjects(const std::string& policy, std::size_t nObjects, std::size_t allocationSize,
+                                           std::mt19937_64& generator) {
+    std::vector<std::uint8_t*> objects;
+    objects.reserve(nObjects);
+
+    if (policy == "individual-malloc") {
+        for (std::uint64_t i = 0; i < nObjects; ++i) {
+            auto* object = reinterpret_cast<std::uint8_t*>(std::malloc(allocationSize));
+            for (std::size_t j = 0; j < allocationSize; ++j) {
+                object[j] = static_cast<std::uint8_t>(std::uniform_int_distribution<>()(generator));
+            }
+            objects.push_back(object);
+        }
+    } else {
+        std::uint8_t* allocation = nullptr;
+        if (policy == "arena-malloc") {
+            allocation = reinterpret_cast<std::uint8_t*>(std::malloc(nObjects * allocationSize));
+        }
+#ifndef _WIN32
+        else if (policy == "arena-mmap") {
+            allocation = reinterpret_cast<std::uint8_t*>(
+                mmap(nullptr, nObjects * allocationSize, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS, -1, 0));
+        }
+#ifndef __APPLE__
+        else if (policy == "arena-mmap-hugepage") {
+            allocation
+                = reinterpret_cast<std::uint8_t*>(mmap(nullptr, nObjects * allocationSize, PROT_READ | PROT_WRITE,
+                                                       MAP_PRIVATE | MAP_ANONYMOUS | MAP_HUGETLB, -1, 0));
+            std::abort();
+        }
+#endif
+#endif
+        else {
+            std::abort();
+        }
+
+        for (std::uint64_t i = 0; i < nObjects; ++i) {
+            auto* object = allocation + i * allocationSize;
+            for (std::size_t j = 0; j < allocationSize; ++j) {
+                object[j] = static_cast<std::uint8_t>(std::uniform_int_distribution<>()(generator));
+            }
+            objects.push_back(object);
+        }
+    }
+
+    return objects;
+};
 
 int main(int argc, char** argv) {
     auto program = argparse::ArgumentParser("benchmark_iterator", "", argparse::default_arguments::help);
@@ -38,6 +87,8 @@ int main(int argc, char** argv) {
         .default_value("individual-malloc")
 #ifdef _WIN32
         .choices("individual-malloc", "arena-malloc")
+#elifdef __APPLE__
+        .choices("individual-malloc", "arena-malloc", "arena-mmap")
 #else
         .choices("individual-malloc", "arena-malloc", "arena-mmap", "arena-mmap-hugepage")
 #endif
@@ -52,7 +103,7 @@ int main(int argc, char** argv) {
     } catch (const std::exception& err) {
         std::cerr << err.what() << std::endl;
         std::cerr << program;
-        return EXIT_FAILURE;
+        std::abort();
     }
 
     const auto allocationSize = program.get<std::size_t>("--allocation-size");
@@ -69,45 +120,8 @@ int main(int argc, char** argv) {
     std::cout << "seed              : " << seed << std::endl;
 
     std::mt19937_64 generator(seed);
-
     std::cout << "Allocating " << nObjects << " objects of size " << allocationSize << "..." << std::endl;
-    std::vector<std::uint8_t*> objects;
-    objects.reserve(nObjects);
-
-    if (policy == "individual-malloc") {
-        for (std::uint64_t i = 0; i < nObjects; ++i) {
-            auto* object = reinterpret_cast<std::uint8_t*>(std::malloc(allocationSize));
-            for (std::size_t j = 0; j < allocationSize; ++j) {
-                object[j] = static_cast<std::uint8_t>(std::uniform_int_distribution<>()(generator));
-            }
-            objects.push_back(object);
-        }
-    } else {
-        std::uint8_t* allocation = nullptr;
-        if (policy == "arena-malloc") {
-            allocation = reinterpret_cast<std::uint8_t*>(std::malloc(nObjects * allocationSize));
-        }
-#ifndef _WIN32
-        else if (policy == "arena-mmap") {
-            allocation = reinterpret_cast<std::uint8_t*>(
-                mmap(nullptr, nObjects * allocationSize, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS, -1, 0));
-        } else if (policy == "arena-mmap-hugepage") {
-            std::abort();
-            // TODO
-        }
-#endif
-        else {
-            std::abort();
-        }
-
-        for (std::uint64_t i = 0; i < nObjects; ++i) {
-            auto* object = allocation + i * allocationSize;
-            for (std::size_t j = 0; j < allocationSize; ++j) {
-                object[j] = static_cast<std::uint8_t>(std::uniform_int_distribution<>()(generator));
-            }
-            objects.push_back(object);
-        }
-    }
+    std::vector<std::uint8_t*> objects = allocateObjects(policy, nObjects, allocationSize, generator);
 
     std::cout << "Iterating..." << std::endl;
     const auto start = std::chrono::high_resolution_clock::now();

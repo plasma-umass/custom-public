@@ -1,3 +1,6 @@
+#include <sys/mman.h>
+
+#include <cassert>
 #include <chrono>
 #include <cmath>
 #include <cstddef>
@@ -28,11 +31,15 @@ int main(int argc, char** argv) {
         .help("the number of iterations over the entire allocated population")
         .metavar("N")
         .scan<'d', std::uint64_t>();
+    program.add_argument("--allocation-policy")
+        .help("the allocation policy to use")
+        .default_value("individual-malloc")
+        .choices("individual-malloc", "arena-malloc", "arena-mmap", "arena-mmap-hugepage")
+        .metavar("POLICY");
     program.add_argument("--seed")
         .help("initial seed for the random number generator")
         .default_value(std::random_device()())
         .scan<'d', unsigned int>();
-    program.add_argument("--simulate-arena").default_value(false).implicit_value(true);
 
     try {
         program.parse_args(argc, argv);
@@ -47,6 +54,7 @@ int main(int argc, char** argv) {
     const auto nObjects
         = static_cast<std::size_t>(std::ceil(static_cast<double>(footprint) / static_cast<double>(allocationSize)));
     const auto iterations = program.get<std::uint64_t>("--iterations");
+    const auto policy = program.get<std::string>("--allocation-policy");
     const auto seed = program.get<unsigned int>("seed");
 
     std::cout << "allocation size   : " << allocationSize << std::endl;
@@ -59,18 +67,30 @@ int main(int argc, char** argv) {
     std::cout << "Allocating " << nObjects << " objects of size " << allocationSize << "..." << std::endl;
     std::vector<std::uint8_t*> objects;
     objects.reserve(nObjects);
-    if (program.get<bool>("--simulate-arena")) {
-        auto* allocation = reinterpret_cast<std::uint8_t*>(std::calloc(nObjects, allocationSize));
+
+    if (policy == "individual-malloc") {
         for (std::uint64_t i = 0; i < nObjects; ++i) {
-            auto* object = allocation + i * allocationSize;
+            auto* object = reinterpret_cast<std::uint8_t*>(std::malloc(allocationSize));
             for (std::size_t j = 0; j < allocationSize; ++j) {
                 object[j] = static_cast<std::uint8_t>(std::uniform_int_distribution<>()(generator));
             }
             objects.push_back(object);
         }
     } else {
+        std::uint8_t* allocation = nullptr;
+        if (policy == "arena-malloc") {
+            allocation = reinterpret_cast<std::uint8_t*>(std::malloc(nObjects * allocationSize));
+        } else if (policy == "arena-mmap") {
+            allocation = reinterpret_cast<std::uint8_t*>(
+                mmap(nullptr, nObjects * allocationSize, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS, -1, 0));
+        } else {
+            assert(policy == "arena-mmap-hugepage");
+            std::abort();
+            // TODO
+        }
+
         for (std::uint64_t i = 0; i < nObjects; ++i) {
-            auto* object = reinterpret_cast<std::uint8_t*>(std::malloc(allocationSize));
+            auto* object = allocation + i * allocationSize;
             for (std::size_t j = 0; j < allocationSize; ++j) {
                 object[j] = static_cast<std::uint8_t>(std::uniform_int_distribution<>()(generator));
             }
@@ -94,4 +114,16 @@ int main(int argc, char** argv) {
     const auto end = std::chrono::high_resolution_clock::now();
     const auto elapsed_ms = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
     std::cout << "Done. Time elapsed: " << elapsed_ms << " ms." << std::endl;
+
+    if (policy == "individual-malloc") {
+        for (auto* object : objects) {
+            std::free(object);
+        }
+    } else if (policy == "arena-malloc") {
+        std::free(objects[0]);
+    } else {
+        assert(policy == "arena-mmap" || policy == "arena-mmap-hugepage");
+        [[maybe_unused]] const auto status = munmap(objects[0], nObjects * allocationSize);
+        assert(status == 0);
+    }
 }

@@ -1,4 +1,6 @@
+#ifndef _WIN32
 #include <sys/mman.h>
+#endif
 
 #include <cassert>
 #include <chrono>
@@ -34,7 +36,11 @@ int main(int argc, char** argv) {
     program.add_argument("--allocation-policy")
         .help("the allocation policy to use")
         .default_value("individual-malloc")
+#ifdef _WIN32
+        .choices("individual-malloc", "arena-malloc")
+#else
         .choices("individual-malloc", "arena-malloc", "arena-mmap", "arena-mmap-hugepage")
+#endif
         .metavar("POLICY");
     program.add_argument("--seed")
         .help("initial seed for the random number generator")
@@ -80,13 +86,18 @@ int main(int argc, char** argv) {
         std::uint8_t* allocation = nullptr;
         if (policy == "arena-malloc") {
             allocation = reinterpret_cast<std::uint8_t*>(std::malloc(nObjects * allocationSize));
-        } else if (policy == "arena-mmap") {
+        }
+#ifndef _WIN32
+        else if (policy == "arena-mmap") {
             allocation = reinterpret_cast<std::uint8_t*>(
                 mmap(nullptr, nObjects * allocationSize, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS, -1, 0));
-        } else {
-            assert(policy == "arena-mmap-hugepage");
+        } else if (policy == "arena-mmap-hugepage") {
             std::abort();
             // TODO
+        }
+#endif
+        else {
+            std::abort();
         }
 
         for (std::uint64_t i = 0; i < nObjects; ++i) {
@@ -121,9 +132,14 @@ int main(int argc, char** argv) {
         }
     } else if (policy == "arena-malloc") {
         std::free(objects[0]);
-    } else {
-        assert(policy == "arena-mmap" || policy == "arena-mmap-hugepage");
+    }
+#ifndef _WIN32
+    else if (policy == "arena-mmap" || policy == "arena-mmap-hugepage") {
         [[maybe_unused]] const auto status = munmap(objects[0], nObjects * allocationSize);
         assert(status == 0);
+    }
+#endif
+    else {
+        std::abort();
     }
 }

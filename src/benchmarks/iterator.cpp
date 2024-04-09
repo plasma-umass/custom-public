@@ -45,7 +45,6 @@ std::vector<std::uint8_t*> allocateObjects(const std::string& policy, std::size_
             allocation
                 = reinterpret_cast<std::uint8_t*>(mmap(nullptr, nObjects * allocationSize, PROT_READ | PROT_WRITE,
                                                        MAP_PRIVATE | MAP_ANONYMOUS | MAP_HUGETLB, -1, 0));
-            std::abort();
         }
 #endif
 #endif

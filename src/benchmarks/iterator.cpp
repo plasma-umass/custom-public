@@ -84,7 +84,7 @@ int main(int argc, char** argv) {
     std::uint64_t sum = 0;
     for (std::uint64_t i = 0; i < iterations; ++i) {
         const auto offset = std::uniform_int_distribution<std::size_t>(0, allocationSize - 1)(generator);
-        for (std::uint64_t j = 0; j < 1024; ++j) {
+        for (std::uint64_t j = 0; j < 128; ++j) {
             const auto* ptr = objects[i % nObjects] + offset;
             sum += *ptr;
         }

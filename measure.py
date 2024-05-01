@@ -94,7 +94,7 @@ def main():
                 }
                 times = []
                 for _ in range(N):
-                    print(f"Running setting: {setting}...")
+                    print(f"Running setting: {extra_args} {litterer_setting}...")
                     stdout = subprocess.check_output(
                         [
                             f"{build_directory}/benchmark_iterator",

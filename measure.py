@@ -6,10 +6,11 @@ import json
 import os
 import re
 import shutil
+import statistics
 import subprocess
 import tempfile
 
-N = 3
+N = 5
 OUTPUT = "measure.csv"
 
 BENCHMARK_FOOTPRINT = 20971520  # getconf LEVEL3_CACHE_SIZE
@@ -44,7 +45,6 @@ def main():
         for s in itertools.chain(
             range(1, 63, 1), range(64, 289, 8), range(320, 4097, 32)
         ):
-            print(f"Testing with s = {s}...")
             data = {}
             data["size"] = s
 
@@ -89,7 +89,7 @@ def main():
                 times.append(
                     int(re.search(r"Done. Time elapsed: (\d+) ms.", stdout).group(1))
                 )
-            row.append(sum(times) / N)
+            row.append(statistics.median(times))
             data["vanilla"] = times
 
             # 3. Run with all settings.
@@ -123,11 +123,12 @@ def main():
                             re.search(r"Done. Time elapsed: (\d+) ms.", stdout).group(1)
                         )
                     )
-                row.append(sum(times) / N)
+                row.append(statistics.median(times))
                 data["settings"].append(times)
 
             f.write(json.dumps(data))
             f.write("\n")
+            f.flush()
             print("\t".join(str(e) for e in row))
 
 

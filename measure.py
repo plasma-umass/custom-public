@@ -12,8 +12,8 @@ import tempfile
 N = 3
 OUTPUT = "measure.csv"
 
-BENCHMARK_FOOTPRINT = 50_000_000  # 50MB
-BENCHMARK_ITERATIONS = 10_000_000
+BENCHMARK_FOOTPRINT = 20971520  # getconf LEVEL3_CACHE_SIZE
+BENCHMARK_ITERATIONS = 40_000_000
 
 SETTINGS = [
     # ([], {"LITTER_MULTIPLIER": "20", "LITTER_OCCUPANCY": "0.95"}),
@@ -26,10 +26,9 @@ def main():
     build_directory = tempfile.mkdtemp()
     atexit.register(shutil.rmtree, build_directory)
     subprocess.run(
-        [f"cmake", ".", "-B", build_directory, "-DCMAKE_BUILD_TYPE=Release"],
-        check=True,
+        ["cmake", ".", "-B", build_directory, "-DCMAKE_BUILD_TYPE=Release"], check=True
     )
-    subprocess.run([f"cmake", "--build", build_directory, "--parallel"], check=True)
+    subprocess.run(["cmake", "--build", build_directory, "--parallel"], check=True)
 
     with open(OUTPUT, "w") as f:
         for s in itertools.chain(
@@ -44,13 +43,12 @@ def main():
                 [
                     f"{build_directory}/benchmark_iterator",
                     "-f",
-                    f"{BENCHMARK_FOOTPRINT}",
+                    str(BENCHMARK_FOOTPRINT),
                     "-i",
-                    f"{BENCHMARK_ITERATIONS}",
+                    str(BENCHMARK_ITERATIONS),
                     "-s",
-                    f"{s}",
+                    str(s),
                 ],
-                cwd=build_directory,
                 check=True,
                 stdout=subprocess.DEVNULL,
                 env={
@@ -65,17 +63,17 @@ def main():
             # 2. Run vanilla.
             times = []
             for _ in range(N):
+                print("Running vanilla...")
                 stdout = subprocess.check_output(
                     [
                         f"{build_directory}/benchmark_iterator",
                         "-f",
-                        f"{BENCHMARK_FOOTPRINT}",
+                        str(BENCHMARK_FOOTPRINT),
                         "-i",
-                        f"{BENCHMARK_ITERATIONS}",
+                        str(BENCHMARK_ITERATIONS),
                         "-s",
-                        f"{s}",
+                        str(s),
                     ],
-                    cwd=build_directory,
                     text=True,
                     env=os.environ,
                 )
@@ -96,15 +94,16 @@ def main():
                 }
                 times = []
                 for _ in range(N):
+                    print(f"Running setting: {setting}...")
                     stdout = subprocess.check_output(
                         [
                             f"{build_directory}/benchmark_iterator",
                             "-f",
-                            f"{BENCHMARK_FOOTPRINT}",
+                            str(BENCHMARK_FOOTPRINT),
                             "-i",
-                            f"{BENCHMARK_ITERATIONS}",
+                            str(BENCHMARK_ITERATIONS),
                             "-s",
-                            f"{s}",
+                            str(s),
                             *extra_args,
                         ],
                         cwd=build_directory,

@@ -20,10 +20,8 @@ jobs:
 
       - name: Set up CWhy
         run: |
-          python3 -m venv env
-          source env/bin/activate
-          python3 -m pip install --upgrade pip
-          python3 -m pip install cwhy
+          python3 -m pip install --break-system-packages --upgrade pip
+          python3 -m pip install --break-system-packages cwhy
 
       - name: Configure CMake
         run: >

@@ -16,9 +16,19 @@ BENCHMARK_FOOTPRINT = 20971520  # getconf LEVEL3_CACHE_SIZE
 BENCHMARK_ITERATIONS = 40_000_000
 
 SETTINGS = [
-    # ([], {"LITTER_MULTIPLIER": "20", "LITTER_OCCUPANCY": "0.95"}),
     ([], {"LITTER_MULTIPLIER": "1", "LITTER_OCCUPANCY": "0.4"}),
-    (["--simulate-arena"], {"LITTER_MULTIPLIER": "1", "LITTER_OCCUPANCY": "0.4"}),
+    (
+        ["--allocation-policy=arena-malloc"],
+        {"LITTER_MULTIPLIER": "1", "LITTER_OCCUPANCY": "0.4"},
+    ),
+    (
+        ["--allocation-policy=arena-mmap"],
+        {"LITTER_MULTIPLIER": "1", "LITTER_OCCUPANCY": "0.4"},
+    ),
+    (
+        ["--allocation-policy=arena-mmap-hugepage"],
+        {"LITTER_MULTIPLIER": "1", "LITTER_OCCUPANCY": "0.4"},
+    ),
 ]
 
 
@@ -63,7 +73,6 @@ def main():
             # 2. Run vanilla.
             times = []
             for _ in range(N):
-                print("Running vanilla...")
                 stdout = subprocess.check_output(
                     [
                         f"{build_directory}/benchmark_iterator",
@@ -94,7 +103,6 @@ def main():
                 }
                 times = []
                 for _ in range(N):
-                    print(f"Running setting: {extra_args} {litterer_setting}...")
                     stdout = subprocess.check_output(
                         [
                             f"{build_directory}/benchmark_iterator",
@@ -106,7 +114,6 @@ def main():
                             str(s),
                             *extra_args,
                         ],
-                        cwd=build_directory,
                         text=True,
                         stderr=subprocess.DEVNULL,
                         env=env,

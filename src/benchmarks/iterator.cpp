@@ -1,8 +1,10 @@
+#include <cstring>
 #ifndef _WIN32
 #include <sys/mman.h>
 #endif
 
 #include <cassert>
+#include <cerrno>
 #include <chrono>
 #include <cmath>
 #include <cstddef>
@@ -49,6 +51,12 @@ std::vector<std::uint8_t*> allocateObjects(const std::string& policy, std::size_
 #endif
 #endif
         else {
+            std::abort();
+        }
+
+        if (allocation == nullptr) {
+            std::cerr << "Failed to allocate memory..." << std::endl;
+            std::cerr << std::strerror(errno) << std::endl;
             std::abort();
         }
 

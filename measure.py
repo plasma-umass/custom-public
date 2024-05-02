@@ -13,23 +13,12 @@ import tempfile
 N = 5
 OUTPUT = "measure.csv"
 
+# Settings to investigate cache line size effects.
 BENCHMARK_FOOTPRINT = 20971520  # getconf LEVEL3_CACHE_SIZE
 BENCHMARK_ITERATIONS = 40_000_000
-
+SIZES = itertools.chain(range(1, 127, 1), range(128, 289, 8), range(320, 4097, 32))
 SETTINGS = [
-    ([], {"LITTER_MULTIPLIER": "1", "LITTER_OCCUPANCY": "0.4"}),
-    (
-        ["--allocation-policy=arena-malloc"],
-        {"LITTER_MULTIPLIER": "1", "LITTER_OCCUPANCY": "0.4"},
-    ),
-    (
-        ["--allocation-policy=arena-mmap"],
-        {"LITTER_MULTIPLIER": "1", "LITTER_OCCUPANCY": "0.4"},
-    ),
-    (
-        ["--allocation-policy=arena-mmap-hugepage"],
-        {"LITTER_MULTIPLIER": "1", "LITTER_OCCUPANCY": "0.4"},
-    ),
+    ([], {"LITTER_MULTIPLIER": "20", "LITTER_OCCUPANCY": "0.95  "}),
 ]
 
 
@@ -42,9 +31,7 @@ def main():
     subprocess.run(["cmake", "--build", build_directory, "--parallel"], check=True)
 
     with open(OUTPUT, "w") as f:
-        for s in itertools.chain(
-            range(1, 63, 1), range(64, 289, 8), range(320, 4097, 32)
-        ):
+        for s in SIZES:
             data = {}
             data["size"] = s
 

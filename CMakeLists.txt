@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.24)
+cmake_minimum_required(VERSION 3.25)
 
 include(FetchContent)
 
@@ -45,7 +45,7 @@ set(BUILD_SHARED_LIBS ${BUILD_SHARED_LIBS_OLD})
 message(STATUS "Downloading and configuring nlohmann::json")
 FetchContent_MakeAvailable(nlohmann_json)
 
-if (MSVC)
+if(MSVC)
  add_compile_options(/W4)
  add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 else()
@@ -61,7 +61,14 @@ if(NOT WIN32)
 endif()
 
 add_executable(benchmark_iterator src/benchmarks/iterator.cpp)
-target_link_libraries(benchmark_iterator PRIVATE argparse benchmark)
+target_link_libraries(benchmark_iterator PRIVATE argparse)
+target_link_libraries(benchmark_iterator PRIVATE benchmark)
+if(LINUX)
+  add_library(utils_perf SHARED src/utils/perf.cpp)
+  target_include_directories(utils_perf PUBLIC src/include)
+  target_link_libraries(benchmark_iterator PRIVATE utils_perf)
+  target_compile_definitions(benchmark_iterator PRIVATE -DENABLE_PERF)
+endif()
 
 # Interposition is not supported on Windows.
 if(NOT WIN32)

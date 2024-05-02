@@ -1,0 +1,37 @@
+#ifndef UTILS_PERF_HPP
+#define UTILS_PERF_HPP
+
+#include <cstdint>
+#include <string>
+#include <utility>
+#include <vector>
+
+namespace utils::perf {
+std::string toString(int type, int config);
+std::string toString(std::pair<int, int> event);
+
+struct Group {
+    Group(const std::vector<std::pair<int, int>>& events);
+    ~Group();
+
+    Group(const Group&) = delete;
+    Group& operator=(const Group&) = delete;
+
+    Group(Group&&) = default;
+    Group& operator=(Group&&) = default;
+
+    void enable();
+    void disable();
+    void reset();
+
+    bool isEnabled() const;
+
+    std::vector<std::uint64_t> read() const;
+
+  private:
+    std::vector<int> descriptors;
+    bool enabled = false;
+};
+} // namespace utils::perf
+
+#endif

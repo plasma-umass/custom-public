@@ -7,11 +7,11 @@
 #include <vector>
 
 namespace utils::perf {
-std::string toString(int type, int config);
-std::string toString(std::pair<int, int> event);
+std::string toString(std::uint32_t type, std::uint64_t config);
+std::string toString(std::pair<std::uint32_t, std::uint64_t> event);
 
 struct Group {
-    Group(const std::vector<std::pair<int, int>>& events);
+    Group(const std::vector<std::pair<std::uint32_t, std::uint64_t>>& events);
     ~Group();
 
     Group(const Group&) = delete;
@@ -24,9 +24,9 @@ struct Group {
     void disable();
     void reset();
 
-    bool isEnabled() const;
+    [[nodiscard]] bool isEnabled() const;
 
-    std::vector<std::uint64_t> read() const;
+    [[nodiscard]] std::vector<std::uint64_t> read() const;
 
   private:
     std::vector<int> descriptors;

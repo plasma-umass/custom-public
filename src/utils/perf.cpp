@@ -1,17 +1,28 @@
 #include <utils/perf.hpp>
 
 #include <cassert>
+#include <cstdint>
+#include <cstdlib>
 #include <cstring>
 #include <iostream>
+#include <string>
+#include <utility>
+#include <vector>
 
 #include <linux/perf_event.h>
 #include <sys/ioctl.h>
 #include <sys/syscall.h>
+#include <sys/types.h>
 #include <unistd.h>
 
-std::string utils::perf::toString(int type, int config) {
+int perf_event_open(struct perf_event_attr* attr, pid_t pid, int cpu, int group_fd, unsigned long flags) {
+    return static_cast<int>(syscall(SYS_perf_event_open, attr, pid, cpu, group_fd, flags));
+}
+
+std::string utils::perf::toString(std::uint32_t type, // NOLINT(bugprone-easily-swappable-parameters)
+                                  std::uint64_t config) {
     if (type == PERF_TYPE_HARDWARE) {
-        switch (config) {
+        switch (config) { // NOLINT(bugprone-switch-missing-default-case)
             case PERF_COUNT_HW_CPU_CYCLES:
                 return "PERF_COUNT_HW_CPU_CYCLES";
             case PERF_COUNT_HW_INSTRUCTIONS:
@@ -34,7 +45,7 @@ std::string utils::perf::toString(int type, int config) {
                 return "PERF_COUNT_HW_REF_CPU_CYCLES";
         }
     } else if (type == PERF_TYPE_SOFTWARE) {
-        switch (config) {
+        switch (config) { // NOLINT(bugprone-switch-missing-default-case)
             case PERF_COUNT_SW_CPU_CLOCK:
                 return "PERF_COUNT_SW_CPU_CLOCK";
             case PERF_COUNT_SW_TASK_CLOCK:
@@ -63,7 +74,7 @@ std::string utils::perf::toString(int type, int config) {
     } else if (type == PERF_TYPE_HW_CACHE) {
         std::string representation;
 
-        switch (config & 0xFF) {
+        switch (config & 0xFF) { // NOLINT(bugprone-switch-missing-default-case)
             case PERF_COUNT_HW_CACHE_L1D:
                 representation = "PERF_COUNT_HW_CACHE_L1D";
                 break;
@@ -87,7 +98,7 @@ std::string utils::perf::toString(int type, int config) {
                 break;
         }
 
-        switch ((config >> 8) & 0xFF) {
+        switch ((config >> 8) & 0xFF) { // NOLINT(bugprone-switch-missing-default-case)
             case PERF_COUNT_HW_CACHE_OP_READ:
                 representation += " | PERF_COUNT_HW_CACHE_OP_READ";
                 break;
@@ -99,7 +110,7 @@ std::string utils::perf::toString(int type, int config) {
                 break;
         }
 
-        switch ((config >> 16) & 0xFF) {
+        switch ((config >> 16) & 0xFF) { // NOLINT(bugprone-switch-missing-default-case)
             case PERF_COUNT_HW_CACHE_RESULT_ACCESS:
                 representation += " | PERF_COUNT_HW_CACHE_RESULT_ACCESS";
                 break;
@@ -114,14 +125,14 @@ std::string utils::perf::toString(int type, int config) {
     return "[unknown]";
 }
 
-std::string utils::perf::toString(std::pair<int, int> event) {
+std::string utils::perf::toString(std::pair<std::uint32_t, std::uint64_t> event) {
     return toString(event.first, event.second);
 }
 
-utils::perf::Group::Group(const std::vector<std::pair<int, int>>& events) {
+utils::perf::Group::Group(const std::vector<std::pair<std::uint32_t, std::uint64_t>>& events) {
     assert(!events.empty());
 
-    struct perf_event_attr pe;
+    struct perf_event_attr pe; // NOLINT(cppcoreguidelines-pro-type-member-init)
     std::memset(&pe, 0, sizeof(struct perf_event_attr));
     pe.size = sizeof(struct perf_event_attr);
     pe.type = events[0].first;
@@ -129,7 +140,7 @@ utils::perf::Group::Group(const std::vector<std::pair<int, int>>& events) {
     pe.inherit = 1;
     pe.disabled = 1;
 
-    const auto leader = syscall(SYS_perf_event_open, &pe, 0, -1, -1, 0);
+    const auto leader = perf_event_open(&pe, 0, -1, -1, 0);
     if (leader == -1) {
         std::cerr << "perf_event_open failed for event " << utils::perf::toString(pe.type, pe.config) << std::endl;
         std::exit(EXIT_FAILURE);
@@ -137,7 +148,7 @@ utils::perf::Group::Group(const std::vector<std::pair<int, int>>& events) {
     descriptors.push_back(leader);
 
     for (std::size_t i = 1; i < events.size(); ++i) {
-        struct perf_event_attr pe;
+        struct perf_event_attr pe; // NOLINT(cppcoreguidelines-pro-type-member-init)
         std::memset(&pe, 0, sizeof(struct perf_event_attr));
         pe.size = sizeof(struct perf_event_attr);
         pe.type = events[i].first;
@@ -145,7 +156,7 @@ utils::perf::Group::Group(const std::vector<std::pair<int, int>>& events) {
         pe.inherit = 1;
         pe.disabled = 1;
 
-        const auto fd = syscall(SYS_perf_event_open, &pe, 0, -1, leader, 0);
+        const auto fd = perf_event_open(&pe, 0, -1, leader, 0);
         if (fd == -1) {
             std::cerr << "perf_event_open failed for event " << utils::perf::toString(pe.type, pe.config) << std::endl;
             std::exit(EXIT_FAILURE);
@@ -161,7 +172,7 @@ utils::perf::Group::~Group() {
 }
 
 void utils::perf::Group::enable() {
-    if (ioctl(descriptors[0], PERF_EVENT_IOC_ENABLE, PERF_IOC_FLAG_GROUP)) {
+    if (ioctl(descriptors[0], PERF_EVENT_IOC_ENABLE, PERF_IOC_FLAG_GROUP) != 0) {
         std::cerr << "ioctl(ENABLE) failed" << std::endl;
         std::exit(EXIT_FAILURE);
     }
@@ -169,7 +180,7 @@ void utils::perf::Group::enable() {
 }
 
 void utils::perf::Group::disable() {
-    if (ioctl(descriptors[0], PERF_EVENT_IOC_DISABLE, PERF_IOC_FLAG_GROUP)) {
+    if (ioctl(descriptors[0], PERF_EVENT_IOC_DISABLE, PERF_IOC_FLAG_GROUP) != 0) {
         std::cerr << "ioctl(DISABLE) failed" << std::endl;
         std::exit(EXIT_FAILURE);
     }
@@ -178,7 +189,7 @@ void utils::perf::Group::disable() {
 
 void utils::perf::Group::reset() {
     for (const auto fd : descriptors) {
-        if (ioctl(fd, PERF_EVENT_IOC_RESET, PERF_IOC_FLAG_GROUP)) {
+        if (ioctl(fd, PERF_EVENT_IOC_RESET, PERF_IOC_FLAG_GROUP) != 0) {
             std::cerr << "ioctl(RESET) failed" << std::endl;
             std::exit(EXIT_FAILURE);
         }

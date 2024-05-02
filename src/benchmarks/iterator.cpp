@@ -3,7 +3,6 @@
 #include <sys/mman.h>
 #endif
 
-#include <cassert>
 #include <cerrno>
 #include <chrono>
 #include <cmath>
@@ -14,6 +13,7 @@
 #include <iostream>
 #include <random>
 #include <string>
+#include <utility>
 #include <vector>
 
 #include <argparse/argparse.hpp>
@@ -147,7 +147,7 @@ int main(int argc, char** argv) {
     std::cout << "Iterating..." << std::endl;
 
 #ifdef ENABLE_PERF
-    const auto events = std::vector<std::pair<int, int>>(
+    const auto events = std::vector<std::pair<std::uint32_t, std::uint64_t>>(
         {{PERF_TYPE_HW_CACHE,
           PERF_COUNT_HW_CACHE_DTLB | (PERF_COUNT_HW_CACHE_OP_READ << 8) | (PERF_COUNT_HW_CACHE_RESULT_MISS << 16)},
          {PERF_TYPE_HW_CACHE,

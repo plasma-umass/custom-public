@@ -10,6 +10,7 @@ Checks: |
   -cppcoreguidelines-no-malloc,
   -cppcoreguidelines-owning-memory,
   -cppcoreguidelines-pro-bounds-pointer-arithmetic,
+  -cppcoreguidelines-pro-type-vararg,
   -cppcoreguidelines-pro-type-reinterpret-cast,
   misc-*,
   modernize-*,

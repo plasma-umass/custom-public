@@ -124,7 +124,7 @@ int main(int argc, char** argv) {
     } catch (const std::exception& err) {
         std::cerr << err.what() << std::endl;
         std::cerr << program;
-        std::abort();
+        std::exit(EXIT_FAILURE);
     }
 
     const auto allocationSize = program.get<std::size_t>("--allocation-size");

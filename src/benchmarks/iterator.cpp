@@ -1,5 +1,3 @@
-#include <algorithm>
-#include <cstring>
 #ifndef _WIN32
 #include <sys/mman.h>
 #endif
@@ -10,6 +8,7 @@
 #include <cstddef>
 #include <cstdint>
 #include <cstdlib>
+#include <cstring>
 #include <exception>
 #include <iostream>
 #include <random>

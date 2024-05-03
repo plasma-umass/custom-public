@@ -15,10 +15,10 @@ OUTPUT = "measure.csv"
 
 # Settings to investigate cache line size effects.
 BENCHMARK_FOOTPRINT = 20971520  # getconf LEVEL3_CACHE_SIZE
-BENCHMARK_ITERATIONS = 5_000_000
+BENCHMARK_ITERATIONS = 250_000_000
 SIZES = itertools.chain(range(1, 127, 1), range(128, 289, 8), range(320, 4097, 32))
 SETTINGS = [
-    ([], {"LITTER_MULTIPLIER": "20", "LITTER_OCCUPANCY": "0.95  "}),
+    ([], {"LITTER_MULTIPLIER": "20", "LITTER_OCCUPANCY": "0.95"}),
 ]
 
 

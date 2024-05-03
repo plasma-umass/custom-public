@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <cstring>
 #ifndef _WIN32
 #include <sys/mman.h>
@@ -143,6 +144,9 @@ int main(int argc, char** argv) {
     std::mt19937_64 generator(seed);
     std::cout << "Allocating " << nObjects << " objects of size " << allocationSize << "..." << std::endl;
     std::vector<std::uint8_t*> objects = allocateObjects(policy, nObjects, allocationSize, generator);
+    std::vector<std::size_t> offsets(iterations);
+    std::generate(offsets.begin(), offsets.end(),
+                  [&]() { return std::uniform_int_distribution<std::size_t>(0, allocationSize - 1)(generator); });
 
     std::cout << "Iterating..." << std::endl;
 
@@ -164,9 +168,8 @@ int main(int argc, char** argv) {
 
     std::uint64_t sum = 0;
     for (std::uint64_t i = 0; i < iterations; ++i) {
-        const auto offset = std::uniform_int_distribution<std::size_t>(0, allocationSize - 1)(generator);
-        for (std::uint64_t j = 0; j < 64; ++j) {
-            const auto* ptr = objects[(i * 64 + j) % nObjects] + offset;
+        for (std::uint64_t j = 0; j < 128; ++j) {
+            const auto* ptr = objects[(i * 128 + j) % nObjects] + offsets[i];
             sum += *ptr;
         }
     }

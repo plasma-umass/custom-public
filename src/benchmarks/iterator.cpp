@@ -86,6 +86,16 @@ std::vector<std::uint8_t*> allocateObjects(const std::string& policy, std::size_
     return objects;
 };
 
+void runBenchmark(std::uint64_t iterations, const std::vector<std::uint8_t*>& objects) {
+    const auto nObjects = objects.size();
+    std::uint64_t sum = 0;
+    for (std::uint64_t i = 0; i < iterations; ++i) {
+        const auto* ptr = objects[i % nObjects];
+        sum += *ptr;
+    }
+    benchmark::DoNotOptimize(sum);
+}
+
 int main(int argc, char** argv) {
     auto program = argparse::ArgumentParser("benchmark_iterator", "", argparse::default_arguments::help);
     program.add_argument("-s", "--allocation-size")
@@ -162,12 +172,7 @@ int main(int argc, char** argv) {
 #endif
     const auto start = std::chrono::high_resolution_clock::now();
 
-    std::uint64_t sum = 0;
-    for (std::uint64_t i = 0; i < iterations; ++i) {
-        const auto* ptr = objects[i % nObjects];
-        sum += *ptr;
-    }
-    benchmark::DoNotOptimize(sum);
+    runBenchmark(iterations, objects);
 
     const auto end = std::chrono::high_resolution_clock::now();
 #ifdef ENABLE_PERF

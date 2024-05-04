@@ -30,6 +30,15 @@ std::size_t mmapAllocationSize(std::size_t needed, std::size_t pageSize) {
     return needed + extra;
 }
 
+std::string humanReadableBytes(std::size_t size) {
+    const char* suffixes[] = {"", "K", "M", "G", "T", "P", "E", "Z", "Y"};
+    int i = 0;
+    for (; size >= 1024 && i < 8; ++i) {
+        size /= 1024;
+    }
+    return std::to_string(size) + suffixes[i];
+}
+
 std::vector<std::uint8_t*> allocateObjects(const std::string& policy, std::size_t nObjects, std::size_t allocationSize,
                                            std::mt19937_64& generator) {
     std::vector<std::uint8_t*> objects;
@@ -103,10 +112,10 @@ int main(int argc, char** argv) {
         .help("the size in bytes of each allocated object")
         .metavar("SIZE")
         .scan<'d', std::size_t>();
-    program.add_argument("-f", "--footprint")
+    program.add_argument("-n")
         .required()
-        .help("the total number of bytes that should be allocated (n = f / s)")
-        .metavar("SIZE")
+        .help("the number of objects to be allocated")
+        .metavar("N")
         .scan<'d', std::uint64_t>();
     program.add_argument("-i", "--iterations")
         .required()
@@ -138,9 +147,7 @@ int main(int argc, char** argv) {
     }
 
     const auto allocationSize = program.get<std::size_t>("--allocation-size");
-    const auto footprint = program.get<std::uint64_t>("--footprint");
-    const auto nObjects
-        = static_cast<std::size_t>(std::ceil(static_cast<double>(footprint) / static_cast<double>(allocationSize)));
+    const auto nObjects = program.get<std::uint64_t>("-n");
     const auto iterations = program.get<std::uint64_t>("--iterations");
     const auto policy = program.get<std::string>("--allocation-policy");
     const auto seed = program.get<unsigned int>("seed");
@@ -149,6 +156,11 @@ int main(int argc, char** argv) {
     std::cout << "number of objects : " << nObjects << std::endl;
     std::cout << "iterations        : " << iterations << std::endl;
     std::cout << "seed              : " << seed << std::endl;
+
+    const auto footprint = nObjects * allocationSize;
+    if (nObjects * allocationSize > 10'000'000'000) {
+        std::cout << "[WARNING] Allocating at least " << humanReadableBytes(footprint) << "..." << std::endl;
+    }
 
     std::mt19937_64 generator(seed);
     std::cout << "Allocating " << nObjects << " objects of size " << allocationSize << "..." << std::endl;

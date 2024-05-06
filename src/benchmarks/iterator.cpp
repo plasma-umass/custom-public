@@ -177,7 +177,9 @@ int main(int argc, char** argv) {
          {PERF_TYPE_HW_CACHE,
           PERF_COUNT_HW_CACHE_DTLB | (PERF_COUNT_HW_CACHE_OP_READ << 8) | (PERF_COUNT_HW_CACHE_RESULT_ACCESS << 16)},
          {PERF_TYPE_HW_CACHE,
-          PERF_COUNT_HW_CACHE_DTLB | (PERF_COUNT_HW_CACHE_OP_WRITE << 8) | (PERF_COUNT_HW_CACHE_RESULT_ACCESS << 16)}});
+          PERF_COUNT_HW_CACHE_DTLB | (PERF_COUNT_HW_CACHE_OP_WRITE << 8) | (PERF_COUNT_HW_CACHE_RESULT_ACCESS << 16)},
+         {PERF_TYPE_HARDWARE, PERF_COUNT_HW_CACHE_MISSES},
+         {PERF_TYPE_HARDWARE, PERF_COUNT_HW_CACHE_REFERENCES}});
     utils::perf::Group group(events);
     group.reset();
     group.enable();
@@ -201,6 +203,8 @@ int main(int argc, char** argv) {
               << "%" << std::endl;
     std::cout << "dTLB total miss rate: "
               << 100.0 * static_cast<double>(counts[0] + counts[1]) / static_cast<double>(counts[2] + counts[3]) << "%"
+              << std::endl;
+    std::cout << "LLC miss rate: " << 100.0 * static_cast<double>(counts[4]) / static_cast<double>(counts[5]) << "%"
               << std::endl;
 #endif
 

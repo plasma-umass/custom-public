@@ -2,6 +2,7 @@
 #include <sys/mman.h>
 #endif
 
+#include <array>
 #include <cerrno>
 #include <chrono>
 #include <cstddef>
@@ -14,7 +15,6 @@
 #include <string>
 #include <utility>
 #include <vector>
-#include <array>
 
 #include <argparse/argparse.hpp>
 #include <benchmark/benchmark.h>

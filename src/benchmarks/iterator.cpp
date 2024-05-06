@@ -4,7 +4,6 @@
 
 #include <cerrno>
 #include <chrono>
-#include <cmath>
 #include <cstddef>
 #include <cstdint>
 #include <cstdlib>
@@ -31,12 +30,12 @@ std::size_t mmapAllocationSize(std::size_t needed, std::size_t pageSize) {
 }
 
 std::string humanReadableBytes(std::size_t size) {
-    const char* suffixes[] = {"", "K", "M", "G", "T", "P", "E", "Z", "Y"};
+    const std::aray suffixes{"", "K", "M", "G", "T", "P", "E", "Z", "Y"};
     int i = 0;
     for (; size >= 1024 && i < 8; ++i) {
         size /= 1024;
     }
-    return std::to_string(size) + suffixes[i];
+    return std::to_string(size) + suffixes.at(i);
 }
 
 std::vector<std::uint8_t*> allocateObjects(const std::string& policy, std::size_t nObjects, std::size_t allocationSize,

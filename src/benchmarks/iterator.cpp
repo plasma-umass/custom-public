@@ -14,6 +14,7 @@
 #include <string>
 #include <utility>
 #include <vector>
+#include <array>
 
 #include <argparse/argparse.hpp>
 #include <benchmark/benchmark.h>
@@ -30,7 +31,7 @@ std::size_t mmapAllocationSize(std::size_t needed, std::size_t pageSize) {
 }
 
 std::string humanReadableBytes(std::size_t size) {
-    const std::aray suffixes{"", "K", "M", "G", "T", "P", "E", "Z", "Y"};
+    const std::array suffixes{"", "K", "M", "G", "T", "P", "E", "Z", "Y"};
     int i = 0;
     for (; size >= 1024 && i < 8; ++i) {
         size /= 1024;
@@ -94,14 +95,12 @@ std::vector<std::uint8_t*> allocateObjects(const std::string& policy, std::size_
     return objects;
 };
 
-void runBenchmark(std::uint64_t iterations, const std::vector<std::uint8_t*>& objects) {
+void runBenchmark(std::uint64_t iterations, std::vector<std::uint8_t*>& objects) {
     const auto nObjects = objects.size();
-    std::uint64_t sum = 0;
     for (std::uint64_t i = 0; i < iterations; ++i) {
-        const auto* ptr = objects[i % nObjects];
-        sum += *ptr;
+        auto* ptr = objects[i % nObjects];
+        *ptr += 1;
     }
-    benchmark::DoNotOptimize(sum);
 }
 
 int main(int argc, char** argv) {

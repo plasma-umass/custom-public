@@ -164,6 +164,10 @@ int main(int argc, char** argv) {
     std::cout << "Allocating " << nObjects << " objects of size " << allocationSize << "..." << std::endl;
     std::vector<std::uint8_t*> objects = allocateObjects(policy, nObjects, allocationSize, generator);
 
+    std::cout << "Shuffling iteration order..." << std::endl;
+    // Keep the first address in place to use it when releasing the memory.
+    std::shuffle(std::next(objects.begin()), objects.end(), generator);
+
     std::cout << "Iterating..." << std::endl;
 
 #ifdef ENABLE_PERF
@@ -178,6 +182,7 @@ int main(int argc, char** argv) {
           PERF_COUNT_HW_CACHE_DTLB | (PERF_COUNT_HW_CACHE_OP_WRITE << 8) | (PERF_COUNT_HW_CACHE_RESULT_ACCESS << 16)},
          {PERF_TYPE_HARDWARE, PERF_COUNT_HW_CACHE_MISSES},
          {PERF_TYPE_HARDWARE, PERF_COUNT_HW_CACHE_REFERENCES}});
+    // FIXME: Adding the prefetch counters and more precise L1/LLC counters would be nice, but not supported.
     utils::perf::Group group(events);
     group.reset();
     group.enable();
@@ -199,9 +204,6 @@ int main(int argc, char** argv) {
               << "%" << std::endl;
     std::cout << "dTLB write miss rate: " << 100.0 * static_cast<double>(counts[1]) / static_cast<double>(counts[3])
               << "%" << std::endl;
-    std::cout << "dTLB total miss rate: "
-              << 100.0 * static_cast<double>(counts[0] + counts[1]) / static_cast<double>(counts[2] + counts[3]) << "%"
-              << std::endl;
     std::cout << "LLC miss rate: " << 100.0 * static_cast<double>(counts[4]) / static_cast<double>(counts[5]) << "%"
               << std::endl;
 #endif

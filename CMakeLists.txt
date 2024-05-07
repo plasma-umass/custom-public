@@ -62,7 +62,6 @@ endif()
 
 add_executable(benchmark_iterator src/benchmarks/iterator.cpp)
 target_link_libraries(benchmark_iterator PRIVATE argparse)
-target_link_libraries(benchmark_iterator PRIVATE benchmark)
 if(LINUX)
   add_library(utils_perf SHARED src/utils/perf.cpp)
   target_include_directories(utils_perf PUBLIC src/include)

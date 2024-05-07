@@ -2,6 +2,7 @@
 #include <sys/mman.h>
 #endif
 
+#include <algorithm>
 #include <array>
 #include <cerrno>
 #include <chrono>
@@ -11,13 +12,13 @@
 #include <cstring>
 #include <exception>
 #include <iostream>
+#include <iterator>
 #include <random>
 #include <string>
 #include <utility>
 #include <vector>
 
 #include <argparse/argparse.hpp>
-#include <benchmark/benchmark.h>
 
 #ifdef ENABLE_PERF
 #include <linux/perf_event.h>

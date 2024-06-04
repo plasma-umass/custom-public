@@ -27,7 +27,7 @@
 
 std::size_t mmapAllocationSize(std::size_t needed, std::size_t pageSize) {
     // mmap tends to return the extra space in a page, and also requests for that extra size to be passed in munmap.
-    const auto extra = pageSize - needed % pageSize;
+    const auto extra = (pageSize - needed % pageSize) % pageSize;
     return needed + extra;
 }
 
@@ -96,16 +96,17 @@ std::vector<std::uint8_t*> allocateObjects(const std::string& policy, std::size_
     return objects;
 };
 
-void runBenchmark(std::uint64_t iterations, std::vector<std::uint8_t*>& objects) {
+void runBenchmark(std::uint64_t iterations, std::size_t allocationSize, // NOLINT(bugprone-easily-swappable-parameters)
+                  std::vector<std::uint8_t*>& objects) {
     const auto nObjects = objects.size();
     if ((nObjects & (nObjects - 1)) != 0) {
         for (std::uint64_t i = 0; i < iterations; ++i) {
-            auto* ptr = objects[i % nObjects];
+            auto* ptr = objects[i % nObjects] + i % allocationSize;
             *ptr = 1;
         }
     } else {
         for (std::uint64_t i = 0; i < iterations; ++i) {
-            auto* ptr = objects[i & (nObjects - 1)];
+            auto* ptr = objects[i & (nObjects - 1)] + i % allocationSize;
             *ptr = 1;
         }
     }
@@ -197,7 +198,7 @@ int main(int argc, char** argv) {
 #endif
     const auto start = std::chrono::high_resolution_clock::now();
 
-    runBenchmark(iterations, objects);
+    runBenchmark(iterations, allocationSize, objects);
 
     const auto end = std::chrono::high_resolution_clock::now();
 #ifdef ENABLE_PERF

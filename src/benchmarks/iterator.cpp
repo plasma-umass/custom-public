@@ -98,9 +98,16 @@ std::vector<std::uint8_t*> allocateObjects(const std::string& policy, std::size_
 
 void runBenchmark(std::uint64_t iterations, std::vector<std::uint8_t*>& objects) {
     const auto nObjects = objects.size();
-    for (std::uint64_t i = 0; i < iterations; ++i) {
-        auto* ptr = objects[i % nObjects];
-        *ptr += 1;
+    if ((nObjects & (nObjects - 1)) != 0) {
+        for (std::uint64_t i = 0; i < iterations; ++i) {
+            auto* ptr = objects[i % nObjects];
+            *ptr = 1;
+        }
+    } else {
+        for (std::uint64_t i = 0; i < iterations; ++i) {
+            auto* ptr = objects[i & (nObjects - 1)];
+            *ptr = 1;
+        }
     }
 }
 
@@ -111,7 +118,7 @@ int main(int argc, char** argv) {
         .help("the size in bytes of each allocated object")
         .metavar("SIZE")
         .scan<'d', std::size_t>();
-    program.add_argument("-n")
+    program.add_argument("-n", "--number-objects")
         .required()
         .help("the number of objects to be allocated")
         .metavar("N")
@@ -121,7 +128,7 @@ int main(int argc, char** argv) {
         .help("the number of iterations over the entire allocated population")
         .metavar("N")
         .scan<'d', std::uint64_t>();
-    program.add_argument("--allocation-policy")
+    program.add_argument("-p", "--allocation-policy")
         .help("the allocation policy to use")
         .default_value("individual-malloc")
 #ifdef _WIN32

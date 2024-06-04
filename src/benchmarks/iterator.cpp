@@ -208,6 +208,9 @@ int main(int argc, char** argv) {
     std::cout << "Done. Time elapsed: " << elapsed_ms << " ms." << std::endl;
 #ifdef ENABLE_PERF
     const auto counts = group.read();
+    for (std::size_t i = 0; i < events.size(); ++i) {
+        std::cout << utils::perf::toString(events.at(i)) << " = " << counts[i] << std::endl;
+    }
     std::cout << "dTLB read miss rate: " << 100.0 * static_cast<double>(counts[0]) / static_cast<double>(counts[2])
               << "%" << std::endl;
     std::cout << "dTLB write miss rate: " << 100.0 * static_cast<double>(counts[1]) / static_cast<double>(counts[3])

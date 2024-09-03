@@ -28,7 +28,7 @@ std::deque<std::atomic_uint64_t> bins;
 std::atomic_int64_t liveAllocations = 0;
 std::atomic_int64_t maxLiveAllocations = 0;
 
-struct Initialization {
+const struct Initialization {
     Initialization() {
         std::string sizeClassScheme = kDefaultSizeClassScheme;
         if (const char* env = std::getenv("LITTER_SIZE_CLASSES")) {
@@ -77,9 +77,7 @@ struct Initialization {
     Initialization& operator=(const Initialization&) = delete;
     Initialization(Initialization&&) = delete;
     Initialization& operator=(Initialization&&) = delete;
-};
-
-const Initialization _;
+} _;
 } // namespace
 
 // This function CANNOT call any memory allocation functions.

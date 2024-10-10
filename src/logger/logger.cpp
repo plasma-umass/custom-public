@@ -1,6 +1,6 @@
-#include <atomic>
+#include <cstddef>
 #include <cstdint>
-#include <deque>
+#include <cstdlib>
 #include <fstream>
 #include <iostream>
 #include <mutex>
@@ -35,12 +35,6 @@ const struct Initialization {
         output = std::ofstream("events.bin", std::ios::binary);
         initialized = true;
     };
-
-    ~Initialization() = default;
-    Initialization(const Initialization&) = delete;
-    Initialization& operator=(const Initialization&) = delete;
-    Initialization(Initialization&&) = delete;
-    Initialization& operator=(Initialization&&) = delete;
 } _;
 } // namespace
 
@@ -50,9 +44,8 @@ void processEvent(const Event& event) {
         return;
     }
     ++busy;
-    std::unique_lock<std::mutex> guard(lock);
+    const std::unique_lock<std::mutex> guard(lock);
     output.write(reinterpret_cast<const char*>(&event), sizeof(event));
-    // std::cout << "Event: " << &event << std::endl;
     --busy;
 }
 

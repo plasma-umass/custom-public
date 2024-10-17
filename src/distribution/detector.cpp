@@ -96,7 +96,8 @@ void processAllocation(std::size_t size) {
             ++bins.back();
         }
     } else {
-        const auto it = std::lower_bound(sizeClasses.begin(), sizeClasses.end(), size);
+        const auto it
+            = std::lower_bound(sizeClasses.begin(), sizeClasses.end(), size);
         const auto index = std::distance(sizeClasses.begin(), it);
         ++bins[index];
     }
@@ -105,7 +106,8 @@ void processAllocation(std::size_t size) {
         const auto liveAllocationsSnapshot = ++liveAllocations;
         auto maxLiveAllocationsSnapshot = maxLiveAllocations.load();
         while (liveAllocationsSnapshot > maxLiveAllocationsSnapshot) {
-            maxLiveAllocations.compare_exchange_weak(maxLiveAllocationsSnapshot, liveAllocationsSnapshot);
+            maxLiveAllocations.compare_exchange_weak(maxLiveAllocationsSnapshot,
+                                                     liveAllocationsSnapshot);
             maxLiveAllocationsSnapshot = maxLiveAllocations.load();
         }
     }
@@ -148,7 +150,8 @@ extern "C" void* INTERPOSE_FUNCTION_NAME(realloc)(void* pointer, size_t size) {
 INTERPOSE(realloc);
 
 #ifndef __APPLE__
-extern "C" void* INTERPOSE_FUNCTION_NAME(reallocarray)(void* pointer, size_t n, size_t size) {
+extern "C" void* INTERPOSE_FUNCTION_NAME(reallocarray)(void* pointer, size_t n,
+                                                       size_t size) {
     static auto* next = GET_REAL_FUNCTION(reallocarray);
     processAllocation<false>(n * size);
     return next(pointer, n, size);
@@ -156,14 +159,17 @@ extern "C" void* INTERPOSE_FUNCTION_NAME(reallocarray)(void* pointer, size_t n, 
 INTERPOSE(reallocarray);
 #endif
 
-extern "C" int INTERPOSE_FUNCTION_NAME(posix_memalign)(void** memptr, size_t alignment, size_t size) {
+extern "C" int INTERPOSE_FUNCTION_NAME(posix_memalign)(void** memptr,
+                                                       size_t alignment,
+                                                       size_t size) {
     static auto* next = GET_REAL_FUNCTION(posix_memalign);
     processAllocation<true>(size);
     return next(memptr, alignment, size);
 }
 INTERPOSE(posix_memalign);
 
-extern "C" void* INTERPOSE_FUNCTION_NAME(aligned_alloc)(size_t alignment, size_t size) {
+extern "C" void* INTERPOSE_FUNCTION_NAME(aligned_alloc)(size_t alignment,
+                                                        size_t size) {
     static auto* next = GET_REAL_FUNCTION(aligned_alloc);
     processAllocation<true>(size);
     return next(alignment, size);

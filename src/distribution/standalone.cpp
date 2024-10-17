@@ -22,10 +22,13 @@ struct Initialization {
         }
 
         const auto end = std::chrono::high_resolution_clock::now();
-        const auto elapsed_ms = std::chrono::duration_cast<std::chrono::milliseconds>((end - start)).count();
-        fmt::println(log, "==================================================================================");
+        const auto elapsed_ms
+            = std::chrono::duration_cast<std::chrono::milliseconds>(
+                  (end - start))
+                  .count();
+        fmt::println(log, "==================================================");
         fmt::println(log, "Time elapsed: {} ms", elapsed_ms);
-        fmt::println(log, "==================================================================================");
+        fmt::println(log, "==================================================");
 
         if (log != stderr) {
             std::fclose(log);

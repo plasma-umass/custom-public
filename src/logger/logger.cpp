@@ -7,25 +7,9 @@
 
 #include <interpose.h>
 
+#include "shared.hpp"
+
 namespace {
-enum class EventType : std::uint8_t {
-    Null,
-    Malloc,
-    Free,
-    Calloc,
-    Realloc,
-    ReallocArray,
-    PosixMemalign,
-    AlignedAlloc,
-};
-
-struct Event {
-    EventType type = EventType::Null;
-    std::size_t size = 0;
-    std::uintptr_t pointer = 0;
-    std::uintptr_t result = 0;
-};
-
 bool initialized = false;
 std::ofstream output;
 std::mutex lock;
@@ -49,65 +33,80 @@ void processEvent(const Event& event) {
     --busy;
 }
 
-extern "C" void* INTERPOSE_FUNCTION_NAME(malloc)(size_t size) {
+extern "C" void* INTERPOSE_FUNCTION_NAME(malloc)(uint64_t size) {
     static auto* next = GET_REAL_FUNCTION(malloc);
     void* result = next(size);
-    processEvent({.type = EventType::Malloc, .size = size, .result = reinterpret_cast<std::uintptr_t>(result)});
+    processEvent({.type = EventType::Allocation,
+                  .size = size,
+                  .result = reinterpret_cast<std::uint64_t>(result)});
     return result;
 }
 INTERPOSE(malloc);
 
 extern "C" void INTERPOSE_FUNCTION_NAME(free)(void* pointer) {
     static auto* next = GET_REAL_FUNCTION(free);
-    processEvent({.type = EventType::Free, .pointer = reinterpret_cast<std::uintptr_t>(pointer)});
+    processEvent({.type = EventType::Free,
+                  .pointer = reinterpret_cast<std::uint64_t>(pointer)});
     next(pointer);
 }
 INTERPOSE(free);
 
-extern "C" void* INTERPOSE_FUNCTION_NAME(calloc)(size_t n, size_t size) {
+extern "C" void* INTERPOSE_FUNCTION_NAME(calloc)(uint64_t n, uint64_t size) {
     static auto* next = GET_REAL_FUNCTION(calloc);
     void* result = next(n, size);
-    processEvent({.type = EventType::Calloc, .size = n * size, .result = reinterpret_cast<std::uintptr_t>(result)});
+    processEvent({.type = EventType::Allocation,
+                  .size = n * size,
+                  .result = reinterpret_cast<std::uint64_t>(result)});
     return result;
 }
 INTERPOSE(calloc);
 
-extern "C" void* INTERPOSE_FUNCTION_NAME(realloc)(void* pointer, size_t size) {
+extern "C" void* INTERPOSE_FUNCTION_NAME(realloc)(void* pointer,
+                                                  uint64_t size) {
     static auto* next = GET_REAL_FUNCTION(realloc);
     void* result = next(pointer, size);
-    processEvent({.type = EventType::Realloc,
+    processEvent({.type = EventType::Reallocation,
                   .size = size,
-                  .pointer = reinterpret_cast<std::uintptr_t>(pointer),
-                  .result = reinterpret_cast<std::uintptr_t>(result)});
+                  .pointer = reinterpret_cast<std::uint64_t>(pointer),
+                  .result = reinterpret_cast<std::uint64_t>(result)});
     return result;
 }
 INTERPOSE(realloc);
 
 #ifndef __APPLE__
-extern "C" void* INTERPOSE_FUNCTION_NAME(reallocarray)(void* pointer, size_t n, size_t size) {
+extern "C" void* INTERPOSE_FUNCTION_NAME(reallocarray)(void* pointer,
+                                                       uint64_t n,
+                                                       uint64_t size) {
     static auto* next = GET_REAL_FUNCTION(reallocarray);
     void* result = next(pointer, n, size);
-    processEvent({.type = EventType::ReallocArray,
+    processEvent({.type = EventType::Reallocation,
                   .size = n * size,
-                  .pointer = reinterpret_cast<std::uintptr_t>(pointer),
-                  .result = reinterpret_cast<std::uintptr_t>(result)});
+                  .pointer = reinterpret_cast<std::uint64_t>(pointer),
+                  .result = reinterpret_cast<std::uint64_t>(result)});
     return result;
 }
 INTERPOSE(reallocarray);
 #endif
 
-extern "C" int INTERPOSE_FUNCTION_NAME(posix_memalign)(void** memptr, size_t alignment, size_t size) {
+extern "C" int INTERPOSE_FUNCTION_NAME(posix_memalign)(void** memptr,
+                                                       uint64_t alignment,
+                                                       uint64_t size) {
     static auto* next = GET_REAL_FUNCTION(posix_memalign);
     const int result = next(memptr, alignment, size);
-    processEvent({.type = EventType::PosixMemalign, .size = size, .result = reinterpret_cast<std::uintptr_t>(*memptr)});
+    processEvent({.type = EventType::Allocation,
+                  .size = size,
+                  .result = reinterpret_cast<std::uint64_t>(*memptr)});
     return result;
 }
 INTERPOSE(posix_memalign);
 
-extern "C" void* INTERPOSE_FUNCTION_NAME(aligned_alloc)(size_t alignment, size_t size) {
+extern "C" void* INTERPOSE_FUNCTION_NAME(aligned_alloc)(uint64_t alignment,
+                                                        uint64_t size) {
     static auto* next = GET_REAL_FUNCTION(aligned_alloc);
     void* result = next(alignment, size);
-    processEvent({.type = EventType::AlignedAlloc, .size = size, .result = reinterpret_cast<std::uintptr_t>(result)});
+    processEvent({.type = EventType::Allocation,
+                  .size = size,
+                  .result = reinterpret_cast<std::uint64_t>(result)});
     return result;
 }
 INTERPOSE(aligned_alloc);

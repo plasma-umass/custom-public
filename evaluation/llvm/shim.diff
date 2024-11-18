@@ -1,0 +1,11 @@
+--- a/llvm/include/llvm/Support/Allocator.h
++++ b/llvm/include/llvm/Support/Allocator.h
+@@ -58,7 +58,7 @@
+ ///
+ /// The GrowthDelay specifies after how many allocated slabs the allocator
+ /// increases the size of the slabs.
+-template <typename AllocatorT = MallocAllocator, size_t SlabSize = 4096,
++template <typename AllocatorT = MallocAllocator, size_t SlabSize = 0,
+           size_t SizeThreshold = SlabSize, size_t GrowthDelay = 128>
+ class BumpPtrAllocatorImpl
+     : public AllocatorBase<BumpPtrAllocatorImpl<AllocatorT, SlabSize,

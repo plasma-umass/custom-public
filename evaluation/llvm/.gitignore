@@ -1,0 +1,8 @@
+build-shim
+build-vanilla
+shim
+src-shim
+src-vanilla
+vanilla
+sqlite3.c
+sqlite3.o

@@ -15,6 +15,7 @@ Checks: |
   -cppcoreguidelines-pro-type-reinterpret-cast,
   misc-*,
   modernize-*,
+  -modernize-use-ranges,
   -modernize-use-trailing-return-type,
   performance-*,
   -performance-avoid-endl,
@@ -23,3 +24,4 @@ Checks: |
   -readability-identifier-length,
   -readability-inconsistent-declaration-parameter-name,
   -readability-magic-numbers,
+  -readability-math-missing-parentheses,

@@ -106,7 +106,7 @@ std::vector<std::uint8_t*> allocateObjects(const std::string& policy,
 
 void runBenchmark(
     std::uint64_t iterations,
-    std::size_t allocationSize, // NOLINT(bugprone-easily-swappable-parameters)
+    std::size_t allocationSize,
     std::vector<std::uint8_t*>& objects) {
     const auto nObjects = objects.size();
     if ((nObjects & (nObjects - 1)) != 0) {

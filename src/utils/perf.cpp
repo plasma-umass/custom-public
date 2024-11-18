@@ -15,11 +15,13 @@
 #include <sys/types.h>
 #include <unistd.h>
 
+namespace {
 int perf_event_open(struct perf_event_attr* attr, pid_t pid, int cpu,
                     int group_fd, unsigned long flags) {
     return static_cast<int>(
         syscall(SYS_perf_event_open, attr, pid, cpu, group_fd, flags));
 }
+} // namespace
 
 std::string utils::perf::toString(std::uint32_t type, std::uint64_t config) {
     if (type == PERF_TYPE_HARDWARE) {
@@ -99,8 +101,8 @@ std::string utils::perf::toString(std::uint32_t type, std::uint64_t config) {
                 break;
         }
 
-        switch ((config >> 8)
-                & 0xFF) { // NOLINT(bugprone-switch-missing-default-case)
+        switch ((config >> 8) // NOLINT(bugprone-switch-missing-default-case)
+                & 0xFF) {
             case PERF_COUNT_HW_CACHE_OP_READ:
                 representation += " | PERF_COUNT_HW_CACHE_OP_READ";
                 break;
@@ -112,8 +114,8 @@ std::string utils::perf::toString(std::uint32_t type, std::uint64_t config) {
                 break;
         }
 
-        switch ((config >> 16)
-                & 0xFF) { // NOLINT(bugprone-switch-missing-default-case)
+        switch ((config >> 16) // NOLINT(bugprone-switch-missing-default-case)
+                & 0xFF) {
             case PERF_COUNT_HW_CACHE_RESULT_ACCESS:
                 representation += " | PERF_COUNT_HW_CACHE_RESULT_ACCESS";
                 break;
@@ -154,8 +156,8 @@ utils::perf::Group::Group(
     descriptors.push_back(leader);
 
     for (std::size_t i = 1; i < events.size(); ++i) {
-        struct perf_event_attr
-            pe; // NOLINT(cppcoreguidelines-pro-type-member-init)
+        struct perf_event_attr // NOLINT(cppcoreguidelines-pro-type-member-init)
+            pe;
         std::memset(&pe, 0, sizeof(struct perf_event_attr));
         pe.size = sizeof(struct perf_event_attr);
         pe.type = events[i].first;

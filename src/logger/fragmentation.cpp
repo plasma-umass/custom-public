@@ -12,6 +12,7 @@
 
 #include "shared.hpp"
 
+namespace {
 double occupation(
     const std::unordered_map<std::uint64_t, std::uint64_t>& sizeByPointer,
     std::uint8_t ignored_bits) {
@@ -36,6 +37,7 @@ double occupation(
     return static_cast<double>(total)
            / static_cast<double>(ignored_size * occupied.size());
 }
+} // namespace
 
 int main(int argc, char** argv) {
     auto program = argparse::ArgumentParser("benchmark_iterator", "",

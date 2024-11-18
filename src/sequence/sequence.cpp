@@ -37,7 +37,6 @@ const struct Initialization {
     Initialization(Initialization&&) = delete;
     Initialization& operator=(Initialization&&) = delete;
 } _;
-} // namespace
 
 void processEvent(size_t size, void* result) {
     static thread_local int busy = 0;
@@ -59,6 +58,7 @@ void processEvent(size_t size, void* result) {
 
     --busy;
 }
+} // namespace
 
 extern "C" void* INTERPOSE_FUNCTION_NAME(malloc)(size_t size) {
     static auto* next = GET_REAL_FUNCTION(malloc);

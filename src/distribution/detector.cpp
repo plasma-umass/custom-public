@@ -78,7 +78,6 @@ const struct Initialization {
     Initialization(Initialization&&) = delete;
     Initialization& operator=(Initialization&&) = delete;
 } _;
-} // namespace
 
 // This function CANNOT call any memory allocation functions.
 template <bool NewAlloc>
@@ -120,6 +119,7 @@ void processFree(void* pointer) {
 
     --liveAllocations;
 }
+} // namespace
 
 extern "C" void* INTERPOSE_FUNCTION_NAME(malloc)(size_t size) {
     static auto* next = GET_REAL_FUNCTION(malloc);

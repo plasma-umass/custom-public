@@ -104,7 +104,7 @@ jobs:
       - name: Download LLVM
         run: |
           sudo apt install -y lsb-release wget software-properties-common gnupg
-          curl -sSf https://apt.llvm.org/llvm.sh | sudo bash -s -- 17 all
+          curl -sSf https://apt.llvm.org/llvm.sh | sudo bash -s -- 19 all
 
       - name: Set up CWhy
         run: |
@@ -116,8 +116,8 @@ jobs:
           cmake . -B build
           -DCMAKE_BUILD_TYPE=${{matrix.build-type}}
           -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
-          -DCMAKE_C_COMPILER="$(python3 -m cwhy --wrapper --- clang-17)"
-          -DCMAKE_CXX_COMPILER="$(python3 -m cwhy --wrapper --- clang++-17)"
+          -DCMAKE_C_COMPILER="$(python3 -m cwhy --wrapper --- clang-19)"
+          -DCMAKE_CXX_COMPILER="$(python3 -m cwhy --wrapper --- clang++-19)"
         env:
           CWHY_DISABLE: ON
 
@@ -126,8 +126,8 @@ jobs:
 
       - name: Check clang-format
         if: ${{ matrix.build-type == 'Debug' }}
-        run: find src -name '*.cpp' -o -name '*.h' -o -name '*.hpp'  | xargs clang-format-17 --dry-run --Werror
+        run: find src -name '*.cpp' -o -name '*.h' -o -name '*.hpp'  | xargs clang-format-19 --dry-run --Werror
 
       - name: Check clang-tidy
         if: ${{ matrix.build-type == 'Debug' }}
-        run: find src -name '*.cpp' | xargs clang-tidy-17 -p build --warnings-as-errors='*'
+        run: run-clang-tidy-19 -p build -warnings-as-errors="*" "$(pwd)/src"

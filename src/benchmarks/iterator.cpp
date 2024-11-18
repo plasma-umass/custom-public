@@ -6,7 +6,6 @@
 #include <array>
 #include <cerrno>
 #include <chrono>
-#include <cstddef>
 #include <cstdint>
 #include <cstdlib>
 #include <cstring>
@@ -15,7 +14,6 @@
 #include <iterator>
 #include <random>
 #include <string>
-#include <utility>
 #include <vector>
 
 #include <argparse/argparse.hpp>

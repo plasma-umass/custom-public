@@ -1,7 +1,10 @@
 #include <cassert>
-#include <cstddef>
+#include <cstdint>
 #include <cstdlib>
+#include <exception>
 #include <fstream>
+#include <ios>
+#include <iostream>
 #include <unordered_map>
 #include <unordered_set>
 

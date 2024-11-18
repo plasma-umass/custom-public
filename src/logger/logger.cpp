@@ -19,7 +19,6 @@ const struct Initialization {
         initialized = true;
     };
 } _;
-} // namespace
 
 void processEvent(const Event& event) {
     static thread_local int busy = 0;
@@ -31,6 +30,7 @@ void processEvent(const Event& event) {
     output.write(reinterpret_cast<const char*>(&event), sizeof(event));
     --busy;
 }
+} // namespace
 
 extern "C" void* INTERPOSE_FUNCTION_NAME(malloc)(uint64_t size) {
     static auto* next = GET_REAL_FUNCTION(malloc);

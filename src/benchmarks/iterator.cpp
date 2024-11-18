@@ -14,6 +14,7 @@
 #include <iterator>
 #include <random>
 #include <string>
+#include <utility>
 #include <vector>
 
 #include <argparse/argparse.hpp>
@@ -23,6 +24,7 @@
 #include <utils/perf.hpp>
 #endif
 
+namespace {
 std::size_t mmapAllocationSize(std::size_t needed, std::size_t pageSize) {
     // mmap tends to return the extra space in a page, and also requests for
     // that extra size to be passed in munmap.
@@ -117,6 +119,7 @@ void runBenchmark(std::uint64_t iterations, std::size_t allocationSize,
         }
     }
 }
+} // namespace
 
 int main(int argc, char** argv) {
     auto program = argparse::ArgumentParser("benchmark_iterator", "",

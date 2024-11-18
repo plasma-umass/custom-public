@@ -21,9 +21,7 @@ int perf_event_open(struct perf_event_attr* attr, pid_t pid, int cpu,
         syscall(SYS_perf_event_open, attr, pid, cpu, group_fd, flags));
 }
 
-std::string utils::perf::toString(
-    std::uint32_t type, // NOLINT(bugprone-easily-swappable-parameters)
-    std::uint64_t config) {
+std::string utils::perf::toString(std::uint32_t type, std::uint64_t config) {
     if (type == PERF_TYPE_HARDWARE) {
         switch (config) { // NOLINT(bugprone-switch-missing-default-case)
             case PERF_COUNT_HW_CPU_CYCLES:

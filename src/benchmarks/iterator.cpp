@@ -104,10 +104,8 @@ std::vector<std::uint8_t*> allocateObjects(const std::string& policy,
     return objects;
 };
 
-void runBenchmark(
-    std::uint64_t iterations,
-    std::size_t allocationSize,
-    std::vector<std::uint8_t*>& objects) {
+void runBenchmark(std::uint64_t iterations, std::size_t allocationSize,
+                  std::vector<std::uint8_t*>& objects) {
     const auto nObjects = objects.size();
     if ((nObjects & (nObjects - 1)) != 0) {
         for (std::uint64_t i = 0; i < iterations; ++i) {

@@ -9,7 +9,6 @@
 #include <fstream>
 #include <iostream>
 #include <iterator>
-#include <ranges>
 #include <string>
 #include <vector>
 
@@ -96,7 +95,8 @@ void processAllocation(std::size_t size) {
             ++bins.back();
         }
     } else {
-        const auto it = std::ranges::lower_bound(sizeClasses, size);
+        const auto it
+            = std::lower_bound(sizeClasses.begin(), sizeClasses.end(), size);
         const auto index = std::distance(sizeClasses.begin(), it);
         ++bins[index];
     }

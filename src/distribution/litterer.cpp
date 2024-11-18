@@ -161,7 +161,8 @@ void runLitterer() {
 
     for (std::size_t i = 0; i < nAllocationsLitter; ++i) {
         const auto offset = distribution(generator);
-        const auto it = std::ranges::lower_bound(binsCumSum, offset);
+        const auto it
+            = std::lower_bound(binsCumSum.begin(), binsCumSum.end(), offset);
         const auto bin = std::distance(binsCumSum.begin(), it);
         objects[i] = std::malloc(sizeClasses.at(bin));
     }
@@ -175,7 +176,7 @@ void runLitterer() {
         partial_shuffle(objects, nObjectsToBeFreed, generator);
     } else if (sort) {
         fmt::println(log, "Sorting all {} objects.", objects.size());
-        std::ranges::sort(objects, std::greater<>());
+        std::sort(objects.begin(), objects.end(), std::greater<>());
     }
 
     for (std::size_t i = 0; i < nObjectsToBeFreed; ++i) {

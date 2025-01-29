@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.22)
+cmake_minimum_required(VERSION 3.25)
 
 include(FetchContent)
 
@@ -60,13 +60,25 @@ if(NOT WIN32)
   target_link_libraries(litterer_distribution PRIVATE ${CMAKE_DL_LIBS})
 endif()
 
-add_executable(benchmark_iterator src/benchmarks/iterator.cpp)
-target_link_libraries(benchmark_iterator PRIVATE argparse)
 if(LINUX)
   add_library(utils_perf SHARED src/utils/perf.cpp)
   target_include_directories(utils_perf PUBLIC include)
+endif()
+
+add_executable(benchmark_iterator src/benchmarks/iterator.cpp)
+target_link_libraries(benchmark_iterator PRIVATE argparse)
+if(LINUX)
   target_link_libraries(benchmark_iterator PRIVATE utils_perf)
   target_compile_definitions(benchmark_iterator PRIVATE -DENABLE_PERF)
+endif()
+
+if(UNIX)
+  add_executable(benchmark_iterator2 src/benchmarks/iterator2.cpp)
+  target_link_libraries(benchmark_iterator2 PRIVATE argparse)
+  if(LINUX)
+    target_link_libraries(benchmark_iterator2 PRIVATE utils_perf)
+    target_compile_definitions(benchmark_iterator2 PRIVATE -DENABLE_PERF)
+  endif()
 endif()
 
 # Interposition is not supported on Windows.

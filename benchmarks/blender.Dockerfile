@@ -3,7 +3,6 @@ FROM ubuntu
 RUN apt update \
     && DEBIAN_FRONTEND=noninteractive apt install -y tzdata \
     && apt install -y git python3 sudo wget \
-    # Dependencies from build_files/build_environment/install_linux_packages.py.
     && apt install -y build-essential git git-lfs cmake \
     && apt install -y ninja-build cmake-curses-gui cmake-gui patch \
     && apt install -y libx11-dev libxxf86vm-dev libxcursor-dev libxi-dev libxrandr-dev libxinerama-dev libxkbcommon-dev libwayland-dev libdecor-0-dev wayland-protocols libdbus-1-dev libgl-dev libegl-dev \

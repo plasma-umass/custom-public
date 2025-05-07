@@ -26,4 +26,10 @@ RUN wget https://www.sqlite.org/2025/sqlite-amalgamation-3490100.zip \
     && unzip -p sqlite-amalgamation-3490100.zip sqlite-amalgamation-3490100/sqlite3.c > /root/sqlite3.c \
     && rm sqlite-amalgamation-3490100.zip
 
+RUN --mount=type=bind,source=.,target=/root/litterer-src \
+    cmake /root/litterer-src -B /root/litterer-build -G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    && cmake --build /root/litterer-build \
+    && cmake --install /root/litterer-build --prefix /usr \
+    && rm -r /root/litterer-build
+
 ENTRYPOINT ["/bin/bash"]

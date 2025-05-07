@@ -25,6 +25,18 @@ void processEvent(const Event& event) {
     if (!initialized || busy > 0) {
         return;
     }
+
+    if (event.type == EventType::Reallocation && event.pointer == 0) {
+        processEvent({.type = EventType::Allocation,
+                      .size = event.size,
+                      .result = event.result});
+        return;
+    }
+
+    if (event.type == EventType::Free && event.pointer == 0) {
+        return;
+    }
+
     ++busy;
     const std::unique_lock<std::mutex> guard(lock);
     output.write(reinterpret_cast<const char*>(&event), sizeof(event));

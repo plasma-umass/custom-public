@@ -26,14 +26,15 @@ void processEvent(const Event& event) {
         return;
     }
 
-    if (event.type == EventType::Reallocation && event.pointer == 0) {
+    if (event.type == EventType::Reallocation && event.pointer == 0)
+        [[unlikely]] {
         processEvent({.type = EventType::Allocation,
                       .size = event.size,
                       .result = event.result});
         return;
     }
 
-    if (event.type == EventType::Free && event.pointer == 0) {
+    if (event.type == EventType::Free && event.pointer == 0) [[unlikely]] {
         return;
     }
 

@@ -122,3 +122,6 @@ endif()
 
 add_executable(fragmentation src/logger/fragmentation.cpp)
 target_link_libraries(fragmentation PRIVATE argparse)
+
+add_executable(consecutive src/logger/consecutive.cpp)
+target_link_libraries(consecutive PRIVATE argparse)

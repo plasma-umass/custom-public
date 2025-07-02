@@ -68,18 +68,10 @@ endif()
 
 add_executable(benchmark_iterator src/benchmarks/iterator.cpp)
 target_link_libraries(benchmark_iterator PRIVATE argparse)
+target_link_libraries(benchmark_iterator PRIVATE benchmark::benchmark)
 if(LINUX)
   target_link_libraries(benchmark_iterator PRIVATE utils_perf)
   target_compile_definitions(benchmark_iterator PRIVATE -DENABLE_PERF)
-endif()
-
-if(UNIX)
-  add_executable(benchmark_iterator2 src/benchmarks/iterator2.cpp)
-  target_link_libraries(benchmark_iterator2 PRIVATE argparse)
-  if(LINUX)
-    target_link_libraries(benchmark_iterator2 PRIVATE utils_perf)
-    target_compile_definitions(benchmark_iterator2 PRIVATE -DENABLE_PERF)
-  endif()
 endif()
 
 # Interposition is not supported on Windows.

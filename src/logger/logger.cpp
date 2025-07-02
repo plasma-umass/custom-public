@@ -4,6 +4,7 @@
 #include <iostream>
 #include <mutex>
 
+#include <dlfcn.h>
 #include <interpose.h>
 
 #include "shared.hpp"
@@ -15,6 +16,12 @@ std::mutex lock;
 
 const struct Initialization {
     Initialization() {
+        Dl_info info;
+        const auto next = GET_REAL_FUNCTION(malloc);
+        const int status = dladdr(reinterpret_cast<void*>(next), &info);
+        const std::string object = (status != 0) ? info.dli_fname : "[unknown]";
+        std::cerr << "Using malloc from: " << object << std::endl;
+
         output = std::ofstream("events.bin", std::ios::binary);
         initialized = true;
     };

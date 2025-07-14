@@ -33,6 +33,11 @@ int main(int argc, char** argv) {
         .default_value(std::uint64_t(8))
         .metavar("N")
         .scan<'u', std::uint64_t>();
+    program.add_argument("--max-size")
+        .help("allocations greater than this will be ignored (default: 4096)")
+        .default_value(std::uint64_t(4096))
+        .metavar("N")
+        .scan<'u', std::uint64_t>();
 
     try {
         program.parse_args(argc, argv);
@@ -45,6 +50,7 @@ int main(int argc, char** argv) {
     const auto input = program.get<std::string>("--input");
     const auto bufferSize = program.get<std::uint64_t>("--moving-average");
     const auto epsilon = program.get<std::uint64_t>("--epsilon");
+    const auto maxSize = program.get<std::uint64_t>("--max-size");
 
     std::ifstream input_file(input, std::ios::binary);
     if (!input_file) {
@@ -67,6 +73,11 @@ int main(int argc, char** argv) {
 
         if (event.type == EventType::Allocation
             || event.type == EventType::Reallocation) {
+
+            if (event.size >= maxSize) {
+                continue;
+            }
+
             buffer[index] = closeEnough(last, event.result, epsilon);
             count += static_cast<std::uint64_t>(buffer[index]);
             last = event.result + event.size;
@@ -82,6 +93,11 @@ int main(int argc, char** argv) {
     while (input_file.read(reinterpret_cast<char*>(&event), sizeof(event))) {
         if (event.type == EventType::Allocation
             || event.type == EventType::Reallocation) {
+
+            if (event.size >= maxSize) {
+                continue;
+            }
+
             count -= static_cast<std::uint64_t>(buffer[index]);
             buffer[index] = closeEnough(last, event.result, epsilon);
             count += static_cast<std::uint64_t>(buffer[index]);

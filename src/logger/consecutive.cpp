@@ -11,9 +11,11 @@
 
 #include "shared.hpp"
 
+namespace {
 bool closeEnough(std::uint64_t a, std::uint64_t b, std::uint64_t distance) {
     return (std::max(a, b) - std::min(a, b)) <= distance;
 }
+} // namespace
 
 int main(int argc, char** argv) {
     auto program = argparse::ArgumentParser("benchmark_iterator", "",

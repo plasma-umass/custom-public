@@ -89,9 +89,10 @@ std::vector<Node*> allocateObjects(const std::string& policy,
         // Keep things 8-aligned.
         std::uniform_int_distribution<std::uint64_t> distribution(
             0, (allocationSize - sizeof(Node)) / 8);
-        auto* object = reinterpret_cast<Node*>(
-            reinterpret_cast<std::uintptr_t>(allocation) + (i * allocationSize)
-            + (8 * distribution(generator)));
+        auto* object
+            = reinterpret_cast<Node*>( // NOLINT(performance-no-int-to-ptr)
+                reinterpret_cast<std::uintptr_t>(allocation)
+                + (i * allocationSize) + (8 * distribution(generator)));
         objects.push_back(object);
     }
 

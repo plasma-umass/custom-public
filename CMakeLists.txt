@@ -15,7 +15,7 @@ FetchContent_Declare(
 FetchContent_Declare(
   benchmark
   GIT_REPOSITORY https://github.com/google/benchmark.git
-  GIT_TAG 344117638c8ff7e239044fd0fa7085839fc03021 # v1.8.3
+  GIT_TAG eddb0241389718a23a42db6af5f0164b6e0139af # v1.9.4
 )
 
 FetchContent_Declare(

@@ -1,3 +1,4 @@
+#include <chrono>
 #include <cstdint>
 #include <cstdlib>
 #include <fstream>
@@ -9,10 +10,13 @@
 
 #include "shared.hpp"
 
+using Clock = std::chrono::steady_clock;
+
 namespace {
 bool initialized = false;
 std::ofstream output;
 std::mutex lock;
+Clock::time_point startTime;
 
 const struct Initialization {
     Initialization() {
@@ -23,11 +27,12 @@ const struct Initialization {
         std::cerr << "Using malloc from: " << object << std::endl;
 
         output = std::ofstream("events.bin", std::ios::binary);
+        startTime = Clock::now();
         initialized = true;
     };
 } _;
 
-void processEvent(const Event& event) {
+void processEvent(Event event) {
     static thread_local int busy = 0;
     if (!initialized || busy > 0) {
         return;
@@ -40,6 +45,10 @@ void processEvent(const Event& event) {
                       .result = event.result});
         return;
     }
+
+    event.timestamp_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(
+                             Clock::now() - startTime)
+                             .count();
 
     if (event.type == EventType::Free && event.pointer == 0) [[unlikely]] {
         return;

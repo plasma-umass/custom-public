@@ -91,7 +91,8 @@ int main(int argc, char** argv) {
             ++index;
             index %= bufferSize;
 
-            std::cout << static_cast<double>(count)
+            std::cout << event.timestamp_ns << ","
+                      << static_cast<double>(count)
                              / static_cast<double>(bufferSize)
                       << std::endl;
         }

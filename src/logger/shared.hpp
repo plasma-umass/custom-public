@@ -1,6 +1,7 @@
 #ifndef LOGGER_DETAIL_SHARED_HPP
 #define LOGGER_DETAIL_SHARED_HPP
 
+#include <chrono>
 #include <cstdint>
 
 enum class EventType : std::uint8_t {
@@ -15,6 +16,7 @@ struct Event {
     std::uint64_t size = 0;
     std::uint64_t pointer = 0;
     std::uint64_t result = 0;
+    std::uint64_t timestamp_ns = 0;
 };
 
 #endif // LOGGER_DETAIL_SHARED_HPP

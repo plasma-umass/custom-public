@@ -4,6 +4,7 @@
 #include <fstream>
 #include <iostream>
 #include <mutex>
+#include <string>
 
 #include <dlfcn.h>
 #include <interpose.h>

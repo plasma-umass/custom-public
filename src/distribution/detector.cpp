@@ -12,34 +12,51 @@
 #include <string>
 #include <vector>
 
+#include <fmt/core.h>
 #include <nlohmann/json.hpp> // NOLINT(misc-include-cleaner)
 
 #include <interpose.h>
 
 namespace {
-const auto* kDefaultOutputFilename = "distribution.json";
+void assertOrExit(bool condition, std::FILE* log, const std::string& message) {
+    if (!condition) {
+        fmt::println(log, "[ERROR] %s", message.c_str());
+        exit(EXIT_FAILURE);
+    }
+}
+
+const auto* kDefaultDataFilename = "distribution.json";
 const auto* kDefaultSizeClassScheme = "under-4096";
-const auto kDefaultEnableOverflowBin = false;
 
 std::atomic_bool initialized = false;
-auto enableOverflowBin = kDefaultEnableOverflowBin;
 std::vector<std::size_t> sizeClasses;
 std::deque<std::atomic_uint64_t> bins;
+std::atomic_uint64_t ignored = 0;
 std::atomic_int64_t liveAllocations = 0;
 std::atomic_int64_t maxLiveAllocations = 0;
+std::string dataFilename;
+std::FILE* log = stderr;
 
 const struct Initialization {
     Initialization() {
+        dataFilename = kDefaultDataFilename;
+        if (const char* env = std::getenv("LITTER_DATA_FILENAME")) {
+            dataFilename = env;
+        }
+
+        std::FILE* log = stderr;
+        if (const char* env = std::getenv("LITTER_LOG_FILENAME")) {
+            log = std::fopen(env, "a");
+            assertOrExit(log != nullptr, log, "Could not open log file.");
+        }
+
         std::string sizeClassScheme = kDefaultSizeClassScheme;
         if (const char* env = std::getenv("LITTER_SIZE_CLASSES")) {
             sizeClassScheme = env;
         }
 
-        if (const char* env = std::getenv("LITTER_OVERFLOW_BIN")) {
-            enableOverflowBin = std::atoi(env) != 0;
-        }
-
         if (sizeClassScheme == "under-4096") {
+            // Will be overriden if LITTER_DETECTOR_APPEND is set.
             sizeClasses.reserve(4096);
             for (std::size_t i = 1; i <= 4096; ++i) {
                 sizeClasses.push_back(i);
@@ -49,7 +66,24 @@ const struct Initialization {
             exit(EXIT_FAILURE);
         }
 
-        bins.resize(sizeClasses.size() + (enableOverflowBin ? 1 : 0));
+        // Will be overriden if LITTER_DETECTOR_APPEND is set.
+        bins.resize(sizeClasses.size());
+
+        if (std::getenv("LITTER_DETECTOR_APPEND") != nullptr) {
+            assert(std::getenv("LITTER_SIZE_CLASSES") == nullptr);
+
+            assertOrExit(std::filesystem::exists(dataFilename), log,
+                         dataFilename + " does not exist.");
+
+            std::ifstream inputFile(dataFilename);
+            nlohmann::json data; // NOLINT(misc-include-cleaner)
+            inputFile >> data;
+
+            sizeClasses = data["sizeClasses"].get<std::vector<std::size_t>>();
+            bins = std::deque<std::atomic_uint64_t>(
+                data["bins"].get<std::vector<std::uint64_t>>().begin(),
+                data["bins"].get<std::vector<std::uint64_t>>().end());
+        }
 
         initialized = true;
     }
@@ -57,20 +91,20 @@ const struct Initialization {
     ~Initialization() {
         initialized = false;
 
-        std::string outputFilename = kDefaultOutputFilename;
-        if (const char* env = std::getenv("LITTER_DATA_FILENAME")) {
-            outputFilename = env;
-        }
-
         const nlohmann::json data = // NOLINT(misc-include-cleaner)
             {
                 {"sizeClasses", sizeClasses},
                 {"bins", std::vector<std::uint64_t>(bins.begin(), bins.end())},
                 {"maxLiveAllocations", maxLiveAllocations.load()},
+                {"ignored", ignored.load()},
             };
 
-        std::ofstream output(outputFilename);
+        std::ofstream output(dataFilename);
         output << data.dump(4) << std::endl;
+
+        if (log != stderr) {
+            std::fclose(log);
+        }
     }
 
     Initialization(const Initialization&) = delete;
@@ -91,9 +125,7 @@ void processAllocation(std::size_t size) {
     }
 
     if (size > sizeClasses.back()) {
-        if (enableOverflowBin) {
-            ++bins.back();
-        }
+        ++ignored;
     } else {
         const auto it
             = std::lower_bound(sizeClasses.begin(), sizeClasses.end(), size);

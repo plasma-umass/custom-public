@@ -53,30 +53,9 @@ const struct Initialization {
             assertOrExit(log != nullptr, log, "Could not open log file.");
         }
 
-        std::string sizeClassScheme = kDefaultSizeClassScheme;
-        if (const char* env = std::getenv("LITTER_SIZE_CLASSES")) {
-            sizeClassScheme = env;
-        }
-
-        if (sizeClassScheme == "under-4096") {
-            // Will be overriden if LITTER_DETECTOR_APPEND is set.
-            sizeClasses.reserve(4096);
-            for (std::size_t i = 1; i <= 4096; ++i) {
-                sizeClasses.push_back(i);
-            }
-        } else {
-            std::cerr << "Invalid size class scheme." << std::endl;
-            exit(EXIT_FAILURE);
-        }
-
-        // Will be overriden if LITTER_DETECTOR_APPEND is set.
-        bins.resize(sizeClasses.size());
-
-        if (std::getenv("LITTER_DETECTOR_APPEND") != nullptr) {
+        if (std::getenv("LITTER_DETECTOR_APPEND") != nullptr
+            && std::filesystem::exists(dataFilename)) {
             assert(std::getenv("LITTER_SIZE_CLASSES") == nullptr);
-
-            assertOrExit(std::filesystem::exists(dataFilename), log,
-                         dataFilename + " does not exist.");
 
             std::ifstream inputFile(dataFilename);
             nlohmann::json data; // NOLINT(misc-include-cleaner)
@@ -86,6 +65,24 @@ const struct Initialization {
             bins = std::deque<std::atomic_uint64_t>(
                 data["bins"].get<std::vector<std::uint64_t>>().begin(),
                 data["bins"].get<std::vector<std::uint64_t>>().end());
+        } else {
+            std::string sizeClassScheme = kDefaultSizeClassScheme;
+            if (const char* env = std::getenv("LITTER_SIZE_CLASSES")) {
+                sizeClassScheme = env;
+            }
+
+            if (sizeClassScheme == "under-4096") {
+                // Will be overriden if LITTER_DETECTOR_APPEND is set.
+                sizeClasses.reserve(4096);
+                for (std::size_t i = 1; i <= 4096; ++i) {
+                    sizeClasses.push_back(i);
+                }
+            } else {
+                std::cerr << "Invalid size class scheme." << std::endl;
+                exit(EXIT_FAILURE);
+            }
+
+            bins.resize(sizeClasses.size());
         }
 
         initialized = true;

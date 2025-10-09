@@ -94,10 +94,6 @@ const struct Initialization {
 
         std::ofstream output(dataFilename);
         output << data.dump(4) << std::endl;
-
-        if (log != stderr) {
-            std::fclose(log);
-        }
     }
 
     Initialization(const Initialization&) = delete;

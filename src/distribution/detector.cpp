@@ -38,7 +38,6 @@ std::atomic_uint64_t ignored = 0;
 std::atomic_int64_t liveAllocations = 0;
 std::atomic_int64_t maxLiveAllocations = 0;
 std::string dataFilename;
-std::FILE* log = stderr;
 
 const struct Initialization {
     Initialization() {
@@ -47,15 +46,12 @@ const struct Initialization {
             dataFilename = env;
         }
 
-        std::FILE* log = stderr;
-        if (const char* env = std::getenv("LITTER_LOG_FILENAME")) {
-            log = std::fopen(env, "a");
-            assertOrExit(log != nullptr, log, "Could not open log file.");
-        }
-
         if (std::getenv("LITTER_DETECTOR_APPEND") != nullptr
             && std::filesystem::exists(dataFilename)) {
-            assert(std::getenv("LITTER_SIZE_CLASSES") == nullptr);
+            // TODO: Allow it to be set AND equal to the existing size classes.
+            assertOrExit(std::getenv("LITTER_SIZE_CLASSES") == nullptr, stderr,
+                         "LITTER_SIZE_CLASSES cannot be set when "
+                         "LITTER_DETECTOR_APPEND is set.");
 
             std::ifstream inputFile(dataFilename);
             nlohmann::json data; // NOLINT(misc-include-cleaner)

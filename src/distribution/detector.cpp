@@ -58,7 +58,6 @@ const struct Initialization {
             }
 
             if (sizeClassScheme == "under-4096") {
-                // Will be overriden if LITTER_DETECTOR_APPEND is set.
                 sizeClasses.reserve(4096);
                 for (std::size_t i = 1; i <= 4096; ++i) {
                     sizeClasses.push_back(i);

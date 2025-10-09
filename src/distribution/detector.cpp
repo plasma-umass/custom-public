@@ -21,13 +21,6 @@
 #include <interpose.h>
 
 namespace {
-void assertOrExit(bool condition, std::FILE* log, const std::string& message) {
-    if (!condition) {
-        fmt::println(log, "[ERROR] %s", message.c_str());
-        exit(EXIT_FAILURE);
-    }
-}
-
 const auto* kDefaultDataFilename = "distribution.json";
 const auto* kDefaultSizeClassScheme = "under-4096";
 

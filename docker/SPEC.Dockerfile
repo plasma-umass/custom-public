@@ -26,13 +26,6 @@ ENV INTSPEED="600 602 605 620 623 625 631 641 657"
 ENV FPRATE="508 510 511 519 526 538 544"
 ENV FPSPEED="619 638 644"
 
-# The following will continue executing even if some benchmarks fail building.
-WORKDIR /cpu2017
-# RUN /bin/bash -c "source shrc && runcpu --action=build $INTRATE"
-RUN /bin/bash -c "source shrc && runcpu --action=build $INTSPEED"
-# RUN /bin/bash -c "source shrc && runcpu --action=build $FPRATE"
-# RUN /bin/bash -c "source shrc && runcpu --action=build $FPSPEED"
-
 RUN --mount=type=bind,readonly,source=.,target=/root/litterer-src \
     cmake /root/litterer-src -B /root/litterer-build -G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo \
         -DCMAKE_C_COMPILER=clang-21 -DCMAKE_CXX_COMPILER=clang++-21 \

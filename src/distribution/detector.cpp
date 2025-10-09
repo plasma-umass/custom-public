@@ -47,9 +47,10 @@ const struct Initialization {
             // Note: APPEND will ignore SIZE_CLASSES, and just use the existing
             // ones.
             sizeClasses = data["sizeClasses"].get<std::vector<std::size_t>>();
-            bins = std::deque<std::atomic_uint64_t>(
-                data["bins"].get<std::vector<std::uint64_t>>().begin(),
-                data["bins"].get<std::vector<std::uint64_t>>().end());
+            const auto savedBins
+                = data["bins"].get<std::vector<std::uint64_t>>();
+            bins = std::deque<std::atomic_uint64_t>(savedBins.begin(),
+                                                    savedBins.end());
         } else {
             std::string sizeClassScheme = kDefaultSizeClassScheme;
             if (const char* env = std::getenv("LITTER_SIZE_CLASSES")) {

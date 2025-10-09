@@ -21,7 +21,7 @@ FetchContent_Declare(
 FetchContent_Declare(
   fmt
   GIT_REPOSITORY https://github.com/fmtlib/fmt.git
-  GIT_TAG e69e5f977d458f2650bb346dadf2ad30c5320281 # 10.2.1
+  GIT_TAG e424e3f2e607da02742f73db84873b8084fc714c # 12.0.0
 )
 
 FetchContent_Declare(

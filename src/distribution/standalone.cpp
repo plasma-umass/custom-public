@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstdlib>
 
-#include <fmt/core.h>
+#include <fmt/format.h>
 
 #include <distribution/litterer.hpp>
 

@@ -9,7 +9,7 @@
 
 #include <unistd.h>
 
-#include <fmt/core.h>
+#include <fmt/format.h>
 
 #include <interpose.h>
 

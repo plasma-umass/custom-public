@@ -15,7 +15,6 @@
 #include <string>
 #include <vector>
 
-#include <fmt/core.h>
 #include <nlohmann/json.hpp> // NOLINT(misc-include-cleaner)
 
 #include <interpose.h>

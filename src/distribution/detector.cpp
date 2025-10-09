@@ -48,15 +48,12 @@ const struct Initialization {
 
         if (std::getenv("LITTER_DETECTOR_APPEND") != nullptr
             && std::filesystem::exists(dataFilename)) {
-            // TODO: Allow it to be set AND equal to the existing size classes.
-            assertOrExit(std::getenv("LITTER_SIZE_CLASSES") == nullptr, stderr,
-                         "LITTER_SIZE_CLASSES cannot be set when "
-                         "LITTER_DETECTOR_APPEND is set.");
-
             std::ifstream inputFile(dataFilename);
             nlohmann::json data; // NOLINT(misc-include-cleaner)
             inputFile >> data;
 
+            // Note: APPEND will ignore SIZE_CLASSES, and just use the existing
+            // ones.
             sizeClasses = data["sizeClasses"].get<std::vector<std::size_t>>();
             bins = std::deque<std::atomic_uint64_t>(
                 data["bins"].get<std::vector<std::uint64_t>>().begin(),

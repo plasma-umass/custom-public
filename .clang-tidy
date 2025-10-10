@@ -4,6 +4,7 @@ Checks: |
   -bugprone-easily-swappable-parameters
   -bugprone-exception-escape,
   clang-analyzer-*,
+  -clang-analyzer-optin.cplusplus.UninitializedObject,
   cppcoreguidelines-*,
   -cppcoreguidelines-avoid-magic-numbers,
   -cppcoreguidelines-avoid-non-const-global-variables,

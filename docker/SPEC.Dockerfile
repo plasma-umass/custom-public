@@ -15,7 +15,8 @@ ARG SPEC_ISO_MNT
 
 RUN --mount=type=bind,readonly,source=$SPEC_ISO_MNT,target=/mnt \
     /mnt/install.sh -f -d /cpu2017
-RUN echo 'source /cpu2017/shrc' >> /etc/bash.bashrc
+WORKDIR /cpu2017
+RUN echo 'source shrc' >> /etc/bash.bashrc
 
 COPY docker/config /cpu2017/config
 

@@ -5,7 +5,7 @@ RUN apt update -y \
     && apt install -y less \
     # General dependencies.
     && DEBIAN_FRONTEND=noninterative apt install -y tzdata \
-    && apt install -y cmake git ninja-build python3 sudo \
+    && apt install -y autoconf cmake git ninja-build python3 sudo \
     # LLVM/Clang.
     && apt install -y curl lsb-release wget software-properties-common gnupg \
     && curl -sSf https://apt.llvm.org/llvm.sh | sudo bash -s -- 21 all \
@@ -31,5 +31,30 @@ RUN --mount=type=bind,readonly,source=.,target=/root/litterer-src \
     cmake /root/litterer-src -B /root/litterer-build -G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo \
         -DCMAKE_C_COMPILER=clang-21 -DCMAKE_CXX_COMPILER=clang++-21 \
     && cmake --build /root/litterer-build --parallel \
-    && cmake --install /root/litterer-build --prefix /usr \
+    && cmake --install /root/litterer-build \
     && rm -r /root/litterer-build
+
+RUN git clone https://github.com/facebook/jemalloc.git \
+    && cd jemalloc \
+    # Head as of Nov 12th, 2025.
+    && git checkout f5f0f063c10a7599c05da266fc202824d8fdf904 \
+    && autoconf \
+    && env \
+        CC=clang-21 \
+        CXX=clang++-21 \
+        ./configure \
+    && make install -j \
+    && cd .. \
+    && rm -rf jemalloc
+
+RUN git clone https://github.com/microsoft/mimalloc.git \
+    && cd mimalloc \
+    # Head as of Nov 12th, 2025.
+    && git checkout 09a27098aa6e9286518bd9c74e6ffa7199c3f04e \
+    && cmake . -B build -G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+        -DCMAKE_C_COMPILER=clang-21 -DCMAKE_CXX_COMPILER=clang++-21 \
+    && cmake --build build --parallel \
+    && cmake --install build \
+    && ln -s /usr/local/lib/mimalloc-2.2/libmimalloc.a /usr/local/lib/libmimalloc.a \
+    && cd .. \
+    && rm -rf mimalloc

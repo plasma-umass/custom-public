@@ -37,10 +37,10 @@ set(BENCHMARK_ENABLE_TESTING OFF)
 FetchContent_MakeAvailable(benchmark)
 
 message(STATUS "Downloading and configuring {fmt}")
-set(BUILD_SHARED_LIBS_OLD ${BUILD_SHARED_LIBS})
-set(BUILD_SHARED_LIBS ON)
+set(CMAKE_POSITION_INDEPENDENT_CODE_OLD ${CMAKE_POSITION_INDEPENDENT_CODE})
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 FetchContent_MakeAvailable(fmt)
-set(BUILD_SHARED_LIBS ${BUILD_SHARED_LIBS_OLD})
+set(CMAKE_POSITION_INDEPENDENT_CODE ${CMAKE_POSITION_INDEPENDENT_CODE_OLD})
 
 message(STATUS "Downloading and configuring nlohmann::json")
 FetchContent_MakeAvailable(nlohmann_json)

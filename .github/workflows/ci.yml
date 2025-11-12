@@ -6,9 +6,6 @@ on:
   pull_request:
     branches: ["master"]
 
-env:
-  OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-
 jobs:
   macos-clang-check:
     strategy:
@@ -18,17 +15,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up CWhy
-        run: python3 -m pip install --break-system-packages cwhy
-
       - name: Configure CMake
-        run: >
-          cmake . -B build 
-          -DCMAKE_BUILD_TYPE=${{matrix.build-type}}
-          -DCMAKE_C_COMPILER="$(python3 -m cwhy --wrapper --- clang)"
-          -DCMAKE_CXX_COMPILER="$(python3 -m cwhy --wrapper --- clang++)"
-        env:
-          CWHY_DISABLE: ON
+        run: cmake . -B build -DCMAKE_BUILD_TYPE=${{matrix.build-type}}
 
       - name: Build
         run: cmake --build build --parallel
@@ -44,19 +32,10 @@ jobs:
       - name: Set up Ninja
         run: choco install ninja
 
-      - name: Set up CWhy
-        run: python3 -m pip install cwhy
-
       - uses: ilammy/msvc-dev-cmd@v1
 
       - name: Configure
-        run: >
-          cmake . -B build -G Ninja
-          -DCMAKE_BUILD_TYPE=${{matrix.build-type}}
-          -DCMAKE_C_COMPILER="$(python3 -m cwhy --wrapper --- cl)"
-          -DCMAKE_CXX_COMPILER="$(python3 -m cwhy --wrapper --- cl)"
-        env:
-          CWHY_DISABLE: ON
+        run: cmake . -B build -G Ninja -DCMAKE_BUILD_TYPE=${{matrix.build-type}}
 
       - name: Build
         run: cmake --build build --parallel
@@ -72,17 +51,12 @@ jobs:
       - name: Download GCC
         run: sudo apt install -y gcc-11 g++-11
 
-      - name: Set up CWhy
-        run: python3 -m pip install cwhy
-
       - name: Configure CMake (GCC)
         run: >
           cmake . -B build
           -DCMAKE_BUILD_TYPE=${{matrix.build-type}}
-          -DCMAKE_C_COMPILER="$(python3 -m cwhy --wrapper --- gcc-11)"
-          -DCMAKE_CXX_COMPILER="$(python3 -m cwhy --wrapper --- g++-11)"
-        env:
-          CWHY_DISABLE: ON
+          -DCMAKE_C_COMPILER=gcc-11
+          -DCMAKE_CXX_COMPILER=g++-11
 
       - name: Build
         run: cmake --build build --parallel
@@ -100,18 +74,13 @@ jobs:
           sudo apt install -y lsb-release wget software-properties-common gnupg
           curl -sSf https://apt.llvm.org/llvm.sh | sudo bash -s -- 21 all
 
-      - name: Set up CWhy
-        run: python3 -m pip install cwhy
-
       - name: Configure CMake (Clang)
         run: >
           cmake . -B build
           -DCMAKE_BUILD_TYPE=${{matrix.build-type}}
           -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
-          -DCMAKE_C_COMPILER="$(python3 -m cwhy --wrapper --- clang-21)"
-          -DCMAKE_CXX_COMPILER="$(python3 -m cwhy --wrapper --- clang++-21)"
-        env:
-          CWHY_DISABLE: ON
+          -DCMAKE_C_COMPILER=clang-21
+          -DCMAKE_CXX_COMPILER=clang++-21
 
       - name: Build
         run: cmake --build build --parallel

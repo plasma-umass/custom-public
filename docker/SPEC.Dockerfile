@@ -35,7 +35,7 @@ RUN git clone https://github.com/facebook/jemalloc.git \
     && env \
         CC=clang-21 \
         CXX=clang++-21 \
-        ./configure \
+        ./configure --disable-cxx \
     && make install -j \
     && cd .. \
     && rm -rf jemalloc
@@ -56,5 +56,5 @@ RUN --mount=type=bind,readonly,source=.,target=/root/litterer-src \
     cmake /root/litterer-src -B /root/litterer-build -G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo \
         -DCMAKE_C_COMPILER=clang-21 -DCMAKE_CXX_COMPILER=clang++-21 \
     && cmake --build /root/litterer-build --parallel \
-    && cmake --install /root/litterer-build \
+    && cmake --install /root/litterer-build --prefix /usr \
     && rm -r /root/litterer-build

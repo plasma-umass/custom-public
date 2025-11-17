@@ -18,15 +18,6 @@ RUN --mount=type=bind,readonly,source=$SPEC_ISO_MNT,target=/mnt \
 WORKDIR /cpu2017
 RUN echo 'source shrc' >> /etc/bash.bashrc
 
-COPY docker/config /cpu2017/config
-
-# C/C++ benchmarks only.
-# https://www.spec.org/cpu2017/Docs/overview.html#benchmarks.
-ENV INTRATE="500 502 505 520 523 525 531 541 557"
-ENV INTSPEED="600 602 605 620 623 625 631 641 657"
-ENV FPRATE="508 510 511 519 526 538 544"
-ENV FPSPEED="619 638 644"
-
 RUN git clone https://github.com/facebook/jemalloc.git \
     && cd jemalloc \
     # Head as of Nov 12th, 2025.
@@ -58,3 +49,12 @@ RUN --mount=type=bind,readonly,source=.,target=/root/litterer-src \
     && cmake --build /root/litterer-build --parallel \
     && cmake --install /root/litterer-build --prefix /usr \
     && rm -r /root/litterer-build
+
+COPY docker/config /cpu2017/config
+
+# C/C++ benchmarks only.
+# https://www.spec.org/cpu2017/Docs/overview.html#benchmarks.
+ENV INTRATE="500 502 505 520 523 525 531 541 557"
+ENV INTSPEED="600 602 605 620 623 625 631 641 657"
+ENV FPRATE="508 510 511 519 526 538 544"
+ENV FPSPEED="619 638 644"

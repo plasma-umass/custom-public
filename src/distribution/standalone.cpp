@@ -26,9 +26,13 @@ struct Initialization {
             = std::chrono::duration_cast<std::chrono::milliseconds>(
                   (end - start))
                   .count();
-        fmt::println(log, "==================================================");
+        fmt::println(log,
+                     "========================================================"
+                     "==========================");
         fmt::println(log, "Time elapsed: {} ms", elapsed_ms);
-        fmt::println(log, "==================================================");
+        fmt::println(log,
+                     "========================================================"
+                     "==========================");
 
         if (log != stderr) {
             std::fclose(log);

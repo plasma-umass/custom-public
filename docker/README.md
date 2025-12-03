@@ -16,7 +16,15 @@ docker run -it --rm \
     -v $PWD/docker/detector-data/train:/cpu2017/detector-data \
     $(docker build -q -f docker/SPEC.Dockerfile . --build-arg SPEC_ISO_MNT=./spec)
 
-[docker] runcpu --action=run --size=train --config=detector $INTSPEED $FPSPEED
+[docker] runcpu --action=run --size=train --config=detector $INTSPEED $FPSPEED $INTRATE $FPRATE
+```
+
+## Running to test out things
+
+```bash
+docker run -it --rm \
+    -v $PWD/docker/detector-data/train:/cpu2017/detector-data \
+    $(docker build -q -f docker/SPEC.Dockerfile . --build-arg SPEC_ISO_MNT=./spec)
 ```
 
 ## Running with littering

@@ -1,2 +1,4 @@
 pin-external-*
 obj-intel64
+*.json
+*.log*

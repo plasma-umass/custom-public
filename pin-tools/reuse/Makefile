@@ -2,7 +2,7 @@
 CONFIG_ROOT := $(PIN_ROOT)/source/tools/Config
 include $(CONFIG_ROOT)/makefile.config
 
-TOOL_ROOTS := memtrace
+TOOL_ROOTS := reuse
 TOOL_LDFLAGS += -z noexecstack
 
 include $(TOOLS_ROOT)/Config/makefile.default.rules

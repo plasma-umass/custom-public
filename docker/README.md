@@ -38,5 +38,5 @@ docker run -it --rm \
 [docker] runcpu --action=run --size=train --config=litterer -n 11 \
     --define litter_multiplier=1 \
     --define litter_occupancy=0.4 \
-    $INTSPEED $FPSPEED
+    $INTSPEED $FPSPEED $INTRATE $FPRATE
 ```

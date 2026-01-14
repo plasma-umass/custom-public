@@ -16,6 +16,7 @@ Checks: |
   -cppcoreguidelines-pro-type-reinterpret-cast,
   misc-*,
   -misc-const-correctness,
+  -misc-non-private-member-variables-in-classes,
   -misc-no-recursion,
   modernize-*,
   -modernize-use-ranges,

@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-def main(args: argparse.Namespace):
+def main(args: argparse.Namespace) -> None:
     with open(args.filename, "r") as f:
         histogram = json.load(f)["histogram"]
     print(f"Number of bins: {len(histogram)}")
@@ -29,7 +29,7 @@ def main(args: argparse.Namespace):
     # Plot
     plt.rcParams["pdf.fonttype"] = 42
     plt.rcParams["font.family"] = args.font
-    with plt.style.context("bmh"):
+    with plt.style.context("bmh"):  # type: ignore[attr-defined]
         fig, ax = plt.subplots()
         fig.set_size_inches(8, 5)
         ax.set_facecolor("white")

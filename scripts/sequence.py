@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-def main(args: argparse.Namespace):
+def main(args: argparse.Namespace) -> None:
     with open(args.input, "r") as f:
         data = np.array(json.load(f))
     data = np.cumsum(data[::-1])[::-1]

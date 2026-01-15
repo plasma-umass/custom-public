@@ -14,10 +14,13 @@ def main(args: argparse.Namespace) -> None:
 
     bins = np.array(data["bins"])
     ignored = data["ignored"]
+    print(
+        f"Number of ignored allocations: {ignored} ({(ignored / sum(bins)):.1f}% of total)"
+    )
 
     plt.rcParams["pdf.fonttype"] = 42
     plt.rcParams["font.family"] = args.font
-    with plt.style.context("bmh"):
+    with plt.style.context("bmh"):  # type: ignore[attr-defined]
         fig, ax = plt.subplots()
         ax.set_facecolor("white")
 
@@ -25,9 +28,8 @@ def main(args: argparse.Namespace) -> None:
 
         ax.bar(list(range(len(consolidated))), consolidated, width=1, align="edge")
 
-        # ax.set_xlabel("LLC misses per second")
-        # ax.set_ylabel("Average power draw (DRAM) [W]")
-        # ax.set_ylim(bottom=0)
+        ax.set_xlabel("Size of allocation [B]")
+        ax.set_ylabel("Number of allocations")
         ax.set_yscale("log")
         fig.tight_layout()
         plt.savefig(f"distribution.{args.format}", format=args.format)

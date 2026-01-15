@@ -1,9 +1,0 @@
-diff --git a/cpp/src/arrow/compute/row/CMakeLists.txt b/cpp/src/arrow/compute/row/CMakeLists.txt
---- a/cpp/src/arrow/compute/row/CMakeLists.txt
-+++ b/cpp/src/arrow/compute/row/CMakeLists.txt
-@@ -19,5 +19,3 @@
- # in a row-major order.
- 
- arrow_install_all_headers("arrow/compute/row")
--
--add_arrow_benchmark(grouper_benchmark PREFIX "arrow-compute")

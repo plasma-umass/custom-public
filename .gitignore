@@ -2,3 +2,6 @@ build
 .cache
 spec
 env
+
+llvm*
+sqlite3*

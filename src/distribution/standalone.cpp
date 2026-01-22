@@ -5,7 +5,7 @@
 
 #include <fmt/base.h>
 
-#include <distribution/litterer.hpp>
+#include "litterer.hpp"
 
 namespace {
 struct Initialization {

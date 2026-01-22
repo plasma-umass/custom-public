@@ -5,6 +5,7 @@
 #include <cstdint>
 #include <fstream>
 #include <iostream>
+#include <sys/syscall.h>
 #include <unordered_map>
 
 namespace {
@@ -16,12 +17,17 @@ KNOB<std::uint64_t>
 KNOB<std::uint64_t> knobHistogramSize(
     KNOB_MODE_WRITEONCE, "pintool", "k", "16777216",
     "number of entries to keep in the histogram (default: 2^24)");
-std::uint64_t granularity;
+KNOB<bool> knobAttachOnGetpid(KNOB_MODE_WRITEONCE, "pintool",
+                              "attach-on-getpid", "false",
+                              "only start tracking memory accesses after a "
+                              "getpid() call (default: false)");
 
 std::unordered_map<std::uint64_t, std::uint64_t>
     lastAccessByAddress; // TODO: F14ValueMap?
 std::vector<std::uint64_t> histogram;
 std::uint64_t currentCount = 0;
+std::uint64_t granularity;
+bool attached = false;
 
 void TrackMemoryAccess(void* addr) {
     ++currentCount;
@@ -36,7 +42,28 @@ void TrackMemoryAccess(void* addr) {
 
     const std::uint64_t distance = currentCount - it->second;
     it->second = currentCount;
-    ++histogram[std::min(distance - 1, histogram.size())];
+    ++histogram[std::min(distance - 1, histogram.size() - 1)];
+}
+
+void SyscallEntry([[maybe_unused]] THREADID threadIndex,
+                  [[maybe_unused]] CONTEXT* ctxt,
+                  [[maybe_unused]] SYSCALL_STANDARD std,
+                  [[maybe_unused]] void* v) {
+    if (!attached) {
+        auto syscallNumber = PIN_GetSyscallNumber(ctxt, std);
+
+        if (syscallNumber == SYS_getpid) {
+            std::cerr << "[PIN] Detected getpid() syscall marker." << std::endl;
+            std::cerr
+                << "[PIN] Starting reuse distance analysis with granularity "
+                << (1ULL << granularity) << " bytes." << std::endl;
+            attached = true;
+        }
+    }
+}
+
+bool IsAttached() {
+    return attached;
 }
 
 void Instruction(INS ins, [[maybe_unused]] void* v) {
@@ -44,14 +71,20 @@ void Instruction(INS ins, [[maybe_unused]] void* v) {
 
     for (UINT32 memOp = 0; memOp < memOperands; memOp++) {
         if (INS_MemoryOperandIsRead(ins, memOp)) {
-            INS_InsertPredicatedCall(
+            INS_InsertIfPredicatedCall(ins, IPOINT_BEFORE,
+                                       reinterpret_cast<AFUNPTR>(IsAttached),
+                                       IARG_END);
+            INS_InsertThenPredicatedCall(
                 ins, IPOINT_BEFORE,
                 reinterpret_cast<AFUNPTR>(TrackMemoryAccess), IARG_MEMORYOP_EA,
                 memOp, IARG_END);
         }
 
         if (INS_MemoryOperandIsWritten(ins, memOp)) {
-            INS_InsertPredicatedCall(
+            INS_InsertIfPredicatedCall(ins, IPOINT_BEFORE,
+                                       reinterpret_cast<AFUNPTR>(IsAttached),
+                                       IARG_END);
+            INS_InsertThenPredicatedCall(
                 ins, IPOINT_BEFORE,
                 reinterpret_cast<AFUNPTR>(TrackMemoryAccess), IARG_MEMORYOP_EA,
                 memOp, IARG_END);
@@ -92,8 +125,6 @@ void Fini([[maybe_unused]] int32_t code, [[maybe_unused]] void* v) {
 }
 
 int32_t Usage() {
-    std::cerr << "TODO short description. Does this ever get printed?"
-              << std::endl;
     std::cerr << KNOB_BASE::StringKnobSummary() << std::endl;
     return -1;
 }
@@ -107,10 +138,17 @@ int main(int argc, char* argv[]) {
     granularity = knobGranularity.Value();
     histogram.resize(knobHistogramSize.Value(), 0);
 
-    std::cerr << "[PIN] Starting reuse distance analysis with granularity "
-              << (1ULL << granularity) << " bytes." << std::endl;
+    if (knobAttachOnGetpid.Value()) {
+        std::cerr << "[PIN] Waiting for syscall marker before tracking."
+                  << std::endl;
+    } else {
+        std::cerr << "[PIN] Starting reuse distance analysis with granularity "
+                  << (1ULL << granularity) << " bytes." << std::endl;
+        attached = true;
+    }
 
     INS_AddInstrumentFunction(Instruction, nullptr);
+    PIN_AddSyscallEntryFunction(SyscallEntry, nullptr);
     PIN_AddFiniFunction(Fini, nullptr);
     PIN_StartProgram();
 }

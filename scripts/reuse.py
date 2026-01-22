@@ -38,8 +38,8 @@ def main(args: argparse.Namespace) -> None:
 
         ax.set_xlabel("Reuse Distance")
         ax.set_ylabel("Cumulative Probability [%]")
-        ax.set_xlim(left=-xmax / 50, right=xmax + xmax / 50)
-        ax.set_ylim(bottom=0, top=100)
+        ax.set_xlim(left=0, right=xmax + xmax / 50)
+        ax.set_ylim(bottom=0, top=102)
 
         fig.tight_layout()
         plt.savefig(f"reuse.{args.format}", format=args.format)

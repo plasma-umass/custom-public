@@ -1,16 +1,20 @@
 #include "pin.H"
 
+#include <sys/syscall.h>
+
 #include <algorithm>
 #include <chrono>
 #include <cstdint>
 #include <fstream>
 #include <iostream>
-#include <sys/syscall.h>
+#include <list>
 #include <unordered_map>
+#include <vector>
 
 namespace {
 KNOB<std::string> knobOutputFile(KNOB_MODE_WRITEONCE, "pintool", "o",
-                                 "reuse.json", "output file name");
+                                 "reuse.json",
+                                 "output file name (default: reuse.json)");
 KNOB<std::uint64_t>
     knobGranularity(KNOB_MODE_WRITEONCE, "pintool", "g", "6",
                     "power-of-two granularity (default: 6, cache line size)");
@@ -22,27 +26,49 @@ KNOB<bool> knobAttachOnGetpid(KNOB_MODE_WRITEONCE, "pintool",
                               "only start tracking memory accesses after a "
                               "getpid() call (default: false)");
 
-std::unordered_map<std::uint64_t, std::uint64_t>
-    lastAccessByAddress; // TODO: F14ValueMap?
-std::vector<std::uint64_t> histogram;
-std::uint64_t currentCount = 0;
-std::uint64_t granularity;
-bool attached = false;
+class ListTracker {
+  public:
+    std::uint64_t trackAndGetDistance(std::uintptr_t address) {
+        if (accesses.empty()) {
+            accesses.push_front(address);
+            return UINT64_MAX;
+        }
 
-void TrackMemoryAccess(void* addr) {
-    ++currentCount;
-    auto address = reinterpret_cast<std::uint64_t>(addr) >> granularity;
-    const auto [it, inserted]
-        = lastAccessByAddress.insert({address, currentCount});
+        std::uint64_t distance = 0;
+        auto it = accesses.begin();
+        while (distance < maxSearch && it != accesses.end()) {
+            if (*it == address) {
+                accesses.erase(it);
+                accesses.push_front(address);
+                return distance;
+            }
 
-    if (inserted) {
-        ++histogram.back();
-        return;
+            ++distance;
+            ++it;
+        }
+
+        accesses.push_front(address);
+        if (accesses.size() > maxSearch) {
+            accesses.pop_back();
+        }
+        return UINT64_MAX;
     }
 
-    const std::uint64_t distance = currentCount - it->second;
-    it->second = currentCount;
-    ++histogram[std::min(distance - 1, histogram.size() - 1)];
+  private:
+    std::list<std::uint64_t> accesses;
+    const std::uint64_t maxSearch = 10'000;
+};
+
+bool attached = false;
+std::vector<std::uint64_t> histogram;
+std::uint64_t granularity;
+ListTracker tracker;
+
+void TrackMemoryAccess(void* addr) {
+    const std::uint64_t address
+        = reinterpret_cast<std::uint64_t>(addr) >> granularity;
+    const std::uint64_t distance = tracker.trackAndGetDistance(address);
+    ++histogram.at(std::min(distance, histogram.size() - 1));
 }
 
 void SyscallEntry([[maybe_unused]] THREADID threadIndex,
@@ -70,17 +96,8 @@ void Instruction(INS ins, [[maybe_unused]] void* v) {
     UINT32 memOperands = INS_MemoryOperandCount(ins);
 
     for (UINT32 memOp = 0; memOp < memOperands; memOp++) {
-        if (INS_MemoryOperandIsRead(ins, memOp)) {
-            INS_InsertIfPredicatedCall(ins, IPOINT_BEFORE,
-                                       reinterpret_cast<AFUNPTR>(IsAttached),
-                                       IARG_END);
-            INS_InsertThenPredicatedCall(
-                ins, IPOINT_BEFORE,
-                reinterpret_cast<AFUNPTR>(TrackMemoryAccess), IARG_MEMORYOP_EA,
-                memOp, IARG_END);
-        }
-
-        if (INS_MemoryOperandIsWritten(ins, memOp)) {
+        if (INS_MemoryOperandIsRead(ins, memOp)
+            || INS_MemoryOperandIsWritten(ins, memOp)) {
             INS_InsertIfPredicatedCall(ins, IPOINT_BEFORE,
                                        reinterpret_cast<AFUNPTR>(IsAttached),
                                        IARG_END);
@@ -93,8 +110,7 @@ void Instruction(INS ins, [[maybe_unused]] void* v) {
 }
 
 void Fini([[maybe_unused]] int32_t code, [[maybe_unused]] void* v) {
-    std::cerr << "[PIN] Program finished execution. Final access map size: "
-              << lastAccessByAddress.size() << "." << std::endl;
+    std::cerr << "[PIN] Program finished execution." << std::endl;
     std::cerr << "[PIN] Generating output..." << std::endl;
     auto start = std::chrono::high_resolution_clock::now();
 
@@ -112,9 +128,7 @@ void Fini([[maybe_unused]] int32_t code, [[maybe_unused]] void* v) {
     }
     output += "]}";
 
-    // Single write operation
-    auto outFile = std::ofstream(knobOutputFile.Value());
-    outFile << output;
+    std::ofstream(knobOutputFile.Value()) << output;
 
     auto end = std::chrono::high_resolution_clock::now();
     std::cerr << "[PIN] Output generation took "
@@ -136,6 +150,7 @@ int main(int argc, char* argv[]) {
     }
 
     granularity = knobGranularity.Value();
+    assert(knobHistogramSize.Value() > 0);
     histogram.resize(knobHistogramSize.Value(), 0);
 
     if (knobAttachOnGetpid.Value()) {

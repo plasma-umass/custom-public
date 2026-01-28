@@ -5,28 +5,7 @@ import numpy as np
 
 
 def main(args: argparse.Namespace) -> None:
-    with open(args.filename, "r") as f:
-        histogram = json.load(f)["histogram"]
-    print(f"Number of bins: {len(histogram)}")
-    print(f"Total accesses: {sum(histogram):,}")
-
-    # Compute CDF
-    counts = np.array(histogram)
-    total = np.sum(counts)
-    cumulative = np.cumsum(counts)
-    cdf_values = (cumulative / total) * 100
-    reuse_distances = np.arange(len(histogram))
-
-    # Add [0, 0] point.
-    reuse_distances = np.insert(reuse_distances, 0, 0)
-    cdf_values = np.insert(cdf_values, 0, 0)
-
-    # Calculate xmax based on percentile
-    xmax_idx = np.searchsorted(cdf_values, args.percentile)
-    xmax = reuse_distances[xmax_idx]
-    print(f"Limiting x-axis to show {args.percentile}% of values (xmax={xmax})")
-
-    # Plot
+    # Plot setup
     plt.rcParams["pdf.fonttype"] = 42
     plt.rcParams["font.family"] = args.font
     with plt.style.context("bmh"):  # type: ignore[attr-defined]
@@ -34,12 +13,48 @@ def main(args: argparse.Namespace) -> None:
         fig.set_size_inches(8, 5)
         ax.set_facecolor("white")
 
-        ax.plot(reuse_distances, cdf_values)
+        xmax_global = 0
+
+        # Process each file
+        for filename in args.filenames:
+            with open(filename, "r") as f:
+                histogram = json.load(f)["histogram"]
+            print(f"\n{filename}:")
+            print(f"  Number of bins: {len(histogram)}")
+            print(f"  Total accesses: {sum(histogram):,}")
+
+            # Compute CDF
+            counts = np.array(histogram)
+            total = np.sum(counts)
+            cumulative = np.cumsum(counts)
+            cdf_values = (cumulative / total) * 100
+            reuse_distances = np.arange(len(histogram))
+
+            # Add [0, 0] point.
+            reuse_distances = np.insert(reuse_distances, 0, 0)
+            cdf_values = np.insert(cdf_values, 0, 0)
+
+            # Calculate xmax for this file
+            xmax_idx = np.searchsorted(cdf_values, args.percentile)
+            xmax = reuse_distances[xmax_idx]
+            xmax_global = max(xmax_global, xmax)
+            print(f"  {args.percentile}% percentile at x={xmax}")
+
+            # Plot this curve
+            ax.plot(reuse_distances, cdf_values, label=filename)
+
+        # Use user-specified xmax if provided, otherwise use calculated value
+        if args.xmax is not None:
+            xmax_global = args.xmax
+            print(f"\nUsing user-specified xmax={xmax_global}")
+        else:
+            print(f"\nLimiting x-axis to xmax={xmax_global}")
 
         ax.set_xlabel("Reuse Distance")
         ax.set_ylabel("Cumulative Probability [%]")
-        ax.set_xlim(left=0, right=xmax + xmax / 50)
-        ax.set_ylim(bottom=0, top=102)
+        ax.set_xlim(left=-1, right=xmax_global + xmax_global / 50)
+        ax.set_ylim(bottom=-1, top=102)
+        ax.legend(loc="lower right")
 
         fig.tight_layout()
         plt.savefig(f"reuse.{args.format}", format=args.format)
@@ -48,9 +63,10 @@ def main(args: argparse.Namespace) -> None:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        "filename",
+        "filenames",
         type=str,
-        help="path to the JSON file containing output from the Pin tool",
+        nargs="+",
+        help="path(s) to JSON file(s) containing output from the Pin tool",
     )
     parser.add_argument("--format", type=str, default="png")
     parser.add_argument("--font", type=str, default="Linux Libertine O")
@@ -60,4 +76,5 @@ if __name__ == "__main__":
         default=90.0,
         help="percentile of data to display on x-axis",
     )
+    parser.add_argument("--xmax", type=float, default=None)
     main(parser.parse_args())

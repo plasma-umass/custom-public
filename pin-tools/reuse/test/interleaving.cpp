@@ -8,7 +8,7 @@ struct Node {
     volatile std::uint64_t v;
 };
 
-#define N 5'000
+#define N 10'000
 #define K 64
 #define I 10'000
 

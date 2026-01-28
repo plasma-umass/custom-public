@@ -7,9 +7,10 @@
 #include <cstdint>
 #include <fstream>
 #include <iostream>
-#include <list>
 #include <unordered_map>
 #include <vector>
+
+#include "AVL.hpp"
 
 namespace {
 KNOB<std::string> knobOutputFile(KNOB_MODE_WRITEONCE, "pintool", "o",
@@ -26,43 +27,50 @@ KNOB<bool> knobAttachOnGetpid(KNOB_MODE_WRITEONCE, "pintool",
                               "only start tracking memory accesses after a "
                               "getpid() call (default: false)");
 
-class ListTracker {
+struct AVLNode {
+    std::uint64_t timestamp;
+    std::uint64_t address;
+    int height;
+    std::uint64_t size;
+    AVLNode* left;
+    AVLNode* right;
+
+    AVLNode(std::uint64_t ts, std::uint64_t addr)
+        : timestamp(ts), address(addr), height(1), size(1), left(nullptr),
+          right(nullptr) {}
+};
+
+class AVLTracker {
   public:
-    std::uint64_t trackAndGetDistance(std::uintptr_t address) {
-        if (accesses.empty()) {
-            accesses.push_front(address);
-            return UINT64_MAX;
+    std::uint64_t trackAndGetDistance(std::uint64_t address) {
+        ++now;
+        auto it = timestampByAddress.find(address);
+
+        if (it != timestampByAddress.end()) {
+            std::uint64_t oldNow = it->second;
+            std::uint64_t distance = tree.getRank(oldNow);
+
+            tree.erase(oldNow);
+            tree.insert(now);
+            timestampByAddress[address] = now;
+            return distance;
         }
 
-        std::uint64_t distance = 0;
-        auto it = accesses.begin();
-        while (distance < maxSearch && it != accesses.end()) {
-            if (*it == address) {
-                accesses.erase(it);
-                accesses.push_front(address);
-                return distance;
-            }
-
-            ++distance;
-            ++it;
-        }
-
-        accesses.push_front(address);
-        if (accesses.size() > maxSearch) {
-            accesses.pop_back();
-        }
+        timestampByAddress[address] = now;
+        tree.insert(now);
         return UINT64_MAX;
     }
 
   private:
-    std::list<std::uint64_t> accesses;
-    const std::uint64_t maxSearch = 10'000;
+    AVLTree<std::uint64_t> tree;
+    std::uint64_t now;
+    std::unordered_map<std::uint64_t, std::uint64_t> timestampByAddress;
 };
 
 bool attached = false;
 std::vector<std::uint64_t> histogram;
 std::uint64_t granularity;
-ListTracker tracker;
+AVLTracker tracker;
 
 void TrackMemoryAccess(void* addr) {
     const std::uint64_t address

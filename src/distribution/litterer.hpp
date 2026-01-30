@@ -6,6 +6,7 @@
 #include <unistd.h>
 
 #include <algorithm>
+#include <cassert>
 #include <chrono>
 #include <cstdint>
 #include <cstdio>
@@ -25,6 +26,7 @@ namespace distribution::litterer {
 
 namespace detail {
 void assertOrExit(bool condition, std::FILE* log, const std::string& message) {
+    assert(log != nullptr);
     if (!condition) {
         std::fprintf(log, "[ERROR] %s\n", message.c_str());
         exit(EXIT_FAILURE);
@@ -53,7 +55,7 @@ void runLitterer() {
     std::FILE* log = stderr;
     if (const char* env = std::getenv("LITTER_LOG_FILENAME")) {
         log = std::fopen(env, "a");
-        detail::assertOrExit(log != nullptr, log, "Could not open log file.");
+        detail::assertOrExit(log != nullptr, stderr, "Could not open log file.");
     }
 
     std::uint32_t seed = std::random_device()();

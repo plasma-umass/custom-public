@@ -131,7 +131,8 @@ void runLitterer() {
     std::fprintf(log, "sleep      : %s\n",
                  sleepDelay != 0 ? std::to_string(sleepDelay).c_str() : "no");
     std::fprintf(log, "litter     : %u * %lld = %zu\n", multiplier,
-                 static_cast<long long>(maxLiveAllocations), nAllocationsLitter);
+                 static_cast<long long>(maxLiveAllocations),
+                 nAllocationsLitter);
     std::fprintf(log, "========================================================"
                       "==========================\n");
 

@@ -87,7 +87,7 @@ jobs:
 
       - name: Check clang-format
         if: ${{ matrix.build-type == 'Debug' }}
-        run: find src -name '*.cpp' -o -name '*.h' -o -name '*.hpp'  | xargs clang-format-21 --dry-run --Werror
+        run: find src -name '*.cpp' -o -name '*.h' -o -name '*.hpp' | grep -v 'src/distribution/json.hpp' | xargs clang-format-21 --dry-run --Werror
 
       - name: Check clang-tidy
         if: ${{ matrix.build-type == 'Debug' }}

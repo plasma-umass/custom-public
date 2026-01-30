@@ -104,8 +104,9 @@ void Instruction(INS ins, [[maybe_unused]] void* v) {
     UINT32 memOperands = INS_MemoryOperandCount(ins);
 
     for (UINT32 memOp = 0; memOp < memOperands; memOp++) {
-        if (INS_MemoryOperandIsRead(ins, memOp)
-            || INS_MemoryOperandIsWritten(ins, memOp)) {
+        if ((INS_MemoryOperandIsRead(ins, memOp) && !INS_IsStackRead(ins))
+            || (INS_MemoryOperandIsWritten(ins, memOp)
+                && !INS_IsStackWrite(ins))) {
             INS_InsertIfPredicatedCall(ins, IPOINT_BEFORE,
                                        reinterpret_cast<AFUNPTR>(IsAttached),
                                        IARG_END);

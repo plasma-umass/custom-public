@@ -55,7 +55,8 @@ void runLitterer() {
     std::FILE* log = stderr;
     if (const char* env = std::getenv("LITTER_LOG_FILENAME")) {
         log = std::fopen(env, "a");
-        detail::assertOrExit(log != nullptr, stderr, "Could not open log file.");
+        detail::assertOrExit(log != nullptr, stderr,
+                             "Could not open log file.");
     }
 
     std::uint32_t seed = std::random_device()();

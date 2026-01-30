@@ -130,8 +130,8 @@ void runLitterer() {
     std::fprintf(log, "sort       : %s\n", sort ? "yes" : "no");
     std::fprintf(log, "sleep      : %s\n",
                  sleepDelay != 0 ? std::to_string(sleepDelay).c_str() : "no");
-    std::fprintf(log, "litter     : %u * %ld = %zu\n", multiplier,
-                 maxLiveAllocations, nAllocationsLitter);
+    std::fprintf(log, "litter     : %u * %lld = %zu\n", multiplier,
+                 static_cast<long long>(maxLiveAllocations), nAllocationsLitter);
     std::fprintf(log, "========================================================"
                       "==========================\n");
 
@@ -170,8 +170,8 @@ void runLitterer() {
     const auto elapsed_ms
         = std::chrono::duration_cast<std::chrono::seconds>((end - start))
               .count();
-    std::fprintf(log, "Finished littering. Time taken: %ld seconds.\n",
-                 elapsed_ms);
+    std::fprintf(log, "Finished littering. Time taken: %lld seconds.\n",
+                 static_cast<long long>(elapsed_ms));
 
     if (sleepDelay != 0) {
         std::fprintf(log, "Sleeping %u seconds before resuming...\n",
@@ -186,8 +186,10 @@ void runLitterer() {
         std::fclose(log);
     }
 
+#ifndef __APPLE__
     // A marker syscall to inform any instrumentation that littering is done.
     syscall(SYS_getpid);
+#endif
 }
 } // namespace distribution::litterer
 

@@ -1,0 +1,21 @@
+diff --git a/clang/tools/driver/driver.cpp b/clang/tools/driver/driver.cpp
+index 9ed8d4ed8..16a22cdf9 100644
+--- a/clang/tools/driver/driver.cpp
++++ b/clang/tools/driver/driver.cpp
+@@ -55,6 +55,8 @@
+ #include <set>
+ #include <system_error>
+
++#include "litterer.hpp"
++
+ using namespace clang;
+ using namespace clang::driver;
+ using namespace llvm::opt;
+@@ -234,6 +236,7 @@ static int ExecuteCC1Tool(SmallVectorImpl<const char *> &ArgV,
+ }
+ 
+ int clang_main(int Argc, char **Argv, const llvm::ToolContext &ToolContext) {
++  const distribution::litterer::Helper _;
+   noteBottomOfStack();
+   llvm::setBugReportMsg("PLEASE submit a bug report to " BUG_REPORT_URL
+                         " and include the crash backtrace, preprocessed "

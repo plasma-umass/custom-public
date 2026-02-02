@@ -2,6 +2,7 @@ build
 .cache
 spec
 env
+*.log
 
 llvm*
 sqlite3*

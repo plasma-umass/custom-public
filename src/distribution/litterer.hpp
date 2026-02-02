@@ -34,7 +34,7 @@ void assertOrExit(bool condition, std::FILE* log, const std::string& message) {
 }
 
 template <typename T, typename Generator>
-void partial_shuffle(std::vector<T>& v, std::size_t n, Generator& g) {
+void partialShuffle(std::vector<T>& v, std::size_t n, Generator& g) {
     const auto m = std::min(n, v.size() - 2);
     for (std::size_t i = 0; i < m; ++i) {
         const auto j
@@ -44,7 +44,7 @@ void partial_shuffle(std::vector<T>& v, std::size_t n, Generator& g) {
 }
 
 std::vector<std::uint64_t>
-cumulative_sum(const std::vector<std::uint64_t>& bins) {
+cumulativeSum(const std::vector<std::uint64_t>& bins) {
     std::vector<std::uint64_t> cumsum(bins.size());
     std::partial_sum(bins.begin(), bins.end(), cumsum.begin());
     return cumsum;
@@ -136,7 +136,7 @@ void runLitterer() {
     std::fprintf(log, "========================================================"
                       "==========================\n");
 
-    const std::vector<std::uint64_t> binsCumSum = detail::cumulative_sum(bins);
+    const std::vector<std::uint64_t> binsCumSum = detail::cumulativeSum(bins);
 
     const auto start = std::chrono::high_resolution_clock::now();
 
@@ -149,6 +149,7 @@ void runLitterer() {
             = std::lower_bound(binsCumSum.begin(), binsCumSum.end(), offset);
         const auto bin = std::distance(binsCumSum.begin(), it);
         objects[i] = std::malloc(sizeClasses.at(bin));
+        detail::assertOrExit(objects[i] != nullptr, log, "malloc failed.");
     }
 
     const auto nObjectsToBeFreed = static_cast<std::size_t>(
@@ -157,7 +158,7 @@ void runLitterer() {
     if (shuffle) {
         std::fprintf(log, "Shuffling %zu object(s) to be freed.\n",
                      nObjectsToBeFreed);
-        detail::partial_shuffle(objects, nObjectsToBeFreed, generator);
+        detail::partialShuffle(objects, nObjectsToBeFreed, generator);
     } else if (sort) {
         std::fprintf(log, "Sorting all %zu objects.\n", objects.size());
         std::sort(objects.begin(), objects.end(), std::greater<>());
@@ -168,11 +169,11 @@ void runLitterer() {
     }
 
     const auto end = std::chrono::high_resolution_clock::now();
-    const auto elapsed_ms
+    const auto elapsed_s
         = std::chrono::duration_cast<std::chrono::seconds>((end - start))
               .count();
     std::fprintf(log, "Finished littering. Time taken: %lld seconds.\n",
-                 static_cast<long long>(elapsed_ms));
+                 static_cast<long long>(elapsed_s));
 
     if (sleepDelay != 0) {
         std::fprintf(log, "Sleeping %u seconds before resuming...\n",
@@ -192,6 +193,47 @@ void runLitterer() {
     syscall(SYS_getpid);
 #endif
 }
+
+struct Helper {
+    Helper() {
+        distribution::litterer::runLitterer();
+        start = std::chrono::high_resolution_clock::now();
+    }
+
+    ~Helper() {
+        std::FILE* log = stderr;
+        if (const char* env = std::getenv("LITTER_LOG_FILENAME")) {
+            log = std::fopen(env, "a");
+            assert(log != nullptr);
+        }
+
+        const auto end = std::chrono::high_resolution_clock::now();
+        const auto elapsed_ms
+            = std::chrono::duration_cast<std::chrono::milliseconds>(
+                  (end - start))
+                  .count();
+        std::fprintf(log,
+                     "========================================================"
+                     "==========================\n");
+        std::fprintf(log, "Time elapsed: %lld ms\n",
+                     static_cast<long long>(elapsed_ms));
+        std::fprintf(log,
+                     "========================================================"
+                     "==========================\n");
+
+        if (log != stderr) {
+            std::fclose(log);
+        }
+    }
+
+    Helper(const Helper&) = delete;
+    Helper& operator=(const Helper&) = delete;
+    Helper(Helper&&) = delete;
+    Helper& operator=(Helper&&) = delete;
+
+  private:
+    std::chrono::high_resolution_clock::time_point start;
+};
 } // namespace distribution::litterer
 
 #endif

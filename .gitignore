@@ -5,4 +5,4 @@ env
 *.log
 
 /llvm*
-sqlite3*
+/sqlite3*

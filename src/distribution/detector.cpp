@@ -107,12 +107,13 @@ void processAllocation(std::size_t size) {
 
     if (size > sizeClasses.back()) {
         ++ignored;
-    } else {
-        const auto it
-            = std::lower_bound(sizeClasses.begin(), sizeClasses.end(), size);
-        const auto index = std::distance(sizeClasses.begin(), it);
-        ++bins[index];
+        return;
     }
+
+    const auto it
+        = std::lower_bound(sizeClasses.begin(), sizeClasses.end(), size);
+    const auto index = std::distance(sizeClasses.begin(), it);
+    ++bins[index];
 
     if constexpr (NewAlloc) {
         const auto liveAllocationsSnapshot = ++liveAllocations;

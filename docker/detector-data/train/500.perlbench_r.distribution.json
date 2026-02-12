@@ -4098,7 +4098,7 @@
         746
     ],
     "ignored": 111,
-    "maxLiveAllocations": 162955,
+    "maxLiveAllocations": 162944,
     "sizeClasses": [
         1,
         2,

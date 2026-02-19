@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 #include <pthread.h>
+#include <unistd.h>
 
 int pthread_create(pthread_t* restrict thread,
                    const pthread_attr_t* restrict attr,
@@ -11,5 +12,10 @@ int pthread_create(pthread_t* restrict thread,
     (void) start_routine;
     (void) arg;
     fprintf(stderr, "[ERROR] The program tried calling pthread_create...\n");
+    exit(EXIT_FAILURE);
+}
+
+pid_t fork(void) {
+    fprintf(stderr, "[ERROR] The program tried calling fork...\n");
     exit(EXIT_FAILURE);
 }

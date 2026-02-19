@@ -103,6 +103,12 @@ if(NOT WIN32)
   if(UNIX)
     target_link_libraries(sequence PRIVATE ${CMAKE_DL_LIBS})
   endif()
+
+  set(THREADS_PREFER_PTHREAD_FLAG ON)
+  find_package(Threads REQUIRED)
+
+  add_library(pthread_crash SHARED src/utils/pthread_crash.c)
+  target_link_libraries(pthread_crash PRIVATE Threads::Threads)
 endif()
 
 add_executable(fragmentation src/logger/fragmentation.cpp)

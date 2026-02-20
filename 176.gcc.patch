@@ -1,0 +1,35 @@
+--- ../../cpu2000/benchspec/CINT2000/176.gcc/src/obstack.c	2002-07-09 10:52:16.000000000 -0400
++++ obstack.c	2026-02-20 13:53:20.380958465 -0500
+@@ -141,6 +141,10 @@
+       size = 4096 - extra;
+     }
+ 
++  #ifdef USE_MALLOC
++  size = sizeof(struct _obstack_chunk);
++  #endif
++
+   h->chunkfun = (struct _obstack_chunk * (*)()) chunkfun;
+   h->freefun = freefun;
+   h->chunk_size = size;
+@@ -199,6 +203,10 @@
+       size = 4096 - extra;
+     }
+ 
++  #ifdef USE_MALLOC
++  size = sizeof(struct _obstack_chunk);
++  #endif
++
+   h->chunkfun = (struct _obstack_chunk * (*)()) chunkfun;
+   h->freefun = freefun;
+   h->chunk_size = size;
+@@ -250,6 +258,10 @@
+   new_size = (obj_size + length) + (obj_size >> 3) + 100;
+   if (new_size < h->chunk_size)
+     new_size = h->chunk_size;
++  
++  #ifdef USE_MALLOC
++  new_size = sizeof(struct _obstack_chunk) + obj_size + length;
++  #endif
+ 
+   /* Allocate and initialize the new chunk.  */
+   new_chunk = CALL_CHUNKFUN (h, new_size);

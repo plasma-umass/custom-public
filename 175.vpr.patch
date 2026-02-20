@@ -1,0 +1,14 @@
+--- a/util.c
++++ b/util.c
+@@ -92,7 +92,11 @@
+ 
+ typedef size_t Align;
+ 
++#ifdef USE_MALLOC
++#define CHUNK_SIZE 0
++#else
+ #define CHUNK_SIZE 32768
++#endif
+ #define FRAGMENT_THRESHOLD 100
+ 
+  char *tmp_ptr;

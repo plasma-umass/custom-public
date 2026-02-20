@@ -1,0 +1,22 @@
+--- a/xalloc.c
++++ b/xalloc.c
+@@ -9,7 +9,18 @@
+
+ #include "header.h"
+
+-#if 1
++#ifdef USE_MALLOC
++int max_space_in_use = 0;
++int space_in_use = 0;
++
++void initialize_memory(void) {}
++void * xalloc(int size) {
++  return malloc(size);
++}
++void xfree(char * p, int size) {
++  free(p);
++}
++#else
+
+ /* This simple allocator takes time O(number of allocs + number of frees).
+    It works by maintaining the location of the rightmost alloced block

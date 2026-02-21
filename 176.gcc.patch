@@ -1,5 +1,5 @@
---- ../../cpu2000/benchspec/CINT2000/176.gcc/src/obstack.c	2002-07-09 10:52:16.000000000 -0400
-+++ obstack.c	2026-02-20 13:53:20.380958465 -0500
+--- a/obstack.c
++++ b/obstack.c
 @@ -141,6 +141,10 @@
        size = 4096 - extra;
      }

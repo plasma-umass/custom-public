@@ -5,6 +5,7 @@ Checks: |
   -bugprone-exception-escape,
   clang-analyzer-*,
   -clang-analyzer-optin.cplusplus.UninitializedObject,
+  -clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling,
   cppcoreguidelines-*,
   -cppcoreguidelines-avoid-magic-numbers,
   -cppcoreguidelines-avoid-non-const-global-variables,

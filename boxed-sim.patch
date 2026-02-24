@@ -1,0 +1,386 @@
+--- a/boxed.c
++++ b/boxed.c
+@@ -785,7 +785,7 @@
+ 
+     Simulator_Init();
+ 
+-    scenario.dump_basename = "output/"BASENAME;
++    scenario.dump_basename = "DUMP";
+ 
+     Scenario_Create(&scenario, num_balls);
+ 
+--- a/checkpoint.c
++++ b/checkpoint.c
+@@ -23,7 +23,33 @@
+ 
+ static CheckpointList	free_checkpoints = NULL;
+ 
++#ifdef USE_MALLOC
++#define Checkpoint_New(d) { \
++    if ((d)->checkpoints_head) { \
++        (d)->checkpoints_tail->next = New(CheckpointData, 1); \
++        (d)->checkpoints_tail->next->prev = (d)->checkpoints_tail; \
++        (d)->checkpoints_tail = (d)->checkpoints_tail->next; \
++        (d)->checkpoints_tail->next = NULL; \
++    } else { \
++        (d)->checkpoints_head = \
++        (d)->checkpoints_tail = New(CheckpointData, 1); \
++        (d)->checkpoints_tail->next = (d)->checkpoints_tail->prev = NULL; \
++    } \
++}
++
++void Checkpoints_Free(DynamicEpochList el) {
++	CheckpointList cl = el->checkpoints_head;
++	while (cl != NULL) {
++		free(cl);
++		cl = cl->next;
++	}
++}
+ 
++void Checkpoints_Free_Tail(CheckpointList l, CheckpointList tail) {
++    // Seems completely unused.
++    exit(EXIT_FAILURE);
++}
++#else
+ #define Checkpoint_New(d)   { \
+     if ( free_checkpoints ) \
+     { \
+@@ -60,6 +86,7 @@
+ 	} \
+     } }
+ 
++#endif
+ 
+ void
+ Checkpoint_Insert_Event(SimulationPtr sim, SimObjectPtr obj, double t_now)
+@@ -145,6 +172,7 @@
+ }
+ 
+ 
++#ifndef USE_MALLOC
+ void
+ Checkpoints_Free(DynamicEpochList el)
+ {
+@@ -172,6 +200,7 @@
+ 
+     l->next = NULL;
+ }
++#endif
+ 
+ 
+ void
+--- a/epoch.c
++++ b/epoch.c
+@@ -19,7 +19,35 @@
+     SimObjectPtr    obj;
+     } Interaction, *InteractionPtr;
+ 
++#ifdef USE_MALLOC
++static ObjectList free_objects = NULL;
+ 
++#define Interaction_New(d) (d) = New(Interaction, 1)
++#define Interaction_Free(v) free((v))
++
++void Interactions_Free(ObjectList victim) {
++    for (; victim != NULL; victim = victim->next) {
++        free(victim);
++    }
++}
++
++DynamicEpochList Dynamic_Epoch_New() {
++    DynamicEpochList res = New(DynamicEpoch, 1);
++    res->interactions = NULL;
++    res->checkpoints_head = res->checkpoints_tail = NULL;
++    res->next = res->prev = NULL;
++    return res;
++}
++
++void Dynamic_Epoch_Free_List(DynamicEpochList e) {
++    for (; e != NULL; e = e->next) {
++        Interactions_Free(e->interactions);
++        Checkpoints_Free(e);
++    }
++}
++
++#define Dynamic_Epoch_Free(e) Dynamic_Epoch_Free_List((e))
++#else
+ static ObjectList	free_objects = NULL;
+ static DynamicEpochList	free_dynamic = NULL;
+ static InteractionPtr	free_interactions = NULL;
+@@ -105,6 +133,7 @@
+ 	free_dynamic = e;
+     }
+ }
++#endif
+ 
+ 
+ void
+--- a/hash.c
++++ b/hash.c
+@@ -43,20 +43,20 @@
+ HashTable
+ Hash_New_Table(unsigned long maxsize)
+ {
+-    HashTable   new_hash = (HashTable)malloc(sizeof(struct _HashTable));
++    HashTable   new_hash = (HashTable)calloc(sizeof(struct _HashTable), 1);
+     int i;
+ 
+     for ( i = 0 ; i < NUM_PRIMES - 1 && candidate_primes[i] < maxsize ; i++ );
+     new_hash->prime = candidate_primes[i];
+     new_hash->entries =
+-	(HashEntryPtr*)malloc(sizeof(HashEntryPtr) * new_hash->prime);
++	(HashEntryPtr*)calloc(sizeof(HashEntryPtr), new_hash->prime);
+     for ( i = 0 ; i < new_hash->prime ; i++ )
+         new_hash->entries[i] = NULL;
+ 
+ #if HASH_STATS
+     new_hash->num_entries = 0;
+     new_hash->entry_counts =
+-		(unsigned int*)malloc(sizeof(unsigned int) * new_hash->prime);
++		(unsigned int*)calloc(sizeof(unsigned int), new_hash->prime);
+     for ( i = 0 ; i < new_hash->prime ; i++ )
+         new_hash->entry_counts[i] = 0;
+ #endif
+@@ -84,7 +84,7 @@
+ 	free_list = free_list->next;
+     }
+     else
+-	new_entry = (HashEntryPtr)malloc(sizeof(HashEntry));
++	new_entry = (HashEntryPtr)calloc(sizeof(HashEntry), 1);
+     new_entry->next = table->entries[index];
+     new_entry->key = key;
+     new_entry->value = value;
+@@ -116,6 +116,13 @@
+ }
+ 
+ 
++#ifdef USE_MALLOC
++static void Hash_Free_List(HashEntryPtr victim) {
++    for (; victim != NULL; victim = victim->next) {
++        free(victim);
++    }
++}
++#else
+ static void
+ Hash_Free_List(HashEntryPtr victim)
+ {
+@@ -126,6 +133,7 @@
+ 	free_list = victim;
+     }
+ }
++#endif
+ 
+ 
+ void
+@@ -169,8 +177,12 @@
+     {
+         table->entries[key % table->prime] = entry->next;
+         val = entry->value;
++#ifdef USE_MALLOC
++        free(entry);
++#else
+ 	entry->next = free_list;
+ 	free_list = entry;
++#endif
+ 
+ #if HASH_STATS
+     table->num_entries--;
+@@ -189,8 +201,12 @@
+ 
+         val = entry->next->value;
+         entry->next = entry->next->next;
++#ifdef USE_MALLOC
++        free(temp);
++#else
+ 	temp->next = free_list;
+ 	free_list = temp;
++#endif
+ 
+ #if HASH_STATS
+     table->num_entries--;
+--- a/heap.c
++++ b/heap.c
+@@ -18,7 +18,7 @@
+ #include <stdlib.h>
+ #include <heap.h>
+ 
+-#define New(t, n)	( (t*)malloc(sizeof(t) * (n)) )
++#define New(t, n)	( (t*)calloc(sizeof(t), (n)) )
+ #define More(p, t, n)	( (t*)realloc((char*)(p), sizeof(t) * (n)) )
+ 
+ /* Code derived from:
+@@ -41,10 +41,19 @@
+     QueueEntryPtr   *entries;
+ } PriorityQueue;
+ 
++#ifdef USE_MALLOC
++static int max_free = 0;
++static int num_free = 0;
++static QueueEntryPtr* free_list = NULL;
+ 
++void Priority_Free_Entry(QueueEntryPtr e) {
++    free(e);
++}
++#else
+ static int		max_free = 0;
+ static int		num_free = 0;
+ static QueueEntryPtr	*free_list = NULL;
++#endif
+ 
+ 
+ #define Swap(a, b, c) ( (c) = (a), (a) = (b), (b) = (c) )
+@@ -222,6 +231,7 @@
+ }
+ 
+ 
++#ifndef USE_MALLOC
+ void
+ Priority_Free_Entry(QueueEntryPtr e)
+ {
+@@ -241,5 +251,6 @@
+ 
+     free_list[num_free++] = e;
+ }
++#endif
+ 
+ 
+--- a/lu_decomp.c
++++ b/lu_decomp.c
+@@ -9,7 +9,7 @@
+ #include <stdio.h>
+ #include <recipes.h>
+ 
+-#define New(t, n) (t*)malloc(sizeof(t) * (n))
++#define New(t, n) (t*)calloc(sizeof(t), (n))
+ #define More(x, t, n) (t*)realloc((char*)x, sizeof(t) * (n))
+ #define TINY 1.e-20
+ 
+--- a/Makefile	2001
++++ b/Makefile	2026
+@@ -25,7 +25,7 @@
+ all: boxed
+ 
+ boxed: $(OBJS)
+-	gcc -o $@ $(OBJS) $(LDFLAGS)
++	$(CC) -o $@ $(OBJS) $(LDFLAGS)
+ 
+ depend:
+ 	makedepend -- $(INCLUDE) -- $(SRC)
+--- a/overlaps.c
++++ b/overlaps.c
+@@ -94,6 +94,18 @@
+     }
+ 
+ 
++#ifdef USE_MALLOC
++#define Overlap_List_Delete(list, elmt) { \
++    OverlapList _temp_l = (elmt); \
++    if ( (elmt)->next ) \
++        (elmt)->next->prev = (elmt)->prev; \
++    if ( (elmt)->prev ) \
++        (elmt)->prev->next = (elmt)->next; \
++    else \
++        (list) = (elmt)->next; \
++    free(_temp_l); \
++}
++#else
+ #define Overlap_List_Delete(list, elmt) { \
+ 	OverlapList _temp_l = (elmt); \
+ 	if ( (elmt)->next ) \
+@@ -105,6 +117,7 @@
+ 	_temp_l->next = free_overlap_lists; \
+ 	free_overlap_lists = _temp_l; \
+     }
++#endif
+ 
+ 
+ static void
+@@ -166,9 +179,14 @@
+ 	    victim->overlap->o2_xyz_elmt = NULL;
+ 	}
+ 	Overlap_Free_Features(victim->overlap);
++#ifdef USE_MALLOC
++    free(victim->overlap);
++    free(victim);
++#else
+ 	Overlap_List_Insert(free_overlaps, victim->overlap, junk);
+ 	victim->next = free_overlap_lists;
+ 	free_overlap_lists = victim;
++#endif
+     }
+ }
+ 
+@@ -327,7 +345,11 @@
+ 		Event_Delete(sim, (SimEventPtr)o);
+ 
+ 	    Overlap_Free_Features(o);
++#ifdef USE_MALLOC
++        free(o);
++#else
+ 	    Overlap_List_Insert(free_overlaps, o, junk);
++#endif
+ 	}
+     }
+ 
+--- a/polyhedron.c
++++ b/polyhedron.c
+@@ -16,7 +16,7 @@
+ #include <vclip.h>
+ 
+ 
+-#define New(t, n)   	(t*)malloc(sizeof(t) * (n))
++#define New(t, n)   	(t*)calloc(sizeof(t), (n))
+ #define New_Stack(t, n)	(t*)alloca(sizeof(t) * (n))
+ 
+ 
+--- a/red_black.c
++++ b/red_black.c
+@@ -39,7 +39,7 @@
+ RBTree
+ RBTree_New()
+ {
+-    RBTree  res = (RBTree)malloc(sizeof(RBTreeRoot));
++    RBTree  res = (RBTree)calloc(sizeof(RBTreeRoot), 1);
+     res->root = NULL;
+ 
+     return res;
+@@ -165,7 +165,7 @@
+ 	free_list = free_list->left;
+     }
+     else
+-	new_node = (RBTreeNodePtr)malloc(sizeof(RBTreeNode));
++	new_node = (RBTreeNodePtr)calloc(sizeof(RBTreeNode), 1);
+ 
+     new_node->parent = NULL;
+     new_node->left = new_node->right = NULL;
+@@ -264,7 +264,7 @@
+ 	free_list = free_list->left;
+     }
+     else
+-	dest = (RBTreeNodePtr)malloc(sizeof(RBTreeNode));
++	dest = (RBTreeNodePtr)calloc(sizeof(RBTreeNode), 1);
+ 
+     dest->key = src->key;
+     if ( src->left )
+--- a/simulator.h
++++ b/simulator.h
+@@ -54,7 +54,7 @@
+ #include <vclip.h>
+ 
+ 
+-#define New(t, n)	( (t*)malloc(sizeof(t) * (n)) )
++#define New(t, n)	( (t*)calloc(sizeof(t), (n)) )
+ #define More(p, t, n)	( (t*)realloc((char*)(p), sizeof(t) * (n)) )
+ #define Min(a, b)	( (a) < (b) ? (a) : (b) )
+ #define Max(a, b)	( (a) >= (b) ? (a) : (b) )
+--- a/stdstuff.h
++++ b/stdstuff.h
+@@ -25,7 +25,7 @@
+ #define Min(a, b) ( (a) < (b) ? (a) : (b) )
+ 
+ 
+-#define New(t, n) 	( (t*)malloc(sizeof(t) * (n)) )
++#define New(t, n) 	( (t*)calloc(sizeof(t), (n)) )
+ #define More(p, t, n) 	( (t*)realloc((void*)p, sizeof(t) * (n)) )
+ #define NewZero(t, n)	( (t*)calloc((n), sizeof(t)) )
+ #define NewStack(t, n)  ( (t*)alloca(sizeof(t) * (n)) )

@@ -53,7 +53,8 @@ def main(args: argparse.Namespace) -> None:
         ax.set_xlabel("Reuse Distance")
         ax.set_ylabel("Cumulative Probability [%]")
         ax.set_xlim(left=-1, right=xmax_global + xmax_global / 50)
-        ax.set_ylim(bottom=-1, top=102)
+        ymin = args.ymin if args.ymin is not None else -1
+        ax.set_ylim(bottom=ymin, top=102)
         ax.legend(loc="lower right")
 
         fig.tight_layout()
@@ -77,4 +78,5 @@ if __name__ == "__main__":
         help="percentile of data to display on x-axis",
     )
     parser.add_argument("--xmax", type=float, default=None)
+    parser.add_argument("--ymin", type=float, default=None)
     main(parser.parse_args())

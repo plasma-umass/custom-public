@@ -109,6 +109,7 @@ if(NOT WIN32)
 
   add_library(pthread_crash SHARED src/utils/pthread_crash.c)
   target_link_libraries(pthread_crash PRIVATE Threads::Threads)
+  install(TARGETS pthread_crash)
 endif()
 
 add_executable(fragmentation src/logger/fragmentation.cpp)

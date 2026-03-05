@@ -1,0 +1,11 @@
+--- a/source/blender/blenlib/intern/BLI_mempool.cc
++++ b/source/blender/blenlib/intern/BLI_mempool.cc
+@@ -68,7 +68,7 @@
+ #define USEDWORD MAKE_ID('u', 's', 'e', 'd')
+ 
+ /* optimize pool size */
+-#define USE_CHUNK_POW2
++// #define USE_CHUNK_POW2
+ 
+ #ifndef NDEBUG
+ static bool mempool_debug_memset = false;

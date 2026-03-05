@@ -1,0 +1,10 @@
+--- a/source/blender/blenlib/intern/BLI_mempool.cc
++++ b/source/blender/blenlib/intern/BLI_mempool.cc
+@@ -318,6 +318,7 @@ BLI_mempool *BLI_mempool_create(uint esize, uint elem_num, uint pchunk, uint fla
+   BLI_mempool *pool;
+   BLI_freenode *last_tail = nullptr;
+   uint i, maxchunks;
++  pchunk = 1;
+ 
+   /* allocate the pool structure */
+   pool = MEM_callocN<BLI_mempool>("memory pool");

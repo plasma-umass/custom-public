@@ -1,0 +1,10 @@
+--- a/source/blender/blenlib/intern/BLI_memarena.cc
++++ b/source/blender/blenlib/intern/BLI_memarena.cc
+@@ -67,6 +67,7 @@ MemArena *BLI_memarena_new(const size_t bufsize, const char *name)
+ {
+   MemArena *ma = MEM_callocN<MemArena>("memarena");
+   ma->bufsize = bufsize;
++  ma->bufsize = 8;
+   ma->align = 8;
+   ma->name = name;
+ 

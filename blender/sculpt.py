@@ -7,8 +7,7 @@ import enum
 import pathlib
 
 MEASUREMENTS = 11
-SIZE = 1500
-LOG_FILE = '/home/nvankempen/nicovank/litterer/blender-sculpt.log'
+SIZE = 1000
 
 
 class SculptMode(enum.IntEnum):
@@ -32,13 +31,13 @@ def set_view3d_context_override(context_override):
     """
 
     for area in context_override["screen"].areas:
-        if area.type != 'VIEW_3D':
+        if area.type != "VIEW_3D":
             continue
         for space in area.spaces:
-            if space.type != 'VIEW_3D':
+            if space.type != "VIEW_3D":
                 continue
             for region in area.regions:
-                if region.type != 'WINDOW':
+                if region.type != "WINDOW":
                     continue
                 context_override["area"] = area
                 context_override["region"] = region
@@ -60,16 +59,18 @@ def prepare_sculpt_scene(context: any, mode: SculptMode, subdivision_level=3):
     # Ensure the current mode is object, as it might not be the always the case
     # if the benchmark script is run from a non-clean state of the .blend file.
     if context.object:
-        bpy.ops.object.mode_set(mode='OBJECT')
+        bpy.ops.object.mode_set(mode="OBJECT")
 
     # Delete all current objects from the scene.
-    bpy.ops.object.select_all(action='SELECT')
+    bpy.ops.object.select_all(action="SELECT")
     bpy.ops.object.delete(use_global=False)
     bpy.ops.outliner.orphans_purge()
 
-    group = bpy.data.node_groups.new("Test", 'GeometryNodeTree')
-    group.interface.new_socket("Geometry", in_out='OUTPUT', socket_type='NodeSocketGeometry')
-    group_output_node = group.nodes.new('NodeGroupOutput')
+    group = bpy.data.node_groups.new("Test", "GeometryNodeTree")
+    group.interface.new_socket(
+        "Geometry", in_out="OUTPUT", socket_type="NodeSocketGeometry"
+    )
+    group_output_node = group.nodes.new("NodeGroupOutput")
 
     if mode == SculptMode.MESH:
         size = 1500
@@ -80,7 +81,7 @@ def prepare_sculpt_scene(context: any, mode: SculptMode, subdivision_level=3):
     else:
         raise NotImplementedError
 
-    grid_node = group.nodes.new('GeometryNodeMeshGrid')
+    grid_node = group.nodes.new("GeometryNodeMeshGrid")
     grid_node.inputs["Size X"].default_value = 2.0
     grid_node.inputs["Size Y"].default_value = 2.0
     grid_node.inputs["Vertices X"].default_value = size
@@ -88,17 +89,19 @@ def prepare_sculpt_scene(context: any, mode: SculptMode, subdivision_level=3):
 
     group.links.new(grid_node.outputs["Mesh"], group_output_node.inputs[0])
 
-    bpy.ops.mesh.primitive_plane_add(size=2, align='WORLD', location=(0, 0, 0), scale=(1, 1, 1))
+    bpy.ops.mesh.primitive_plane_add(
+        size=2, align="WORLD", location=(0, 0, 0), scale=(1, 1, 1)
+    )
 
     ob = context.object
-    md = ob.modifiers.new("Test", 'NODES')
+    md = ob.modifiers.new("Test", "NODES")
     md.node_group = group
 
     bpy.ops.object.modifier_apply(modifier="Test")
 
-    bpy.ops.object.select_all(action='SELECT')
+    bpy.ops.object.select_all(action="SELECT")
     # Move the plane to the sculpt mode.
-    bpy.ops.object.mode_set(mode='SCULPT')
+    bpy.ops.object.mode_set(mode="SCULPT")
 
     if mode == SculptMode.MULTIRES:
         bpy.ops.object.subdivision_set(level=subdivision_level)
@@ -111,8 +114,9 @@ def prepare_brush(context: any, brush_type: BrushType):
     import bpy
 
     bpy.ops.brush.asset_activate(
-        asset_library_type='ESSENTIALS',
-        relative_asset_identifier='brushes/essentials_brushes-mesh_sculpt.blend/Brush/' + brush_type.value,
+        asset_library_type="ESSENTIALS",
+        relative_asset_identifier="brushes/essentials_brushes-mesh_sculpt.blend/Brush/"
+        + brush_type.value,
     )
 
     # Reduce the brush strength to avoid deforming the mesh too much and influencing multiple strokes
@@ -146,7 +150,7 @@ def generate_stroke(context):
         template["pen_flip"] = False
 
     num_steps = 100
-    start = Vector((context['area'].width, context['area'].height))
+    start = Vector((context["area"].width, context["area"].height))
     end = Vector((0, 0))
     delta = (end - start) / (num_steps - 1)
 
@@ -165,39 +169,38 @@ def _run_brush_test(args: dict):
 
     context = bpy.context
 
-    timeout = 10
-    total_time_start = time.time()
-
     # Create an undo stack explicitly. This isn't created by default in background mode.
     bpy.ops.ed.undo_push()
 
-    prepare_brush(context, args['brush_type'])
+    prepare_brush(context, args["brush_type"])
 
-    min_measurements = MEASUREMENTS
-    max_measurements = MEASUREMENTS
     measurements = []
     while True:
-        prepare_sculpt_scene(context, args['mode'])
+        prepare_sculpt_scene(context, args["mode"])
         context_override = context.copy()
         set_view3d_context_override(context_override)
         with context.temp_override(**context_override):
-            if args.get('spatial_reorder', False):
+            if args.get("spatial_reorder", False):
                 bpy.ops.mesh.reorder_vertices_spatial()
                 bpy.ops.ed.undo_push()
             start = time.time()
-            bpy.ops.sculpt.brush_stroke(stroke=generate_stroke(context_override), override_location=True)
+            bpy.ops.sculpt.brush_stroke(
+                stroke=generate_stroke(context_override), override_location=True
+            )
             bpy.ops.ed.undo_push()
             measurements.append(time.time() - start)
             memory_info = bpy.app.memory_usage_undo()
-        if len(measurements) >= min_measurements and (time.time() - total_time_start) > timeout:
-            break
-        if len(measurements) >= max_measurements:
+        if len(measurements) >= MEASUREMENTS:
             break
 
-    with open(LOG_FILE, 'a') as f:
-        print(measurements, file=f)
+    print("-------------------------------")
+    print(args["name"])
+    print("-------------------------------")
+    for time in measurements:
+        print(time)
+    print("-------------------------------")
 
-    return {'time': sum(measurements) / len(measurements), 'memory': memory_info}
+    return {"time": sum(measurements) / len(measurements), "memory": memory_info}
 
 
 def _run_bvh_test(args: dict):
@@ -206,33 +209,30 @@ def _run_bvh_test(args: dict):
 
     context = bpy.context
 
-    timeout = 10
-    total_time_start = time.time()
-
     # Create an undo stack explicitly. This isn't created by default in background mode.
     bpy.ops.ed.undo_push()
 
-    min_measurements = MEASUREMENTS
-    max_measurements = MEASUREMENTS
-
     measurements = []
     while True:
-        prepare_sculpt_scene(context, args['mode'])
+        prepare_sculpt_scene(context, args["mode"])
         context_override = context.copy()
         set_view3d_context_override(context_override)
         with context.temp_override(**context_override):
-            if args.get('spatial_reorder', False):
+            if args.get("spatial_reorder", False):
                 bpy.ops.mesh.reorder_vertices_spatial()
             start = time.time()
             bpy.ops.sculpt.optimize()
             measurements.append(time.time() - start)
 
-        if len(measurements) >= min_measurements and (time.time() - total_time_start) > timeout:
+        if len(measurements) >= MEASUREMENTS:
             break
-        if len(measurements) >= max_measurements:
-            break
-    with open(LOG_FILE, 'a') as f:
-        print(measurements, file=f)
+
+    print("-------------------------------")
+    print(args["name"])
+    print("-------------------------------")
+    for time in measurements:
+        print(time)
+    print("-------------------------------")
 
     return sum(measurements) / len(measurements)
 
@@ -251,9 +251,10 @@ class SculptBrushTest(api.Test):
 
     def run(self, env, _device_id):
         args = {
-            'mode': self.mode,
-            'brush_type': self.brush_type,
-            'spatial_reorder': False,
+            "mode": self.mode,
+            "brush_type": self.brush_type,
+            "spatial_reorder": False,
+            "name": self.name(),
         }
 
         result, _ = env.run_in_blender(_run_brush_test, args, [self.filepath])
@@ -273,21 +274,21 @@ class SculptRebuildBVHTest(api.Test):
         return "sculpt"
 
     def run(self, env, _device_id):
-        args = {
-            'mode': self.mode,
-            'spatial_reorder': False,
-        }
+        args = {"mode": self.mode, "spatial_reorder": False, "name": self.name()}
 
         result, _ = env.run_in_blender(_run_bvh_test, args, [self.filepath])
 
-        return {'time': result}
+        return {"time": result}
 
 
 def generate(env):
-    filepaths = env.find_blend_files('sculpt/*')
+    filepaths = env.find_blend_files("sculpt/*")
     # For now, we only expect there to ever be a single file to use as the basis for generating other brush tests
     assert len(filepaths) == 1
 
-    brush_tests = [SculptBrushTest(filepaths[0], SculptMode.DYNTOPO, brush_type) for brush_type in BrushType]
+    brush_tests = [
+        SculptBrushTest(filepaths[0], SculptMode.DYNTOPO, brush_type)
+        for brush_type in BrushType
+    ]
     bvh_tests = [SculptRebuildBVHTest(filepaths[0], SculptMode.DYNTOPO)]
     return brush_tests + bvh_tests

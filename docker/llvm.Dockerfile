@@ -20,14 +20,14 @@ RUN --mount=type=bind,source=.,target=/root/litterer \
         -DCMAKE_C_COMPILER=clang-21 -DCMAKE_CXX_COMPILER=clang++-21 \
         -DLLVM_ENABLE_LTO=Thin -DLLVM_TARGETS_TO_BUILD="X86" \
     && cmake --build build \
-    && cmake --install build --prefix /root/llvm-vanilla \
+    && cmake --install build --prefix /root/llvm-arena \
     && git apply /root/litterer/docker/llvm-shim.patch \
     && cmake llvm -G Ninja -B build -DCMAKE_BUILD_TYPE=Release \
         -DLLVM_ENABLE_PROJECTS="clang" -DLLVM_BUILD_TOOLS=OFF \
         -DCMAKE_C_COMPILER=clang-21 -DCMAKE_CXX_COMPILER=clang++-21 \
         -DLLVM_ENABLE_LTO=Thin -DLLVM_TARGETS_TO_BUILD="X86" \
     && cmake --build build \
-    && cmake --install build --prefix /root/llvm-shim \
+    && cmake --install build --prefix /root/llvm-malloc \
     && cd .. \
     && rm -rf llvm
 
@@ -39,6 +39,6 @@ RUN wget https://www.sqlite.org/2025/sqlite-amalgamation-3490100.zip \
 ENTRYPOINT ["/bin/bash"]
 
 FROM scratch AS export
-COPY --from=build /root/llvm-vanilla /llvm-vanilla
-COPY --from=build /root/llvm-shim /llvm-shim
+COPY --from=build /root/llvm-arena /llvm-arena
+COPY --from=build /root/llvm-malloc /llvm-malloc
 COPY --from=build /root/sqlite3.c /sqlite3.c

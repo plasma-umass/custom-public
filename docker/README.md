@@ -38,5 +38,18 @@ docker run -it --rm \
 [docker] runcpu --action=run --size=train --config=litterer -n 11 \
     --define litter_multiplier=1 \
     --define litter_occupancy=0.4 \
-    $INTSPEED $FPSPEED $INTRATE $FPRATE
+    $INTRATE $FPRATE
+```
+
+## Checking which benchmarks use multiple threads even when setting copies to zero
+
+```bash
+docker run -it --rm \
+    $(docker build -q -f docker/SPEC.Dockerfile . --build-arg SPEC_ISO_MNT=./spec)
+
+[docker] runcpu --action=run --size=train -n 1 --config=pthread_crash $INTRATE $FPRATE
+
+[docker] runcpu --action=run --size=train -n 1 --config=pthread_crash \
+    --define ncpus=16 \
+    $INTSPEED $FPSPEED
 ```

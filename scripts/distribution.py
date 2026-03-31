@@ -1,5 +1,6 @@
 import argparse
 import json
+import math
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -22,15 +23,58 @@ def main(args: argparse.Namespace) -> None:
     plt.rcParams["font.family"] = args.font
     with plt.style.context("bmh"):  # type: ignore[attr-defined]
         fig, ax = plt.subplots()
+        fig.set_size_inches(4, 3)
         ax.set_facecolor("white")
 
-        consolidated = bins.reshape(-1, 16).sum(axis=1)
+        bin_edges = [
+            8,
+            16,
+            32,
+            48,
+            64,
+            80,
+            96,
+            112,
+            128,
+            160,
+            192,
+            224,
+            256,
+            320,
+            384,
+            448,
+            512,
+            640,
+            768,
+            896,
+            1024,
+            1280,
+            1536,
+            1792,
+            2048,
+            2560,
+            3072,
+            3584,
+            4096,
+        ]
 
-        ax.bar(list(range(len(consolidated))), consolidated, width=1, align="edge")
+        # Each bin covers (bin_edges[i-1], bin_edges[i]], first bin covers [1, bin_edges[0]]
+        consolidated = []
+        for i, edge in enumerate(bin_edges):
+            lo = bin_edges[i - 1] if i > 0 else 0
+            consolidated.append(bins[lo:edge].sum())
 
-        ax.set_xlabel("Size of allocation [B]")
+        bar_positions = list(range(len(consolidated)))
+        ax.bar(bar_positions, consolidated, width=0.85, align="center")
+
+        ax.set_xlabel("Size [B]")
         ax.set_ylabel("Number of allocations")
+        ax.set_xticks(bar_positions)
+        ax.set_xticklabels([str(b) for b in bin_edges], rotation=90)
+        ax.tick_params(axis="x", length=0)
+        ax.tick_params(axis="y", which="minor", length=0)
         ax.set_yscale("log")
+        ax.xaxis.grid(False)
         fig.tight_layout()
         plt.savefig(f"distribution.{args.format}", format=args.format)
 

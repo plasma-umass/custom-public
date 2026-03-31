@@ -6,7 +6,7 @@ import api
 import enum
 import pathlib
 
-MEASUREMENTS = 11
+MEASUREMENTS = 31
 SIZE = 1000
 
 
@@ -188,53 +188,22 @@ def _run_brush_test(args: dict):
                 stroke=generate_stroke(context_override), override_location=True
             )
             bpy.ops.ed.undo_push()
-            measurements.append(time.time() - start)
+            elapsed = time.time() - start
+            measurements.append(elapsed)
+            print(elapsed)
             memory_info = bpy.app.memory_usage_undo()
         if len(measurements) >= MEASUREMENTS:
             break
 
     print("-------------------------------")
-    print(args["name"])
-    print("-------------------------------")
-    for time in measurements:
-        print(time)
+    for t in measurements:
+        print(t)
     print("-------------------------------")
 
-    return {"time": sum(measurements) / len(measurements), "memory": memory_info}
-
-
-def _run_bvh_test(args: dict):
-    import bpy
-    import time
-
-    context = bpy.context
-
-    # Create an undo stack explicitly. This isn't created by default in background mode.
-    bpy.ops.ed.undo_push()
-
-    measurements = []
-    while True:
-        prepare_sculpt_scene(context, args["mode"])
-        context_override = context.copy()
-        set_view3d_context_override(context_override)
-        with context.temp_override(**context_override):
-            if args.get("spatial_reorder", False):
-                bpy.ops.mesh.reorder_vertices_spatial()
-            start = time.time()
-            bpy.ops.sculpt.optimize()
-            measurements.append(time.time() - start)
-
-        if len(measurements) >= MEASUREMENTS:
-            break
-
-    print("-------------------------------")
-    print(args["name"])
-    print("-------------------------------")
-    for time in measurements:
-        print(time)
-    print("-------------------------------")
-
-    return sum(measurements) / len(measurements)
+    return {
+        "time": sum(measurements) / len(measurements),
+        "memory": memory_info,
+    }
 
 
 class SculptBrushTest(api.Test):
@@ -260,35 +229,3 @@ class SculptBrushTest(api.Test):
         result, _ = env.run_in_blender(_run_brush_test, args, [self.filepath])
 
         return result
-
-
-class SculptRebuildBVHTest(api.Test):
-    def __init__(self, filepath: pathlib.Path, mode: SculptMode):
-        self.filepath = filepath
-        self.mode = mode
-
-    def name(self):
-        return "{}_rebuild_bvh".format(self.mode.name.lower())
-
-    def category(self):
-        return "sculpt"
-
-    def run(self, env, _device_id):
-        args = {"mode": self.mode, "spatial_reorder": False, "name": self.name()}
-
-        result, _ = env.run_in_blender(_run_bvh_test, args, [self.filepath])
-
-        return {"time": result}
-
-
-def generate(env):
-    filepaths = env.find_blend_files("sculpt/*")
-    # For now, we only expect there to ever be a single file to use as the basis for generating other brush tests
-    assert len(filepaths) == 1
-
-    brush_tests = [
-        SculptBrushTest(filepaths[0], SculptMode.DYNTOPO, brush_type)
-        for brush_type in BrushType
-    ]
-    bvh_tests = [SculptRebuildBVHTest(filepaths[0], SculptMode.DYNTOPO)]
-    return brush_tests + bvh_tests

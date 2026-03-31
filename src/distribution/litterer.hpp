@@ -176,8 +176,8 @@ void runLitterer() {
                  static_cast<long long>(elapsed_s));
 
     if (sleepDelay != 0) {
-        std::fprintf(log, "Sleeping %u seconds before resuming...\n",
-                     sleepDelay);
+        std::fprintf(log, "Sleeping %u seconds before resuming... (PID: %u)\n",
+                     sleepDelay, getpid());
         std::this_thread::sleep_for(std::chrono::seconds(sleepDelay));
         std::fprintf(log, "Resuming program now!\n");
     }

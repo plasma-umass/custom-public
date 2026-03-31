@@ -58,6 +58,10 @@ if(LINUX)
   target_include_directories(utils_perf PUBLIC include)
 endif()
 
+add_executable(benchmark_freelist src/benchmarks/freelist.cpp)
+target_link_libraries(benchmark_freelist PRIVATE argparse)
+target_link_libraries(benchmark_freelist PRIVATE benchmark::benchmark)
+
 add_executable(benchmark_iterator src/benchmarks/iterator.cpp)
 target_link_libraries(benchmark_iterator PRIVATE argparse)
 target_link_libraries(benchmark_iterator PRIVATE benchmark::benchmark)

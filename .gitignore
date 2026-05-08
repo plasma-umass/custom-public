@@ -6,7 +6,12 @@ env
 
 /llvm*
 /sqlite3*
-/blender/blender-*
 /cpu2000*
-/jemalloc*
-/mimalloc*
+/jemalloc/
+/mimalloc/
+/blender/blender/
+/175.vpr/
+/176.gcc/
+/197.parser/
+/boxed-sim/
+/mudlle/

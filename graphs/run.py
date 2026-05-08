@@ -5,17 +5,16 @@ import subprocess
 import json
 from typing import Optional
 
-
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 
 MANIFEST = {
-    # docker build -f docker/llvm.Dockerfile --target export -o . .
-    "llvm": {
-        "malloc-exe": os.path.join(ROOT, "llvm-malloc", "bin", "clang"),
-        "arena-exe": os.path.join(ROOT, "llvm-arena", "bin", "clang"),
-        "exe-args": ["-c", "-O3", os.path.join(ROOT, "sqlite3.c")],
-    },
-    # See SPEC2000.
+    # # docker build -f docker/llvm.Dockerfile --target export -o . .
+    # "llvm": {
+    #     "malloc-exe": os.path.join(ROOT, "llvm-malloc", "bin", "clang"),
+    #     "arena-exe": os.path.join(ROOT, "llvm-arena", "bin", "clang"),
+    #     "exe-args": ["-c", "-O3", os.path.join(ROOT, "sqlite3.c")],
+    # },
+    # # See SPEC2000.
     "197.parser": {
         "malloc-exe": os.path.join(ROOT, "197.parser", "src", "parser-malloc"),
         "arena-exe": os.path.join(ROOT, "197.parser", "src", "parser-arena"),
@@ -23,25 +22,32 @@ MANIFEST = {
         "exe-cwd": os.path.join(ROOT, "197.parser", "src"),
         "exe-stdin": os.path.join(ROOT, "197.parser", "src", "ref.in"),
     },
+    # # See SPEC2000.
+    # "176.gcc": {
+    #     "malloc-exe": os.path.join(ROOT, "176.gcc", "src", "cc1-malloc"),
+    #     "arena-exe": os.path.join(ROOT, "176.gcc", "src", "cc1-arena"),
+    #     "exe-args": ["200.i"],
+    #     "exe-cwd": os.path.join(ROOT, "176.gcc", "src"),
+    # },
+    # # See SPEC2000.
+    # "175.vpr": {
+    #     "malloc-exe": os.path.join(ROOT, "175.vpr", "src", "vpr-malloc"),
+    #     "arena-exe": os.path.join(ROOT, "175.vpr", "src", "vpr-arena"),
+    #     "exe-args": ["net.in", "arch.in", "place.in", "route.out"],
+    #     "exe-cwd": os.path.join(ROOT, "175.vpr", "src"),
+    # },
+    # # See SPEC2000.
+    # "boxed-sim": {
+    #     "malloc-exe": os.path.join(ROOT, "boxed-sim", "boxed-malloc"),
+    #     "arena-exe": os.path.join(ROOT, "boxed-sim", "boxed-arena"),
+    #     "exe-args": ["-n", "128", "-s", "13"],
+    # },
     # See SPEC2000.
-    "176.gcc": {
-        "malloc-exe": os.path.join(ROOT, "176.gcc", "src", "cc1-malloc"),
-        "arena-exe": os.path.join(ROOT, "176.gcc", "src", "cc1-arena"),
-        "exe-args": ["200.i"],
-        "exe-cwd": os.path.join(ROOT, "176.gcc", "src"),
-    },
-    # See SPEC2000.
-    "175.vpr": {
-        "malloc-exe": os.path.join(ROOT, "175.vpr", "src", "vpr-malloc"),
-        "arena-exe": os.path.join(ROOT, "175.vpr", "src", "vpr-arena"),
-        "exe-args": ["net.in", "arch.in", "place.in", "route.out"],
-        "exe-cwd": os.path.join(ROOT, "175.vpr", "src"),
-    },
-    # See SPEC2000.
-    "boxed-sim": {
-        "malloc-exe": os.path.join(ROOT, "boxed-sim", "boxed-malloc"),
-        "arena-exe": os.path.join(ROOT, "boxed-sim", "boxed-arena"),
-        "exe-args": ["-n", "256", "-s", "13"],
+    "mudlle": {
+        "malloc-exe": os.path.join(ROOT, "mudlle", "mudlle-malloc"),
+        "arena-exe": os.path.join(ROOT, "mudlle", "mudlle-arena"),
+        "exe-cwd": os.path.join(ROOT, "mudlle"),
+        "exe-stdin": os.path.join(ROOT, "mudlle", "time.mud"),
     },
 }
 
@@ -80,7 +86,7 @@ def get_elapsed(output: str) -> int:
 
 def run_benchmark_and_get_stderr(
     exe: str,
-    args: str,
+    args: list[str],
     config: str,
     ld_preload: str,
     stdin: Optional[str],
@@ -110,7 +116,7 @@ for benchmark in MANIFEST.keys():
     print("Detecting size classes...")
     run_benchmark_and_get_stderr(
         manifest["malloc-exe"],
-        manifest["exe-args"],
+        manifest.get("exe-args", []),
         {},
         DETECTOR_SO,
         manifest.get("exe-stdin"),
@@ -126,7 +132,7 @@ for benchmark in MANIFEST.keys():
                 elapsed = get_elapsed(
                     run_benchmark_and_get_stderr(
                         manifest["malloc-exe"],
-                        manifest["exe-args"],
+                        manifest.get("exe-args", []),
                         config,
                         (alloc + " " + LITTERER_SO).strip(),
                         manifest.get("exe-stdin"),
@@ -142,7 +148,7 @@ for benchmark in MANIFEST.keys():
                 elapsed = get_elapsed(
                     run_benchmark_and_get_stderr(
                         manifest["arena-exe"],
-                        manifest["exe-args"],
+                        manifest.get("exe-args", []),
                         config,
                         (alloc + " " + LITTERER_SO).strip(),
                         manifest.get("exe-stdin"),

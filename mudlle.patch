@@ -1,0 +1,84 @@
+--- a/calloc.c
++++ b/calloc.c
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (c) 1993-2012 David Gay and Gustav H�llberg
++ * Copyright (c) 1993-2012 David Gay and Gustav H�llberg
+  * All rights reserved.
+  *
+  * Permission to use, copy, modify, and distribute this software for any
+@@ -41,8 +41,10 @@
+ struct memblock
+ {
+   struct memblock *previous;
++#ifndef USE_MALLOC
+   char *pos;			/* Where next to allocate from */
+   char *end;			/* End of block */
++#endif
+   char data[];
+ };
+ 
+@@ -50,7 +52,11 @@ struct alloc_block {
+   struct memblock *memblock;
+ };
+ 
++#ifndef USE_MALLOC
+ #define DFLT_BLOCK_SIZE (16384 - sizeof (struct memblock))
++#else
++#define DFLT_BLOCK_SIZE 0
++#endif
+ 
+ static struct memblock *make_block(size_t size)
+ {
+@@ -66,8 +72,10 @@ static struct memblock *make_block(size_t size)
+   VALGRIND_CREATE_MEMPOOL(newp, 0, 0);
+   VALGRIND_MAKE_MEM_NOACCESS(newp->data, size);
+ 
++#ifndef USE_MALLOC
+   newp->pos = newp->data;
+   newp->end = newp->data + size;
++#endif
+   newp->previous = 0;
+ 
+   return newp;
+@@ -114,6 +122,13 @@ void *allocate(struct alloc_block *b, unsigned long size)
+   /* This could depend on the machine */
+   unsigned long asize = MUDLLE_ALIGN(size, sizeof (long));
+ 
++#ifdef USE_MALLOC
++  struct memblock *newp = make_block(asize);
++  newp->previous = blk;
++  b->memblock = newp;
++  result = newp->data;
++  blk = newp;
++#else
+   void *result = blk->pos;
+   blk->pos += asize;
+   if (blk->pos > blk->end)
+@@ -126,6 +141,7 @@ void *allocate(struct alloc_block *b, unsigned long size)
+       newp->pos += asize;
+       blk = newp;
+     }
++#endif
+   VALGRIND_MEMPOOL_ALLOC(blk, result, size);
+   return result;
+ }
+--- a/runtime/runtime.c
++++ b/runtime/runtime.c
+@@ -349,7 +349,7 @@ void got_real_segv(int sig)
+ 
+ #if (defined __i386__ || __x86_64__) && !defined NOCOMPILER
+  #define USE_ALTSTACK 1
+-static char my_signal_stack[MINSIGSTKSZ + 8 * 1024];
++static char my_signal_stack[8192 + 8 * 1024];
+ #else
+  #undef USE_ALTSTACK
+ #endif
+--- /dev/null
++++ b/time.mud
+@@ -0,0 +1,5 @@
++load("lib.mud");
++load("noinf.mud");
++load("ax64.mud");
++repeat(300, fn () load("genx64.mud"));
++repeat(300, fn () load("inference.mud"));

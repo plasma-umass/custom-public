@@ -16,8 +16,8 @@ CONFIGS = [
 ]
 
 CONFIG_TO_LEGEND = {
-    "arena.0litter": "Region - $Adv_0$",
-    "arena.3litter": "Region - $Adv_3$",
+    "arena.0litter": "Custom - $Adv_0$",
+    "arena.3litter": "Custom - $Adv_3$",
     "malloc.0litter": "Malloc - $Adv_0$",
     "malloc.1litter": "Malloc - $Adv_1$",
     "malloc.3litter": "Malloc - $Adv_3$",
@@ -25,12 +25,14 @@ CONFIG_TO_LEGEND = {
 }
 
 BENCHMARK_TO_NAME = {
+    "mudlle": "mudlle",
     "175.vpr": "175.vpr",
     "176.gcc": "176.gcc",
     "197.parser": "197.parser",
     "blender.geometry_nodes": "geometry_nodes",
     "blender.sculpt": "sculpt",
     "llvm": "clang",
+    "boxed-sim": "boxed-sim",
 }
 
 ALLOCATOR_TO_NAME = {
@@ -78,15 +80,15 @@ def plot_row(ax, data, args, baseline=None):
 
             width = bar_width * width_per_allocator
 
-            # yerr = (
-            #     (statistics.stdev(values) / baseline)
-            #     if values and baseline
-            #     else (
-            #         0
-            #         if args.normalize
-            #         else (statistics.stdev(values) / 1000) if values else 0
-            #     )
-            # )
+            yerr = (
+                (statistics.stdev(values) / baseline)
+                if values and baseline
+                else (
+                    0
+                    if args.normalize
+                    else (statistics.stdev(values) / 1000) if values else 0
+                )
+            )
 
             ax.bar(
                 x,
@@ -94,10 +96,10 @@ def plot_row(ax, data, args, baseline=None):
                 width,
                 color=colors[config],
                 label=CONFIG_TO_LEGEND[config] if i == 0 else None,
-                # yerr=yerr,
-                # error_kw={"capsize": 3, "elinewidth": 1},
+                yerr=yerr if args.yerr else None,
+                error_kw={"capsize": 3, "elinewidth": 1} if args.yerr else None,
             )
-            print(f"{allocator} {config}: {y}")
+            print(f"{allocator} {config}: {y:.3f} ± {yerr:.3f}")
 
     _, ymax = ax.get_ylim()
     for i in range(len(data.keys())):
@@ -166,9 +168,10 @@ def main(args: argparse.Namespace) -> None:
     with plt.style.context("bmh"):
         fig, axes = plt.subplots(nrows=n, squeeze=False)
         axes = [axes[i][0] for i in range(n)]
-        fig.set_size_inches(9, 2 * n)
+        fig.set_size_inches(args.x_inches, args.y_inches or (2.25 * n))
 
         for i, (name, data) in enumerate(all_data):
+            print(f"Plotting {name}...")
             ax = axes[i]
             plot_row(ax, data, args)
             ax.set_ylabel(BENCHMARK_TO_NAME.get(name, name))
@@ -184,9 +187,8 @@ def main(args: argparse.Namespace) -> None:
         )
 
         fig.supylabel("Normalized Time" if args.normalize else "Execution Time [s]")
-        fig.tight_layout()
-        fig.subplots_adjust(top=0.85 if n == 1 else 0.88 if n == 2 else 0.92)
-        plt.savefig(f"plot.{args.format}", format=args.format, bbox_inches="tight")
+        fig.tight_layout(rect=(0, 0, 1, args.top))
+        plt.savefig(f"plot.{args.format}", format=args.format)
 
 
 if __name__ == "__main__":
@@ -195,4 +197,8 @@ if __name__ == "__main__":
     parser.add_argument("--font", type=str, default="Linux Libertine O")
     parser.add_argument("--format", type=str, default="png")
     parser.add_argument("--normalize", action="store_true", default=False)
+    parser.add_argument("--yerr", action="store_true", default=False)
+    parser.add_argument("--top", type=float, default=0.80)
+    parser.add_argument("--x-inches", type=float, default=9.75)
+    parser.add_argument("--y-inches", type=float, default=None)
     main(parser.parse_args())

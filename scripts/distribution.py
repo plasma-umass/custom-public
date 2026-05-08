@@ -65,7 +65,13 @@ def main(args: argparse.Namespace) -> None:
             consolidated.append(bins[lo:edge].sum())
 
         bar_positions = list(range(len(consolidated)))
-        ax.bar(bar_positions, consolidated, width=0.85, align="center")
+        ax.bar(
+            bar_positions,
+            consolidated,
+            width=0.85,
+            align="center",
+            color=(2 / 255, 81 / 255, 150 / 255),
+        )
 
         ax.set_xlabel("Size [B]")
         ax.set_ylabel("Number of allocations")

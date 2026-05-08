@@ -1,8 +1,6 @@
-#include <array>
 #include <chrono>
 #include <cstdint>
 #include <cstdlib>
-#include <deque>
 #include <iostream>
 #include <random>
 #include <vector>
@@ -42,7 +40,7 @@ int main(int argc, char** argv) {
         .metavar("SIZE")
         .scan<'u', std::uint64_t>();
     program.add_argument("-i", "--iterations")
-        .default_value(std::uint64_t(100'000'000))
+        .default_value(std::uint64_t(10'000'000))
         .help("the number of iterations")
         .metavar("N")
         .scan<'u', std::uint64_t>();
@@ -50,6 +48,16 @@ int main(int argc, char** argv) {
         .help("whether to use regular malloc/free over the freelist")
         .default_value(false)
         .implicit_value(true);
+    program.add_argument("-p", "--preseed")
+        .default_value(std::uint64_t(4096))
+        .help("number of allocations to pre-seed the freelist with")
+        .metavar("N")
+        .scan<'u', std::uint64_t>();
+    program.add_argument("-o", "--ops")
+        .default_value(std::uint64_t(64))
+        .help("number of allocations or frees per iteration")
+        .metavar("N")
+        .scan<'u', std::uint64_t>();
 
     try {
         program.parse_args(argc, argv);
@@ -62,31 +70,36 @@ int main(int argc, char** argv) {
     const auto allocationSize = program.get<std::uint64_t>("--allocation-size");
     const auto useMallocFree = program.get<bool>("--no-freelist");
     const auto iterations = program.get<std::uint64_t>("--iterations");
+    const auto preseed = program.get<std::uint64_t>("--preseed");
+    const auto ops = program.get<std::uint64_t>("--ops");
 
     std::cout << "Using malloc/free? " << (useMallocFree ? "yes" : "no")
               << std::endl;
 
     auto generator = std::mt19937(std::random_device{}());
-    std::bernoulli_distribution coin(0.5);
     std::vector<void*> live;
 
-    constexpr std::array<std::size_t, 7> kNoiseSizes
-        = {8, 16, 32, 64, 128, 256, 512};
-    std::deque<void*> noises;
-    for (int i = 0; i < 4096; ++i) {
-        noises.push_back(malloc(kNoiseSizes.at(i % kNoiseSizes.size())));
+    live.reserve(preseed);
+    for (std::uint64_t i = 0; i < preseed; ++i) {
+        live.push_back(do_malloc(allocationSize, useMallocFree));
     }
 
     const auto start = std::chrono::high_resolution_clock::now();
 
     for (std::uint64_t i = 0; i < iterations; ++i) {
-        noises.push_back(malloc(kNoiseSizes.at(i % kNoiseSizes.size())));
-
-        if (live.empty() || coin(generator)) {
-            live.push_back(do_malloc(allocationSize, useMallocFree));
+        if (i % 2 == 0) {
+            for (std::uint64_t j = 0; j < ops; ++j) {
+                live.push_back(do_malloc(allocationSize, useMallocFree));
+            }
         } else {
-            do_free(live.back(), useMallocFree);
-            live.pop_back();
+            for (std::uint64_t j = 0; j < ops; ++j) {
+                std::uniform_int_distribution<std::size_t> pick(0, live.size()
+                                                                       - 1);
+                const std::size_t idx = pick(generator);
+                do_free(live[idx], useMallocFree);
+                live[idx] = live.back();
+                live.pop_back();
+            }
         }
     }
 
@@ -99,9 +112,6 @@ int main(int argc, char** argv) {
         void* next = *static_cast<void**>(freelist);
         free(freelist);
         freelist = next;
-    }
-    for (void* ptr : noises) {
-        free(ptr);
     }
 
     const auto elapsed_ms

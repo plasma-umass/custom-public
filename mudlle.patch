@@ -1,12 +1,5 @@
 --- a/calloc.c
 +++ b/calloc.c
-@@ -1,5 +1,5 @@
- /*
-- * Copyright (c) 1993-2012 David Gay and Gustav H�llberg
-+ * Copyright (c) 1993-2012 David Gay and Gustav H�llberg
-  * All rights reserved.
-  *
-  * Permission to use, copy, modify, and distribute this software for any
 @@ -41,8 +41,10 @@
  struct memblock
  {
@@ -49,7 +42,7 @@
 +  struct memblock *newp = make_block(asize);
 +  newp->previous = blk;
 +  b->memblock = newp;
-+  result = newp->data;
++  void* result = newp->data;
 +  blk = newp;
 +#else
    void *result = blk->pos;

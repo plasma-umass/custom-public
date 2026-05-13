@@ -7,21 +7,25 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 
 BENCHMARKS = [
+    # "boxed-sim",
     "mudlle",
     "175.vpr",
     "176.gcc",
     "197.parser",
     "llvm",
     "blender.geometry_nodes",
+    "blender.sculpt",
 ]
 
 BENCHMARK_TO_NAME = {
+    # "boxed-sim": "boxed-sim",
     "mudlle": "mudlle",
     "175.vpr": "175.vpr",
     "176.gcc": "176.gcc",
     "197.parser": "197.parser",
     "llvm": "clang",
     "blender.geometry_nodes": "geometry_nodes",
+    "blender.sculpt": "sculpt",
 }
 
 ALLOCATORS = ["pt", "je", "mi"]
@@ -71,6 +75,9 @@ def plot(ax, all_data, args):
     error_kw = {"capsize": 3, "elinewidth": 1} if args.yerr else None
 
     for b_idx, benchmark in enumerate(BENCHMARKS):
+        if benchmark not in all_data:
+            print(f"Warning: No data for benchmark {benchmark}")
+            continue
         data = all_data[benchmark]
 
         means = {a: statistics.mean(data[a]["arena.0litter"]) for a in ALLOCATORS}

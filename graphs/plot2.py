@@ -14,7 +14,7 @@ BENCHMARKS = [
     "197.parser",
     "llvm",
     "blender.geometry_nodes",
-    "blender.sculpt",
+    # "blender.sculpt",
 ]
 
 BENCHMARK_TO_NAME = {
@@ -25,7 +25,7 @@ BENCHMARK_TO_NAME = {
     "197.parser": "197.parser",
     "llvm": "clang",
     "blender.geometry_nodes": "geometry_nodes",
-    "blender.sculpt": "sculpt",
+    # "blender.sculpt": "sculpt",
 }
 
 ALLOCATORS = ["pt", "je", "mi"]
@@ -85,8 +85,9 @@ def plot(ax, all_data, args):
         baseline = means[best_alloc] if args.normalize else None
 
         y, yerr = bar_value(data[best_alloc]["arena.0litter"], baseline)
+        x = bar_x(b_idx, 0)
         ax.bar(
-            bar_x(b_idx, 0),
+            x,
             y,
             BAR_WIDTH,
             color=ARENA_COLOR,
@@ -94,12 +95,15 @@ def plot(ax, all_data, args):
             yerr=yerr if args.yerr else None,
             error_kw=error_kw,
         )
+        if args.ymax is not None and y > args.ymax:
+            ax.text(x, args.ymax, f"{y:.2f}", ha="center", va="bottom", fontsize=8)
         print(f"{benchmark} arena.0litter ({best_alloc}): {y:.3f} ± {yerr:.3f}")
 
         for j, alloc in enumerate(ALLOCATORS):
             y, yerr = bar_value(data[alloc]["malloc.0litter"], baseline)
+            x = bar_x(b_idx, j + 1)
             ax.bar(
-                bar_x(b_idx, j + 1),
+                x,
                 y,
                 BAR_WIDTH,
                 color=MALLOC_COLORS[alloc],
@@ -111,6 +115,8 @@ def plot(ax, all_data, args):
                 yerr=yerr if args.yerr else None,
                 error_kw=error_kw,
             )
+            if args.ymax is not None and y > args.ymax:
+                ax.text(x, args.ymax, f"{y:.1f}", ha="center", va="bottom", fontsize=8)
             print(f"{benchmark} malloc.0litter ({alloc}): {y:.3f} ± {yerr:.3f}")
 
     n = len(BENCHMARKS)
@@ -130,7 +136,7 @@ def plot(ax, all_data, args):
     ax.tick_params(axis="x", which="both", bottom=False)
     ax.xaxis.grid(False)
     ax.yaxis.grid(False)
-    ax.set_ylim(bottom=0)
+    ax.set_ylim(bottom=0, top=args.ymax)
     ax.yaxis.set_major_formatter(ticker.FormatStrFormatter("%.1f"))
     ax.set_facecolor("white")
 
@@ -176,4 +182,5 @@ if __name__ == "__main__":
     parser.add_argument("--normalize", action="store_true", default=False)
     parser.add_argument("--yerr", action="store_true", default=False)
     parser.add_argument("--top", type=float, default=0.88)
+    parser.add_argument("--ymax", type=float, default=None)
     main(parser.parse_args())

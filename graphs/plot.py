@@ -31,7 +31,7 @@ BENCHMARK_TO_NAME = {
     "197.parser": "197.parser",
     "blender.geometry_nodes": "geometry_nodes",
     "blender.sculpt": "sculpt",
-    "llvm": "clang",
+    "llvm": "Clang",
     "boxed-sim": "boxed-sim",
 }
 

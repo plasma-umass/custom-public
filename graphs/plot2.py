@@ -23,7 +23,7 @@ BENCHMARK_TO_NAME = {
     "175.vpr": "175.vpr",
     "176.gcc": "176.gcc",
     "197.parser": "197.parser",
-    "llvm": "clang",
+    "llvm": "Clang",
     "blender.geometry_nodes": "geometry_nodes",
     # "blender.sculpt": "sculpt",
 }

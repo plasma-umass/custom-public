@@ -1,0 +1,14 @@
+profile = "dist"
+change-id = "ignore"
+
+[rust]
+optimize = true
+lto = "fat"
+codegen-units = 1
+debug = false
+debug-assertions = false
+overflow-checks = false
+
+[build]
+extended = true
+tools = ["cargo"]

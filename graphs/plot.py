@@ -33,6 +33,7 @@ BENCHMARK_TO_NAME = {
     "blender.sculpt": "sculpt",
     "llvm": "Clang",
     "boxed-sim": "boxed-sim",
+    "rustc": "rustc",
 }
 
 ALLOCATOR_TO_NAME = {

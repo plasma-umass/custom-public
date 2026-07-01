@@ -1,0 +1,75 @@
+--- a/compiler/rustc_arena/src/lib.rs
++++ b/compiler/rustc_arena/src/lib.rs
+@@ -97,14 +97,6 @@ fn end(&mut self) -> *mut T {
+     }
+ }
+ 
+-// The arenas start with PAGE-sized chunks, and then each new chunk is twice as
+-// big as its predecessor, up until we reach HUGE_PAGE-sized chunks, whereupon
+-// we stop growing. This scales well, from arenas that are barely used up to
+-// arenas that are used for 100s of MiBs. Note also that the chosen sizes match
+-// the usual sizes of pages and huge pages on Linux.
+-const PAGE: usize = 4096;
+-const HUGE_PAGE: usize = 2 * 1024 * 1024;
+-
+ /// An arena that can hold objects of only one type.
+ pub struct TypedArena<T> {
+     /// A pointer to the next object to be allocated.
+@@ -261,11 +253,7 @@ pub fn try_alloc_from_iter<E>(
+     #[cold]
+     fn grow(&self, additional: usize) {
+         unsafe {
+-            // We need the element size to convert chunk sizes (ranging from
+-            // PAGE to HUGE_PAGE bytes) to element counts.
+-            let elem_size = cmp::max(1, size_of::<T>());
+             let mut chunks = self.chunks.borrow_mut();
+-            let mut new_cap;
+             if let Some(last_chunk) = chunks.last_mut() {
+                 // If a type is `!needs_drop`, we don't need to keep track of how many elements
+                 // the chunk stores - the field will be ignored anyway.
+@@ -275,18 +263,9 @@ fn grow(&self, additional: usize) {
+                     let used_bytes = self.ptr.get().addr() - last_chunk.start().addr();
+                     last_chunk.entries = used_bytes / size_of::<T>();
+                 }
+-
+-                // If the previous chunk's len is less than HUGE_PAGE
+-                // bytes, then this chunk will be least double the previous
+-                // chunk's size.
+-                new_cap = last_chunk.storage.len().min(HUGE_PAGE / elem_size / 2);
+-                new_cap *= 2;
+-            } else {
+-                new_cap = PAGE / elem_size;
+             }
+-            // Also ensure that this chunk can fit `additional`.
+-            new_cap = cmp::max(additional, new_cap);
+ 
++            let new_cap = additional;
+             let mut chunk = ArenaChunk::<T>::new(new_cap);
+             self.ptr.set(chunk.start());
+             self.end.set(chunk.end());
+@@ -403,23 +382,9 @@ fn grow(&self, layout: Layout) {
+ 
+         unsafe {
+             let mut chunks = self.chunks.borrow_mut();
+-            let mut new_cap;
+-            if let Some(last_chunk) = chunks.last_mut() {
+-                // There is no need to update `last_chunk.entries` because that
+-                // field isn't used by `DroplessArena`.
+-
+-                // If the previous chunk's len is less than HUGE_PAGE
+-                // bytes, then this chunk will be least double the previous
+-                // chunk's size.
+-                new_cap = last_chunk.storage.len().min(HUGE_PAGE / 2);
+-                new_cap *= 2;
+-            } else {
+-                new_cap = PAGE;
+-            }
+-            // Also ensure that this chunk can fit `additional`.
+-            new_cap = cmp::max(additional, new_cap);
+ 
+-            let mut chunk = ArenaChunk::new(align_up(new_cap, PAGE));
++            let new_cap = additional;
++            let mut chunk = ArenaChunk::new(new_cap);
+             self.start.set(chunk.start());
+ 
+             // Align the end to DROPLESS_ALIGNMENT.

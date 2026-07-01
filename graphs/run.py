@@ -49,6 +49,13 @@ MANIFEST = {
         "exe-cwd": os.path.join(ROOT, "mudlle"),
         "exe-stdin": os.path.join(ROOT, "mudlle", "time.mud"),
     },
+    # See rust/RUST.md
+    "rustc": {
+        "malloc-exe": os.path.join(ROOT, "rust", "rust-malloc", "build", "host", "stage2", "bin", "rustc"),
+        "arena-exe": os.path.join(ROOT, "rust", "rust-arena", "build", "host", "stage2", "bin", "rustc"),
+        "exe-args": ["b_vulkan.rs", "--edition", "2021", "--crate-type", "lib", "-Cdebuginfo=0", "-Ccodegen-units=1"],
+        "exe-cwd": os.path.join(ROOT, "rust"),
+    },
 }
 
 DETECTOR_SO = os.path.join(ROOT, "build", "libdetector_distribution.so")
@@ -103,6 +110,7 @@ def run_benchmark_and_get_stderr(
         stderr=subprocess.PIPE,
         env=env,
         text=True,
+        check=True,
         cwd=cwd,
         stdin=open(stdin) if stdin else None,
     ).stderr
